@@ -12,9 +12,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <html>
     <head>
+        <script>
+            function check(){
+                console.log("HI");
+                console.log($stuff);
+            }
+            console.log("d:"+ $row);
+        </script>
 
     </head>
     <body>
         Hello World!
+        <button onclick="check()">LOL</button>
+        <?php echo 'in nav ';var_dump($stuff); exit; ?>
+
     </body>
 </html>

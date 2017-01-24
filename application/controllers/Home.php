@@ -26,8 +26,24 @@ class Home extends CI_Controller
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+
+    public function __construct() {
+        parent::__construct();
+    }
+
     public function index()
     {
-        $this->load->view('home');
+
+        $this->home();
+    }
+
+    public function home()
+    {
+
+        //$this->load->model('check');
+        //$maxNumberOfSlots = $this->student->getMaxNumberOfSlots();
+        $data['stuff'] = $this->check->queryCheck();
+
+        $this->load->view('home', $data); // $this->load->view('home', $data); set to this if data is set
     }
 }
