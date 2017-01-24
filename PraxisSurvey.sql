@@ -1,10 +1,10 @@
-CREATE DATABASE  IF NOT EXISTS `praxissurvey` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE  IF NOT EXISTS `praxissurvey` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `praxissurvey`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
 -- Host: localhost    Database: praxissurvey
 -- ------------------------------------------------------
--- Server version	5.7.16-log
+-- Server version	5.5.5-10.1.16-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,12 +25,11 @@ DROP TABLE IF EXISTS `answers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `answers` (
-  `QuestionID` int(11) NOT NULL,
-  `SetID` varchar(45) NOT NULL,
-  `EventID` int(11) NOT NULL,
-  `IsBinary` int(11) NOT NULL,
-  `QuestionAns` int(11) NOT NULL,
-  PRIMARY KEY (`QuestionID`)
+  `Question_ID` int(11) NOT NULL,
+  `Set_ID` varchar(45) NOT NULL,
+  `Event_ID` int(11) NOT NULL,
+  `Question_Ans` int(11) NOT NULL,
+  PRIMARY KEY (`Question_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,10 +50,10 @@ DROP TABLE IF EXISTS `eventandlocation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `eventandlocation` (
-  `idEvent` int(11) NOT NULL,
-  `Event Name` varchar(45) NOT NULL,
+  `id_Event` int(11) NOT NULL,
+  `Event_Name` varchar(45) NOT NULL,
   `Location` varchar(45) NOT NULL,
-  PRIMARY KEY (`idEvent`)
+  PRIMARY KEY (`id_Event`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -75,10 +74,11 @@ DROP TABLE IF EXISTS `questions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `questions` (
-  `questionID` int(11) NOT NULL,
-  `SetID` int(11) NOT NULL,
-  `QuestionAct` varchar(45) NOT NULL,
-  PRIMARY KEY (`questionID`)
+  `question_ID` int(11) NOT NULL,
+  `Set_ID` int(11) NOT NULL,
+  `Question_Num` int(11) NOT NULL,
+  `Question_Act` varchar(300) NOT NULL,
+  PRIMARY KEY (`question_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -88,6 +88,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
+INSERT INTO `questions` VALUES (1,1,1,'My financial knowledge is enough for me to manage my income and wealth.'),(2,1,2,'I understand business cycles and their effect on my finance and the economy.'),(3,1,3,'I have a good understanding how risk and reward are linked.'),(4,1,4,'I understand how insurance works.'),(5,1,5,'I understand why people need to save for the long and short term.'),(6,1,6,'I understand how stock markets and unit-linked policies work.'),(7,1,7,'I understand how financial products can benefit me and my family.'),(8,1,8,'I feel that I can talk knowledgeably about finance to others.'),(9,2,1,'My financial knowledge is enough for me to manage my income and wealth.'),(10,2,2,'I understand business cycles and their effect on my finance and the economy.'),(11,2,3,'I have a good understanding how risk and reward are linked.'),(12,2,4,'I understand how insurance works.'),(13,2,5,'I understand why people need to save for the long and short term.'),(14,2,6,'I understand how stock markets and unit-linked policies work.'),(15,2,7,'I understand how financial products can benefit me and my family.'),(16,2,8,'I feel that I can talk knowledgeably about finance to others.'),(17,3,1,'I learned a lot about general financial principles and products through Praxis gameplay.'),(18,3,2,'Including Praxis in new staff agent training will make the training more interesting and attractive.'),(19,3,3,'Praxis is an interesting and innovative way to introduce financial principles and products to staff, agents, partners and customers.'),(20,3,4,'I think Praxis is very effective for building our brand as a company that provides financial education to its stakeholders.'),(21,3,5,'After the Praxis training, I feel very confident about being a GameFaster.'),(22,3,6,'I would like to have more training or practice before I conduct my first gameplay.'),(23,3,7,'The Praxis training session was well conducted by the SMFM team.');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -99,9 +100,9 @@ DROP TABLE IF EXISTS `questionset`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `questionset` (
-  `SetID` int(11) NOT NULL,
-  `QuestionSetDescription` varchar(45) NOT NULL,
-  PRIMARY KEY (`SetID`)
+  `SetI_D` int(11) NOT NULL,
+  `Question_Se_tDescription` varchar(45) NOT NULL,
+  PRIMARY KEY (`SetI_D`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -111,6 +112,7 @@ CREATE TABLE `questionset` (
 
 LOCK TABLES `questionset` WRITE;
 /*!40000 ALTER TABLE `questionset` DISABLE KEYS */;
+INSERT INTO `questionset` VALUES (1,'Pre-game Survey'),(2,'Post-game Survey'),(3,'End of the Day Survey');
 /*!40000 ALTER TABLE `questionset` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -123,4 +125,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-24 11:04:01
+-- Dump completed on 2017-01-24 15:49:38
