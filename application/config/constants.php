@@ -83,3 +83,28 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+/*TABLES*/
+define("TABLE_ANSWERS", "answers");
+define("TABLE_EVENT_AND_LOCATION", "event_and_location");
+define("TABLE_QUESTION_SET", "question_set");
+define("TABLE_QUESTIONS", "questions");
+/*end TABLES/
+
+/*Event COLUMNS*/
+define("COLUMN_EVENT_ID", "event_id");
+define("COLUMN_EVENT_NAME", "event_name");
+define("COLUMN_LOCATION", "event_id");
+
+/*Question Set COLUMNS*/
+define("COLUMN_SET_ID", "set_id");
+define("COLUMN_QUESTION_SET_DESCRIPTION", "question_set_description");
+
+/*Questions COLUMNS*/
+define("COLUMN_QUESTION_ID", "question_id");
+define("COLUMN_QUESTION_Num", "question_num");
+define("COLUMN_QUESTION_ACT", "question_act");
+
+/*Answers*/
+define("COLUMN_QUESTION_ANS", "question_ans");
