@@ -42,7 +42,7 @@ class Home extends CI_Controller
 
         //$this->load->model('check');
         //$maxNumberOfSlots = $this->student->getMaxNumberOfSlots();
-        $data['stuff'] = $this->check->queryCheck();
+        $data['stuff'] = $this->survey->queryAllQuestionSets();
 
         $this->load->view('header');
         $this->load->view('home', $data); // $this->load->view('home', $data); set to this if data is set

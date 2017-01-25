@@ -87,7 +87,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 /*TABLES*/
 define("TABLE_ANSWERS", "answers");
-define("TABLE_EVENT_AND_LOCATION", "event_and_location");
+define("TABLE_EVENTS", "events");
 define("TABLE_QUESTION_SET", "question_set");
 define("TABLE_QUESTIONS", "questions");
 /*end TABLES/
@@ -95,7 +95,8 @@ define("TABLE_QUESTIONS", "questions");
 /*Event COLUMNS*/
 define("COLUMN_EVENT_ID", "event_id");
 define("COLUMN_EVENT_NAME", "event_name");
-define("COLUMN_LOCATION", "event_id");
+define("COLUMN_EVENT_LOCATION", "event_location");
+define("COLUMN_EVENT_DATE","event_date");
 
 /*Question Set COLUMNS*/
 define("COLUMN_SET_ID", "set_id");
