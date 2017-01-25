@@ -43,13 +43,13 @@ LOCK TABLES `answers` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `eventandlocation`
+-- Table structure for table `event_and_location`
 --
 
-DROP TABLE IF EXISTS `eventandlocation`;
+DROP TABLE IF EXISTS `event_and_location`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `eventandlocation` (
+CREATE TABLE `event_and_location` (
   `id_Event` int(11) NOT NULL,
   `Event_Name` varchar(45) NOT NULL,
   `Location` varchar(45) NOT NULL,
@@ -58,12 +58,36 @@ CREATE TABLE `eventandlocation` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `eventandlocation`
+-- Dumping data for table `event_and_location`
 --
 
-LOCK TABLES `eventandlocation` WRITE;
-/*!40000 ALTER TABLE `eventandlocation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `eventandlocation` ENABLE KEYS */;
+LOCK TABLES `event_and_location` WRITE;
+/*!40000 ALTER TABLE `event_and_location` DISABLE KEYS */;
+/*!40000 ALTER TABLE `event_and_location` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `question_set`
+--
+
+DROP TABLE IF EXISTS `question_set`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `question_set` (
+  `Set_ID` int(11) NOT NULL,
+  `Question_Set_Description` varchar(45) NOT NULL,
+  PRIMARY KEY (`Set_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `question_set`
+--
+
+LOCK TABLES `question_set` WRITE;
+/*!40000 ALTER TABLE `question_set` DISABLE KEYS */;
+INSERT INTO `question_set` VALUES (1,'Pre-game Survey'),(2,'Post-game Survey'),(3,'End of the Day Survey');
+/*!40000 ALTER TABLE `question_set` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -91,30 +115,6 @@ LOCK TABLES `questions` WRITE;
 INSERT INTO `questions` VALUES (1,1,1,'My financial knowledge is enough for me to manage my income and wealth.'),(2,1,2,'I understand business cycles and their effect on my finance and the economy.'),(3,1,3,'I have a good understanding how risk and reward are linked.'),(4,1,4,'I understand how insurance works.'),(5,1,5,'I understand why people need to save for the long and short term.'),(6,1,6,'I understand how stock markets and unit-linked policies work.'),(7,1,7,'I understand how financial products can benefit me and my family.'),(8,1,8,'I feel that I can talk knowledgeably about finance to others.'),(9,2,1,'My financial knowledge is enough for me to manage my income and wealth.'),(10,2,2,'I understand business cycles and their effect on my finance and the economy.'),(11,2,3,'I have a good understanding how risk and reward are linked.'),(12,2,4,'I understand how insurance works.'),(13,2,5,'I understand why people need to save for the long and short term.'),(14,2,6,'I understand how stock markets and unit-linked policies work.'),(15,2,7,'I understand how financial products can benefit me and my family.'),(16,2,8,'I feel that I can talk knowledgeably about finance to others.'),(17,3,1,'I learned a lot about general financial principles and products through Praxis gameplay.'),(18,3,2,'Including Praxis in new staff agent training will make the training more interesting and attractive.'),(19,3,3,'Praxis is an interesting and innovative way to introduce financial principles and products to staff, agents, partners and customers.'),(20,3,4,'I think Praxis is very effective for building our brand as a company that provides financial education to its stakeholders.'),(21,3,5,'After the Praxis training, I feel very confident about being a GameFaster.'),(22,3,6,'I would like to have more training or practice before I conduct my first gameplay.'),(23,3,7,'The Praxis training session was well conducted by the SMFM team.');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `questionset`
---
-
-DROP TABLE IF EXISTS `questionset`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `questionset` (
-  `SetI_D` int(11) NOT NULL,
-  `Question_Se_tDescription` varchar(45) NOT NULL,
-  PRIMARY KEY (`SetI_D`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `questionset`
---
-
-LOCK TABLES `questionset` WRITE;
-/*!40000 ALTER TABLE `questionset` DISABLE KEYS */;
-INSERT INTO `questionset` VALUES (1,'Pre-game Survey'),(2,'Post-game Survey'),(3,'End of the Day Survey');
-/*!40000 ALTER TABLE `questionset` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -125,4 +125,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-24 15:49:38
+-- Dump completed on 2017-01-25 13:20:27
