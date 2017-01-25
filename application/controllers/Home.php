@@ -44,6 +44,8 @@ class Home extends CI_Controller
         //$maxNumberOfSlots = $this->student->getMaxNumberOfSlots();
         $data['stuff'] = $this->check->queryCheck();
 
+        $this->load->view('header');
         $this->load->view('home', $data); // $this->load->view('home', $data); set to this if data is set
+        $this->load->view('footer');
     }
 }
