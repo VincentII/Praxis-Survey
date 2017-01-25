@@ -43,27 +43,28 @@ LOCK TABLES `answers` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `event_and_location`
+-- Table structure for table `event`
 --
 
-DROP TABLE IF EXISTS `event_and_location`;
+DROP TABLE IF EXISTS `event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `event_and_location` (
-  `id_Event` int(11) NOT NULL,
+CREATE TABLE `event` (
+  `Event_id` int(11) NOT NULL,
   `Event_Name` varchar(45) NOT NULL,
   `Location` varchar(45) NOT NULL,
-  PRIMARY KEY (`id_Event`)
+  `event_date` date DEFAULT NULL,
+  PRIMARY KEY (`Event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `event_and_location`
+-- Dumping data for table `event`
 --
 
-LOCK TABLES `event_and_location` WRITE;
-/*!40000 ALTER TABLE `event_and_location` DISABLE KEYS */;
-/*!40000 ALTER TABLE `event_and_location` ENABLE KEYS */;
+LOCK TABLES `event` WRITE;
+/*!40000 ALTER TABLE `event` DISABLE KEYS */;
+/*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -125,4 +126,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-25 13:20:27
+-- Dump completed on 2017-01-25 15:57:47
