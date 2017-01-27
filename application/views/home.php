@@ -7,6 +7,7 @@
 
         var $lol = <?php echo json_encode($stuff); ?>;
         console.log($('#input-id').val());
+        console.log($lol);
         toastr.info("Toast WORKS FUCKER", "Info");
     }
 

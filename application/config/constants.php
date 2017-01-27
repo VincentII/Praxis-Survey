@@ -87,9 +87,11 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 /*TABLES*/
 define("TABLE_ANSWERS", "answers");
+define("TABLE_COMMENT", "comment");
 define("TABLE_EVENT", "event");
 define("TABLE_QUESTION_SET", "question_set");
 define("TABLE_QUESTIONS", "questions");
+define("TABLE_USER", "user");
 /*end TABLES/
 
 /*Event COLUMNS*/
@@ -97,6 +99,10 @@ define("COLUMN_EVENT_ID", "event_id");
 define("COLUMN_EVENT_NAME", "event_name");
 define("COLUMN_EVENT_LOCATION", "event_location");
 define("COLUMN_EVENT_DATE","event_date");
+
+/*Comment Columns*/
+define("COLUMN_COMMENT_ID", "comment_id");
+define("COLUMN_COMMENT_ANS", "comment_ans");
 
 /*Question Set COLUMNS*/
 define("COLUMN_SET_ID", "set_id");
@@ -107,5 +113,11 @@ define("COLUMN_QUESTION_ID", "question_id");
 define("COLUMN_QUESTION_Num", "question_num");
 define("COLUMN_QUESTION_ACT", "question_act");
 
-/*Answers*/
+/*Answers COLUMNS*/
 define("COLUMN_QUESTION_ANS", "question_ans");
+define("COLUMN_ANSWER_ID", "answer_id");
+
+/*User COLUMNS*/
+define("COLUMN_USER_ID", "user_id");
+define("COLUMN_NAME", "name");
+define("COLUMN_EMAIL", "email");
