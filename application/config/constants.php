@@ -87,7 +87,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 /*TABLES*/
 define("TABLE_ANSWERS", "answers");
-define("TABLE_EVENTS", "events");
+define("TABLE_EVENT", "event");
 define("TABLE_QUESTION_SET", "question_set");
 define("TABLE_QUESTIONS", "questions");
 /*end TABLES/

@@ -7,14 +7,18 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Praxis</title>
 
+    <link href="<?=base_url()?>/assets/css/home.css" rel="stylesheet" />
+
     <!-- Bootstrap -->
     <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=base_url()?>/assets/css/toastr.css" rel="stylesheet" />
+    <link href="<?=base_url()?>/assets/css/mobirise/style.css" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
     <![endif]-->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -23,6 +27,25 @@
     <script src="<?=base_url()?>/assets/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>/assets/js/toastr.min.js"></script>
     <script src="<?=base_url()?>/assets/js/jquery.numeric.min.js"></script>
+
+
+    <!-- Karjee Star Rating-->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <link href="<?=base_url()?>/assets/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+
+    <!-- optionally if you need to use a theme, then include the theme file as mentioned below -->
+   <!-- <link href="path/to/themes/krajee-svg/theme.css" media="all" rel="stylesheet" type="text/css" /> -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+    <script src="<?=base_url()?>/assets/js/star-rating.min.js" type="text/javascript"></script>
+
+
+    <!-- optionally if you need to use a theme, then include the theme file as mentioned below -->
+   <!-- <script src="path/to/themes/krajee-svg/theme.js"></script> -->
+
+    <!-- optionally if you need translation for your language then include locale file as mentioned below -->
+   <!-- <script src="path/to/js/locales/{lang}.js"></script> -->
+
 
 
     <script type="text/javascript">
@@ -46,3 +69,7 @@
             "hideMethod": "fadeOut"
         }
     </script>
+
+
+</head>
+<body>
