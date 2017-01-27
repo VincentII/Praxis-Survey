@@ -52,7 +52,7 @@ DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `Comment_ID` int(11) NOT NULL,
   `Set_ID` varchar(45) NOT NULL,
-  `Comment` varchar(45) DEFAULT NULL,
+  `Comment_Ans` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`Comment_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -174,4 +174,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-27 10:55:39
+-- Dump completed on 2017-01-27 11:06:37
