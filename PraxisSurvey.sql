@@ -25,11 +25,12 @@ DROP TABLE IF EXISTS `answers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `answers` (
+  `Answer_ID` varchar(45) NOT NULL,
   `Question_ID` int(11) NOT NULL,
-  `Set_ID` varchar(45) NOT NULL,
+  `Set_ID` int(11) NOT NULL,
   `Event_ID` int(11) NOT NULL,
   `Question_Ans` int(11) NOT NULL,
-  PRIMARY KEY (`Question_ID`)
+  PRIMARY KEY (`Answer_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -50,8 +51,9 @@ DROP TABLE IF EXISTS `comment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comment` (
-  `Comment_ID` int(11) NOT NULL,
-  `Set_ID` varchar(45) NOT NULL,
+  `Comment_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Event_ID` int(11) NOT NULL,
+  `Set_ID` int(11) NOT NULL,
   `Comment_Ans` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`Comment_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -74,7 +76,7 @@ DROP TABLE IF EXISTS `event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `event` (
-  `Event_id` int(11) NOT NULL,
+  `Event_id` int(11) NOT NULL AUTO_INCREMENT,
   `Event_Name` varchar(45) NOT NULL,
   `Location` varchar(45) NOT NULL,
   `event_date` date DEFAULT NULL,
@@ -99,10 +101,10 @@ DROP TABLE IF EXISTS `question_set`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `question_set` (
-  `Set_ID` int(11) NOT NULL,
+  `Set_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Question_Set_Description` varchar(45) NOT NULL,
   PRIMARY KEY (`Set_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,12 +125,12 @@ DROP TABLE IF EXISTS `questions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `questions` (
-  `question_ID` int(11) NOT NULL,
+  `question_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Set_ID` int(11) NOT NULL,
   `Question_Num` int(11) NOT NULL,
   `Question_Act` varchar(300) NOT NULL,
   PRIMARY KEY (`question_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +151,7 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `User_ID` int(11) NOT NULL,
+  `User_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) DEFAULT NULL,
   `Email` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`User_ID`)
@@ -174,4 +176,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-27 11:06:37
+-- Dump completed on 2017-01-27 13:58:06
