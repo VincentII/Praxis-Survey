@@ -94,11 +94,14 @@ class survey_model extends CI_Model
         return $query->result();
     }
 
-    function queryCommentsBySetID($id){
+    //TODO Answer count by question
+
+    function queryAnswerCountBySetIDAndEventID($setID,$eventID){
         $this->db->select("*");
-        $this->db->from(TABLE_COMMENT);
-        $this->db->where(COLUMN_SET_ID, $id);
-        $this->db->order_by(COLUMN_COMMENT_ID);
+        $this->db->from(TABLE_ANSWERS);
+        $this->db->where(COLUMN_SET_ID, $setID);
+        $this->db->where(COLUMN_EVENT_ID, $eventID);
+        $this->db->order_by(COLUMN_QUESTION_Num);
         $query = $this->db->get();
 
         return $query->result();
@@ -134,5 +137,6 @@ class survey_model extends CI_Model
         );
         $this->db->insert(TABLE_COMMENT, $insertCommentData);
     }
+
 
 }
