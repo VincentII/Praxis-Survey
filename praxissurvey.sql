@@ -25,13 +25,13 @@ DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admin` (
-  `ID_admin` int(11) NOT NULL AUTO_INCREMENT,
+  `Admin_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Username` varchar(45) NOT NULL,
   `Password` varchar(45) NOT NULL,
   `Admin_Type` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID_admin`),
+  PRIMARY KEY (`Admin_ID`),
   UNIQUE KEY `Username_UNIQUE` (`Username`),
-  UNIQUE KEY `ID_admin_UNIQUE` (`ID_admin`)
+  UNIQUE KEY `ID_admin_UNIQUE` (`Admin_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -217,4 +217,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-01 10:16:35
+-- Dump completed on 2017-02-01 10:51:49
