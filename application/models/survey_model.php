@@ -94,10 +94,18 @@ class survey_model extends CI_Model
         return $query->result();
     }
 
-    //TODO Answer count by question
-
+    function queryAnswerCountByQuestionID($questionID){
+        $sql = "SELECT ".COLUMN_QUESTION_Num." as questionNum, 
+                       ".COLUMN_QUESTION_ID." as questionID,
+                       ".COLUMN_QUESTION_ANS." as answer,
+                       count(*) as count
+                FROM (Select * from ".TABLE_QUESTIONS." where question_id = ?) r NATURAL JOIN ".TABLE_ANSWERS."
+                GROUP BY ".COLUMN_QUESTION_ANS.";";
+        return $this->db->query($sql, array($questionID))->row_array();
+    }
+/*
     function queryAnswerCountBySetIDAndEventID($setID,$eventID){
-        $this->db->select("*");
+        $this->db->select("count(*)");
         $this->db->from(TABLE_ANSWERS);
         $this->db->where(COLUMN_SET_ID, $setID);
         $this->db->where(COLUMN_EVENT_ID, $eventID);
@@ -106,7 +114,7 @@ class survey_model extends CI_Model
 
         return $query->result();
     }
-
+*/
     function queryCommentsBySetIDAndEventID($setID,$eventID){
         $this->db->select("*");
         $this->db->from(TABLE_COMMENT);
