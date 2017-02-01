@@ -75,24 +75,26 @@
             var win = $(window);
             win.scroll(function() {
                 if($(document).height() - win.height() == win.scrollTop()) {
-                    $(button).show();
+                    $('#next-button').show();
                 }
             });
         });
-
-        function clickFunction(){
-            $(document.getElementById("posts")).append(randomPost());
-        }
 
         function randomPost() {
             var paragraphs = [
                 'wow ANOTHER question!'
             ]
             var post = '<li>';
+            post += '<div class="question-card">'
             post += paragraphs.join('');
+            post += '</div>';
             post += '</li>';
 
             return post;
+        }
+
+        function clickFunction(){
+            $('#posts').append(randomPost());
         }
     </script>
 

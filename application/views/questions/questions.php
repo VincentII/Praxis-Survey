@@ -7,11 +7,13 @@
  */
 ?>
 <section class="site-body">
-    <div class="body-question">
+    <div class="body-questions">
         <ul id="posts">
-            <li>Wow a question!</li>
+            <li>
+                <div class="question-card">Wow a question!</div>
+            </li>
         </ul>
-        <button onclick="clickFunction()">next</button>
+        <button class="next-button" onclick="clickFunction()">next</button>
     </div>
 </section>
 
@@ -23,6 +25,6 @@
         <br>
         AYYY!
         <br>
-        <a>Home</a>
+        <div class="link"><a>Home</a></div>
     </div>
 </footer>
