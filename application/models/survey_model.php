@@ -63,6 +63,15 @@ class survey_model extends CI_Model
     }
 
 
+    function queryOpenEvents(){
+        $this->db->select('*');
+        $this->db->from(TABLE_EVENT);
+        $this->db->where(COLUMN_IS_CLOSED,0);
+        $this->db->order_by(COLUMN_EVENT_ID);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function queryQuestionsBySetID($id){
         $this->db->select("*");
         $this->db->from(TABLE_QUESTIONS);
@@ -145,6 +154,7 @@ class survey_model extends CI_Model
         );
         $this->db->insert(TABLE_COMMENT, $insertCommentData);
     }
+
 
 
 }

@@ -42,22 +42,31 @@ class Home extends CI_Controller
 
         //$this->load->model('check');
         //$maxNumberOfSlots = $this->student->getMaxNumberOfSlots();
-        $data['stuff'] = $this->survey->queryAnswerCountByQuestionID(1);
+        $data['events'] = $this->getEvents();
+        $data['questionSets'] = $this->getQuestionSets();
 
         $this->load->view('header');
         $this->load->view('home', $data); // $this->load->view('home', $data); set to this if data is set
         $this->load->view('footer');
     }
 
+    public function getEvents(){
+        $data = $this->survey->queryOpenEvents();
+
+        return $data;
+    }
+
     public function getQuestionSets(){
         $data = $this->survey->queryAllQuestionSets();
 
-        echo json_encode($data);
+        return $data;
     }
 
-    public function getQuestions{
+
+/*
+    public function getQuestions(){
         $getData = array(
-            'setID' => $this->input->get('setID'),
+            'setID' => $this->input->get('setID')
         );
 
         $data = $this->survey->queryQuestionsBySetID($getData['setID']);
@@ -65,5 +74,13 @@ class Home extends CI_Controller
         echo json_encode($data);
     }
 
-
+    function submitAnswers(){
+        $getData = array(
+            'setID' => $this->input->get('setID'),
+            'eventID' => $this->input->get('eventID'),
+            'answers' => $this->input->get
+            'comments' =>
+        );
+    }
+*/
 }

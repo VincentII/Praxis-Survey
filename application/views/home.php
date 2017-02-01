@@ -4,28 +4,34 @@
 
 
     function button(){
-
-        var $lol = <?php echo json_encode($stuff); ?>;
-        console.log($('#input-id').val());
-        console.log($lol);
         toastr.info("Toast WORKS FUCKER", "Info");
     }
 
     $(document).on('ready', function(){
 
-
-
-        $('.rating-loading').rating({
-            step: 1,
-            starCaptions: {1: 'Very Poor', 2: 'Poor', 3: 'Ok', 4: 'Good', 5: 'Very Good'},
-            starCaptionClasses: {1: 'text-danger', 2: 'text-warning', 3: 'text-info', 4: 'text-primary', 5: 'text-success'}
-        });
+        console.log(<?php echo json_encode($events) ?>)
     });
 
 </script>
 
-
-<div id="yes">Hello</div>
-<input id="input-id" name="input-name" type="number" class="rating-loading">
-
-<button onclick="button()">LOL</button>
+<form class="col-md-4 col-md-offset-4" method="post" action="<?=base_url('questions')?>">
+        <div class = "form-group col-md-2">
+            Events:
+            <select class="form-control" id="form_building" name="form-building"">
+                <option value="" selected disabled>Choose an Event...</option>
+                <?php foreach($events as $row):?>
+                    <option value="<?=$row->Event_ID?>"><?=$row->Event_Name?></option>
+                <?php endforeach;?>
+            </select>
+        </div>
+        <div class = "form-group col-md-2">
+            Question Set:
+            <select class="form-control" id="form_building" name="form-building"">
+                <option value="" selected disabled>Choose a Question Set...</option>
+                <?php foreach($questionSets as $row):?>
+                    <option value="<?=$row->Set_ID?>"><?=$row->Question_Set_Description?></option>
+                <?php endforeach;?>
+            </select>
+        </div>
+    <button type="submit" class="btn btn-default" id="submit-sign-in">Sign In</button>
+</form>
