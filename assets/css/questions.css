@@ -1,0 +1,28 @@
+a{
+    text-decoration: none;
+}
+
+@media only screen and (max-device-width: 480px){
+    .body-question{
+        color: #676768;
+        text-align: center;
+    }
+    
+    footer{
+        background-color: #127094;
+        color: white;
+    }
+    
+    .footer-copyright{
+        text-align: center;
+    }
+}
+
+
+
+
+
+
+
+
+
