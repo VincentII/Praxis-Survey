@@ -86,6 +86,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 
 /*TABLES*/
+define("TABLE_ADMIN", "admin");
 define("TABLE_ANSWERS", "answers");
 define("TABLE_COMMENT", "comment");
 define("TABLE_EVENT", "event");
@@ -94,11 +95,20 @@ define("TABLE_QUESTIONS", "questions");
 define("TABLE_USER", "user");
 /*end TABLES/
 
+/*Admin COLUMNS*/
+define("COLUMN_ADMIN_ID", "admin_ID");
+define("COLUMN_ADMIN_USERNAME", "Username");
+define("COLUMN_ADMIN_PASSWORD", "password");
+define("COLUMN_ADMIN_TYPE", "admin_Type");
+
 /*Event COLUMNS*/
 define("COLUMN_EVENT_ID", "event_id");
 define("COLUMN_EVENT_NAME", "event_name");
 define("COLUMN_EVENT_LOCATION", "event_location");
 define("COLUMN_EVENT_DATE","event_date");
+define("COLUMN_IS_CLOSED", "is_closed");
+define("COLUMN_IS_ARCHIVED", "is_archived");
+define("COLUMN_DELETE", "markedfordelete");
 
 /*Comment Columns*/
 define("COLUMN_COMMENT_ID", "comment_id");
