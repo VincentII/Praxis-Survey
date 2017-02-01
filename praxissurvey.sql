@@ -52,18 +52,19 @@ DROP TABLE IF EXISTS `answers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `answers` (
-  `Answer_ID` int(11) NOT NULL,
+  `Answer_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Question_ID` int(11) NOT NULL,
   `Set_ID` int(11) NOT NULL,
   `Event_ID` int(11) NOT NULL,
   `Question_Ans` int(11) NOT NULL,
   PRIMARY KEY (`Answer_ID`),
-  KEY `question_idx` (`Question_ID`),
   KEY `set_idx` (`Set_ID`),
   KEY `event_idx` (`Event_ID`),
-  CONSTRAINT `event` FOREIGN KEY (`Event_ID`) REFERENCES `event` (`Event_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `question` FOREIGN KEY (`Question_ID`) REFERENCES `questions` (`question_ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `setfk_idx` (`Set_ID`),
+  KEY `eventfk_idx` (`Event_ID`),
+  CONSTRAINT `eventfk` FOREIGN KEY (`Event_ID`) REFERENCES `event` (`Event_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `setfk` FOREIGN KEY (`Set_ID`) REFERENCES `question_set` (`Set_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +91,7 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`Comment_ID`),
   KEY `event_idx` (`Event_ID`),
   KEY `set_idx` (`Set_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,6 +100,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (1,1,1,'So cool!');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +112,7 @@ DROP TABLE IF EXISTS `event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `event` (
-  `Event_id` int(11) NOT NULL,
+  `Event_id` int(11) NOT NULL AUTO_INCREMENT,
   `Event_Name` varchar(45) NOT NULL,
   `Location` varchar(45) NOT NULL,
   `event_date` date NOT NULL,
@@ -118,7 +120,7 @@ CREATE TABLE `event` (
   `is_archived` int(11) NOT NULL DEFAULT '1',
   `markedfordelete` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Event_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,4 +217,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-01  9:22:03
+-- Dump completed on 2017-02-01 10:16:35
