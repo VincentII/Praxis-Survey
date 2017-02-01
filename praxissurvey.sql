@@ -112,14 +112,14 @@ DROP TABLE IF EXISTS `event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `event` (
-  `Event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `Event_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Event_Name` varchar(45) NOT NULL,
   `Location` varchar(45) NOT NULL,
   `event_date` date NOT NULL,
   `is_closed` int(11) NOT NULL DEFAULT '1',
   `is_archived` int(11) NOT NULL DEFAULT '1',
   `markedfordelete` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`Event_id`)
+  PRIMARY KEY (`Event_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -220,4 +220,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-01 14:10:02
+-- Dump completed on 2017-02-01 16:43:43
