@@ -58,6 +58,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route['root'] = 'check';
 
 
-/*Home Questions*/
-$route['getQuestionsSets'] = 'Home/getQuestionSets';
-$route['getQuestions'] = 'Home/getQuestions';
+/*Questions*/
+$route['question'] = 'Questions';
