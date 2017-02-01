@@ -70,6 +70,31 @@
         }
     </script>
 
+    <script>
+        $(document).ready(function() {
+            var win = $(window);
+            win.scroll(function() {
+                if($(document).height() - win.height() == win.scrollTop()) {
+                    $(button).show();
+                }
+            });
+        });
+
+        function clickFunction(){
+            $(document.getElementById("posts")).append(randomPost());
+        }
+
+        function randomPost() {
+            var paragraphs = [
+                'wow ANOTHER question!'
+            ]
+            var post = '<li>';
+            post += paragraphs.join('');
+            post += '</li>';
+
+            return post;
+        }
+    </script>
 
 </head>
 <body>
