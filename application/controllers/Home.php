@@ -48,4 +48,22 @@ class Home extends CI_Controller
         $this->load->view('home', $data); // $this->load->view('home', $data); set to this if data is set
         $this->load->view('footer');
     }
+
+    public function getQuestionSets(){
+        $data = $this->survey->queryAllQuestionSets();
+
+        echo json_encode($data);
+    }
+
+    public function getQuestions{
+        $getData = array(
+            'setID' => $this->input->get('setID'),
+        );
+
+        $data = $this->survey->queryQuestionsBySetID($getData['setID']);
+
+        echo json_encode($data);
+    }
+
+
 }
