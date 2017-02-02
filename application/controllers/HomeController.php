@@ -29,6 +29,7 @@ class HomeController extends CI_Controller
 
     public function __construct() {
         parent::__construct();
+        $this->load->library('session');
     }
 
     public function index()
@@ -44,6 +45,8 @@ class HomeController extends CI_Controller
         //$maxNumberOfSlots = $this->student->getMaxNumberOfSlots();
         $data['events'] = $this->getEvents();
         $data['questionSets'] = $this->getQuestionSets();
+
+        $data['errorMessage'] = null;
 
         $this->load->view('header');
         $this->load->view('home', $data); // $this->load->view('home', $data); set to this if data is set
@@ -62,7 +65,35 @@ class HomeController extends CI_Controller
         return $data;
     }
 
+    public function checkInputs(){
+        $getData = array(
+            'eventID' => $this->input->get('eventID'),
+            'setID' => $this->input->get('setID')
+        );
 
+        if(!$this->survey->isExistingEvent($getData['eventID'])){
+            $data = array(
+                'status' => 'error',
+                'message' => 'Choose an Event'
+            );
+        }
+        else if(!$this->survey->isExistingSet($getData['setID'])){
+            $data = array(
+                'status' => 'error',
+                'message' => 'Choose a Question Set'
+            );
+        }
+        else{
+           $data = array(
+                'status' => 'success',
+                'message' => 'Starting Survey!'
+            );
+
+
+        }
+
+        echo json_encode($data);
+    }
 /*
     public function getQuestions(){
         $getData = array(
