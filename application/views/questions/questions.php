@@ -6,12 +6,22 @@
  * Time: 11:01
  */
 ?>
+
+<script>
+    var $questions = <?php echo json_encode($questions)?>;
+    console.log($questions);
+    console.log($questions[0]['Question_Act']);
+
+</script>
+
 <section class="site-body">
-    <div class="body-question">
+    <div class="body-questions">
         <ul id="posts">
-            <li>Wow a question!</li>
+            <li>
+                <div class="question-card">Wow a QUESTION!</div>
+            </li>
         </ul>
-        <button onclick="clickFunction()">next</button>
+        <button class="next-button" onclick="clickFunction()">next</button>
     </div>
 </section>
 
@@ -23,6 +33,6 @@
         <br>
         AYYY!
         <br>
-        <a>Home</a>
+        <div class="link"><a>Home</a></div>
     </div>
 </footer>
