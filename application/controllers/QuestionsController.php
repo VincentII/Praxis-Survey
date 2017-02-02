@@ -26,13 +26,6 @@ class QuestionsController extends CI_Controller
         //$maxNumberOfSlots = $this->student->getMaxNumberOfSlots();
         //$data['stuff'] = $this->survey->queryAnswerCountByQuestionID(1);
 
-        $eventID = $_GET['eventID'];
-        $setID = $_GET['setID'];
-
-
-        $_SESSION['eventID'] = $eventID;
-        $_SESSION['setID'] = $setID;
-
         $data['questions'] = $this->survey->queryQuestionsBySetID($_SESSION['setID']);
         $data['eventID'] = $_SESSION['eventID'];
         $data['setID'] = $_SESSION['setID'];

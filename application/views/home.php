@@ -27,7 +27,7 @@
                 if (result['status']=="success") {
                     toastr.success("WOW");
 
-                    window.location.href = '<?=base_url('questions')?>' +'?eventID='+$eventID+'&'+'setID='+$setID;
+                    window.location.href = '<?=base_url('questions')?>';
 
                 }
                 else {

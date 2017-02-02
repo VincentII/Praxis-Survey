@@ -89,10 +89,16 @@ class HomeController extends CI_Controller
                 'message' => 'Starting Survey!'
             );
 
+            $this->setSessions($getData['eventID'], $getData['setID']);
 
         }
 
         echo json_encode($data);
+    }
+
+    public function setSessions($eventID, $setID){
+        $_SESSION['eventID'] = $eventID;
+        $_SESSION['setID'] = $setID;
     }
 /*
     public function getQuestions(){
