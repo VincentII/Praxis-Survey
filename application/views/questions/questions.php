@@ -8,27 +8,36 @@
 ?>
 
 <script>
-    var $questions = <?php echo json_encode($questions)?>;
-    console.log($questions);
-    console.log($questions[0]['Question_Act']);
+    var $questions;
+    var $questionIndex;
+    $(document).on('ready', function(){
+        $questions = <?php echo json_encode($questions)?>;
+        $questionIndex = 0;
+    });
 
-</script>
+
 
 <!--FUNCTIONS-->
-<script>
+
+
     //Is this needed
     $(function() {
         console.log("readyyy");
+
+
     });
 
     function loadQuestions(){
-        var 
-        return ;
+
+        
+        return;
     }
 
     function getNextQuestion(){
+        $questionIndex++;
+
         var text = [
-            'replace with question l8r'
+            $questions[$questionIndex]['Question_Act']
         ];
 
         //allocate the div id later
