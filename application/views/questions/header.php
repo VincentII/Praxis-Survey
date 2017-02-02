@@ -71,31 +71,8 @@
         }
     </script>
 
-    <!--FUNCTIONS-->
-    <script>
 
-//        Is this needed
-        $(function() {
-            console.log("readyyy");
-        });
-
-        function getNextQuestion(){
-            var text = [
-                'replace with question l8r'
-            ];
-
-            //allocate the div id later
-            //does not scroll
-            //TODO: make it scroll, probably related to some css shit
-            var newQuestion = '<li><div class="question"><p class="question-text">';
-            newQuestion += text.join('');
-            newQuestion += '</p></div></li>';
-
-            $('.card-list').append(newQuestion);
-        }
-
-    </script>
-
+<!--TODO: Delete later-->
 <!--    <script>-->
 <!--        $(document).ready(function() {-->
 <!--            var win = $(window);-->
