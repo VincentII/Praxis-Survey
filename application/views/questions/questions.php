@@ -17,7 +17,7 @@
 
         $('.rating-loading').rating({
             step: 1,
-            starCaptions: {1: 'Very Poor', 2: 'Poor', 3: 'Ok', 4: 'Good', 5: 'Very Good'},
+            starCaptions: {1: 'Totally Disagree', 2: 'Partly Disagree', 3: 'Neutral', 4: 'Partly Agree', 5: 'Totally Agree'},
             starCaptionClasses: {1: 'text-danger', 2: 'text-warning', 3: 'text-info', 4: 'text-primary', 5: 'text-success'}
         });
     });
@@ -43,27 +43,43 @@
                         '<input id="star'+$questionIndex+'" name="input-name" type="number" class="rating-loading"></div>'
         newQuestion += '</div></li>';
 
-        $('.card-list').append(newQuestion);
+        $('#questionList').append(newQuestion);
         $questionIndex++;
         $('.rating-loading').rating({
             step: 1,
-            starCaptions: {1: 'Very Poor', 2: 'Poor', 3: 'Ok', 4: 'Good', 5: 'Very Good'},
+            starCaptions: {1: 'Totally Disagree', 2: 'Partly Disagree', 3: 'Neutral', 4: 'Partly Agree', 5: 'Totally Agree'},
             starCaptionClasses: {1: 'text-danger', 2: 'text-warning', 3: 'text-info', 4: 'text-primary', 5: 'text-success'}
         });
+    }//end of getNextQuestion
+
+    function submitAnswers(){
+        
     }
 
 </script>
 
 <!--HTML-->
+<!--TODO: fix this before it gets too messy URGENT use BEM-->
+<!--TODO:disable down button after last question has been reached-->
+<!--TODO: change color of todos-->
+
 <div class="main">
     <div class="main-card">
         <button class="up-button">up button</button>
-        <ul class="card-list">
-            <li id="start">
+        <ul class="card-list" id="questionList">
+            <li>
+                <p>I am the start card</p>
+            </li>
+            <li>
                 <div class="question">
-                    <p class="question-text"> This is the first question</p>
+                    <p class="question-text"> This is a sample question</p>
                     <div class="question-stars">stars and description text go here</div>
                 </div>
+            </li>
+        </ul>
+        <ul class="card-list">
+            <li>
+                <button onclick="submitAnswers()">SUBMIT</button>
             </li>
         </ul>
         <button class="down-button" onclick="getNextQuestion()">down button</button>

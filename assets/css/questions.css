@@ -2,8 +2,9 @@
     .main{
         border-style: solid;
         position: relative;
-        width: 100%;
-        bottom: 20%;
+        width: 100vw;
+        height: 80vh;
+        overflow-y: auto;
     }
 
     /*main card area*/
@@ -11,6 +12,7 @@
         border-style: solid;
         border-color: red;
         width: 100%;
+        position: absolute;
     }
 
     .up-button{
@@ -49,8 +51,12 @@
     /*area for progress bar*/
     .main-progBar{
         border-style: solid;
-        width: 100%;
+        position: absolute;
+        bottom: 0;
+        width: 100vw;
     }
+    /*TODO: what is that hideous whitespace??*/
+    /*TODO: progBar gets left behind after generating questions move it outside and on top of the footer*/
 
     footer{
         background-color: #127094;
@@ -58,36 +64,8 @@
         bottom: 0;
         left: 0;
         right: 0;
-        height: 20%;
+        height: 20vh;
     }
-
-    /* FOR REFERENCE DELETE LATER
-    section{
-        margin-bottom: 20%;
-    }
-
-    button{
-
-    }
-
-    .link{
-        color: white;
-        text-decoration: none;
-    }
-
-    footer{
-        background-color: #127094;
-        color: white;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 15%;
-    }
-    
-    .footer-copyright{
-        text-align: center;
-    }*/
 }
 
 
