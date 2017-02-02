@@ -84,9 +84,13 @@
                 'replace with question l8r'
             ];
 
-            //allocate the id later
+            //allocate the div id later
+            //does not scroll
+            //TODO: make it scroll, probably related to some css shit
             var newQuestion = '<li><div class="question"><p class="question-text">';
-            
+            newQuestion += text.join('');
+            newQuestion += '</p></div></li>';
+
             $('.card-list').append(newQuestion);
         }
 
