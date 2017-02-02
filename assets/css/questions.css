@@ -24,13 +24,21 @@
         border-color: green;
     }
 
+    ul .card-list{
+
+    }
+
+    li{
+
+    }
+
     /*contains question text and rating stars*/
-    .card-question{
+    .question{
         border-style: solid;
         border-color: blue;
     }
 
-    .question-text{
+    p .question-text{
         border-style: solid;
     }
 
