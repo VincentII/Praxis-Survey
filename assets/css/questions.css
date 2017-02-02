@@ -1,7 +1,61 @@
 @media only screen and (max-device-width: 480px){
+    .main{
+        border-style: solid;
+        position: relative;
+        width: 100%;
+        bottom: 20%;
+    }
+
+    /*main card area*/
+    .main-card{
+        border-style: solid;
+        border-color: red;
+        width: 100%;
+    }
+
+    .up-button{
+        border-style: solid;
+        width: 100%;
+    }
+
+    .down-button{
+        border-style: solid;
+        width: 100%;
+        border-color: green;
+    }
+
+    /*contains question text and rating stars*/
+    .card-question{
+        border-style: solid;
+        border-color: blue;
+    }
+
+    .question-text{
+        border-style: solid;
+    }
+
+    .question-stars{
+        border-style: solid;
+    }
+
+    /*area for progress bar*/
+    .main-progBar{
+        border-style: solid;
+        width: 100%;
+    }
+
+    footer{
+        background-color: #127094;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 20%;
+    }
+
+    /* FOR REFERENCE DELETE LATER
     section{
         margin-bottom: 20%;
-        background-color: white;
     }
 
     button{
@@ -25,7 +79,7 @@
     
     .footer-copyright{
         text-align: center;
-    }
+    }*/
 }
 
 

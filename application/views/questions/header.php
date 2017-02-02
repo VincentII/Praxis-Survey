@@ -7,7 +7,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Praxis</title>
 
-    <link href="<?=base_url()?>/assets/css/questions.css" rel="stylesheet" />
+    <!--STYLESHEET-->
+    <link href="<?=base_url()?>/assets/css/questions.css?<?php echo time(); ?>" rel="stylesheet" />
 
     <!-- Bootstrap -->
     <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -72,32 +73,52 @@
 
     <!--FUNCTIONS-->
     <script>
-        $(document).ready(function() {
-            var win = $(window);
-            win.scroll(function() {
-                if($(document).height() - win.height() == win.scrollTop()) {
-                    $('#next-button').show();
-                }
-            });
+
+//        Is this needed
+        $(function() {
+            console.log("readyyy");
         });
 
-        function getNextQuestion() {
-            var paragraphs = [
-                'wow ANOTHER question!'
-            ]
-            var post = '<li>';
-            post += '<div class="question-card">'
-            post += paragraphs.join('');
-            post += '</div>';
-            post += '</li>';
+        function getNextQuestion(){
+            var text = [
+                'replace with question l8r'
+            ];
 
-            return post;
+            //allocate the id later
+            var newQuestion = '<li><div class="question"><p class="question-text">';
+            
+            $('.card-list').append(newQuestion);
         }
 
-        function clickFunction(){
-            $('#posts').append(getNextQuestion());
-        }
     </script>
+
+<!--    <script>-->
+<!--        $(document).ready(function() {-->
+<!--            var win = $(window);-->
+<!--            win.scroll(function() {-->
+<!--                if($(document).height() - win.height() == win.scrollTop()) {-->
+<!--                    $('#next-button').show();-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!---->
+<!--        function getNextQuestion() {-->
+<!--            var paragraphs = [-->
+<!--                'wow ANOTHER question!'-->
+<!--            ]-->
+<!--            var post = '<li>';-->
+<!--            post += '<div class="question-card">'-->
+<!--            post += paragraphs.join('');-->
+<!--            post += '</div>';-->
+<!--            post += '</li>';-->
+<!---->
+<!--            return post;-->
+<!--        }-->
+<!---->
+<!--        function clickFunction(){-->
+<!--            $('#posts').append(getNextQuestion());-->
+<!--        }-->
+<!--    </script>-->
 
 </head>
 <body>
