@@ -14,6 +14,36 @@
 
 </script>
 
+<!--FUNCTIONS-->
+<script>
+    //        Is this needed
+    $(function() {
+        console.log("readyyy");
+    });
+
+    function loadQuestions(){
+        
+        return ;
+    }
+
+    function getNextQuestion(){
+        var text = [
+            'replace with question l8r'
+        ];
+
+        //allocate the div id later
+        //does not scroll
+        //TODO: make it scroll, probably related to some css shit
+        var newQuestion = '<li><div class="question"><p class="question-text">';
+        newQuestion += text.join('');
+        newQuestion += '</p></div></li>';
+
+        $('.card-list').append(newQuestion);
+    }
+
+</script>
+
+<!--HTML-->
 <div class="main">
     <div class="main-card">
         <button class="up-button">up button</button>
@@ -32,7 +62,7 @@
 </div>
 <footer>this is the footer and copyright info go here</footer>
 
-<!-- FOR REFERENCE DELETE LATER
+<!-- TODO: FOR REFERENCE DELETE LATER
 <section class="site-body">
     <div class="body-questions">
         <ul id="posts">
