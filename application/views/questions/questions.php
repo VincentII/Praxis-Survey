@@ -9,33 +9,13 @@
 
 <script>
     var $questions;
-    var $questionIndex;
+    var $questionIndex = 0;
+
     $(document).on('ready', function(){
         $questions = <?php echo json_encode($questions)?>;
-        $questionIndex = 0;
     });
-
-
-
-<!--FUNCTIONS-->
-
-
-    //Is this needed
-    $(function() {
-        console.log("readyyy");
-
-
-    });
-
-    function loadQuestions(){
-
-        
-        return;
-    }
 
     function getNextQuestion(){
-        $questionIndex++;
-
         var text = [
             $questions[$questionIndex]['Question_Act']
         ];
@@ -48,6 +28,7 @@
         newQuestion += '</p></div></li>';
 
         $('.card-list').append(newQuestion);
+        $questionIndex++;
     }
 
 </script>
