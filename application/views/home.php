@@ -1,20 +1,52 @@
 <script>
 
-
-
-
-    function button(){
-        toastr.info("Toast WORKS FUCKER", "Info");
-    }
-
     $(document).on('ready', function(){
 
-        console.log(<?php echo json_encode($events) ?>)
+
+
+        //console.log(<?php echo json_encode($events) ?>)
     });
+
+    function enter(){
+        $eventID = $('#form_event').val();
+        $setID = $('#form_set').val();
+
+
+
+        $.ajax({
+            url: '<?php echo base_url('Home/checkInputs') ?>',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                eventID : $eventID,
+                setID : $setID
+            }
+        })
+            .done(function(result) {
+                console.log("done");
+                if (result['status']=="success") {
+                    toastr.success("WOW");
+
+                    window.location.href = '<?=base_url('questions')?>';
+
+                }
+                else {
+                    toastr.error(result['message']);
+                }
+
+            })
+            .fail(function() {
+                console.log("fail");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+
+    }
 
 </script>
 
-<form class="col-md-4 col-md-offset-4" method="get" action="<?=base_url('questions')?>">
+<div class="col-md-4 col-md-offset-4" >
         <div class = "form-group col-md-2">
             Events:
             <select class="form-control" id="form_event" name="form-event"">
@@ -33,5 +65,5 @@
                 <?php endforeach;?>
             </select>
         </div>
-    <button type="submit" class="btn btn-default" id="submit-sign-in">Enter</button>
-</form>
+    <button class="btn btn-default" id="submit-sign-in" onclick="enter()">Enter</button>
+</div>

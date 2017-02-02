@@ -156,6 +156,24 @@ class survey_model extends CI_Model
         $this->db->insert(TABLE_COMMENT, $insertCommentData);
     }
 
+    function isExistingEvent($eventID) {
+        $this->db->select('*');
+        $this->db->from(TABLE_EVENT);
+        $this->db->where(COLUMN_EVENT_ID, $eventID);
+        $query = $this->db->get();
+        $result = $query->result();
 
+        return count($result)>=1;
+    }
+
+    function isExistingSet($setID) {
+        $this->db->select('*');
+        $this->db->from(TABLE_QUESTION_SET);
+        $this->db->where(COLUMN_SET_ID, $setID);
+        $query = $this->db->get();
+        $result = $query->result();
+
+        return count($result)>=1;
+    }
 
 }
