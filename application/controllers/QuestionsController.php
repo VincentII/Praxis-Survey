@@ -16,18 +16,15 @@ class QuestionsController extends CI_Controller
     public function index()
     {
 
-        $this->home();
+        $this->loadSurvey();
     }
 
-    public function home()
+    public function loadSurvey()
     {
 
         //$this->load->model('check');
         //$maxNumberOfSlots = $this->student->getMaxNumberOfSlots();
         //$data['stuff'] = $this->survey->queryAnswerCountByQuestionID(1);
-
-        $_SESSION['eventID'] = $_GET['form-event'];
-        $_SESSION['setID'] = $_GET['form-set'];
 
         $data['questions'] = $this->survey->queryQuestionsBySetID($_SESSION['setID']);
         $data['eventID'] = $_SESSION['eventID'];
@@ -36,7 +33,14 @@ class QuestionsController extends CI_Controller
         $this->load->view('questions/header');
         $this->load->view('questions/questions', $data); // $this->load->view('home', $data); set to this if data is set
         $this->load->view('questions/footer');
+
+
     }
+
+
+
+
+
 
     public function submitAnswers(){
 

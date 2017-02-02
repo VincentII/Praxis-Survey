@@ -58,5 +58,9 @@ $route['translate_uri_dashes'] = FALSE;
 $route['root'] = 'check';
 
 $route['home'] = 'HomeController';
+
+$route['Home/checkInputs'] = 'HomeController/checkInputs';
+
 /*Questions*/
 $route['questions'] = 'QuestionsController';
+$route['questions/loadSurveyQuestions'] = 'QuestionsController/loadSurveyQuestions';
