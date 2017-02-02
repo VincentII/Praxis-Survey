@@ -59,4 +59,4 @@ $route['root'] = 'check';
 
 $route['home'] = 'HomeController';
 /*Questions*/
-$route['questions'] = 'Questions';
+$route['questions'] = 'QuestionsController';
