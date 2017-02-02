@@ -133,5 +133,6 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array(
-    'survey_model' => 'survey'
+    'survey_model' => 'survey',
+    'admin_model' => 'survey'
 );
