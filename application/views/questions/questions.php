@@ -21,8 +21,8 @@
             <li>
                 <div class="question" id="q1">
 <!--                    <div class="question-text">question and orange bg go here</div>-->
-<!--                    <div class="question-stars">stars and description text go here</div>-->
                     <p class="question-text"> This is the first question</p>
+                    <div class="question-stars">stars and description text go here</div>
                 </div>
             </li>
         </ul>
