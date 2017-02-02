@@ -1,16 +1,7 @@
 @media only screen and (max-device-width: 480px){
     section{
         margin-bottom: 20%;
-    }
-    .body-questions{
-        color: #676768;
-        text-align: center;
-        background-color: pink;
-    }
-
-    .question-card{
-        height: 300px;
-        background-color: teal;
+        background-color: white;
     }
 
     button{

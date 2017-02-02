@@ -70,6 +70,7 @@
         }
     </script>
 
+    <!--FUNCTIONS-->
     <script>
         $(document).ready(function() {
             var win = $(window);
@@ -80,7 +81,7 @@
             });
         });
 
-        function randomPost() {
+        function getNextQuestion() {
             var paragraphs = [
                 'wow ANOTHER question!'
             ]
@@ -94,7 +95,7 @@
         }
 
         function clickFunction(){
-            $('#posts').append(randomPost());
+            $('#posts').append(getNextQuestion());
         }
     </script>
 
