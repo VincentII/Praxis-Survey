@@ -29,7 +29,7 @@ class Questions extends CI_Controller
         $_SESSION['eventID'] = $_GET['form-event'];
         $_SESSION['setID'] = $_GET['form-set'];
 
-        $data['questions'] = $this->survey->queryQuestionsBySetID($_SESSION['setID'])
+        $data['questions'] = $this->survey->queryQuestionsBySetID($_SESSION['setID']);
         $data['eventID'] = $_SESSION['eventID'];
         $data['setID'] = $_SESSION['setID'];
 
