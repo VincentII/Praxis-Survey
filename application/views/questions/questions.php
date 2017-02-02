@@ -16,13 +16,13 @@
 
 <!--FUNCTIONS-->
 <script>
-    //        Is this needed
+    //Is this needed
     $(function() {
         console.log("readyyy");
     });
 
     function loadQuestions(){
-        
+        var 
         return ;
     }
 
