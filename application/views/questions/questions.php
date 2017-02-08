@@ -118,7 +118,7 @@
 
 <!--HTML-->
 <!--TODO: fix this before it gets too messy URGENT use BEM-->
-<!--TODO:disable down button after last question has been reached-->
+<!--TODO: disable down button after last question has been reached-->
 <!--TODO: change color of todos-->
 
 <div class="main">
@@ -128,10 +128,11 @@
             <li>
                 <p>I am the start card</p>
             </li>
-
         </ul>
         <button class="down-button" id='next_button' onclick="getNextQuestion()">down button</button>
     </div>
-    <div class="main-progBar">this is a progress bar</div>
 </div>
-<footer>this is the footer and copyright info go here</footer>
+<footer>
+    <div class="footer-progBar">this is a progress bar</div>
+    <div class="footer-copyright">this is the footer and copyright info go here</div>
+</footer>
