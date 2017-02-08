@@ -51,6 +51,9 @@
             $questionIndex++;
             $('.rating-loading').rating({
                 step: 1,
+                showClear: false,
+                size: 'xl',
+                theme:'krajee-fa',
                 starCaptions: {
                     1: 'Totally Disagree',
                     2: 'Partly Disagree',
