@@ -21,10 +21,10 @@
         if($questionIndex>=$questions.length){
             toastr.info("Submit your answers");
 
-        var $submitButton = '<button onclick="submitAnswers()" id="submit_button">SUBMIT</button>';
-            $('#questionList').append($submitButton); //TODO Append Submit Card Here
-
-
+            var $submitButton = '<button onclick="submitAnswers()" id="submit_button">SUBMIT</button>';
+            $('#questionList').append($submitButton);
+            //TODO: Append Submit Card Here
+            $('#next_button').prop('disabled',true);
         }
         else if($questionIndex ==0 ||($questionIndex !=0&&!$('next_button').isDisabled)){
             var text = [
@@ -35,9 +35,6 @@
                 $questions[$questionIndex]['Question_Num']
             ];
 
-            //allocate the div id later
-            //does not scroll
-            //TODO: make it scroll, probably related to some css shit
             var newQuestion = '<li id="q';
             newQuestion += id.join('');
             newQuestion += '"><div class="question"><p class="question-text">';
