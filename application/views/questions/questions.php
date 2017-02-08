@@ -21,7 +21,11 @@
         if($questionIndex>=$questions.length){
             toastr.info("Submit your answers");
 
-            var $submitButton = '<button onclick="submitAnswers()" id="submit_button">SUBMIT</button>';
+            var $submitButton =
+                '<li>' +
+                '<button onclick="submitAnswers()" id="submit_button">SUBMIT</button>' +
+                '</li>';
+
             $('#questionList').append($submitButton);
             //TODO: Append Submit Card Here
             $('#next_button').prop('disabled',true);
@@ -113,7 +117,7 @@
 
 </script>
 
-<!--HTML-->
+<!------------------------------------------HTML----------------------------------------------------->
 <!--TODO: fix this before it gets too messy URGENT use BEM-->
 <!--TODO: disable down button after last question has been reached-->
 <!--TODO: change color of todos-->
@@ -121,11 +125,13 @@
 <div class="main">
     <div class="main-card">
         <button class="up-button">up button</button>
-        <ul class="card-list" id="questionList">
-            <li>
-                <p>I am the start card</p>
-            </li>
-        </ul>
+        <div class="card-container">
+            <ul class="card-list" id="questionList">
+                <li>
+                    <p>I am the start card</p>
+                </li>
+            </ul>
+        </div>
         <button class="down-button" id='next_button' onclick="getNextQuestion()">down button</button>
     </div>
 </div>
