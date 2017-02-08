@@ -60,7 +60,7 @@
 
 <!--HTML-->
 <!--TODO: fix this before it gets too messy URGENT use BEM-->
-<!--TODO:disable down button after last question has been reached-->
+<!--TODO: disable down button after last question has been reached-->
 <!--TODO: change color of todos-->
 
 <div class="main">
@@ -70,12 +70,6 @@
             <li>
                 <p>I am the start card</p>
             </li>
-            <li>
-                <div class="question">
-                    <p class="question-text"> This is a sample question</p>
-                    <div class="question-stars">stars and description text go here</div>
-                </div>
-            </li>
         </ul>
         <ul class="card-list">
             <li>
@@ -84,6 +78,8 @@
         </ul>
         <button class="down-button" onclick="getNextQuestion()">down button</button>
     </div>
-    <div class="main-progBar">this is a progress bar</div>
 </div>
-<footer>this is the footer and copyright info go here</footer>
+<footer>
+    <div class="footer-progBar">this is a progress bar</div>
+    <div class="footer-copyright">this is the footer and copyright info go here</div>
+</footer>

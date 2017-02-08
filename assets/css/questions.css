@@ -3,7 +3,7 @@
         border-style: solid;
         position: relative;
         width: 100vw;
-        height: 80vh;
+        height: 75vh;
         overflow-y: auto;
     }
 
@@ -27,11 +27,15 @@
     }
 
     ul .card-list{
-
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
     }
 
     li{
-
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
     }
 
     /*contains question text and rating stars*/
@@ -56,11 +60,24 @@
         width: 100vw;
     }
     /*TODO: what is that hideous whitespace??*/
-    /*TODO: progBar gets left behind after generating questions move it outside and on top of the footer*/
 
     footer{
-        background-color: #127094;
         position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 25vh;
+    }
+
+    /*TODO: adjust size of progBar later on*/
+    .footer-progBar{
+        position: absolute;
+        height: 5vh;
+    }
+
+    .footer-copyright{
+        position: absolute;
+        background-color: #127094;
         bottom: 0;
         left: 0;
         right: 0;
