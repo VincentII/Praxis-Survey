@@ -4,15 +4,27 @@
         position: relative;
         width: 100vw;
         height: 75vh;
-        overflow-y: auto;
+        display: flex;
     }
 
-    /*main card area*/
+    /*main card area where buttons are*/
     .main-card{
         border-style: solid;
         border-color: red;
+        height: 75vh;
         width: 100%;
         position: absolute;
+        align-items: stretch;
+    }
+
+    /*scrollable section*/
+    .card-container{
+        border-style: solid;
+        border-color: purple;
+        width: 100%;
+        position: absolute;
+        height: 65vh;
+        overflow-y: auto;
     }
 
     .up-button{
@@ -24,6 +36,8 @@
         border-style: solid;
         width: 100%;
         border-color: green;
+        position: absolute;
+        bottom: 0;
     }
 
     ul{
@@ -62,7 +76,7 @@
         bottom: 0;
         width: 100vw;
     }
-    /*TODO: what is that hideous whitespace??*/
+    /*FIXME:There's gotta be a better way of sizing*/
 
     footer{
         position: fixed;

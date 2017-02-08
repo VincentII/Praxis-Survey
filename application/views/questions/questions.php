@@ -21,10 +21,14 @@
         if($questionIndex>=$questions.length){
             toastr.info("Submit your answers");
 
-        var $submitButton = '<button onclick="submitAnswers()" id="submit_button">SUBMIT</button>';
-            $('#questionList').append($submitButton); //TODO Append Submit Card Here
+            var $submitButton =
+                '<li>' +
+                '<button onclick="submitAnswers()" id="submit_button">SUBMIT</button>' +
+                '</li>';
 
-
+            $('#questionList').append($submitButton);
+            //TODO: Append Submit Card Here
+            $('#next_button').prop('disabled',true);
         }
         else if($questionIndex ==0 ||($questionIndex !=0&&!$('next_button').isDisabled)){
             var text = [
@@ -35,9 +39,6 @@
                 $questions[$questionIndex]['Question_Num']
             ];
 
-            //allocate the div id later
-            //does not scroll
-            //TODO: make it scroll, probably related to some css shit
             var newQuestion = '<li id="q';
             newQuestion += id.join('');
             newQuestion += '"><div class="question"><p class="question-text">';
@@ -119,7 +120,7 @@
 
 </script>
 
-<!--HTML-->
+<!------------------------------------------HTML----------------------------------------------------->
 <!--TODO: fix this before it gets too messy URGENT use BEM-->
 <!--TODO: disable down button after last question has been reached-->
 <!--TODO: change color of todos-->
@@ -127,11 +128,13 @@
 <div class="main">
     <div class="main-card">
         <button class="up-button">up button</button>
-        <ul class="card-list" id="questionList">
-            <li>
-                <p>I am the start card</p>
-            </li>
-        </ul>
+        <div class="card-container">
+            <ul class="card-list" id="questionList">
+                <li>
+                    <p>I am the start card</p>
+                </li>
+            </ul>
+        </div>
         <button class="down-button" id='next_button' onclick="getNextQuestion()">down button</button>
     </div>
 </div>
