@@ -43,6 +43,23 @@ class QuestionsController extends CI_Controller
 
 
     public function submitAnswers(){
+        $getData = array(
+            'answers' => $this->input->get('answers'),
+            'questionIDs' => $this->input->get('questionIDs')
+        );
 
+        for($i =0; $i<count($getData['questionIDs']);$i++){
+            $this->survey->insertAnswers($_SESSION['setID'],$_SESSION['eventID'],$getData['questionIDs'][$i],$getData['answers'][$i]);
+        }
+
+        $data = array(
+            'status' => 'success',
+            'message' => 'Survey Answered!'
+        );
+
+
+
+
+        echo json_encode($data);
     }
 }
