@@ -18,6 +18,7 @@
     });
 
     function getNextQuestion(){
+
         if($questionIndex>=$questions.length){
             toastr.info("Submit your answers");
 
@@ -29,6 +30,8 @@
             $('#questionList').append($submitButton);
             //TODO: Append Submit Card Here
             $('#next_button').prop('disabled',true);
+            $questionIndex++;
+//            FIXME: better implementation of preventing the additional submit button bug?
         }
         else if($questionIndex ==0 ||($questionIndex !=0&&!$('next_button').isDisabled)){
             var text = [
@@ -76,11 +79,10 @@
 
     function updateStar(){
 
-
-        if($('#star'+($questionIndex-1)).val() >= 1)
-        $('#next_button').prop('disabled',false);
-        else
-            $('#next_button').prop('disabled',true);
+            if($('#star'+($questionIndex-1)).val() >= 1 && !($questionIndex>$questions.length))
+                $('#next_button').prop('disabled',false);
+//        else
+//            $('#next_button').prop('disabled',true);
     }
 
     function submitAnswers(){
