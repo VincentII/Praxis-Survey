@@ -42,7 +42,7 @@
                 $questions[$questionIndex]['Question_Num']
             ];
 
-            var newQuestion = '<li id="q';
+            var newQuestion = '<li class="list-element" id="q';
             newQuestion += id.join('');
             newQuestion += '"><div class="question"><p class="question-text">';
             newQuestion += text.join('');
@@ -132,7 +132,7 @@
         <button class="up-button">up button</button>
         <div class="card-container">
             <ul class="card-list" id="questionList">
-                <li>
+                <li class="list-element">
                     <p>I am the start card</p>
                 </li>
             </ul>
