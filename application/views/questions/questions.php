@@ -14,21 +14,37 @@
     $(document).on('ready', function(){
         $questions = <?php echo json_encode($questions)?>;
         console.log($questions);
+        
 
+        $('.card-container').scroll(function(){
+            var winTop = $(window).scrollTop();
+            var $lis = $('li');
+
+            var top = $.grep($lis, function(item){
+                return $(item).position().top <= winTop;
+            });
+            $lis.removeClass('active');
+            $(top).addClass('active');
+            console.log($(top).attr('id'));
+        });
     });
 
+
     function getNextQuestion(){
+
         if($questionIndex>=$questions.length){
             toastr.info("Submit your answers");
 
             var $submitButton =
-                '<li>' +
+                '<li class="list-element" id="submit">' +
                 '<button onclick="submitAnswers()" id="submit_button">SUBMIT</button>' +
                 '</li>';
 
             $('#questionList').append($submitButton);
             //TODO: Append Submit Card Here
             $('#next_button').prop('disabled',true);
+            $questionIndex++;
+//            ^^^FIXME: better implementation of preventing the additional submit button bug?
         }
         else if($questionIndex ==0 ||($questionIndex !=0&&!$('next_button').isDisabled)){
             var text = [
@@ -39,7 +55,7 @@
                 $questions[$questionIndex]['Question_Num']
             ];
 
-            var newQuestion = '<li id="q';
+            var newQuestion = '<li class="list-element" id="q';
             newQuestion += id.join('');
             newQuestion += '"><div class="question"><p class="question-text">';
             newQuestion += text.join('');
@@ -75,14 +91,11 @@
     }//end of getNextQuestion
 
     function updateStar(star){
+            if($('#star'+($questionIndex-1)).val() >= 1 && !($questionIndex>$questions.length))
+                $('#next_button').prop('disabled',false);
+//        else
+//            $('#next_button').prop('disabled',true);
 
-
-        if($('#star'+($questionIndex-1)).val() >= 1)
-        $('#next_button').prop('disabled',false);
-        else
-            $('#next_button').prop('disabled',true);
-
-        
     }
 
     function submitAnswers(){
@@ -132,7 +145,7 @@
         <button class="up-button">up button</button>
         <div class="card-container">
             <ul class="card-list" id="questionList">
-                <li>
+                <li class="list-element" id="start">
                     <p>I am the start card</p>
                 </li>
             </ul>
