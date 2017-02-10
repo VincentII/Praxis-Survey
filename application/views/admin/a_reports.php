@@ -74,6 +74,9 @@
                             }]
                         ];
 
+
+
+                        $('#charts').append("<div class = 'report-questions'> Q"+(i+1)+". "+$questions[i]['Question_Act']+"</div>");
                         $('#charts').append("<div class='ct-chart ct-square' id='dataChart"+i+"'></div>");
 
                         new Chartist.Bar("#dataChart"+i,data,options,responsiveOptions);

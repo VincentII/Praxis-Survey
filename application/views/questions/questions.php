@@ -45,7 +45,7 @@
             newQuestion += text.join('');
             newQuestion += '</p>';
             newQuestion += '<div class="question-stars">' +
-                '<input id="star' + $questionIndex +'" name="input-name" type="number" class="rating-loading" onchange="updateStar()"></div>'
+                '<input id="star' + $questionIndex +'" name="input-name" type="number" class="rating-loading" onchange="updateStar(this)"></div>'
             newQuestion += '</div></li>';
 
             $('#questionList').append(newQuestion);
@@ -74,13 +74,15 @@
         }
     }//end of getNextQuestion
 
-    function updateStar(){
+    function updateStar(star){
 
 
         if($('#star'+($questionIndex-1)).val() >= 1)
         $('#next_button').prop('disabled',false);
         else
             $('#next_button').prop('disabled',true);
+
+        
     }
 
     function submitAnswers(){
