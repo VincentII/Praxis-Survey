@@ -15,7 +15,32 @@
         $questions = <?php echo json_encode($questions)?>;
         console.log($questions);
 
+
+        $('.card-container').scroll(function(){
+            var winTop = $(this).scrollTop();
+            var $lis = $('li');
+
+            var top = $.grep($lis, function(item){
+                return $(item).position().top >= winTop;
+            });
+            $lis.removeClass('active');
+            $(top).addClass('active');
+            console.log($(top).attr('id'));
+        });
+//        ^^^FIXME:list element supposed to change bg color when top is same as top of .card-container^^^
     });
+
+//    $('.card-container').on('scroll', function(){
+//        console.log("SCROLL");
+//        $('.line-element').each(function(){
+//            if($(window).scrollTop() >= $(this).offset().top){
+//                var scrollID = $(this).attr('id');
+//                console.log(scrollID + " is active");
+//            }
+//        });
+//    });
+
+
 
     function getNextQuestion(){
 
@@ -23,7 +48,7 @@
             toastr.info("Submit your answers");
 
             var $submitButton =
-                '<li>' +
+                '<li class="list-element" id="submit">' +
                 '<button onclick="submitAnswers()" id="submit_button">SUBMIT</button>' +
                 '</li>';
 
@@ -31,7 +56,7 @@
             //TODO: Append Submit Card Here
             $('#next_button').prop('disabled',true);
             $questionIndex++;
-//            FIXME: better implementation of preventing the additional submit button bug?
+//            ^^^FIXME: better implementation of preventing the additional submit button bug?
         }
         else if($questionIndex ==0 ||($questionIndex !=0&&!$('next_button').isDisabled)){
             var text = [
@@ -132,7 +157,7 @@
         <button class="up-button">up button</button>
         <div class="card-container">
             <ul class="card-list" id="questionList">
-                <li class="list-element">
+                <li class="list-element" id="start">
                     <p>I am the start card</p>
                 </li>
             </ul>
