@@ -14,32 +14,20 @@
     $(document).on('ready', function(){
         $questions = <?php echo json_encode($questions)?>;
         console.log($questions);
-
+        
 
         $('.card-container').scroll(function(){
-            var winTop = $(this).scrollTop();
+            var winTop = $(window).scrollTop();
             var $lis = $('li');
 
             var top = $.grep($lis, function(item){
-                return $(item).position().top >= winTop;
+                return $(item).position().top <= winTop;
             });
             $lis.removeClass('active');
             $(top).addClass('active');
             console.log($(top).attr('id'));
         });
-//        ^^^FIXME:list element supposed to change bg color when top is same as top of .card-container^^^
     });
-
-//    $('.card-container').on('scroll', function(){
-//        console.log("SCROLL");
-//        $('.line-element').each(function(){
-//            if($(window).scrollTop() >= $(this).offset().top){
-//                var scrollID = $(this).attr('id');
-//                console.log(scrollID + " is active");
-//            }
-//        });
-//    });
-
 
 
     function getNextQuestion(){
