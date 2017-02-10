@@ -21,7 +21,64 @@
             })
                 .done(function(result) {
                     console.log("done");
-                    console.log(result)
+
+                    var $answers = result['answers'];
+                    var $questions = result['questions'];
+
+                    var sum = function(a, b) { return a + b };
+
+                    var actualLabels = ["Totally Disagree","Partly Disagree","Neutral","Partly Agree","Totally Agree"];
+
+                    $('#charts').html("");
+
+                    for(var i = 0; i<$questions.length;i++){
+
+                        var actualData = [];
+
+                        for(var j=0; j<5;j++) {
+                            actualData.push(parseInt($answers[i][j]['count']));
+                        }
+
+                        console.log(actualData);
+                        var data = {
+                            labels: actualLabels,
+                            series: [
+                                actualData
+                            ]
+                        };
+
+                        var options = {
+                            seriesBarDistance: 15,
+                            axisY: {onlyInteger:true},
+                            showGridBackground: true,
+                            distributeSeries: false
+
+                        };
+
+                        var responsiveOptions = [
+                            ['screen and (min-width: 641px) and (max-width: 1024px)', {
+                                seriesBarDistance: 10,
+                                axisX: {
+                                    labelInterpolationFnc: function (value) {
+                                        return value;
+                                    }
+                                }
+                            }],
+                            ['screen and (max-width: 640px)', {
+                                seriesBarDistance: 5,
+                                axisX: {
+                                    labelInterpolationFnc: function (value) {
+                                        return value[0];
+                                    }
+                                }
+                            }]
+                        ];
+
+                        $('#charts').append("<div class='ct-chart ct-square' id='dataChart"+i+"'></div>");
+
+                        new Chartist.Bar("#dataChart"+i,data,options,responsiveOptions);
+
+                    }
 
                 })
                 .fail(function() {
@@ -63,4 +120,6 @@
                 <?php endforeach;?>
             </select>
         </div>
+        <div class = "col-md-10" id="charts"></div>
+
 </div>

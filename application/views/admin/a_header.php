@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Praxis - Administrator</title>
 
-    <link href="<?=base_url()?>/assets/css/home.css" rel="stylesheet" />
+
 
     <!-- Bootstrap -->
     <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -51,6 +51,9 @@
     <link href="<?=base_url()?>/assets/chartist-js-develop/dist/chartist.min.css" media="all" rel="stylesheet" type="text/css" />
     <script  src="<?=base_url()?>/assets/chartist-js-develop/dist/chartist.min.js" ></script>
 
+
+
+    <link href="<?=base_url()?>/assets/css/a_charts.css?<?php echo time(); ?>" rel="stylesheet" />
 
     <script type="text/javascript">
         //toastr["error"]("You cannot select more than 4 slots at once!", "Error")

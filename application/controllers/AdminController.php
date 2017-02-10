@@ -114,7 +114,39 @@ class AdminController extends CI_Controller
 
 
         foreach ($questions as $question){
-            array_push($answers,$this->survey->queryAnswerCountByQuestionID($question->question_ID));
+            $allRatings = $this->survey->queryAnswerCountByQuestionID($question->question_ID);
+
+
+
+            $finalRatings=[];
+
+            for($i = 1; $i < 6; $i++){
+
+                $isIN =false;
+                foreach ($allRatings as $rating){
+
+                    if($rating->answer==$i.""){
+                            $isIN = true;
+                        array_push($finalRatings,$rating);
+                    }
+
+                }
+                if(!$isIN){
+                    $tempRating = array('answer' => $i."",
+                        'count' => "0",
+                        'questionID' => $allRatings[0]->questionID,
+                        'questionNum' => $allRatings[0]->questionNum);
+
+                    array_push($finalRatings,$tempRating);
+
+                }
+
+
+
+            }
+
+            array_push($answers,$finalRatings);
+
         }
 
         $data = array(
