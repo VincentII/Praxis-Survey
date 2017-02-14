@@ -65,7 +65,7 @@ CREATE TABLE `answers` (
   KEY `eventfk_idx` (`Event_ID`),
   CONSTRAINT `eventfk` FOREIGN KEY (`Event_ID`) REFERENCES `event` (`Event_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `setfk` FOREIGN KEY (`Set_ID`) REFERENCES `question_set` (`Set_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,6 +74,7 @@ CREATE TABLE `answers` (
 
 LOCK TABLES `answers` WRITE;
 /*!40000 ALTER TABLE `answers` DISABLE KEYS */;
+INSERT INTO `answers` VALUES (1,24,4,1,5),(2,25,4,1,5),(3,26,4,1,5),(4,27,4,1,3),(5,28,4,1,3),(6,24,4,2,2),(7,24,4,2,4),(8,24,4,1,3),(9,25,4,1,5),(10,26,4,1,3),(11,27,4,1,4),(12,28,4,1,2),(13,24,4,1,5),(14,25,4,1,4),(15,26,4,1,1),(16,27,4,1,4),(17,28,4,1,1),(18,24,4,1,1),(19,25,4,1,3),(20,26,4,1,4),(21,27,4,1,5),(22,28,4,1,3),(23,24,4,1,1),(24,25,4,1,3),(25,26,4,1,4),(26,27,4,1,5),(27,28,4,1,3),(28,24,4,1,3),(29,25,4,1,5),(30,26,4,1,3),(31,27,4,1,4),(32,28,4,1,4),(33,24,4,1,5),(34,25,4,1,3),(35,26,4,1,3),(36,27,4,1,5),(37,28,4,1,3),(38,24,4,1,4),(39,25,4,1,5),(40,26,4,1,3),(41,27,4,1,5),(42,28,4,1,3),(43,24,4,3,1),(44,25,4,3,1),(45,26,4,3,1),(46,27,4,3,1),(47,28,4,3,1),(48,24,4,3,1),(49,25,4,3,1),(50,26,4,3,1),(51,27,4,3,1),(52,28,4,3,3),(53,24,4,3,1),(54,25,4,3,1),(55,26,4,3,1),(56,27,4,3,1),(57,28,4,3,3),(58,24,4,3,4),(59,25,4,3,3),(60,26,4,3,4),(61,27,4,3,3),(62,28,4,3,4),(63,24,4,3,4),(64,25,4,3,3),(65,26,4,3,4),(66,27,4,3,3),(67,28,4,3,4),(68,24,4,3,4),(69,25,4,3,3),(70,26,4,3,4),(71,27,4,3,3),(72,28,4,3,4),(73,24,4,3,4),(74,25,4,3,3),(75,26,4,3,4),(76,27,4,3,3),(77,28,4,3,4),(78,24,4,3,4),(79,25,4,3,3),(80,26,4,3,4),(81,27,4,3,3),(82,28,4,3,4),(83,24,4,3,4),(84,25,4,3,3),(85,26,4,3,4),(86,27,4,3,3),(87,28,4,3,4),(88,24,4,3,5),(89,25,4,3,3),(90,26,4,3,4),(91,27,4,3,3),(92,28,4,3,5),(93,24,4,3,3),(94,25,4,3,5),(95,26,4,3,3),(96,27,4,3,4),(97,28,4,3,2),(98,24,4,3,3),(99,25,4,3,5),(100,26,4,3,3),(101,27,4,3,4),(102,28,4,3,2),(103,24,4,3,3),(104,25,4,3,5),(105,26,4,3,3),(106,27,4,3,4),(107,28,4,3,2),(108,24,4,3,3),(109,25,4,3,5),(110,26,4,3,3),(111,27,4,3,4),(112,28,4,3,2);
 /*!40000 ALTER TABLE `answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,11 +89,11 @@ CREATE TABLE `comment` (
   `Comment_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Event_ID` int(11) NOT NULL,
   `Set_ID` int(11) NOT NULL,
-  `Comment_Ans` varchar(500) DEFAULT NULL,
+  `Comment_Ans` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`Comment_ID`),
   KEY `event_idx` (`Event_ID`),
   KEY `set_idx` (`Set_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +102,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1,1,1,'So cool!');
+INSERT INTO `comment` VALUES (1,1,1,'So cool!'),(2,1,4,'Lost my way!'),(3,3,4,' '),(4,3,4,'ñ'),(5,3,4,'www'),(6,3,4,'   www'),(7,3,4,'Llanfairpwllgwyngyllgogerychwyrndrobwll-llantysiliogogogoch'),(8,3,4,'Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch'),(9,3,4,'wwww'),(10,3,4,'    wwww');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,4 +222,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-02 14:37:30
+-- Dump completed on 2017-02-14 16:30:09
