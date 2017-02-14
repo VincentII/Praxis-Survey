@@ -39,7 +39,6 @@
                   activeArray.push($(this).attr('id'));
                });
 
-                console.log(activeArray[activeArray.length-1]);
 
                 if(activeArray[activeArray.length-1]=="start"){
                     $('.up-button').css('visibility','hidden');
@@ -51,6 +50,9 @@
                 }else{
                     $('.down-button').css('visibility','visible');
                 }
+
+               $currCard = activeArray[activeArray.length-1];
+                console.log($currCard);
 
             });
 //            FIXME: Is there a better solution for this?^^^
