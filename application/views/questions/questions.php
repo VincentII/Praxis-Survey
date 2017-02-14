@@ -23,14 +23,23 @@
             var $lis = $('li');
 
             var top = $.grep($lis, function(item){
-//                return $(item).position().top <= winTop;
-                return ($(item).position().top <= winTop);
+                return $(item).position().top <= winTop;
             });
 //            ^^^FIXME: only have one active element at a time^^^
             $lis.removeClass('active');
             $(top).addClass('active');
-            console.log($(top).attr('id'));
-        });
+
+//            for all elements with an active class, get the id of the last one
+            $(function(){
+               var activeArray = [];
+
+               $('.active').each(function(){
+                  activeArray.push($(this).attr('id'));
+               });
+                console.log(activeArray[activeArray.length-1]);
+            });
+//            FIXME: Is there a better solution for this?^^^
+        }); //end of scroll function
     });
 
 
