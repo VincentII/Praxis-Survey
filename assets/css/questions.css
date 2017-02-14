@@ -68,6 +68,10 @@
         border-style: solid;
     }
 
+    .comment-area{
+        resize: none;
+    }
+
     /*area for progress bar*/
     .main-progBar{
         border-style: solid;

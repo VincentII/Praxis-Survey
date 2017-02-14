@@ -48,6 +48,13 @@
         if($questionIndex>=$questions.length){
             toastr.info("Submit your answers");
 
+            var $comment =
+                '<li class="list-element" id="comment">' +
+                '<textarea class="comment-area" rows="5" columns="50" placeholder="write your love letter to praxis here"></textarea>' +
+                '</li>';
+
+            $('#questionList').append($comment);
+
             var $submitButton =
                 '<li class="list-element" id="submit">' +
                 '<button onclick="submitAnswers()" id="submit_button">SUBMIT</button>' +
