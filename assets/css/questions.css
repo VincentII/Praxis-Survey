@@ -1,4 +1,6 @@
 @media only screen and (max-device-width: 480px){
+    *{border: 1px solid red;}
+
     .main{
         border-style: solid;
         position: relative;
@@ -9,8 +11,6 @@
 
     /*main card area where buttons are*/
     .main-card{
-        border-style: solid;
-        border-color: red;
         height: 75vh;
         width: 100%;
         position: absolute;
@@ -19,8 +19,6 @@
 
     /*scrollable section*/
     .card-container{
-        border-style: solid;
-        border-color: purple;
         width: 100%;
         position: absolute;
         height: 65vh;
@@ -33,9 +31,7 @@
     }
 
     .down-button{
-        border-style: solid;
         width: 100%;
-        border-color: green;
         position: absolute;
         bottom: 0;
     }
@@ -53,8 +49,6 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
-        border-style: solid;
-        border-color: pink;
     }
 
     /*FIXME: For testing*/
@@ -64,8 +58,6 @@
 
     /*contains question text and rating stars*/
     .question{
-        border-style: solid;
-        border-color: blue;
     }
 
     p .question-text{
@@ -107,6 +99,8 @@
         right: 0;
         height: 20vh;
     }
+
+
 }
 
 

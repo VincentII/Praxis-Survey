@@ -16,13 +16,16 @@
         console.log($questions);
         
 
+
         $('.card-container').scroll(function(){
             var winTop = $(window).scrollTop();
             var $lis = $('li');
 
             var top = $.grep($lis, function(item){
-                return $(item).position().top <= winTop;
+//                return $(item).position().top <= winTop;
+                return ($(item).position().top <= winTop);
             });
+//            ^^^FIXME: only have one active element at a time^^^
             $lis.removeClass('active');
             $(top).addClass('active');
             console.log($(top).attr('id'));
@@ -157,3 +160,4 @@
     <div class="footer-progBar">this is a progress bar</div>
     <div class="footer-copyright">this is the footer and copyright info go here</div>
 </footer>
+
