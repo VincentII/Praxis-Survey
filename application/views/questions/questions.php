@@ -50,7 +50,7 @@
 
             var $comment =
                 '<li class="list-element" id="comment">' +
-                '<textarea class="comment-area" rows="5" columns="50" placeholder="write your love letter to praxis here"></textarea>' +
+                '<textarea class="comment-area" id="form-comment" rows="5" columns="50" placeholder="write your love letter to praxis here"></textarea>' +
                 '</li>';
 
             $('#questionList').append($comment);
@@ -169,6 +169,37 @@
             .always(function() {
                 console.log("complete");
             });
+
+        submitComment();
+    }
+
+    function submitComment(){
+        if($('#form-comment').val()!=""){
+            $.ajax({
+                url: '<?php echo base_url('questions/submitComment') ?>',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    comment : $('#form-comment').val()
+                }
+            })
+                .done(function(result) {
+                    console.log("done");
+                    if (result['status']=="success") {
+                        toastr.success(result['message']);
+                    }
+                    else {
+                        toastr.error(result['message']);
+                    }
+
+                })
+                .fail(function() {
+                    console.log("fail");
+                })
+                .always(function() {
+                    console.log("complete");
+                });
+        }
     }
 
 </script>

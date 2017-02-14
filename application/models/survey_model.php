@@ -147,7 +147,7 @@ class survey_model extends CI_Model
 
     }
 
-    function insertComment($setID,$eventID,$questionID,$comment){
+    function insertComment($setID,$eventID,$comment){
         $insertCommentData=array(
             COLUMN_SET_ID => intval($setID),
             COLUMN_EVENT_ID => intval($eventID),

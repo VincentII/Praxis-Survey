@@ -62,4 +62,24 @@ class QuestionsController extends CI_Controller
 
         echo json_encode($data);
     }
+
+    public function submitComment(){
+        $getData = array(
+            'comment' => $this->input->get('comment')
+        );
+
+
+            $this->survey->insertComment($_SESSION['setID'],$_SESSION['eventID'],$getData['comment']);
+
+
+        $data = array(
+            'status' => 'success',
+            'message' => 'Comment Submitted!!'
+        );
+
+
+
+
+        echo json_encode($data);
+    }
 }

@@ -65,6 +65,7 @@ $route['home/checkInputs'] = 'HomeController/checkInputs';
 $route['questions'] = 'QuestionsController';
 $route['questions/loadSurveyQuestions'] = 'QuestionsController/loadSurveyQuestions';
 $route['questions/submitAnswers'] = 'QuestionsController/submitAnswers';
+$route['questions/submitComment'] = 'QuestionsController/submitComment';
 
 /*Admin*/
 $route['admin'] = 'AdminController';
