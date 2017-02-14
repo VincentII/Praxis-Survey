@@ -10,6 +10,7 @@
 <script>
     var $questions;
     var $questionIndex = 0;
+    var $answerCount = 0;
 
     $(document).on('ready', function(){
         $questions = <?php echo json_encode($questions)?>;
@@ -104,15 +105,28 @@
 
     function updateStar(star){
 
-        if($('#'+star).val() < 1)
-            $('#'+star).rating('update',1);
-            if($('#star'+($questionIndex-1)).val() >= 1 && !($questionIndex>$questions.length))
-                $('#next_button').prop('disabled',false);
+
+
+        if($questionIndex > $answerCount && $('#'+star).attr('id')==$('#star'+($questionIndex-1)).attr('id')){
+            $answerCount++;
+            updateProgressBar();
+        }
+
+        if($('#'+star).val() < 1) {
+            $('#' + star).rating('update', 1);
+        }
+        if($('#star'+($questionIndex-1)).val() >= 1 && !($questionIndex>$questions.length)) {
+            $('#next_button').prop('disabled', false);
+        }
 //        else
 //            $('#next_button').prop('disabled',true);
 
+    }
 
+    function updateProgressBar() {
+        var size = ($answerCount * 1.0)/$questions.length *100;
 
+        $(".progBar-child").css('width',size+"vw");
     }
 
     function submitAnswers(){
@@ -171,7 +185,10 @@
     </div>
 </div>
 <footer>
-    <div class="footer-progBar">this is a progress bar</div>
+    <div class="footer-progBar">
+        <div class="progBar-child">
+        </div>
+    </div>
     <div class="footer-copyright">this is the footer and copyright info go here</div>
 </footer>
 
