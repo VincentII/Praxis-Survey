@@ -174,7 +174,7 @@
     }
 
     function submitComment(){
-        if($('#form-comment').val()!=""){
+        if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#form-comment').val())){
             $.ajax({
                 url: '<?php echo base_url('questions/submitComment') ?>',
                 type: 'GET',
@@ -199,6 +199,9 @@
                 .always(function() {
                     console.log("complete");
                 });
+        }
+        else{
+            toastr.info("Comment not submitted");//TODO TAKE THIS OUT
         }
     }
 
