@@ -69,6 +69,7 @@
     }
 
     .comment-area{
+        overflow-y: auto;
         resize: none;
     }
 

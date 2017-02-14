@@ -11,6 +11,7 @@
     var $questions;
     var $questionIndex = 0;
     var $answerCount = 0;
+    var $currCard;
 
     $(document).on('ready', function(){
         $questions = <?php echo json_encode($questions)?>;
@@ -36,11 +37,26 @@
                $('.active').each(function(){
                   activeArray.push($(this).attr('id'));
                });
-                console.log(activeArray[activeArray.length-1]);
+               $currCard = activeArray[activeArray.length-1];
+                console.log($currCard);
             });
 //            FIXME: Is there a better solution for this?^^^
         }); //end of scroll function
     });
+
+//    to replace getNextQuestion in the html
+    function clickDownButton() {
+//      if the current card is the last list element, load the next question,
+//          otherwise go to the next card
+//        TODO: fix disabled down button
+
+        if($currCard == $('li').last().attr('id')){
+            getNextQuestion();
+        } else {
+            console.log("NEXT NEXT NEXT");
+            console.log("I will go to " + $("#" + $currCard).next('li').attr('id'));
+        }
+    }
 
 
     function getNextQuestion(){
@@ -188,7 +204,7 @@
                 </li>
             </ul>
         </div>
-        <button class="down-button" id='next_button' onclick="getNextQuestion()">down button</button>
+        <button class="down-button" id='next_button' onclick="clickDownButton()">down button</button>
     </div>
 </div>
 <footer>
