@@ -45,7 +45,6 @@
                 }else{
                     $('.up-button').css('visibility','visible');
                 }
-
                 if(activeArray[activeArray.length-1]=="submit"){
                     $('.down-button').css('visibility','hidden');
                 }else{
