@@ -131,3 +131,10 @@ define("COLUMN_ANSWER_ID", "answer_id");
 define("COLUMN_USER_ID", "user_id");
 define("COLUMN_NAME", "name");
 define("COLUMN_EMAIL", "email");
+
+
+/*ADMIN*/
+define("ADMIN_SIGN_IN", "sign_in");
+define("ADMIN_SIGN_OUT", "sign_out");
+define("ADMIN_REPORTS", "reports");
+define("ADMIN_GET_REPORTS", "getReports");

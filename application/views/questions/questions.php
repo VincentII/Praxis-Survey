@@ -64,7 +64,7 @@
             newQuestion += text.join('');
             newQuestion += '</p>';
             newQuestion += '<div class="question-stars">' +
-                '<input id="star' + $questionIndex +'" name="input-name" type="number" class="rating-loading" onchange="updateStar()"></div>'
+                '<input id="star' + $questionIndex +'" name="input-name" type="number" class="rating-loading" onchange="updateStar(this.id)"></div>'
             newQuestion += '</div></li>';
 
             $('#questionList').append(newQuestion);
@@ -93,12 +93,17 @@
         }
     }//end of getNextQuestion
 
-    function updateStar(){
+    function updateStar(star){
 
+        if($('#'+star).val() < 1)
+            $('#'+star).rating('update',1);
             if($('#star'+($questionIndex-1)).val() >= 1 && !($questionIndex>$questions.length))
                 $('#next_button').prop('disabled',false);
 //        else
 //            $('#next_button').prop('disabled',true);
+
+
+
     }
 
     function submitAnswers(){

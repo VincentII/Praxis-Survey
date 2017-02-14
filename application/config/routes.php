@@ -59,9 +59,13 @@ $route['root'] = 'check';
 
 $route['home'] = 'HomeController';
 
-$route['Home/checkInputs'] = 'HomeController/checkInputs';
+$route['home/checkInputs'] = 'HomeController/checkInputs';
 
 /*Questions*/
 $route['questions'] = 'QuestionsController';
 $route['questions/loadSurveyQuestions'] = 'QuestionsController/loadSurveyQuestions';
 $route['questions/submitAnswers'] = 'QuestionsController/submitAnswers';
+
+/*Admin*/
+$route['admin'] = 'AdminController';
+$route['admin/(:any)'] = 'AdminController/loadAction/$1';

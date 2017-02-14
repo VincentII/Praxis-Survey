@@ -14,7 +14,7 @@
 
 
         $.ajax({
-            url: '<?php echo base_url('Home/checkInputs') ?>',
+            url: '<?php echo base_url('home/checkInputs') ?>',
             type: 'GET',
             dataType: 'json',
             data: {

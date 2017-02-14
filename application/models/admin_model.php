@@ -25,6 +25,27 @@ class admin_model extends CI_Model
         return $query->result();
     }
 
+    function isValidUser($name, $pass) {
+        $sql = "SELECT *
+                      FROM ".TABLE_ADMIN."
+                      WHERE ".COLUMN_ADMIN_USERNAME." = ? AND ".COLUMN_ADMIN_PASSWORD." = ?";
+
+        $result = $this->db->query($sql, array($name, $pass))->result();
+        // If credentials is found.
+
+
+        return count($result)>=1;
+    }
+
+    function queryAdminAccount($name) {
+        $this->db->select("*");
+        $this->db->from(TABLE_ADMIN);
+        $this->db->where(COLUMN_ADMIN_USERNAME, $name);
+        $query = $this->db->get();
+
+        return $query->row_array();
+    }
+
     function queryAnswerCountByQuestionID($questionID){
         $sql = "SELECT ".COLUMN_QUESTION_Num." as questionNum, 
                        ".COLUMN_QUESTION_ID." as questionID,

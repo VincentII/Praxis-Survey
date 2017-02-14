@@ -1,0 +1,9 @@
+.ct-series-a .ct-bar {
+    /* Colour of your bars */
+    stroke:  blue;
+    /* The width of your bars */
+    stroke-width: 100px;
+    /* Yes! Dashed bars! */
+
+    /* Maybe you like round corners on your bars? */
+}
