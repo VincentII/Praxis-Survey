@@ -11,6 +11,8 @@
     var $questions;
     var $questionIndex = 0;
     var $answerCount = 0;
+    var activeArray = [];
+
 
     $(document).on('ready', function(){
         $questions = <?php echo json_encode($questions)?>;
@@ -31,12 +33,26 @@
 
 //            for all elements with an active class, get the id of the last one
             $(function(){
-               var activeArray = [];
+
 
                $('.active').each(function(){
                   activeArray.push($(this).attr('id'));
                });
                 console.log(activeArray[activeArray.length-1]);
+
+                if(activeArray[activeArray.length-1]=="start"){
+                    $('.up-button').css('visibility','hidden');
+                }else{
+                    $('.up-button').css('visibility','visible');
+                }
+
+                if(activeArray[activeArray.length-1]=="submit"){
+                    $('.down-button').css('visibility','hidden');
+                }else{
+                    $('.down-button').css('visibility','visible');
+                }
+
+
             });
 //            FIXME: Is there a better solution for this?^^^
         }); //end of scroll function

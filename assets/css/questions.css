@@ -28,12 +28,14 @@
     .up-button{
         border-style: solid;
         width: 100%;
+        visibility: hidden;
     }
 
     .down-button{
         width: 100%;
         position: absolute;
         bottom: 0;
+
     }
 
     ul{
