@@ -28,8 +28,17 @@
             <ul class="nav navbar-nav">
 
                 <li id="overview_button"><a href="<?=site_url("admin/" . ADMIN_REPORTS)?>">Reports<span class="sr-only"></span></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Manage<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li id="add_button"><a href="<?=site_url("admin/" . ADMIN_EVENTS)?>">Manage Events</a></li>
+                    </ul>
+                </li>
 
             </ul>
+
+
 
             <ul class="nav navbar-nav navbar-right">
 

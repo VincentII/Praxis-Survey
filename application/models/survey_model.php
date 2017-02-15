@@ -113,6 +113,17 @@ class survey_model extends CI_Model
                 GROUP BY ".COLUMN_QUESTION_ANS.";";
         return $this->db->query($sql, array($questionID))->result();
     }
+
+    function queryAnswerCountByQuestionIDAndEventID($questionID,$eventID){
+        $sql = "SELECT ".COLUMN_QUESTION_Num." as questionNum,
+                       ".COLUMN_QUESTION_ID." as questionID,
+                       ".COLUMN_QUESTION_ANS." as answer,
+                       count(*) as count
+                FROM (Select * from ".TABLE_QUESTIONS." where question_id = ?) r NATURAL JOIN ".TABLE_ANSWERS."
+                WHERE ".COLUMN_EVENT_ID." = ?
+                GROUP BY ".COLUMN_QUESTION_ANS.";";
+        return $this->db->query($sql, array($questionID,$eventID))->result();
+    }
 /*
     function queryAnswerCountBySetIDAndEventID($setID,$eventID){
         $this->db->select("count(*)");

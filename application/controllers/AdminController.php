@@ -37,6 +37,9 @@ class AdminController extends CI_Controller
                 case ADMIN_REPORTS:
                     $this->reportsView();
                     break;
+                case ADMIN_EVENTS:
+                    $this->eventsView();
+                    break;
                 case ADMIN_SIGN_OUT:
                     $this->signOut();
                     break;
@@ -94,6 +97,15 @@ class AdminController extends CI_Controller
         $this->load->view('admin/a_reports', $data); // $this->load->view('admin', $data); set to this if data is set
         $this->load->view('admin/a_footer'); // include bootstrap 3 footer
     }
+    private function eventsView(){
+
+        $data['events'] = $this->survey->queryAllEvents();
+
+        $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
+        $this->load->view('admin/a_navbar');
+        $this->load->view('admin/a_events', $data); // $this->load->view('admin', $data); set to this if data is set
+        $this->load->view('admin/a_footer'); // include bootstrap 3 footer
+    }
 
     public function signOut() {
         $this->session->sess_destroy();
@@ -108,13 +120,19 @@ class AdminController extends CI_Controller
 
         $answers = [];
 
-        $questions = $this->survey->queryQuestionsBySetID($setID);
+
+            $questions = $this->survey->queryQuestionsBySetID($setID);
 
 
 
 
         foreach ($questions as $question){
-            $allRatings = $this->survey->queryAnswerCountByQuestionID($question->question_ID);
+
+            if($eventID == '0')
+                $allRatings = $this->survey->queryAnswerCountByQuestionID($question->question_ID);
+            else
+                $allRatings = $this->survey->queryAnswerCountByQuestionIDAndEventID($question->question_ID,$eventID);
+
 
 
 
@@ -131,7 +149,7 @@ class AdminController extends CI_Controller
                     }
 
                 }
-                if(!$isIN){
+                if(!$isIN&& isset($allRatings) && ($allRatings!=null)){
                     $tempRating = array('answer' => $i."",
                         'count' => "0",
                         'questionID' => $allRatings[0]->questionID,
@@ -149,11 +167,17 @@ class AdminController extends CI_Controller
 
         }
 
-        $data = array(
-            'status' => 'success',
-            'message' => 'Starting Survey!',
-            'answers' => $answers,
-            'questions' => $questions
+        if(isset($allRatings) && ($allRatings!=null))
+            $data = array(
+                'status' => 'success',
+                'message' => 'Starting Survey!',
+                'answers' => $answers,
+                'questions' => $questions
+            );
+        else
+            $data = array(
+            'status' => 'noReps',
+            'message' => 'No Reports Available!'
         );
         echo json_encode($data);
     }

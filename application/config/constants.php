@@ -137,4 +137,6 @@ define("COLUMN_EMAIL", "email");
 define("ADMIN_SIGN_IN", "sign_in");
 define("ADMIN_SIGN_OUT", "sign_out");
 define("ADMIN_REPORTS", "reports");
+define("ADMIN_EVENTS", "events");
+
 define("ADMIN_GET_REPORTS", "getReports");
