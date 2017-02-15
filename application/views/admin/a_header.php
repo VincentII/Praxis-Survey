@@ -51,7 +51,9 @@
     <link href="<?=base_url()?>/assets/chartist-js-develop/dist/chartist.min.css" media="all" rel="stylesheet" type="text/css" />
     <script  src="<?=base_url()?>/assets/chartist-js-develop/dist/chartist.min.js" ></script>
 
-
+    <!-- Date Picker-->
+    <link href="<?=base_url()?>/assets/js/datepicker/dist/css/bootstrap-datepicker3.css" media="all" rel="stylesheet" type="text/css" />
+    <script  src="<?=base_url()?>/assets/js/datepicker/dist/js/bootstrap-datepicker.js" ></script>
 
     <link href="<?=base_url()?>/assets/css/a_charts.css?<?php echo time(); ?>" rel="stylesheet" />
 

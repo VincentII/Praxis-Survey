@@ -140,3 +140,4 @@ define("ADMIN_REPORTS", "reports");
 define("ADMIN_EVENTS", "events");
 
 define("ADMIN_GET_REPORTS", "getReports");
+define("ADMIN_SUBMIT_EVENT", "submitEvent");

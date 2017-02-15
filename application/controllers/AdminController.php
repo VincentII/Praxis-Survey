@@ -46,6 +46,9 @@ class AdminController extends CI_Controller
                 case ADMIN_GET_REPORTS:
                     $this->getReports();
                     break;
+                case ADMIN_SUBMIT_EVENT:
+                    $this->submitEvent();
+                    break;
                 default:
                     $this->initAdmin();
             }
@@ -112,6 +115,8 @@ class AdminController extends CI_Controller
         $this->session->unset_userdata('email');
         $this->index();
     }
+
+
 
     public function getReports(){
 
@@ -180,6 +185,30 @@ class AdminController extends CI_Controller
             'message' => 'No Reports Available!'
         );
         echo json_encode($data);
+    }
+
+    public function submitEvent(){
+        $getData = array(
+            'name' => $this->input->get('name'),
+            'date' => $this->input->get('date'),
+            'location' => $this->input->get('location'),
+            'isClosed' => $this->input->get('isClosed')
+        );
+
+        $getData['date'] = date('Y-m-d', strtotime(str_replace('-', '/', $getData['date'])));
+
+        $getData['isClosed'] = ($getData['isClosed']) ? '1' : '0';
+
+        $this->admin->insertEvent($getData['name'],$getData['date'],$getData['location'],$getData['isClosed']);
+
+        $data = array(
+            'status' => 'success',
+            'message' => 'Successfully added '.$getData["name"].' !'
+        );
+
+        echo json_encode($data);
+
+
     }
 
 

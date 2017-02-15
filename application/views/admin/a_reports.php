@@ -105,13 +105,17 @@
 
 
 
+
+
 </script>
 
-<div class="col-md-4 col-md-offset-4" >
+<div class="col-md-4 col-md-offset-2" >
         <div class = "form-group col-md-2">
         <b>REPORTS</b>
         </div>
-        <div class = "form-group col-md-2">
+</div>
+<div class="col-md-10 col-md-offset-2">
+        <div class = "form-group col-md-6">
             Question Set:
             <select class="form-control" id="form_set" name="form-set" onclick="getAnalytics() ">
             <option value="" selected disabled>Choose a Question Set...</option>
@@ -120,7 +124,7 @@
             <?php endforeach;?>
             </select>
         </div>
-        <div class = "form-group col-md-2">
+        <div class = "form-group col-md-4">
             Events:
             <select class="form-control" id="form_event" name="form-event" onclick="getAnalytics()" disabled>
                 <option value="0" selected>All Events</option>
@@ -130,5 +134,4 @@
             </select>
         </div>
         <div class = "col-md-10" id="charts"></div>
-
 </div>

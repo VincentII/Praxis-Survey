@@ -56,5 +56,16 @@ class admin_model extends CI_Model
         return $this->db->query($sql, array($questionID))->row_array();
     }
 
+    function insertEvent($name,$date,$location,$isClosed){
+        $insertEventData=array(
+            COLUMN_EVENT_NAME => $name,
+            COLUMN_EVENT_DATE => $date,
+            COLUMN_EVENT_LOCATION => $location,
+            COLUMN_IS_CLOSED => intval($isClosed)
+        );
+        $this->db->insert(TABLE_EVENT, $insertEventData);
+
+    }
+
 
 }
