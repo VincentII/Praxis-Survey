@@ -24,6 +24,10 @@
             toastr.error("Name given is Invalid","Error");
             return;
         }
+        if(!/[0-9][0-9][\/][0-9][0-9][\/][0-9][0-9][0-9][0-9]/mi.test(addData[1])){
+            toastr.error("Date given is Invalid","Error");
+            return;
+        }
         if(!/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test(addData[2])){
             toastr.error("Location given is Invalid","Error");
             return;
