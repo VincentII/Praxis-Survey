@@ -19,6 +19,15 @@
         addData.push(table.rows[1].cells[cells - 1].childNodes[0].checked)
         console.log(addData);
 
+
+        if(!/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test(addData[0])){
+            toastr.error("Name given is Invalid","Error");
+            return;
+        }
+        if(!/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test(addData[2])){
+            toastr.error("Location given is Invalid","Error");
+            return;
+        }
         $.ajax({
             url: '<?php echo base_url('admin/' . ADMIN_SUBMIT_EVENT) ?>',
             type: 'GET',
