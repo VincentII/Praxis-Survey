@@ -189,6 +189,36 @@ INSERT INTO `questions` VALUES (1,1,1,'My financial knowledge is enough for me t
 UNLOCK TABLES;
 
 --
+-- Table structure for table `url`
+--
+
+DROP TABLE IF EXISTS `url`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `url` (
+  `URL_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Event_ID` int(11) DEFAULT NULL,
+  `Set_ID` int(11) DEFAULT NULL,
+  `URL` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`URL_ID`),
+  UNIQUE KEY `URL_UNIQUE` (`URL`),
+  KEY `fk_event_idx` (`Event_ID`),
+  KEY `fk_set_idx` (`Set_ID`),
+  CONSTRAINT `fk_event` FOREIGN KEY (`Event_ID`) REFERENCES `event` (`Event_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_set` FOREIGN KEY (`Set_ID`) REFERENCES `question_set` (`Set_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `url`
+--
+
+LOCK TABLES `url` WRITE;
+/*!40000 ALTER TABLE `url` DISABLE KEYS */;
+/*!40000 ALTER TABLE `url` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -221,4 +251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-16 10:51:20
+-- Dump completed on 2017-02-16 12:51:44
