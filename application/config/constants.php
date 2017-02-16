@@ -132,6 +132,9 @@ define("COLUMN_USER_ID", "user_id");
 define("COLUMN_NAME", "name");
 define("COLUMN_EMAIL", "email");
 
+/*URL*/
+define("COLUMN_URL_ID", "url_id");
+define("COLUMN_URL", "url");
 
 /*ADMIN*/
 define("ADMIN_SIGN_IN", "sign_in");
