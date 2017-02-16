@@ -60,10 +60,9 @@ CREATE TABLE `answers` (
   `Question_Ans` int(11) NOT NULL,
   PRIMARY KEY (`Answer_ID`),
   KEY `set_idx` (`Set_ID`),
-  KEY `event_idx` (`Event_ID`),
   KEY `setfk_idx` (`Set_ID`),
   KEY `eventfk_idx` (`Event_ID`),
-  CONSTRAINT `eventfk` FOREIGN KEY (`Event_ID`) REFERENCES `event` (`Event_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `eventfk` FOREIGN KEY (`Event_ID`) REFERENCES `event` (`Event_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `setfk` FOREIGN KEY (`Set_ID`) REFERENCES `question_set` (`Set_ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -114,12 +113,12 @@ DROP TABLE IF EXISTS `event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `event` (
-  `Event_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Event_ID` int(11) NOT NULL,
   `Event_Name` varchar(45) NOT NULL,
   `Event_Location` varchar(45) NOT NULL,
   `event_date` date NOT NULL,
   `is_closed` int(11) NOT NULL DEFAULT '1',
-  `is_archived` int(11) NOT NULL DEFAULT '1',
+  `is_archived` int(11) NOT NULL DEFAULT '0',
   `markedfordelete` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Event_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -131,7 +130,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (1,'PRU Life Praxis','Makati','2017-02-01',0,0,0),(2,'Sun Life Praxis','Makati','2017-02-01',1,0,0),(3,'Cafe Session','Makati','2017-02-02',0,0,0);
+INSERT INTO `event` VALUES (0,'222','lol','2017-02-15',1,0,0),(1,'PRU Life Praxis','Makati','2017-02-01',0,0,0),(2,'Sun Life Praxis','Makati','2017-02-01',1,0,0),(3,'Cafe Session','Makati','2017-02-02',0,0,0),(4,'lol','lol','2017-02-15',1,1,0),(5,'heh','heh','2017-02-15',1,1,0);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,4 +221,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-15 15:02:46
+-- Dump completed on 2017-02-16 10:51:20
