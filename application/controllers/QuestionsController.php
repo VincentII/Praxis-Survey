@@ -37,6 +37,14 @@ class QuestionsController extends CI_Controller
 
     }
 
+    public function linkSurvey($url){
+        $data = $this->survey->queryURLbyURL($url);
+
+        $_SESSION['eventID'] = intval($data['Event_ID']);
+        $_SESSION['setID'] = intval($data['Event_ID']);
+
+        $this->loadSurvey();
+    }
 
 
 

@@ -67,5 +67,14 @@ class admin_model extends CI_Model
 
     }
 
+    function insertURL($URL,$eventID,$setID){
+        $insertUrlData=array(
+            COLUMN_URL => $URL,
+            COLUMN_EVENT_ID => intval($eventID),
+            COLUMN_SET_ID => intval($setID)
+        );
+        $this->db->insert(TABLE_URL, $insertUrlData);
+
+    }
 
 }

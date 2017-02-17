@@ -28,7 +28,7 @@
             toastr.error("Date given is Invalid","Error");
             return;
         }
-        if(!/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test(addData[2])){
+        if(!isValidString(addData[2])){
             toastr.error("Location given is Invalid","Error");
             return;
         }
@@ -106,7 +106,7 @@
                         <div id = "eventTable_buttons">
 
                         <span class = "col-md-3">
-                            <button type ="button"data-toggle="modal" data-target="#AddNewEventModal" class="btn btn-default btn-block  col-md-2"> +Add Event</button>
+                            <button type ="button"data-toggle="modal" data-target="#AddNewEventModal" class="btn btn-default btn-block  col-md-2"> +Add Links</button>
 
                                   </span>
                             <span class = "col-md-3">
@@ -123,10 +123,9 @@
                                 <table class="table table-hover" id="eventTable">
                                     <thead>
                                     <tr>
+                                        <th>Link</th>
                                         <th>Event Name</th>
-                                        <th>Date</th>
-                                        <th>Location</th>
-                                        <th>Open</th>
+                                        <th>Question Set</th>
                                         <th></th>
                                     </tr>
                                     </thead>

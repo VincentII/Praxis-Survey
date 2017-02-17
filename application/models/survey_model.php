@@ -62,6 +62,13 @@ class survey_model extends CI_Model
         return $query->result();
     }
 
+    function queryAllURLs(){
+        $this->db->select('*');
+        $this->db->from(TABLE_URL);
+        $this->db->order_by(COLUMN_URL_ID);
+        $query = $this->db->get();
+        return $query->result();
+    }
 
     function queryOpenEvents(){
         $this->db->select('*');
@@ -154,6 +161,15 @@ class survey_model extends CI_Model
         $query = $this->db->get();
 
         return $query->result();
+    }
+
+    function queryURLbyURL($url){
+        $this->db->select("*");
+        $this->db->from(TABLE_URL);
+        $this->db->where(COLUMN_URL, $url);
+        $query = $this->db->get();
+
+        return $query->row_array();
     }
 
     function insertAnswers($setID,$eventID,$questionID,$answer){

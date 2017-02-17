@@ -40,6 +40,9 @@ class AdminController extends CI_Controller
                 case ADMIN_EVENTS:
                     $this->eventsView();
                     break;
+                case ADMIN_LINKS:
+                    $this->linksView();
+                    break;
                 case ADMIN_SIGN_OUT:
                     $this->signOut();
                     break;
@@ -48,6 +51,9 @@ class AdminController extends CI_Controller
                     break;
                 case ADMIN_SUBMIT_EVENT:
                     $this->submitEvent();
+                    break;
+                case ADMIN_SUBMIT_URL:
+                    $this->submitURL();
                     break;
                 default:
                     $this->initAdmin();
@@ -107,6 +113,17 @@ class AdminController extends CI_Controller
         $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
         $this->load->view('admin/a_navbar');
         $this->load->view('admin/a_events', $data); // $this->load->view('admin', $data); set to this if data is set
+        $this->load->view('admin/a_footer'); // include bootstrap 3 footer
+    }
+
+    private function linksView(){
+
+        $data['events'] = $this->survey->queryAllEvents();
+        $data['questionSets'] = $this->survey->queryAllQuestionSets();
+
+        $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
+        $this->load->view('admin/a_navbar');
+        $this->load->view('admin/a_links', $data); // $this->load->view('admin', $data); set to this if data is set
         $this->load->view('admin/a_footer'); // include bootstrap 3 footer
     }
 
@@ -204,7 +221,27 @@ class AdminController extends CI_Controller
 
         $data = array(
             'status' => 'success',
-            'message' => 'Successfully added '.$getData["name"].'!'.$this->input->get('isClosed').$closed
+            'message' => 'Successfully added '.$getData["name"].'!'
+        );
+
+        echo json_encode($data);
+
+
+    }
+
+    public function submitURL(){
+        $getData = array(
+            'url' => $this->input->get('url'),
+            'eventID' => $this->input->get('eventID'),
+            'setID' => $this->input->get('setID'),
+        );
+
+       // $this->admin->insertURL($getData['url'],$getData['eventID'],$getData['setID']);
+
+
+        $data = array(
+            'status' => 'success',
+            'message' => 'Successfully added '.$getData["url"].'!'
         );
 
         echo json_encode($data);
