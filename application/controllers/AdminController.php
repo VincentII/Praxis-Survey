@@ -236,7 +236,7 @@ class AdminController extends CI_Controller
             'setID' => $this->input->get('setID'),
         );
 
-       // $this->admin->insertURL($getData['url'],$getData['eventID'],$getData['setID']);
+       $this->admin->insertURL($getData['url'],$getData['eventID'],$getData['setID']);
 
 
         $data = array(
