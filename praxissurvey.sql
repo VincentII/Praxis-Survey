@@ -54,17 +54,12 @@ DROP TABLE IF EXISTS `answers`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `answers` (
   `Answer_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Question_ID` int(11) NOT NULL,
-  `Set_ID` int(11) NOT NULL,
-  `Event_ID` int(11) NOT NULL,
-  `Question_Ans` int(11) NOT NULL,
-  PRIMARY KEY (`Answer_ID`),
-  KEY `set_idx` (`Set_ID`),
-  KEY `setfk_idx` (`Set_ID`),
-  KEY `eventfk_idx` (`Event_ID`),
-  CONSTRAINT `eventfk` FOREIGN KEY (`Event_ID`) REFERENCES `event` (`Event_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `setfk` FOREIGN KEY (`Set_ID`) REFERENCES `question_set` (`Set_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=latin1;
+  `Question_ID` int(11) DEFAULT NULL,
+  `Set_ID` int(11) DEFAULT NULL,
+  `Event_ID` int(11) DEFAULT NULL,
+  `Question_ans` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Answer_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +68,6 @@ CREATE TABLE `answers` (
 
 LOCK TABLES `answers` WRITE;
 /*!40000 ALTER TABLE `answers` DISABLE KEYS */;
-INSERT INTO `answers` VALUES (1,24,4,1,5),(2,25,4,1,5),(3,26,4,1,5),(4,27,4,1,3),(5,28,4,1,3),(6,24,4,2,2),(7,24,4,2,4),(8,24,4,1,3),(9,25,4,1,5),(10,26,4,1,3),(11,27,4,1,4),(12,28,4,1,2),(13,24,4,1,5),(14,25,4,1,4),(15,26,4,1,1),(16,27,4,1,4),(17,28,4,1,1),(18,24,4,1,1),(19,25,4,1,3),(20,26,4,1,4),(21,27,4,1,5),(22,28,4,1,3),(23,24,4,1,1),(24,25,4,1,3),(25,26,4,1,4),(26,27,4,1,5),(27,28,4,1,3),(28,24,4,1,3),(29,25,4,1,5),(30,26,4,1,3),(31,27,4,1,4),(32,28,4,1,4),(33,24,4,1,5),(34,25,4,1,3),(35,26,4,1,3),(36,27,4,1,5),(37,28,4,1,3),(38,24,4,1,4),(39,25,4,1,5),(40,26,4,1,3),(41,27,4,1,5),(42,28,4,1,3),(43,24,4,3,1),(44,25,4,3,1),(45,26,4,3,1),(46,27,4,3,1),(47,28,4,3,1),(48,24,4,3,1),(49,25,4,3,1),(50,26,4,3,1),(51,27,4,3,1),(52,28,4,3,3),(53,24,4,3,1),(54,25,4,3,1),(55,26,4,3,1),(56,27,4,3,1),(57,28,4,3,3),(58,24,4,3,4),(59,25,4,3,3),(60,26,4,3,4),(61,27,4,3,3),(62,28,4,3,4),(63,24,4,3,4),(64,25,4,3,3),(65,26,4,3,4),(66,27,4,3,3),(67,28,4,3,4),(68,24,4,3,4),(69,25,4,3,3),(70,26,4,3,4),(71,27,4,3,3),(72,28,4,3,4),(73,24,4,3,4),(74,25,4,3,3),(75,26,4,3,4),(76,27,4,3,3),(77,28,4,3,4),(78,24,4,3,4),(79,25,4,3,3),(80,26,4,3,4),(81,27,4,3,3),(82,28,4,3,4),(83,24,4,3,4),(84,25,4,3,3),(85,26,4,3,4),(86,27,4,3,3),(87,28,4,3,4),(88,24,4,3,5),(89,25,4,3,3),(90,26,4,3,4),(91,27,4,3,3),(92,28,4,3,5),(93,24,4,3,3),(94,25,4,3,5),(95,26,4,3,3),(96,27,4,3,4),(97,28,4,3,2),(98,24,4,3,3),(99,25,4,3,5),(100,26,4,3,3),(101,27,4,3,4),(102,28,4,3,2),(103,24,4,3,3),(104,25,4,3,5),(105,26,4,3,3),(106,27,4,3,4),(107,28,4,3,2),(108,24,4,3,3),(109,25,4,3,5),(110,26,4,3,3),(111,27,4,3,4),(112,28,4,3,2);
 /*!40000 ALTER TABLE `answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,15 +107,15 @@ DROP TABLE IF EXISTS `event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `event` (
-  `Event_ID` int(11) NOT NULL,
-  `Event_Name` varchar(45) NOT NULL,
-  `Event_Location` varchar(45) NOT NULL,
-  `event_date` date NOT NULL,
-  `is_closed` int(11) NOT NULL DEFAULT '1',
-  `is_archived` int(11) NOT NULL DEFAULT '0',
-  `markedfordelete` int(11) NOT NULL DEFAULT '0',
+  `Event_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Event_Name` varchar(45) DEFAULT NULL,
+  `Event_Location` varchar(45) DEFAULT NULL,
+  `event_date` date DEFAULT NULL,
+  `is_closed` int(11) DEFAULT '1',
+  `is_archived` int(11) DEFAULT '0',
+  `markedfordelete` int(11) DEFAULT '0',
   PRIMARY KEY (`Event_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +124,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (0,'222','lol','2017-02-15',1,0,0),(1,'PRU Life Praxis','Makati','2017-02-01',0,0,0),(2,'Sun Life Praxis','Makati','2017-02-01',1,0,0),(3,'Cafe Session','Makati','2017-02-02',0,0,0),(4,'lol','lol','2017-02-15',1,1,0),(5,'heh','heh','2017-02-15',1,1,0);
+INSERT INTO `event` VALUES (1,'wegqwet','1gag','2017-02-17',1,0,0);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,4 +245,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-16 12:51:44
+-- Dump completed on 2017-02-17 10:00:20
