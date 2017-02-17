@@ -102,7 +102,7 @@ class AdminController extends CI_Controller
     }
     private function eventsView(){
 
-        $data['events'] = $this->survey->queryAllEvents();
+        $data['events'] = $this->survey->queryNotArchivedEvents();
 
         $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
         $this->load->view('admin/a_navbar');

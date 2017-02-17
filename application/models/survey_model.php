@@ -73,6 +73,15 @@ class survey_model extends CI_Model
         return $query->result();
     }
 
+    function queryNotArchivedEvents(){
+        $this->db->select('*');
+        $this->db->from(TABLE_EVENT);
+        $this->db->where(COLUMN_IS_ARCHIVED,0);
+        $this->db->order_by(COLUMN_EVENT_ID);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function queryQuestionsBySetID($id){
         $this->db->select("*");
         $this->db->from(TABLE_QUESTIONS);
