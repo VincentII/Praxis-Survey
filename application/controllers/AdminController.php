@@ -197,13 +197,14 @@ class AdminController extends CI_Controller
 
         $getData['date'] = date('Y-m-d', strtotime(str_replace('-', '/', $getData['date'])));
 
-        $getData['isClosed'] = ($getData['isClosed']) ? '1' : '0';
+        $closed = $this->input->get('isClosed')=='true'?1:0;
 
-        $this->admin->insertEvent($getData['name'],$getData['date'],$getData['location'],$getData['isClosed']);
+        $this->admin->insertEvent($getData['name'],$getData['date'],$getData['location'],$closed);
+
 
         $data = array(
             'status' => 'success',
-            'message' => 'Successfully added '.$getData["name"].' !'
+            'message' => 'Successfully added '.$getData["name"].'!'.$this->input->get('isClosed').$closed
         );
 
         echo json_encode($data);

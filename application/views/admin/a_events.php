@@ -32,6 +32,9 @@
             toastr.error("Location given is Invalid","Error");
             return;
         }
+
+
+
         $.ajax({
             url: '<?php echo base_url('admin/' . ADMIN_SUBMIT_EVENT) ?>',
             type: 'GET',
