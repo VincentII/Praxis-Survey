@@ -40,10 +40,13 @@ class QuestionsController extends CI_Controller
     public function linkSurvey($url){
         $data = $this->survey->queryURLbyURL($url);
 
-        $_SESSION['eventID'] = intval($data['Event_ID']);
-        $_SESSION['setID'] = intval($data['Event_ID']);
+        if($data!=null) {
+            $_SESSION['eventID'] = intval($data['Event_ID']);
+            $_SESSION['setID'] = intval($data['Event_ID']);
 
-        $this->loadSurvey();
+            $this->loadSurvey();
+        }
+        else redirect("index.html");
     }
 
 
@@ -77,7 +80,7 @@ class QuestionsController extends CI_Controller
         );
 
 
-            $this->survey->insertComment($_SESSION['setID'],$_SESSION['eventID'],$getData['comment']);
+        $this->survey->insertComment($_SESSION['setID'],$_SESSION['eventID'],$getData['comment']);
 
 
         $data = array(
