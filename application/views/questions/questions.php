@@ -17,7 +17,6 @@
     $(document).on('ready', function(){
         $questions = <?php echo json_encode($questions)?>;
         console.log($questions);
-        
 
 
         $('.card-container').scroll(function(){
@@ -50,10 +49,19 @@
                 }else{
                     $('.down-button').css('visibility','visible');
                 }
+//                TODO: move
 
-               $currCard = activeArray[activeArray.length-1];
+                $currCard = activeArray[activeArray.length-1];
                 console.log($currCard);
 
+              if($currCard != $('li').last().attr('id')){
+                  $('#next_button').prop('disabled',false);
+//                  console.log("down should be enabled");
+              }
+              if(($currCard == $('li').last().attr('id')) && ($('#star'+($questionIndex-1)).val() < 1)){
+                  $('#next_button').prop('disabled',true); //card with id does not have rated stars
+//                  console.log("down should be disabled");
+              }
             });
 //            FIXME: Is there a better solution for this?^^^
         }); //end of scroll function
@@ -92,8 +100,7 @@
                 '</li>';
 
             $('#questionList').append($submitButton);
-            //TODO: Append Submit Card Here
-            $('#next_button').prop('disabled',true);
+//            $('#next_button').prop('disabled',true); //FIXME: disabled down button bug
             $questionIndex++;
 //            ^^^FIXME: better implementation of preventing the additional submit button bug?
         }
@@ -137,14 +144,11 @@
                     5: 'text-success'
                 }
             });
-            $('#next_button').prop('disabled',true);
+//            $('#next_button').prop('disabled',true); //FIXME: disabled down button bug
         }
     }//end of getNextQuestion
 
     function updateStar(star){
-
-
-
         if($questionIndex > $answerCount && $('#'+star).attr('id')==$('#star'+($questionIndex-1)).attr('id')){
             $answerCount++;
             updateProgressBar();
@@ -154,11 +158,8 @@
             $('#' + star).rating('update', 1);
         }
         if($('#star'+($questionIndex-1)).val() >= 1 && !($questionIndex>$questions.length)) {
-            $('#next_button').prop('disabled', false);
+            $('#next_button').prop('disabled', false); //FIXME: disabled down button bug
         }
-//        else
-//            $('#next_button').prop('disabled',true);
-
     }
 
     function updateProgressBar() {
