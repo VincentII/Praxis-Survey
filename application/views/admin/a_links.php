@@ -21,11 +21,11 @@
             toastr.error("URL given is Invalid","Error");
             return;
         }
-        if(addData[1]=="0"){
+        if(addData[1]==null){
             toastr.error("Please choose an event","Error");
             return;
         }
-        if(addData[2]=="0"){
+        if(addData[2]==null){
             toastr.error("Please choose a question set","Error");
             return;
         }
@@ -67,7 +67,7 @@
     function reloadPage() {
         <?php
         // TODO Might be better if it didn't have to reload page. Clear table data then query through database?
-        echo 'window.location = "'. site_url("admin/".ADMIN_EVENTS) .'";';
+        echo 'window.location = "'. site_url("admin/".ADMIN_LINKS) .'";';
         ?>
     }
     
