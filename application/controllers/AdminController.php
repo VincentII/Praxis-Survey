@@ -237,7 +237,7 @@ class AdminController extends CI_Controller
             'setID' => $this->input->get('setID'),
         );
 
-        if(!$this->admin->isExisting($getData['url'])) {
+        if(!$this->admin->isExistingURL($getData['url'])) {
             $this->admin->insertURL($getData['url'], $getData['eventID'], $getData['setID']);
             $data = array(
                 'status' => 'success',

@@ -85,7 +85,7 @@ class QuestionsController extends CI_Controller
 
         $data = array(
             'status' => 'success',
-            'message' => 'Comment Submitted!!'
+            'message' => 'Comment Submitted!'
         );
 
 
