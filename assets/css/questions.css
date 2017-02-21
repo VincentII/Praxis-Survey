@@ -53,7 +53,6 @@
         /*margin: 0;*/
     /*}*/
 
-    /*!*FIXME: For testing*!*/
     /*li.active{*/
         /*background-color: #336699;*/
     /*}*/
@@ -82,7 +81,6 @@
         /*bottom: 0;*/
         /*width: 100vw;*/
     /*}*/
-    /*!*FIXME:There's gotta be a better way of sizing*!*/
 
     /*footer{*/
         /*position: fixed;*/
@@ -129,6 +127,7 @@
     display: inherit;
     flex: 1;
     overflow-y: auto;
+
 }
 
 .btn{
@@ -149,6 +148,13 @@
 li.card{
     height: 77vh;
     list-style: none;
+}
+
+.card__content{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .card__text-area{

@@ -280,7 +280,10 @@
 <!--        <button class="btn btn--prev">prev button</button>-->
         <ul class="card-list">
             <li class="card active">
-                <div class="card__text-area">I am the start card</div>
+                <div class="card__content">
+                    <div class="content__text-area">I am the start card</div>
+                    <i class="fa fa-hand-pointer-o fa-4x" aria-hidden="true"></i>
+                </div>
             </li>
         </ul>
 <!--        <button class="btn btn--next">next button</button>-->
