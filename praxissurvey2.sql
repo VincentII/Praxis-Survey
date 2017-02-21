@@ -58,7 +58,11 @@ CREATE TABLE `answers` (
   `Set_ID` int(11) DEFAULT NULL,
   `Event_ID` int(11) DEFAULT NULL,
   `Question_ans` int(11) DEFAULT NULL,
-  PRIMARY KEY (`Answer_ID`)
+  PRIMARY KEY (`Answer_ID`),
+  KEY `fkset_idx` (`Set_ID`),
+  KEY `fkevent_idx` (`Event_ID`),
+  CONSTRAINT `fkevent` FOREIGN KEY (`Event_ID`) REFERENCES `event` (`Event_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fkset` FOREIGN KEY (`Set_ID`) REFERENCES `question_set` (`Set_ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -115,7 +119,7 @@ CREATE TABLE `event` (
   `is_archived` int(11) DEFAULT '0',
   `markedfordelete` int(11) DEFAULT '0',
   PRIMARY KEY (`Event_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +128,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (1,'wegqwet','1gag','2017-02-17',1,0,0);
+INSERT INTO `event` VALUES (1,'wegqwet','1gag','2017-02-17',1,0,0),(2,'qrqfqwf','2qr','2017-02-17',1,0,0);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -245,4 +249,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-17 10:00:20
+-- Dump completed on 2017-02-17 10:19:22

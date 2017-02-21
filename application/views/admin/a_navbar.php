@@ -33,6 +33,7 @@
                         Manage<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li id="add_button"><a href="<?=site_url("admin/" . ADMIN_EVENTS)?>">Manage Events</a></li>
+                        <li id="add_button"><a href="<?=site_url("admin/" . ADMIN_LINKS)?>">Manage Links</a></li>
                     </ul>
                 </li>
 

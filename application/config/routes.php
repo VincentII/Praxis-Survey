@@ -66,6 +66,7 @@ $route['questions'] = 'QuestionsController';
 $route['questions/loadSurveyQuestions'] = 'QuestionsController/loadSurveyQuestions';
 $route['questions/submitAnswers'] = 'QuestionsController/submitAnswers';
 $route['questions/submitComment'] = 'QuestionsController/submitComment';
+$route['survey/(:any)'] = 'QuestionsController/linkSurvey/$1';
 
 /*Admin*/
 $route['admin'] = 'AdminController';

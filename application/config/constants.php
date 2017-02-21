@@ -93,6 +93,7 @@ define("TABLE_EVENT", "event");
 define("TABLE_QUESTION_SET", "question_set");
 define("TABLE_QUESTIONS", "questions");
 define("TABLE_USER", "user");
+define("TABLE_URL", "url");
 /*end TABLES/
 
 /*Admin COLUMNS*/
@@ -141,6 +142,9 @@ define("ADMIN_SIGN_IN", "sign_in");
 define("ADMIN_SIGN_OUT", "sign_out");
 define("ADMIN_REPORTS", "reports");
 define("ADMIN_EVENTS", "events");
+define("ADMIN_LINKS", "links");
+
 
 define("ADMIN_GET_REPORTS", "getReports");
 define("ADMIN_SUBMIT_EVENT", "submitEvent");
+define("ADMIN_SUBMIT_URL", "submitURL");

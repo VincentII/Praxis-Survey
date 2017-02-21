@@ -1,50 +1,43 @@
 <script>
 
     $(document).on('ready', function(){
-        $('.datepicker').datepicker({
-            format: 'mm/dd/yyyy',
-            startDate: '0d'
-        });
+
     });
 
 
-    function submitEvent($tableID,$button) {
+    function submitURL($tableID,$button) {
         var table = document.getElementById($tableID);
-        var cells = 4;
+        var cells = 3;
 
         var addData = [];
-        for (i = 0; i < cells - 1; i++) {
-            addData.push(table.rows[1].cells[i].childNodes[0].value)
-        }
-        addData.push(table.rows[1].cells[cells - 1].childNodes[0].checked)
+
+        addData.push(table.rows[1].cells[0].childNodes[0].value);
+        addData.push($('#form_submit_event').val());
+        addData.push($('#form_submit_set').val());
+
         console.log(addData);
 
-
         if(!isValidString(addData[0])){
-            toastr.error("Name given is Invalid","Error");
+            toastr.error("URL given is Invalid","Error");
             return;
         }
-        if(!isValidDate(addData[1])){
-            toastr.error("Date given is Invalid","Error");
+        if(addData[1]=="0"){
+            toastr.error("Please choose an event","Error");
             return;
         }
-        if(!isValidString(addData[2])){
-            toastr.error("Location given is Invalid","Error");
+        if(addData[2]=="0"){
+            toastr.error("Please choose a question set","Error");
             return;
         }
-
-
 
         $.ajax({
-            url: '<?php echo base_url('admin/' . ADMIN_SUBMIT_EVENT) ?>',
+            url: '<?php echo base_url('admin/' . ADMIN_SUBMIT_URL) ?>',
             type: 'GET',
             dataType: 'json',
             data: {
-                name: addData[0],
-                date: addData[1],
-                location: addData[2],
-                isClosed: !addData[3]
-
+                url: addData[0],
+                eventID: addData[1],
+                setID: addData[2]
             }
         })
             .done(function (result) {
@@ -90,7 +83,7 @@
 
 <div class="col-md-2 col-md-offset-2" >
         <div class = "form-group col-md-2">
-        <b>Events</b>
+        <b>Links</b>
         </div>
 </div>
     <div id="panels" class = "col-md-8 col-md-offset-2">
@@ -100,13 +93,13 @@
                 <div class="panel-heading" role="tab" id="collapseListGroupHeadingMod">
                     <h4 class="panel-title clearfix">
                         <a role="button" class="col-md-6" data-toggle="collapse" href="#collapseListGroupMod" aria-expanded="true" aria-controls="collapseListGroupMod">
-                            List of Events
+                            List of Links
                         </a>
 
                         <div id = "eventTable_buttons">
 
                         <span class = "col-md-3">
-                            <button type ="button"data-toggle="modal" data-target="#AddNewEventModal" class="btn btn-default btn-block  col-md-2"> +Add Links</button>
+                            <button type ="button"data-toggle="modal" data-target="#AddNewEventModal" class="btn btn-default btn-block  col-md-2"> +Add Event</button>
 
                                   </span>
                             <span class = "col-md-3">
@@ -123,9 +116,10 @@
                                 <table class="table table-hover" id="eventTable">
                                     <thead>
                                     <tr>
-                                        <th>Link</th>
                                         <th>Event Name</th>
-                                        <th>Question Set</th>
+                                        <th>Date</th>
+                                        <th>Location</th>
+                                        <th>Open</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -176,10 +170,9 @@
                     <table class="table table-hover" id="add_table" name="">  <!-- TODO: somehow insert table id in name for add ? -->
                         <thead>
                         <tr>
+                            <th>URL</th>
                             <th>Event Name</th>
-                            <th>Date</th>
-                            <th>Location</th>
-                            <th>Open</th>
+                            <th>Question Set</th>
 
                         </tr>
                         </thead>
@@ -187,10 +180,24 @@
                         <tbody>
 
                         <tr>
-                            <td><input type="text" class="form-control" placeholder="Enter event name"></td>
-                            <td><input type="text" class="form-control datepicker" data-provide="datepicker" placeholder="Enter date" value=<?php echo date('m/d/Y'); ?>></td>
-                            <td><input type="text" class="form-control" placeholder="Enter Location"></td>
-                            <td><input type="checkbox" value=""></td>
+                            <td><input type="text" class="form-control" placeholder="Enter URL"></td>
+                            <td>
+                                <select class="form-control" id="form_submit_event" name="form-submit-event"">
+                                <option value="0" selected disabled>Choose an Event...</option>
+                                <?php foreach($events as $row):?>
+                                    <option value="<?=$row->Event_ID?>"><?=$row->Event_Name?></option>
+                                <?php endforeach;?>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control" id="form_submit_set" name="form-submit-set"">
+                                <option value="0" selected disabled>Choose a Question Set...</option>
+                                <?php foreach($questionSets as $row):?>
+                                    <option value="<?=$row->Set_ID?>"><?=$row->Question_Set_Description?></option>
+                                <?php endforeach;?>
+                                </select>
+                            </td>
+
 
                         </tr>
                         </tbody>
@@ -199,7 +206,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success" id="add-event-btn" onclick="submitEvent('add_table',this.id)">Confirm</button>
+                    <button type="button" class="btn btn-success" id="add-event-btn" onclick="submitURL('add_table',this.id)">Confirm</button>
                 </div>
             </form>
         </div>
