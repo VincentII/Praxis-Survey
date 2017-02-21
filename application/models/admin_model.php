@@ -84,4 +84,13 @@ class admin_model extends CI_Model
 
     }
 
+    function isExistingURL($url){
+        $this->db->select('*');
+        $this->db->from(TABLE_URL);
+        $this->db->where(COLUMN_URL,$url);
+        $query = $this->db->get();
+        return count($query->result())>=1;
+
+    }
+
 }

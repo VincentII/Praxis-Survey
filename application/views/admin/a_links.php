@@ -51,6 +51,9 @@
                         reloadPage();
                     }, delay);
                 }
+                else{
+                    toastr.error(result['message'], "Error");
+                }
             })
             .fail(function () {
                 console.log("fail");
