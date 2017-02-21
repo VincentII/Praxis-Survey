@@ -13,6 +13,7 @@
     var $answerCount = 0;
     var activeArray = [];
     var $currCard;
+    var cardContainerHeight = $('.card-container').outerHeight()+1;
 
     $(document).on('ready', function(){
         $questions = <?php echo json_encode($questions)?>;
@@ -20,7 +21,7 @@
 
 
         $('.card-container').scroll(function(){
-            var winTop = $(window).scrollTop();
+            var winTop = $('.card-container').scrollTop()+5;
             var $lis = $('li');
 
             var top = $.grep($lis, function(item){
@@ -71,14 +72,24 @@
     function clickDownButton() {
 //      if the current card is the last list element, load the next question,
 //          otherwise go to the next card
-//        TODO: fix disabled down button
 
         if($currCard == $('li').last().attr('id')){
             getNextQuestion();
         } else {
             console.log("NEXT NEXT NEXT");
             console.log("I will go to " + $("#" + $currCard).next('li').attr('id'));
+//            TODO: something something href next element
+            scrollTo($("#" + $currCard).next('li').attr('id'));
         }
+    }
+
+
+    function scrollTo(id){
+        console.log("scrolling to " + id);
+        var elemTop = $("#" + id).position().top;
+        console.log(elemTop);
+//        FIXME: elemTop gets the exact same offset regardless of id whyyyyyyy check css etc
+        $('.card-container').scrollTop(elemTop);
     }
 
 
@@ -240,28 +251,45 @@
 </script>
 
 <!------------------------------------------HTML----------------------------------------------------->
-<!--TODO: fix this before it gets too messy URGENT use BEM-->
-<!--TODO: disable down button after last question has been reached-->
 <!--TODO: change color of todos-->
 
-<div class="main">
-    <div class="main-card">
-        <button class="up-button">up button</button>
-        <div class="card-container">
-            <ul class="card-list" id="questionList">
-                <li class="list-element" id="start">
-                    <p>I am the start card</p>
-                </li>
-            </ul>
-        </div>
-        <button class="down-button" id='next_button' onclick="clickDownButton()">down button</button>
+<!--<div class="main">-->
+<!--    <div class="main-card">-->
+<!--        <button class="up-button">up button</button>-->
+<!--        <div class="card-container">-->
+<!--            <ul class="card-list" id="questionList">-->
+<!--                <li class="list-element" id="start">-->
+<!--                    <p>I am the start card</p>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <button class="down-button" id='next_button' onclick="clickDownButton()">down button</button>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<footer>-->
+<!--    <div class="footer-progBar">-->
+<!--        <div class="progBar-child">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="footer-copyright">this is the footer and copyright info go here</div>-->
+<!--</footer>-->
+
+<div class="container" style="padding-left: 0px; padding-right: 0px;">
+    <!--main area where background will go if ever-->
+    <div class="card-container">
+<!--        <button class="btn btn--prev">prev button</button>-->
+        <ul class="card-list">
+            <li class="card active">
+                <div class="card__text-area">I am the start card</div>
+            </li>
+        </ul>
+<!--        <button class="btn btn--next">next button</button>-->
     </div>
 </div>
 <footer>
-    <div class="footer-progBar">
-        <div class="progBar-child">
-        </div>
+    <div class="footer__progress-bar">footer
     </div>
-    <div class="footer-copyright">this is the footer and copyright info go here</div>
+    <div class="footer__copyright">
+        copyright
+    </div>
 </footer>
-

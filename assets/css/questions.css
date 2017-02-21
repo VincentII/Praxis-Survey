@@ -1,124 +1,186 @@
-@media only screen and (max-device-width: 1024px){
+/*@media only screen and (max-device-width: 1024px){*/
     *{border: 1px solid red;}
 
-    .main{
-        border-style: solid;
-        position: relative;
-        width: 100vw;
-        height: 75vh;
-        display: flex;
-    }
+    /*.main{*/
+        /*border-style: solid;*/
+        /*position: relative;*/
+        /*width: 100vw;*/
+        /*height: 75vh;*/
+        /*display: flex;*/
+    /*}*/
 
-    /*main card area where buttons are*/
-    .main-card{
-        height: 75vh;
-        width: 100%;
-        position: absolute;
-        align-items: stretch;
-    }
+    /*!*main card area where buttons are*!*/
+    /*.main-card{*/
+        /*height: 75vh;*/
+        /*width: 100%;*/
+        /*position: absolute;*/
+        /*align-items: stretch;*/
+    /*}*/
 
-    /*scrollable section*/
-    .card-container{
-        width: 100%;
-        position: absolute;
-        height: 65vh;
-        overflow-y: auto;
-    }
+    /*!*scrollable section*!*/
+    /*.card-container{*/
+        /*width: 100%;*/
+        /*position: absolute;*/
+        /*height: 65vh;*/
+        /*overflow-y: auto;*/
+    /*}*/
 
-    .up-button{
-        border-style: solid;
-        width: 100%;
-        visibility: hidden;
-    }
+    /*.up-button{*/
+        /*border-style: solid;*/
+        /*width: 100%;*/
+        /*visibility: hidden;*/
+    /*}*/
 
-    .down-button{
-        width: 100%;
-        position: absolute;
-        bottom: 0;
+    /*.down-button{*/
+        /*width: 100%;*/
+        /*position: absolute;*/
+        /*bottom: 0;*/
 
-    }
+    /*}*/
 
-    ul{
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
+    /*ul{*/
+        /*list-style-type: none;*/
+        /*padding: 0;*/
+        /*margin: 0;*/
+    /*}*/
 
-    li{
-        position: relative;
-        width: 100%;
-        height: 65vh;
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
+    /*li{*/
+        /*!*position: relative;*!*/
+        /*width: 100%;*/
+        /*height: 65vh;*/
+        /*list-style-type: none;*/
+        /*padding: 0;*/
+        /*margin: 0;*/
+    /*}*/
 
-    /*FIXME: For testing*/
-    li.active{
-        background-color: #336699;
-    }
+    /*!*FIXME: For testing*!*/
+    /*li.active{*/
+        /*background-color: #336699;*/
+    /*}*/
 
-    /*contains question text and rating stars*/
-    .question{
-    }
+    /*!*contains question text and rating stars*!*/
+    /*.question{*/
+    /*}*/
 
-    p .question-text{
-        border-style: solid;
-    }
+    /*p .question-text{*/
+        /*border-style: solid;*/
+    /*}*/
 
-    .question-stars{
-        border-style: solid;
-    }
+    /*.question-stars{*/
+        /*border-style: solid;*/
+    /*}*/
 
-    .comment-area{
-        overflow-y: auto;
-        resize: none;
-    }
+    /*.comment-area{*/
+        /*overflow-y: auto;*/
+        /*resize: none;*/
+    /*}*/
 
-    /*area for progress bar*/
-    .main-progBar{
-        border-style: solid;
-        position: absolute;
-        bottom: 0;
-        width: 100vw;
-    }
-    /*FIXME:There's gotta be a better way of sizing*/
+    /*!*area for progress bar*!*/
+    /*.main-progBar{*/
+        /*border-style: solid;*/
+        /*position: absolute;*/
+        /*bottom: 0;*/
+        /*width: 100vw;*/
+    /*}*/
+    /*!*FIXME:There's gotta be a better way of sizing*!*/
 
-    footer{
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 25vh;
-    }
+    /*footer{*/
+        /*position: fixed;*/
+        /*bottom: 0;*/
+        /*left: 0;*/
+        /*right: 0;*/
+        /*height: 25vh;*/
+    /*}*/
 
-    /*TODO: adjust size of progBar later on*/
-    .footer-progBar{
-        position: absolute;
-        height: 5vh;
-    }
-    .progBar-child{
-        position: absolute;
-        height: inherit;
-        width: 0vw;
-        left: 0;
-        background-color: #080808;
-        -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
-        transition: width 2s;
+    /*.footer-progBar{*/
+        /*position: absolute;*/
+        /*height: 5vh;*/
+    /*}*/
+    /*.progBar-child{*/
+        /*position: absolute;*/
+        /*height: inherit;*/
+        /*width: 0vw;*/
+        /*left: 0;*/
+        /*background-color: #080808;*/
+        /*-webkit-transition: width 2s; !* For Safari 3.1 to 6.0 *!*/
+        /*transition: width 2s;*/
 
-    }
+    /*}*/
 
-    .footer-copyright{
-        position: absolute;
-        background-color: #127094;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 20vh;
-    }
+    /*.footer-copyright{*/
+        /*position: absolute;*/
+        /*background-color: #127094;*/
+        /*bottom: 0;*/
+        /*left: 0;*/
+        /*right: 0;*/
+        /*height: 20vh;*/
+    /*}*/
 
 
+.container{
+    width: 100%;
+    height: 77vh;
+    display: flex;
+    flex-flow: column;
 }
+
+/*space for cards, scrollable*/
+.card-container{
+    display: inherit;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.btn{
+    visibility: hidden;
+}
+/*TODO: have buttons sit on top of card-list*/
+
+.btn--prev{}
+
+.btn--next{}
+
+.card-list{
+    flex: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+li.card{
+    height: 77vh;
+    list-style: none;
+}
+
+.card__text-area{
+    text-align: center;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 23vh;
+}
+
+.footer__progress-bar{
+    position: absolute;
+    width: 100%;
+}
+
+.footer__copyright{
+    position: absolute;
+    background-color: #127094;
+    color: white;
+    text-align: center;
+    padding: 1vh;
+    width: 100%;
+    height: 20vh;
+    bottom: 0;
+    left: 0;
+}
+
+/*}*/
 
 
 
