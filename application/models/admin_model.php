@@ -56,6 +56,13 @@ class admin_model extends CI_Model
         return $this->db->query($sql, array($questionID))->row_array();
     }
 
+    function queryURLWithEventAndSet(){
+        $sql = "SELECT ".COLUMN_URL_ID.", ".COLUMN_URL.", url.".COLUMN_EVENT_ID.", url.".COLUMN_SET_ID." , s.".COLUMN_QUESTION_SET_DESCRIPTION.", e.".COLUMN_EVENT_NAME." 
+                FROM ".TABLE_URL." as url, ".TABLE_EVENT." as e, ".TABLE_QUESTION_SET." as s
+                WHERE e.".COLUMN_EVENT_ID." = url.".COLUMN_EVENT_ID." AND s.".COLUMN_SET_ID." = url.".COLUMN_SET_ID."";
+        return $this->db->query($sql)->result();
+    }
+
     function insertEvent($name,$date,$location,$isClosed){
         $insertEventData=array(
             COLUMN_EVENT_NAME => $name,

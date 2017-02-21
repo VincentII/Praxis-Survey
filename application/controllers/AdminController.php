@@ -120,6 +120,7 @@ class AdminController extends CI_Controller
 
         $data['events'] = $this->survey->queryAllEvents();
         $data['questionSets'] = $this->survey->queryAllQuestionSets();
+        $data['links'] = $this->admin->queryURLWithEventAndSet();
 
         $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
         $this->load->view('admin/a_navbar');

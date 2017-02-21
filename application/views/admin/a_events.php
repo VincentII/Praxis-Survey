@@ -106,7 +106,7 @@
                         <div id = "eventTable_buttons">
 
                         <span class = "col-md-3">
-                            <button type ="button"data-toggle="modal" data-target="#AddNewEventModal" class="btn btn-default btn-block  col-md-2"> +Add Links</button>
+                            <button type ="button"data-toggle="modal" data-target="#AddNewEventModal" class="btn btn-default btn-block  col-md-2"> +Add Event</button>
 
                                   </span>
                             <span class = "col-md-3">
@@ -123,9 +123,10 @@
                                 <table class="table table-hover" id="eventTable">
                                     <thead>
                                     <tr>
-                                        <th>Link</th>
                                         <th>Event Name</th>
-                                        <th>Question Set</th>
+                                        <th>Date</th>
+                                        <th>Location</th>
+                                        <th>Open</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -169,7 +170,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Add Event/s</h4>
+                <h4 class="modal-title">Add Event</h4>
             </div>
             <form>
                 <div class="modal-body clearfix">
