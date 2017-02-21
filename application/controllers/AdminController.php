@@ -120,6 +120,7 @@ class AdminController extends CI_Controller
 
         $data['events'] = $this->survey->queryAllEvents();
         $data['questionSets'] = $this->survey->queryAllQuestionSets();
+        $data['links'] = $this->admin->queryURLWithEventAndSet();
 
         $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
         $this->load->view('admin/a_navbar');
@@ -236,16 +237,21 @@ class AdminController extends CI_Controller
             'setID' => $this->input->get('setID'),
         );
 
-       $this->admin->insertURL($getData['url'],$getData['eventID'],$getData['setID']);
+        if(!$this->admin->isExistingURL($getData['url'])) {
+            $this->admin->insertURL($getData['url'], $getData['eventID'], $getData['setID']);
+            $data = array(
+                'status' => 'success',
+                'message' => 'Successfully added ' . $getData["url"] . '!'
+            );
+        }
+        else{
 
-
-        $data = array(
-            'status' => 'success',
-            'message' => 'Successfully added '.$getData["url"].'!'
-        );
-
+            $data = array(
+                'status' => 'fail',
+                'message' => $getData["url"] . ' link already exists, use another name!'
+            );
+        }
         echo json_encode($data);
-
 
     }
 

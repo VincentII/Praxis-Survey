@@ -21,11 +21,11 @@
             toastr.error("URL given is Invalid","Error");
             return;
         }
-        if(addData[1]=="0"){
+        if(addData[1]==null){
             toastr.error("Please choose an event","Error");
             return;
         }
-        if(addData[2]=="0"){
+        if(addData[2]==null){
             toastr.error("Please choose a question set","Error");
             return;
         }
@@ -51,6 +51,9 @@
                         reloadPage();
                     }, delay);
                 }
+                else{
+                    toastr.error(result['message'], "Error");
+                }
             })
             .fail(function () {
                 console.log("fail");
@@ -64,7 +67,7 @@
     function reloadPage() {
         <?php
         // TODO Might be better if it didn't have to reload page. Clear table data then query through database?
-        echo 'window.location = "'. site_url("admin/".ADMIN_EVENTS) .'";';
+        echo 'window.location = "'. site_url("admin/".ADMIN_LINKS) .'";';
         ?>
     }
     
@@ -99,11 +102,11 @@
                         <div id = "eventTable_buttons">
 
                         <span class = "col-md-3">
-                            <button type ="button"data-toggle="modal" data-target="#AddNewEventModal" class="btn btn-default btn-block  col-md-2"> +Add Event</button>
+                            <button type ="button"data-toggle="modal" data-target="#AddNewEventModal" class="btn btn-default btn-block  col-md-2"> +Add Link</button>
 
                                   </span>
                             <span class = "col-md-3">
-                               <button class="btn btn-default btn-block col-md-2 col-md-offset-0" type="button" onclick="changeViewToEdit('modtable','modtable_buttons', 'AddNewModeratorModal')">Edit Events</button>
+                               <button class="btn btn-default btn-block col-md-2 col-md-offset-0" type="button" onclick="changeViewToEdit('modtable','modtable_buttons', 'AddNewModeratorModal')">Edit Links</button>
                          </span>
                         </div>
 
@@ -116,29 +119,20 @@
                                 <table class="table table-hover" id="eventTable">
                                     <thead>
                                     <tr>
-                                        <th>Event Name</th>
-                                        <th>Date</th>
-                                        <th>Location</th>
-                                        <th>Open</th>
+                                        <th>URL</th>
+                                        <th>Event</th>
+                                        <th>Question Set</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
 
-                                    <?php foreach($events as $event):?>
-                                        <tr id="<?=$event->Event_ID?>">
-                                            <td><?=$event->Event_Name?></td>
-                                            <td><?php
-                                                $time = strtotime($event->event_date);
-                                                echo date("M d, Y", $time);
-                                                ?></td>
-                                            <td><?=$event->Event_Location?></td>
-                                            <?php if($event->is_closed==0): ?>
-                                            <td>Yes</td>
-                                            <?php else:?>
-                                            <td>No</td>
-                                            <?php endif;?>
+                                    <?php foreach($links as $link):?>
+                                        <tr id="<?=$link->url_id?>">
+                                            <td><?=$link->url?></td>
+                                            <td><?=$link->event_name?></td>
+                                            <td><?=$link->question_set_description?></td>
                                             <td></td>
                                         </tr>
                                     <?php endforeach;?>
@@ -163,7 +157,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Add Event/s</h4>
+                <h4 class="modal-title">Add Link</h4>
             </div>
             <form>
                 <div class="modal-body clearfix">
