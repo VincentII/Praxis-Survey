@@ -122,11 +122,11 @@
     flex-flow: column;
 }
 
-/*space for cards, scrollable*/
+/*space for cards, buttons go on top of cards and stay put regardless of scroll*/
 .card-container{
     display: inherit;
     flex: 1;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
 
 }
 
@@ -139,11 +139,14 @@
 
 .btn--next{}
 
+/*scrollable section*/
 ul.card-list{
     flex: inherit;
     padding: 0;
     margin: 0;
     border-color: blue;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 li.card{
