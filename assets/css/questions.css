@@ -167,12 +167,12 @@ li.card{
     text-align: center;
 }
 
-.content--submit{
+.fa-hand-pointer-o{
     margin-top: 5vh;
 }
 
-.fa-hand-pointer-o{
-    margin-top: 5vh;
+.fa-repeat{
+    margin-top: 10vh;
 }
 
 footer{

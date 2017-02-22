@@ -283,13 +283,29 @@
             <li class="card active">
                 <div class="card__content">
                     <div class="content__text-area">TAP ANYWHERE <br>TO START THE <br>SURVEY</div>
-                    <i class="fa fa-hand-pointer-o fa-4x" aria-hidden="true"></i>
+                    <i class="fa fa-hand-pointer-o fa-4x"></i>
                 </div>
             </li>
             <li class="card">
                 <div class="card__content">
-                    <i class="fa fa-paper-plane-o fa-5x" aria-hidden="true"></i>
-                    <div class="content__text-area content--submit">SUBMIT</div>
+                    <i class="fa fa-paper-plane-o fa-5x"></i>
+                    <div class="content__text-area">SUBMIT</div>
+                </div>
+            </li>
+            <li class="card">
+                <div class="card__content">
+                    <img src="<?=base_url()?>/assets/img/thank.png">
+<!--                    TODO: convert png to svg-->
+                    <i class="fa fa-repeat fa-5x"></i>
+                    <div class="content__text-area">submit another response</div>
+                </div>
+            </li>
+            <li class="card">
+                <div class="card__content">
+                    <div class="content__text-area">OOPS!</div>
+                    <div class="content__text-area">Something went wrong. Please try again.</div>
+                    <i class="fa fa-refresh fa-5x fa-fw"></i>
+                    <div>try again</div>
                 </div>
             </li>
         </ul>
