@@ -40,6 +40,9 @@ class AdminController extends CI_Controller
                 case ADMIN_EVENTS:
                     $this->eventsView();
                     break;
+                case ADMIN_QUESTIONS:
+                    $this->questionsView();
+                    break;
                 case ADMIN_LINKS:
                     $this->linksView();
                     break;
@@ -51,6 +54,9 @@ class AdminController extends CI_Controller
                     break;
                 case ADMIN_SUBMIT_EVENT:
                     $this->submitEvent();
+                    break;
+                case ADMIN_SUBMIT_QUESTION_SET:
+                    $this->submitQuestionSet();
                     break;
                 case ADMIN_SUBMIT_URL:
                     $this->submitURL();
@@ -125,6 +131,16 @@ class AdminController extends CI_Controller
         $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
         $this->load->view('admin/a_navbar');
         $this->load->view('admin/a_links', $data); // $this->load->view('admin', $data); set to this if data is set
+        $this->load->view('admin/a_footer'); // include bootstrap 3 footer
+    }
+
+    private function questionsView(){
+
+        $data['questionSets'] = $this->survey->queryAllQuestionSets();
+
+        $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
+        $this->load->view('admin/a_navbar');
+        $this->load->view('admin/a_questions', $data); // $this->load->view('admin', $data); set to this if data is set
         $this->load->view('admin/a_footer'); // include bootstrap 3 footer
     }
 
@@ -251,6 +267,40 @@ class AdminController extends CI_Controller
                 'message' => $getData["url"] . ' link already exists, use another name!'
             );
         }
+        echo json_encode($data);
+
+    }
+
+    public function submitQuestionSet(){
+        $getData = array(
+            'questions' => $this->input->get('questions'),
+            'questionSet' => $this->input->get('questionSet')
+        );
+
+       // if(!$this->admin->isExistingQuestionSet($getData['questionSet'])) {
+            $this->admin->insertQuestionSet($getData['questionSet']);
+
+
+            $setID = $this->survey->queryQuestionSetByDescription($getData['questionSet']);
+          for($i = 0; $i<count($getData['questions']);$i++){
+               $this->admin->insertQuestion($getData['questions'][1],$getData['questions'][0],$setID['Set_ID']);
+              }
+
+          $data = array(
+                'status' => 'success',
+                'message' => 'Successfully added '.$getData['questionSet'].'!'.$setID['Set_ID'],
+                'check' => $getData['questions'][0]
+            );
+
+      //  }
+      /* else{
+
+            $data = array(
+                'status' => 'fail',
+                'message' => $getData["questionSet"] . ' question set already exists, use another name!'
+            );
+        }
+      */
         echo json_encode($data);
 
     }

@@ -138,13 +138,15 @@ define("COLUMN_URL_ID", "url_id");
 define("COLUMN_URL", "url");
 
 /*ADMIN*/
-define("ADMIN_SIGN_IN", "sign_in");
-define("ADMIN_SIGN_OUT", "sign_out");
-define("ADMIN_REPORTS", "reports");
-define("ADMIN_EVENTS", "events");
-define("ADMIN_LINKS", "links");
+define("ADMIN_SIGN_IN", "admin_sign_in");
+define("ADMIN_SIGN_OUT", "admin_sign_out");
+define("ADMIN_REPORTS", "admin_reports");
+define("ADMIN_EVENTS", "admin_events");
+define("ADMIN_QUESTIONS", "admin_questions");
+define("ADMIN_LINKS", "admin_links");
 
 
 define("ADMIN_GET_REPORTS", "getReports");
 define("ADMIN_SUBMIT_EVENT", "submitEvent");
 define("ADMIN_SUBMIT_URL", "submitURL");
+define("ADMIN_SUBMIT_QUESTION_SET", "submitQuestionsSet");
