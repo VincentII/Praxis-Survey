@@ -13,15 +13,15 @@
     var $answerCount = 0;
     var activeArray = [];
     var $currCard;
+    var cardContainerHeight = $('.card-container').outerHeight()+1;
 
     $(document).on('ready', function(){
         $questions = <?php echo json_encode($questions)?>;
         console.log($questions);
-        
 
 
         $('.card-container').scroll(function(){
-            var winTop = $(window).scrollTop();
+            var winTop = $('.card-container').scrollTop()+5;
             var $lis = $('li');
 
             var top = $.grep($lis, function(item){
@@ -50,10 +50,19 @@
                 }else{
                     $('.down-button').css('visibility','visible');
                 }
+//                TODO: move
 
-               $currCard = activeArray[activeArray.length-1];
+                $currCard = activeArray[activeArray.length-1];
                 console.log($currCard);
 
+              if($currCard != $('li').last().attr('id')){
+                  $('#next_button').prop('disabled',false);
+//                  console.log("down should be enabled");
+              }
+              if(($currCard == $('li').last().attr('id')) && ($('#star'+($questionIndex-1)).val() < 1)){
+                  $('#next_button').prop('disabled',true); //card with id does not have rated stars
+//                  console.log("down should be disabled");
+              }
             });
 //            FIXME: Is there a better solution for this?^^^
         }); //end of scroll function
@@ -63,14 +72,24 @@
     function clickDownButton() {
 //      if the current card is the last list element, load the next question,
 //          otherwise go to the next card
-//        TODO: fix disabled down button
 
         if($currCard == $('li').last().attr('id')){
             getNextQuestion();
         } else {
             console.log("NEXT NEXT NEXT");
             console.log("I will go to " + $("#" + $currCard).next('li').attr('id'));
+//            TODO: something something href next element
+            scrollTo($("#" + $currCard).next('li').attr('id'));
         }
+    }
+
+
+    function scrollTo(id){
+        console.log("scrolling to " + id);
+        var elemTop = $("#" + id).position().top;
+        console.log(elemTop);
+//        FIXME: elemTop gets the exact same offset regardless of id whyyyyyyy check css etc
+        $('.card-container').scrollTop(elemTop);
     }
 
 
@@ -92,8 +111,7 @@
                 '</li>';
 
             $('#questionList').append($submitButton);
-            //TODO: Append Submit Card Here
-            $('#next_button').prop('disabled',true);
+//            $('#next_button').prop('disabled',true); //FIXME: disabled down button bug
             $questionIndex++;
 //            ^^^FIXME: better implementation of preventing the additional submit button bug?
         }
@@ -137,14 +155,11 @@
                     5: 'text-success'
                 }
             });
-            $('#next_button').prop('disabled',true);
+//            $('#next_button').prop('disabled',true); //FIXME: disabled down button bug
         }
     }//end of getNextQuestion
 
     function updateStar(star){
-
-
-
         if($questionIndex > $answerCount && $('#'+star).attr('id')==$('#star'+($questionIndex-1)).attr('id')){
             $answerCount++;
             updateProgressBar();
@@ -154,11 +169,8 @@
             $('#' + star).rating('update', 1);
         }
         if($('#star'+($questionIndex-1)).val() >= 1 && !($questionIndex>$questions.length)) {
-            $('#next_button').prop('disabled', false);
+            $('#next_button').prop('disabled', false); //FIXME: disabled down button bug
         }
-//        else
-//            $('#next_button').prop('disabled',true);
-
     }
 
     function updateProgressBar() {
@@ -239,28 +251,79 @@
 </script>
 
 <!------------------------------------------HTML----------------------------------------------------->
-<!--TODO: fix this before it gets too messy URGENT use BEM-->
-<!--TODO: disable down button after last question has been reached-->
 <!--TODO: change color of todos-->
 
-<div class="main">
-    <div class="main-card">
-        <button class="up-button">up button</button>
-        <div class="card-container">
-            <ul class="card-list" id="questionList">
-                <li class="list-element" id="start">
-                    <p>I am the start card</p>
-                </li>
-            </ul>
-        </div>
-        <button class="down-button" id='next_button' onclick="clickDownButton()">down button</button>
+<!--<div class="main">-->
+<!--    <div class="main-card">-->
+<!--        <button class="up-button">up button</button>-->
+<!--        <div class="card-container">-->
+<!--            <ul class="card-list" id="questionList">-->
+<!--                <li class="list-element" id="start">-->
+<!--                    <p>I am the start card</p>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <button class="down-button" id='next_button' onclick="clickDownButton()">down button</button>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<footer>-->
+<!--    <div class="footer-progBar">-->
+<!--        <div class="progBar-child">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="footer-copyright">this is the footer and copyright info go here</div>-->
+<!--</footer>-->
+
+<div class="container" style="padding-left: 0px; padding-right: 0px;">
+    <!--main area where background will go if ever-->
+    <div class="card-container">
+<!--        <button class="btn btn--prev">prev button</button>-->
+        <ul class="card-list">
+<!--            FIXME: Doesn't expand to fit cards after the first one-->
+            <li class="card active">
+                <div class="card__content">
+                    <div class="content__text-area">TAP ANYWHERE <br>TO START THE <br>SURVEY</div>
+                    <i class="fa fa-hand-pointer-o fa-4x"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="card__content">
+                    <div class="content__text-area question">
+                        <img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">
+                        <h2 class="question__text">I think I did well in the game.</h2>
+                    </div>
+                </div>
+            </li>
+            <li class="card">
+                <div class="card__content">
+                    <i class="fa fa-paper-plane-o fa-5x"></i>
+                    <div class="content__text-area">SUBMIT</div>
+                </div>
+            </li>
+            <li class="card">
+                <div class="card__content">
+                    <img class="thank" src="<?=base_url()?>/assets/img/thank.png">
+<!--                    TODO: convert png to svg-->
+                    <i class="fa fa-repeat fa-5x"></i>
+                    <div class="content__text-area">submit another response</div>
+                </div>
+            </li>
+            <li class="card">
+                <div class="card__content">
+                    <img class="oops" src="<?=base_url()?>/assets/img/oops.png">
+                    <div class="content__text-area">Something went wrong. Please try again.</div>
+                    <i class="fa fa-refresh fa-5x fa-fw"></i>
+                    <div>try again</div>
+                </div>
+            </li>
+        </ul>
+<!--        <button class="btn btn--next">next button</button>-->
     </div>
 </div>
 <footer>
-    <div class="footer-progBar">
-        <div class="progBar-child">
-        </div>
+    <div class="footer__progress-bar">footer
     </div>
-    <div class="footer-copyright">this is the footer and copyright info go here</div>
+    <div class="footer__copyright">
+        copyright
+    </div>
 </footer>
-
