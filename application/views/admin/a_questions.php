@@ -120,12 +120,64 @@
         tableA.deleteRow(index);
     }
 
+
+    function loadViewModal($setID){
+        var $questionSet = <?=json_encode($questionSets)?>;
+        for(i=0;i<$questionSet.length;i++)
+            if($questionSet[i]['Set_ID']==$setID){
+            $("#modal_view_title").html($questionSet[i]['Question_Set_Description']);
+            break;
+            }
+
+            console.log($questionSet);
+
+        $.ajax({
+            url: '<?php echo base_url('admin/' . ADMIN_GET_QUESTIONS) ?>',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                setID:$setID
+            }
+        })
+            .done(function (result) {
+                console.log("success");
+                $finalQuestions = result['questions'];
+               // console.log($finalQuestions[1]);
+                if(result['status']=='success'){
+                    str ="";
+                    for(i=0; i<$finalQuestions.length;i++){
+                        str+="<tr>";
+                        str+="<td>"+$finalQuestions[i]['Question_Num']+"</td>";
+                        str+="<td>"+$finalQuestions[i]['Question_Act']+"</td>";
+                        str+="</tr>";
+                    }
+                    $("#view_modal_body").html(str);
+
+                }else
+                if(result['status']=='fail'){
+                    toastr.error(result['message'], "Error");
+                }
+
+            })
+            .fail(function () {
+                console.log("fail");
+
+                toastr.error("Something went wrong... Try again", "Error");
+            })
+            .always(function () {
+                console.log("complete");
+            });
+
+    }
+
     function reloadPage() {
         <?php
         // TODO Might be better if it didn't have to reload page. Clear table data then query through database?
         echo 'window.location = "'. site_url("admin/".ADMIN_QUESTIONS) .'";';
         ?>
     }
+
+
     
     function isValidString($s){
        return /[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($s);
@@ -186,7 +238,7 @@
                                     <?php foreach($questionSets as $set):?>
                                         <tr id="<?=$set->Set_ID?>">
                                             <td><?=$set->Question_Set_Description?></td>
-                                            <td> <button type ="button" class="btn btn-default btn-block  col-md-1" value=<?=$set->Set_ID?>>View</button></td>
+                                            <td> <button type ="button" data-toggle="modal" data-target="#ViewQuestionsModal" class="btn btn-default btn-block  col-md-1" onclick="loadViewModal(this.value)" value=<?=$set->Set_ID?>>View</button></td>
                                             <td></td>
                                             <td></td>
                                         </tr>
@@ -243,6 +295,38 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-success" name="add-event-btn" onclick="submitQuestionSet('add_table',this.name)">Confirm</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div id="ViewQuestionsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="modal_view_title">Question Set</h4>
+            </div>
+            <form>
+                <div class="modal-body clearfix">
+                    <table class="table table-hover" id="add_table" name="">  <!-- TODO: somehow insert table id in name for add ? -->
+                        <thead>
+                        <tr>
+                            <th>Q#</th>
+                            <th>Question</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="view_modal_body">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
                 </div>
             </form>
         </div>

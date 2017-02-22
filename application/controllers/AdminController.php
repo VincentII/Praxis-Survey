@@ -52,6 +52,9 @@ class AdminController extends CI_Controller
                 case ADMIN_GET_REPORTS:
                     $this->getReports();
                     break;
+                case ADMIN_GET_QUESTIONS:
+                    $this->getQuestions();
+                    break;
                 case ADMIN_SUBMIT_EVENT:
                     $this->submitEvent();
                     break;
@@ -151,7 +154,6 @@ class AdminController extends CI_Controller
     }
 
 
-
     public function getReports(){
 
         $eventID = $this->input->get('eventID');
@@ -218,6 +220,17 @@ class AdminController extends CI_Controller
             'status' => 'noReps',
             'message' => 'No Reports Available!'
         );
+        echo json_encode($data);
+    }
+
+    public function getQuestions(){
+        $setID= $this->input->get('setID');
+        $data = array(
+            'status' => 'success',
+       //     'message' => 'Successfully added!',
+            'questions' => $this->survey->queryQuestionsBySetID($setID)
+        );
+
         echo json_encode($data);
     }
 
