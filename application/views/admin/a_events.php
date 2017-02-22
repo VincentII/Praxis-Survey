@@ -67,6 +67,242 @@
             });
     }
 
+    function getTableDataWithID(tableID) {
+        var table = document.getElementById(tableID);
+
+        var jObject = [];
+        for (var i = 1; i < table.rows.length; i++)
+        {
+
+            var row = i - 1;
+            // create array within the array - 2nd dimension
+            //jObject[row] = [];
+
+            var valid = true;
+            var columns = [];
+            // columns within the row
+            //for (var j = 0; j < table.rows[i].cells.length; j++)
+
+
+            for (var j = 0; j < 3; j++)
+            {
+                //jObject[row][j] = table.rows[i].cells[j].childNodes[0].value;
+                //console.log(table.rows[i].cells[j].childNodes[0].data);
+                columns[j] = table.rows[i].cells[j].childNodes[0].data;
+
+            }
+
+            if(table.rows[i].cells[3].childNodes[0].data=="Yes")
+                columns[3] = true;
+            else
+                columns[3]=false;
+
+            //console.log(columns);
+            /*columns[1] = table.rows[i].cells[0].childNodes[0].value;
+             columns[2] = table.rows[i].cells[1].childNodes[0].value;*/
+
+            columns['id'] = table.rows[i].id;
+
+            if (valid) {
+                jObject[row] = columns;
+            }
+        }
+        return jObject;
+    }
+
+    function getChangesTableDataWithID(tableID) {
+        var table = document.getElementById(tableID);
+
+        var jObject = [];
+        for (var i = 1; i < table.rows.length; i++)
+        {
+
+            var row = i - 1;
+            // create array within the array - 2nd dimension
+            //jObject[row] = [];
+
+            var valid = true;
+            var columns = [];
+            // columns within the row
+            //for (var j = 0; j < table.rows[i].cells.length; j++)
+
+
+            for (var j = 0; j < 3; j++)
+            {
+                //jObject[row][j] = table.rows[i].cells[j].childNodes[0].value;
+                //console.log(table.rows[i].cells[j].childNodes[0].data);
+                columns[j] = table.rows[i].cells[j].childNodes[0].value;
+
+            }
+
+                columns[3]=table.rows[i].cells[3].childNodes[0].checked;
+
+            columns[4]=table.rows[i].cells[4].childNodes[0].checked;
+
+            //console.log(columns);
+            /*columns[1] = table.rows[i].cells[0].childNodes[0].value;
+             columns[2] = table.rows[i].cells[1].childNodes[0].value;*/
+
+            if (valid) {
+                jObject[row] = columns;
+            }
+        }
+        return jObject;
+    }
+
+    var initialTableData;
+
+    function changeViewToEdit(table, buttons, modal){
+        //console.log(table);
+        var tableA = document.getElementById(table);
+        var rows = tableA.rows;
+        var tID = table;
+        var bID = buttons;
+
+        console.log("TABLE ID = "+table);
+
+            initialTableData = getTableDataWithID(tID);
+        //console.log(initialTableData);
+
+        var funct = "submitChanges";
+
+        var buttonsStr =
+            "<span class = \"col-md-3\">"+
+            "<button class=\"btn  btn-danger btn-block col-md-2\" type=\"button\" onclick=\"changeViewToView('"+tID+"','"+bID+"', '"+modal+"')\">Cancel</button>"+
+            "</span>"+
+            "<span class = \"col-md-3\">"+
+            "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" >Save Changes</div>"+
+            "</span>";
+
+
+
+        document.getElementById(buttons).innerHTML = buttonsStr;
+
+        rows[0].insertCell(4).outerHTML = "<th>Archive</th>";
+
+        for(var i = 1; i < rows.length; i++) {
+            var cells = rows[i].cells;
+
+            rows[i].insertCell(4);
+
+            cells[0].id = "C0R" + i;
+            cells[1].id = "C1R" + i;
+            cells[2].id = "C2R" + i;
+            cells[3].id = "C3R" + i;
+            cells[4].id = "C4R" + i;
+
+            var curNameID = $(cells[0]).attr("id");
+            var curDateID = $(cells[1]).attr("id");
+            var curLocationID = $(cells[2]).attr("id");
+            var curOpenID = $(cells[3]).attr("id");
+            var curArchivedID = $(cells[4]).attr("id");
+
+
+            var curName = cells[0].innerHTML;
+            var curDate = cells[1].innerHTML;
+            var curLocation = cells[2].innerHTML;
+            var curOpen = cells[3].innerHTML;
+            var curArchived = cells[4].innerHTML;
+
+            //console.log(cells);
+
+
+            //console.log(curDeptID);
+            cells[0].innerHTML = "<input type=\"text\" class=\"form-control\" id=\"" + curNameID + "\"value=\"" + curName + "\">";
+            cells[1].innerHTML = '<input type="text" id="' + curDateID + '" class="form-control datepicker" data-provide="datepicker" placeholder="Enter date" value='+curDate+' ?></td>';
+            cells[2].innerHTML = "<input type=\"text\" class=\"form-control\" id=\"" + curLocationID + "\" value=\"" + curLocation + "\">";
+
+            var check="";
+            if(curOpen=="Yes"){
+                check = '<input type="checkbox" class="form-control" value="" checked>'
+            }else
+                check = '<input type="checkbox" class="form-control" value="">'
+
+            cells[3].innerHTML = check;
+            cells[4].innerHTML = '<input type="checkbox" class="form-control" value="">';
+        }
+
+
+    }
+
+
+    function getChangedData(newTableData) {
+        var changedData = [];
+        var changedDataIndex = 0;
+
+        console.log(newTableData);
+
+        for (var i = 0; i < initialTableData.length; i++) {
+
+
+            if (initialTableData[i][0] != newTableData[i][0] ||
+                initialTableData[i][1] != newTableData[i][1] ||
+                initialTableData[i][2] != newTableData[i][2] ||
+                initialTableData[i][3] != newTableData[i][3] ||
+                    newTableData[i][4] == true
+            ) {
+
+                changedData[changedDataIndex] = newTableData[i];
+                changedData[changedDataIndex][5] = initialTableData[i]['id'];
+                changedDataIndex++;
+            }
+        }
+
+        return changedData;
+    }
+
+    function submitChanges(tableID) {
+        var changedData = getChangedData(getChangesTableDataWithID(tableID));
+
+
+        for(var i = 0; i<changedData.length; i++) {
+            if (!isValidString(changedData[i][0])){
+                toastr.error("Name given is Invalid","Error");
+                return;
+            }
+           // if (!isValidDate(changedData[i][2])){
+             //   toastr.error("Date given is Invalid","Error");
+               // return;
+            //}
+            if (!isValidString(changedData[i][3])){
+                toastr.error("Location given is Invalid","Error");
+                return;
+            }
+        }
+
+//        console.log(changedData);
+        if(changedData.length>0) {
+            $.ajax({
+                url: '<?=base_url('admin/' . ADMIN_UPDATE_EVENTS)?>',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    changedData: changedData
+                }
+            })
+                .done(function (result) {
+                    console.log("done");
+                    console.log(result);
+
+                    if (result['status'] == "success") {
+                        toastr.success("Changes were made successfully.", "Success");
+                        var delay = 1000;
+                        setTimeout(reloadPage, delay);
+
+
+                    }
+                })
+                .fail(function (result) {
+                    console.log("fail");
+                })
+                .always(function () {
+                    console.log("complete");
+                });
+        }
+        else
+            toastr.error("No changes were made.", "Oops!");
+
+    }
 
     function reloadPage() {
         <?php
@@ -110,7 +346,7 @@
 
                                   </span>
                             <span class = "col-md-3">
-                               <button class="btn btn-default btn-block col-md-2 col-md-offset-0" type="button" onclick="changeViewToEdit('modtable','modtable_buttons', 'AddNewModeratorModal')">Edit Events</button>
+                               <button class="btn btn-default btn-block col-md-2 col-md-offset-0" type="button" onclick="changeViewToEdit('eventTable','eventTable_buttons', 'AddNewEventModal')">Edit Events</button>
                          </span>
                         </div>
 
@@ -127,7 +363,6 @@
                                         <th>Date</th>
                                         <th>Location</th>
                                         <th>Open</th>
-                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -138,7 +373,7 @@
                                             <td><?=$event->Event_Name?></td>
                                             <td><?php
                                                 $time = strtotime($event->event_date);
-                                                echo date("M d, Y", $time);
+                                                echo date("m/d/Y", $time);
                                                 ?></td>
                                             <td><?=$event->Event_Location?></td>
                                             <?php if($event->is_closed==0): ?>
@@ -146,7 +381,6 @@
                                             <?php else:?>
                                             <td>No</td>
                                             <?php endif;?>
-                                            <td></td>
                                         </tr>
                                     <?php endforeach;?>
                                     </tbody>

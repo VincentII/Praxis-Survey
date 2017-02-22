@@ -64,6 +64,9 @@ class AdminController extends CI_Controller
                 case ADMIN_SUBMIT_URL:
                     $this->submitURL();
                     break;
+                case ADMIN_UPDATE_EVENTS:
+                    $this->updateEvents();
+                    break;
                 default:
                     $this->initAdmin();
             }
@@ -318,6 +321,31 @@ class AdminController extends CI_Controller
 
         echo json_encode($data);
 
+    }
+
+    public function updateEvents(){
+        $events = $this->input->get('changedData');
+
+        foreach ($events as $event){
+            $data = array(
+                COLUMN_EVENT_ID => $event[5],
+                COLUMN_EVENT_NAME => $event[0],
+                COLUMN_EVENT_DATE => date('Y-m-d', strtotime(str_replace('-', '/', $event[1]))),
+                COLUMN_EVENT_LOCATION => $event[2],
+                COLUMN_IS_CLOSED => $event[3]=='true'?0:1,
+                COLUMN_IS_ARCHIVED => $event[4]=='true'?1:0,
+            );
+
+            $this->admin->updateEvent($data);
+        }
+
+        $datum = array(
+            'status' => 'success',
+            'message' => 'Successfully UPDATED'
+            //         'check' => $getData['questions'][0][1]
+        );
+
+        echo json_encode($datum);
     }
 
 

@@ -151,3 +151,4 @@ define("ADMIN_GET_QUESTIONS", "getQuestions");
 define("ADMIN_SUBMIT_EVENT", "submitEvent");
 define("ADMIN_SUBMIT_URL", "submitURL");
 define("ADMIN_SUBMIT_QUESTION_SET", "submitQuestionsSet");
+define("ADMIN_UPDATE_EVENTS", "updateEvents");

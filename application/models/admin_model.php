@@ -118,5 +118,10 @@ class admin_model extends CI_Model
 
     }
 
+    function updateEvent($event) {
+        $this->db->where(COLUMN_EVENT_ID, $event[COLUMN_EVENT_ID]);
+        $this->db->update(TABLE_EVENT, $event);
+    }
+
 
 }
