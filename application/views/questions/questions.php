@@ -279,10 +279,17 @@
     <div class="card-container">
 <!--        <button class="btn btn--prev">prev button</button>-->
         <ul class="card-list">
+<!--            FIXME: Doesn't expand to fit cards after the first one-->
             <li class="card active">
                 <div class="card__content">
-                    <div class="content__text-area">I am the start card</div>
+                    <div class="content__text-area">TAP ANYWHERE <br>TO START THE <br>SURVEY</div>
                     <i class="fa fa-hand-pointer-o fa-4x" aria-hidden="true"></i>
+                </div>
+            </li>
+            <li class="card">
+                <div class="card__content">
+                    <i class="fa fa-paper-plane-o fa-5x" aria-hidden="true"></i>
+                    <div class="content__text-area content--submit">SUBMIT</div>
                 </div>
             </li>
         </ul>
