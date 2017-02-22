@@ -277,32 +277,32 @@ class AdminController extends CI_Controller
             'questionSet' => $this->input->get('questionSet')
         );
 
-       // if(!$this->admin->isExistingQuestionSet($getData['questionSet'])) {
+       if(!$this->admin->isExistingQuestionSet($getData['questionSet'])) {
             $this->admin->insertQuestionSet($getData['questionSet']);
 
 
             $setID = $this->survey->queryQuestionSetByDescription($getData['questionSet']);
           for($i = 0; $i<count($getData['questions']);$i++){
-             //$this->admin->insertQuestion($getData['questions'][i][1],$getData['questions'][i][0],$setID['Set_ID']);
+             $this->admin->insertQuestion($getData['questions'][$i][1],$getData['questions'][$i][0],$setID['Set_ID']);
               //$this->admin->insertQuestion("RAK","12","10");
 
           }
 
           $data = array(
                 'status' => 'success',
-                'message' => 'Successfully added '.$getData['questionSet'].'!'.$setID['Set_ID'],
-                'check' => $getData['questions']
+                'message' => 'Successfully added '.$getData['questionSet'].'!'.$getData['questionSet'],
+       //         'check' => $getData['questions'][0][1]
             );
 
-      //  }
-      /* else{
+        }
+       else{
 
             $data = array(
                 'status' => 'fail',
                 'message' => $getData["questionSet"] . ' question set already exists, use another name!'
             );
-        }
-      */
+       }
+
         echo json_encode($data);
 
     }
