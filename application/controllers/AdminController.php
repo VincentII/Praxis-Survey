@@ -283,13 +283,15 @@ class AdminController extends CI_Controller
 
             $setID = $this->survey->queryQuestionSetByDescription($getData['questionSet']);
           for($i = 0; $i<count($getData['questions']);$i++){
-               $this->admin->insertQuestion($getData['questions'][1],$getData['questions'][0],$setID['Set_ID']);
-              }
+             //$this->admin->insertQuestion($getData['questions'][i][1],$getData['questions'][i][0],$setID['Set_ID']);
+              //$this->admin->insertQuestion("RAK","12","10");
+
+          }
 
           $data = array(
                 'status' => 'success',
                 'message' => 'Successfully added '.$getData['questionSet'].'!'.$setID['Set_ID'],
-                'check' => $getData['questions'][0]
+                'check' => $getData['questions']
             );
 
       //  }
