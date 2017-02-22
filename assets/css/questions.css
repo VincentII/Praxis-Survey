@@ -163,17 +163,33 @@ li.card{
 }
 
 .content__text-area{
-    flex: 1;
+    /*flex: 1;*/
     text-align: center;
+}
+
+.question{
+    position: relative;
+}
+
+.question__text{
+    position: absolute;
+    width: 100%;
+    color: white;
+    top: 5vh;
 }
 
 .fa-hand-pointer-o{
     margin-top: 5vh;
 }
 
+img{
+    max-width: 100vw;
+}
+
 .fa-repeat{
     margin-top: 10vh;
 }
+
 
 footer{
     position: fixed;

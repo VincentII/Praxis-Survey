@@ -288,13 +288,21 @@
             </li>
             <li class="card">
                 <div class="card__content">
+                    <div class="content__text-area question">
+                        <img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">
+                        <h2 class="question__text">I think I did well in the game.</h2>
+                    </div>
+                </div>
+            </li>
+            <li class="card">
+                <div class="card__content">
                     <i class="fa fa-paper-plane-o fa-5x"></i>
                     <div class="content__text-area">SUBMIT</div>
                 </div>
             </li>
             <li class="card">
                 <div class="card__content">
-                    <img src="<?=base_url()?>/assets/img/thank.png">
+                    <img class="thank" src="<?=base_url()?>/assets/img/thank.png">
 <!--                    TODO: convert png to svg-->
                     <i class="fa fa-repeat fa-5x"></i>
                     <div class="content__text-area">submit another response</div>
@@ -302,7 +310,7 @@
             </li>
             <li class="card">
                 <div class="card__content">
-                    <div class="content__text-area">OOPS!</div>
+                    <img class="oops" src="<?=base_url()?>/assets/img/oops.png">
                     <div class="content__text-area">Something went wrong. Please try again.</div>
                     <i class="fa fa-refresh fa-5x fa-fw"></i>
                     <div>try again</div>
