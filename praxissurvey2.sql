@@ -128,7 +128,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (1,'wegqwet','1gag','2017-02-17',1,0,0),(2,'qrqfqwf','2qr','2017-02-17',1,0,0);
+INSERT INTO `event` VALUES (1,'wegqwet','1gag','2017-02-17',0,0,0),(2,'qrqfqwf','2qr','2017-02-17',1,0,0);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,8 +142,9 @@ DROP TABLE IF EXISTS `question_set`;
 CREATE TABLE `question_set` (
   `Set_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Question_Set_Description` varchar(45) NOT NULL,
-  PRIMARY KEY (`Set_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`Set_ID`),
+  UNIQUE KEY `Question_Set_Description_UNIQUE` (`Question_Set_Description`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +153,7 @@ CREATE TABLE `question_set` (
 
 LOCK TABLES `question_set` WRITE;
 /*!40000 ALTER TABLE `question_set` DISABLE KEYS */;
-INSERT INTO `question_set` VALUES (1,'Pre-game Survey'),(2,'Post-game Survey'),(3,'End of the Day Survey'),(4,'Main Questions');
+INSERT INTO `question_set` VALUES (3,'End of the Day Survey'),(11,'iloveyou'),(5,'LOL'),(4,'Main Questions'),(16,'nana'),(7,'nigga'),(8,'niggaeraafkgkgnkpqwgn'),(12,'niggahhhh'),(2,'Post-game Survey'),(1,'Pre-game Survey'),(9,'satisfy'),(15,'siahwfpiqw'),(14,'ssssssssssssssssssssssssssssssssssssssss'),(10,'stfyf,mjh,vh'),(13,'Submit works');
 /*!40000 ALTER TABLE `question_set` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,7 +174,7 @@ CREATE TABLE `questions` (
   KEY `question_idx` (`Question_Num`),
   CONSTRAINT `Set` FOREIGN KEY (`Set_ID`) REFERENCES `question_set` (`Set_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `question` FOREIGN KEY (`Question_Num`) REFERENCES `questions` (`question_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,7 +183,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,1,1,'My financial knowledge is enough for me to manage my income and wealth.'),(2,1,2,'I understand business cycles and their effect on my finance and the economy.'),(3,1,3,'I have a good understanding how risk and reward are linked.'),(4,1,4,'I understand how insurance works.'),(5,1,5,'I understand why people need to save for the long and short term.'),(6,1,6,'I understand how stock markets and unit-linked policies work.'),(7,1,7,'I understand how financial products can benefit me and my family.'),(8,1,8,'I feel that I can talk knowledgeably about finance to others.'),(9,2,1,'My financial knowledge is enough for me to manage my income and wealth.'),(10,2,2,'I understand business cycles and their effect on my finance and the economy.'),(11,2,3,'I have a good understanding how risk and reward are linked.'),(12,2,4,'I understand how insurance works.'),(13,2,5,'I understand why people need to save for the long and short term.'),(14,2,6,'I understand how stock markets and unit-linked policies work.'),(15,2,7,'I understand how financial products can benefit me and my family.'),(16,2,8,'I feel that I can talk knowledgeably about finance to others.'),(17,3,1,'I learned a lot about general financial principles and products through Praxis gameplay.'),(18,3,2,'Including Praxis in new staff agent training will make the training more interesting and attractive.'),(19,3,3,'Praxis is an interesting and innovative way to introduce financial principles and products to staff, agents, partners and customers.'),(20,3,4,'I think Praxis is very effective for building our brand as a company that provides financial education to its stakeholders.'),(21,3,5,'After the Praxis training, I feel very confident about being a GameFaster.'),(22,3,6,'I would like to have more training or practice before I conduct my first gameplay.'),(23,3,7,'The Praxis training session was well conducted by the SMFM team.'),(24,4,1,'I think I did well in the game.'),(25,4,2,'I enjoyed the game.'),(26,4,3,'I learned something new by playing the game.'),(27,4,4,'I would like to play this game again.'),(28,4,5,'The game made me act today to change my financial future.');
+INSERT INTO `questions` VALUES (1,1,1,'My financial knowledge is enough for me to manage my income and wealth.'),(2,1,2,'I understand business cycles and their effect on my finance and the economy.'),(3,1,3,'I have a good understanding how risk and reward are linked.'),(4,1,4,'I understand how insurance works.'),(5,1,5,'I understand why people need to save for the long and short term.'),(6,1,6,'I understand how stock markets and unit-linked policies work.'),(7,1,7,'I understand how financial products can benefit me and my family.'),(8,1,8,'I feel that I can talk knowledgeably about finance to others.'),(9,2,1,'My financial knowledge is enough for me to manage my income and wealth.'),(10,2,2,'I understand business cycles and their effect on my finance and the economy.'),(11,2,3,'I have a good understanding how risk and reward are linked.'),(12,2,4,'I understand how insurance works.'),(13,2,5,'I understand why people need to save for the long and short term.'),(14,2,6,'I understand how stock markets and unit-linked policies work.'),(15,2,7,'I understand how financial products can benefit me and my family.'),(16,2,8,'I feel that I can talk knowledgeably about finance to others.'),(17,3,1,'I learned a lot about general financial principles and products through Praxis gameplay.'),(18,3,2,'Including Praxis in new staff agent training will make the training more interesting and attractive.'),(19,3,3,'Praxis is an interesting and innovative way to introduce financial principles and products to staff, agents, partners and customers.'),(20,3,4,'I think Praxis is very effective for building our brand as a company that provides financial education to its stakeholders.'),(21,3,5,'After the Praxis training, I feel very confident about being a GameFaster.'),(22,3,6,'I would like to have more training or practice before I conduct my first gameplay.'),(23,3,7,'The Praxis training session was well conducted by the SMFM team.'),(24,4,1,'I think I did well in the game.'),(25,4,2,'I enjoyed the game.'),(26,4,3,'I learned something new by playing the game.'),(27,4,4,'I would like to play this game again.'),(28,4,5,'The game made me act today to change my financial future.'),(29,5,1,'jgbjwebgj'),(30,5,12,'RAK'),(31,13,1,'Submit'),(32,14,1,'ssssssssssssss'),(33,15,1,'s'),(34,16,1,'n n n');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,7 +205,7 @@ CREATE TABLE `url` (
   KEY `fk_set_idx` (`Set_ID`),
   CONSTRAINT `fk_event` FOREIGN KEY (`Event_ID`) REFERENCES `event` (`Event_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_set` FOREIGN KEY (`Set_ID`) REFERENCES `question_set` (`Set_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,6 +214,7 @@ CREATE TABLE `url` (
 
 LOCK TABLES `url` WRITE;
 /*!40000 ALTER TABLE `url` DISABLE KEYS */;
+INSERT INTO `url` VALUES (1,1,4,'hehe'),(2,1,13,'ahhh');
 /*!40000 ALTER TABLE `url` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -249,4 +251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-17 10:19:22
+-- Dump completed on 2017-02-22 13:48:16

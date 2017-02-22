@@ -83,6 +83,23 @@ class admin_model extends CI_Model
         $this->db->insert(TABLE_URL, $insertUrlData);
 
     }
+    function insertQuestionSet($setName){
+        $insertData=array(
+            COLUMN_QUESTION_SET_DESCRIPTION => $setName,
+        );
+        $this->db->insert(TABLE_QUESTION_SET, $insertData);
+
+    }
+    function insertQuestion($question,$questionNum,$setID){
+        $insertData=array(
+            COLUMN_QUESTION_ACT => $question,
+            COLUMN_QUESTION_Num => intval($questionNum),
+            COLUMN_SET_ID => intval($setID)
+
+        );
+        $this->db->insert(TABLE_QUESTIONS, $insertData);
+
+    }
 
     function isExistingURL($url){
         $this->db->select('*');
@@ -92,5 +109,14 @@ class admin_model extends CI_Model
         return count($query->result())>=1;
 
     }
+    function isExistingQuestionSet($set){
+        $this->db->select('*');
+        $this->db->from(TABLE_QUESTION_SET);
+        $this->db->where(COLUMN_QUESTION_SET_DESCRIPTION,$set);
+        $query = $this->db->get();
+        return count($query->result())>=1;
+
+    }
+
 
 }

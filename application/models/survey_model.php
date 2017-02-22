@@ -89,6 +89,15 @@ class survey_model extends CI_Model
         return $query->result();
     }
 
+    function queryQuestionSetByDescription($desc){
+        $this->db->select("*");
+        $this->db->from(TABLE_QUESTION_SET);
+        $this->db->where(COLUMN_QUESTION_SET_DESCRIPTION, $desc);
+        $query = $this->db->get();
+
+        return $query->row_array();
+    }
+
     function queryQuestionsBySetID($id){
         $this->db->select("*");
         $this->db->from(TABLE_QUESTIONS);

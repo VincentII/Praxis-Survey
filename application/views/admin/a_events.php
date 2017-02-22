@@ -191,7 +191,7 @@
                             <td><input type="text" class="form-control" placeholder="Enter event name"></td>
                             <td><input type="text" class="form-control datepicker" data-provide="datepicker" placeholder="Enter date" value=<?php echo date('m/d/Y'); ?>></td>
                             <td><input type="text" class="form-control" placeholder="Enter Location"></td>
-                            <td><input type="checkbox" value=""></td>
+                            <td><input type="checkbox" class="form-control" value=""></td>
 
                         </tr>
                         </tbody>
