@@ -69,14 +69,20 @@
                 if(result['status']=='success'){
                     toastr.success(result['message'], "Success");
                     $('#'+$button).prop('disabled', true);
-                    var delay = 10000;
+                    var delay = 1000;
                     setTimeout(function () {
                         reloadPage();
                     }, delay);
+                }else
+                if(result['status']=='fail'){
+                    toastr.error(result['message'], "Error");
                 }
+
             })
             .fail(function () {
                 console.log("fail");
+
+                toastr.error("Something went wrong... Try again", "Error");
             })
             .always(function () {
                 console.log("complete");
