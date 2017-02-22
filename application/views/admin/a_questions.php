@@ -100,8 +100,8 @@
         var del       = row.insertCell(2);
 
         cellNumber.innerHTML = tableA.rows.length-1;
-        cellQuestion.innerHTML = '<input type="text" class="form-control" placeholder="Enter event name"></td>';
-        del.innerHTML=      '<button type ="button" name="add_delete_'+(tableA.rows.length-1)+'" onclick="deleteRow(\'add_table\',this.name)" class="btn btn-default clearmod-btn">&times;</button>';
+        cellQuestion.innerHTML = '<input type="text" class="form-control" placeholder="Enter question"></td>';
+        del.innerHTML=      '<button type ="button" name="add_delete_'+(tableA.rows.length-1)+'" onclick="deleteRow(\'add_table\',this.name)" class="btn btn-default pull-right clearmod-btn">&times;</button>';
 
     }
 
@@ -209,13 +209,11 @@
 
                         <div id = "questionTable_buttons">
 
-                        <span class = "col-md-3">
-                            <button type ="button"data-toggle="modal" data-target="#AddNewEventModal" class="btn btn-default btn-block  col-md-2"> +Add Event</button>
+                        <span class = "col-md-4 pull-right">
+                            <button type ="button"data-toggle="modal" data-target="#AddNewQuestionsModal" class="btn btn-default btn-block  col-md-2"> +Add Questions</button>
 
                                   </span>
-                            <span class = "col-md-3">
-                               <button class="btn btn-default btn-block col-md-2 col-md-offset-0" type="button" onclick="changeViewToEdit('modtable','modtable_buttons', 'AddNewModeratorModal')">Edit Events</button>
-                         </span>
+
                         </div>
 
                     </h4>
@@ -224,7 +222,7 @@
                     <ul class="list-group">
                         <form>
                             <li class="list-group-item">
-                                <table class="table table-hover" id="eventTable">
+                                <table class="table table-hover" id="setTable">
                                     <thead>
                                     <tr>
                                         <th>Question Set</th>
@@ -257,7 +255,7 @@
 
 
 
-<div id="AddNewEventModal" class="modal fade" role="dialog">
+<div id="AddNewQuestionsModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
 
         <!-- Modal content-->
@@ -282,8 +280,8 @@
 
                         <tr>
                             <td>1</td>
-                            <td><input type="text" class="form-control" placeholder="Enter event name"></td>
-                            <td><button type ="button" id="add_delete_1" onclick="deleteRow('add_table',this.id)" class="btn btn-default clearmod-btn">&times;</button></td>
+                            <td><input type="text" class="form-control" placeholder="Enter question"></td>
+                            <td><button type ="button" id="add_delete_1" onclick="deleteRow('add_table',this.id)" class="btn btn-default pull-right clearmod-btn">&times;</button></td>
 
                         </tr>
                         </tbody>
@@ -294,7 +292,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success" name="add-event-btn" onclick="submitQuestionSet('add_table',this.name)">Confirm</button>
+                    <button type="button" class="btn btn-success" name="add-questiion-btn" onclick="submitQuestionSet('add_table',this.name)">Confirm</button>
                 </div>
             </form>
         </div>
