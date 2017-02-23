@@ -123,14 +123,15 @@
 
 .btn{
     position: fixed;
+    font-size: 3em !important;
 }
 
 .btn--prev{
-    top: 3vh;
+    /*top: 3vh;*/
 }
 
 .btn--next{
-    top: 70vh;
+    top: 65vh;
 }
 
 .container{

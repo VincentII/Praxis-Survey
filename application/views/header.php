@@ -28,6 +28,7 @@
     <script src="<?=base_url()?>/assets/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>/assets/js/toastr.min.js"></script>
     <script src="<?=base_url()?>/assets/js/jquery.numeric.min.js"></script>
+    <script src="<?=base_url()?>/assets/js/scrollify/jquery.scrollify.min.js"></script>
 
 
     <!-- Karjee Star Rating-->
