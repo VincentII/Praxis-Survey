@@ -225,6 +225,10 @@
 
     }
 
+    function changeViewToView(table, button, modal){
+        reloadPage(); //TODO
+    }
+
 
     function getChangedData(newTableData) {
         var changedData = [];

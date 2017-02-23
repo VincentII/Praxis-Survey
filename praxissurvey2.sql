@@ -142,6 +142,7 @@ DROP TABLE IF EXISTS `question_set`;
 CREATE TABLE `question_set` (
   `Set_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Question_Set_Description` varchar(45) NOT NULL,
+  `is_archived` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Set_ID`),
   UNIQUE KEY `Question_Set_Description_UNIQUE` (`Question_Set_Description`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
@@ -153,7 +154,7 @@ CREATE TABLE `question_set` (
 
 LOCK TABLES `question_set` WRITE;
 /*!40000 ALTER TABLE `question_set` DISABLE KEYS */;
-INSERT INTO `question_set` VALUES (3,'End of the Day Survey'),(11,'iloveyou'),(5,'LOL'),(4,'Main Questions'),(16,'nana'),(7,'nigga'),(8,'niggaeraafkgkgnkpqwgn'),(12,'niggahhhh'),(2,'Post-game Survey'),(1,'Pre-game Survey'),(9,'satisfy'),(15,'siahwfpiqw'),(14,'ssssssssssssssssssssssssssssssssssssssss'),(10,'stfyf,mjh,vh'),(13,'Submit works');
+INSERT INTO `question_set` VALUES (1,'Pre-game Survey',0),(2,'Post-game Survey',0),(3,'End of the Day Survey',0),(4,'Main Questions',0),(5,'LOL',0),(7,'nigga',0),(8,'niggaeraafkgkgnkpqwgn',0),(9,'satisfy',0),(10,'stfyf,mjh,vh',0),(11,'iloveyou',0),(12,'niggahhhh',0),(13,'Submit works',0),(14,'ssssssssssssssssssssssssssssssssssssssss',0),(15,'siahwfpiqw',0),(16,'nana',0);
 /*!40000 ALTER TABLE `question_set` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,4 +252,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-22 13:48:16
+-- Dump completed on 2017-02-23 12:37:38
