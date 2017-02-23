@@ -263,7 +263,20 @@
     }
 
     function submitChanges(tableID) {
-        var changedData = getChangedData(getChangesTableDataWithID(tableID));
+
+        var newTable = getChangesTableDataWithID(tableID);
+
+        for(var i = 0; i<newTable.length; i++) {
+            for(var j=i+1;j<newTable.length;j++){
+                console.log(newTable[i][0] +" "+ newTable[j][0]);
+                if(newTable[i][0]==newTable[j][0]){
+                    toastr.error("You can't have same named URLS","Oops");
+                    return;
+                }
+            }
+        }
+
+        var changedData = getChangedData(newTable);
 
         for(var i = 0; i<changedData.length; i++) {
             if (!isValidString(changedData[i][0])){
