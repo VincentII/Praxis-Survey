@@ -67,6 +67,9 @@ class AdminController extends CI_Controller
                 case ADMIN_UPDATE_EVENTS:
                     $this->updateEvents();
                     break;
+                case ADMIN_UPDATE_URLS:
+                    $this->updateURL();
+                    break;
                 default:
                     $this->initAdmin();
             }
@@ -337,6 +340,34 @@ class AdminController extends CI_Controller
             );
 
             $this->admin->updateEvent($data);
+        }
+
+        $datum = array(
+            'status' => 'success',
+            'message' => 'Successfully UPDATED'
+            //         'check' => $getData['questions'][0][1]
+        );
+
+        echo json_encode($datum);
+    }
+
+    public function updateURL(){
+        $URLs = $this->input->get('changedData');
+
+
+        foreach ($URLs as $url){
+
+            if($url[3]=='true'){
+                $this->admin->deleteURL($url[4]);
+            }else{
+            $data = array(
+                COLUMN_URL_ID => $url[4],
+                COLUMN_URL => $url[0],
+                COLUMN_EVENT_ID => intval($url[1]),
+                COLUMN_SET_ID => intval($url[2])
+            );
+            $this->admin->updateURL($data);
+            }
         }
 
         $datum = array(

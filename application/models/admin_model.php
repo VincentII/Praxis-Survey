@@ -122,6 +122,15 @@ class admin_model extends CI_Model
         $this->db->where(COLUMN_EVENT_ID, $event[COLUMN_EVENT_ID]);
         $this->db->update(TABLE_EVENT, $event);
     }
+    function updateURL($url) {
+        $this->db->where(COLUMN_URL_ID, $url[COLUMN_URL_ID]);
+        $this->db->update(TABLE_URL, $url);
+    }
+
+    function deleteURL($id) {
+        $this->db->where(COLUMN_URL_ID, $id);
+        $this->db->delete(TABLE_URL);
+    }
 
 
 }
