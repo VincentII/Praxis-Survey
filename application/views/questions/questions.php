@@ -274,10 +274,13 @@
 <!--    <div class="footer-copyright">this is the footer and copyright info go here</div>-->
 <!--</footer>-->
 
+<div class="btn-container">
+    <button class="btn btn--prev">prev button</button>
+    <button class="btn btn--next">next button</button>
+</div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
     <div class="card-container">
-<!--        <button class="btn btn--prev">prev button</button>-->
         <ul class="card-list">
 <!--            FIXME: Doesn't expand to fit cards after the first one-->
             <li class="card active">
@@ -317,7 +320,6 @@
                 </div>
             </li>
         </ul>
-<!--        <button class="btn btn--next">next button</button>-->
     </div>
 </div>
 <footer>

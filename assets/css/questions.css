@@ -122,17 +122,19 @@
     flex-flow: column;
 }
 
+.btn-container{
+    position: fixed;
+    display: flex;
+    flex-flow: column;
+}
+
 /*space for cards, buttons go on top of cards and stay put regardless of scroll*/
 .card-container{
     display: inherit;
     flex: 1;
-    /*overflow-y: auto;*/
-
 }
 
-.btn{
-    visibility: hidden;
-}
+.btn{}
 /*TODO: have buttons sit on top of card-list*/
 
 .btn--prev{}
