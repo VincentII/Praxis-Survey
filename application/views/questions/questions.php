@@ -274,9 +274,9 @@
 <!--    <div class="footer-copyright">this is the footer and copyright info go here</div>-->
 <!--</footer>-->
 
+
 <div class="btn-container">
     <button class="btn btn--prev">prev button</button>
-    <button class="btn btn--next">next button</button>
 </div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
@@ -321,6 +321,9 @@
             </li>
         </ul>
     </div>
+</div>
+<div class="btn-container">
+    <button class="btn btn--next">next button</button>
 </div>
 <footer>
     <div class="footer__progress-bar">footer

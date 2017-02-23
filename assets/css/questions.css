@@ -114,16 +114,28 @@
         /*height: 20vh;*/
     /*}*/
 
+/*TODO: find a better way to position elements*/
+.btn-container{
+    display: flex;
+    /*align-items: center;*/
+    justify-content: center;
+}
+
+.btn{
+    position: fixed;
+}
+
+.btn--prev{
+    top: 3vh;
+}
+
+.btn--next{
+    top: 70vh;
+}
 
 .container{
     width: 100%;
     height: 77vh;
-    display: flex;
-    flex-flow: column;
-}
-
-.btn-container{
-    position: fixed;
     display: flex;
     flex-flow: column;
 }
@@ -133,13 +145,6 @@
     display: inherit;
     flex: 1;
 }
-
-.btn{}
-/*TODO: have buttons sit on top of card-list*/
-
-.btn--prev{}
-
-.btn--next{}
 
 /*scrollable section*/
 ul.card-list{
