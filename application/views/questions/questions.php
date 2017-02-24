@@ -256,16 +256,21 @@
 //       }) ;
 //    });
 
-    $(document).on('ready', function() {
+    $(document).on('ready', function(){
 
         $questions = <?php echo json_encode($questions)?>;
         console.log($questions);
 
         $('.card-container').fullpage();
 
+        $('.btn--prev').click(function(){
+            console.log("prev click!");
+            $.fn.fullpage.moveSectionUp();
+        });
+
         $('.btn--next').click(function(){
-            console.log("click!");
-            $.scrollify.next();
+            console.log("next click!");
+            $.fn.fullpage.moveSectionDown();
         });
     });
 
