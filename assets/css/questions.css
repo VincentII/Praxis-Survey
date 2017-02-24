@@ -125,10 +125,13 @@
     position: fixed;
     font-size: 3em !important;
 }
+/*TODO: Find a solution that doesn't use !important'*/
 
 .btn--prev{
     /*top: 3vh;*/
+    z-index: 99999 !important;
 }
+/*FIXME: THIS IS SO BAD*/
 
 .btn--next{
     top: 65vh;
@@ -213,6 +216,7 @@ footer{
     width: 100%;
     height: 23vh;
 }
+/*TODO: change fixed footer to a sticky one that hides when the soft keyboard comes out*/
 
 .footer__progress-bar{
     position: absolute;

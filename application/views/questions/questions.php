@@ -301,7 +301,7 @@
 <!--    <div class="footer-copyright">this is the footer and copyright info go here</div>-->
 <!--</footer>-->
 
-
+<!--FIXME: fix formatting which got fucked after implementing fullPage-->
 <div class="btn-container">
     <i class="btn btn--prev fa fa-chevron-up"></i>
 </div>
@@ -309,7 +309,6 @@
     <!--main area where background will go if ever-->
     <div class="card-container">
 <!--        <ul class="card-list">-->
-<!--            FIXME: Doesn't expand to fit cards after the first one-->
             <div class="card section active">
                 <div class="card__content">
                     <div class="content__text-area">TAP ANYWHERE <br>TO START THE <br>SURVEY</div>
