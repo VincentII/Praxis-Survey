@@ -301,51 +301,63 @@
 <!--    <div class="footer-copyright">this is the footer and copyright info go here</div>-->
 <!--</footer>-->
 
+<!--TODO: make scroll animation quicker-->
+<!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
 <!--FIXME: fix formatting which got fucked after implementing fullPage-->
 <div class="btn-container">
     <i class="btn btn--prev fa fa-chevron-up"></i>
 </div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
+<!--    FIXME: how do format-->
     <div class="card-container">
-<!--        <ul class="card-list">-->
-            <div class="card section active">
-                <div class="card__content">
-                    <div class="content__text-area">TAP ANYWHERE <br>TO START THE <br>SURVEY</div>
-                    <i class="fa fa-hand-pointer-o fa-4x"></i>
+        <div class="card section active">
+            <div class="card__content">
+                <div class="content__text-area">TAP ANYWHERE <br>TO START THE <br>SURVEY</div>
+                <i class="fa fa-hand-pointer-o fa-4x"></i>
+            </div>
+        </div>
+        <div class="card section">
+            <div class="card__content">
+                <div class="content__text-area question">
+                    <img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">
+                    <h2 class="question__text">I think I did well in the game.</h2>
                 </div>
             </div>
-            <div class="card section">
-                <div class="card__content">
-                    <div class="content__text-area question">
-                        <img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">
-                        <h2 class="question__text">I think I did well in the game.</h2>
-                    </div>
+        </div>
+        <div class="card section">
+            <div class="card__content">
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Write your love letter to Praxis here." rows="5" id="comment"></textarea>
                 </div>
             </div>
-            <div class="card section">
-                <div class="card__content">
-                    <i class="fa fa-paper-plane-o fa-5x"></i>
-                    <div class="content__text-area">SUBMIT</div>
-                </div>
+            <div class="form-group">
+                <label for="email">Love Praxis so much you would sign up for a newsletter? Give us your email below.</label>
+                <input type="text" class="form-control" id="email">
             </div>
-            <div class="card section">
-                <div class="card__content">
-                    <img class="thank" src="<?=base_url()?>/assets/img/thank.png">
-<!--                    TODO: convert png to svg-->
-                    <i class="fa fa-repeat fa-5x"></i>
-                    <div class="content__text-area">submit another response</div>
-                </div>
+        </div>
+        <div class="card section">
+            <div class="card__content">
+                <i class="fa fa-paper-plane-o fa-5x"></i>
+                <div class="content__text-area">SUBMIT</div>
             </div>
-            <div class="card section">
-                <div class="card__content">
-                    <img class="oops" src="<?=base_url()?>/assets/img/oops.png">
-                    <div class="content__text-area">Something went wrong. Please try again.</div>
-                    <i class="fa fa-refresh fa-5x fa-fw"></i>
-                    <div>try again</div>
-                </div>
+        </div>
+        <div class="card section">
+            <div class="card__content">
+                <img class="thank" src="<?=base_url()?>/assets/img/thank.png">
+                <!--                    TODO: convert png to svg-->
+                <i class="fa fa-repeat fa-5x"></i>
+                <div class="content__text-area">submit another response</div>
             </div>
-<!--        </ul>-->
+        </div>
+        <div class="card section">
+            <div class="card__content">
+                <img class="oops" src="<?=base_url()?>/assets/img/oops.png">
+                <div class="content__text-area">Something went wrong. Please try again.</div>
+                <i class="fa fa-refresh fa-5x fa-fw"></i>
+                <div>try again</div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="btn-container">
