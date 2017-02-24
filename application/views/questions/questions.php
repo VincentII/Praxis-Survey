@@ -261,12 +261,7 @@
         $questions = <?php echo json_encode($questions)?>;
         console.log($questions);
 
-        $(function(){
-           $.scrollify({
-              section: ".section",
-           });
-        });
-//        FIXME: $.scrollify not a function wtf??
+        $('.card-container').fullpage();
 
         $('.btn--next').click(function(){
             console.log("click!");
