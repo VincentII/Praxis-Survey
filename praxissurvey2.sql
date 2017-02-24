@@ -142,6 +142,7 @@ DROP TABLE IF EXISTS `question_set`;
 CREATE TABLE `question_set` (
   `Set_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Question_Set_Description` varchar(45) NOT NULL,
+  `is_closed` int(11) NOT NULL DEFAULT '0',
   `is_archived` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Set_ID`),
   UNIQUE KEY `Question_Set_Description_UNIQUE` (`Question_Set_Description`)
@@ -154,7 +155,7 @@ CREATE TABLE `question_set` (
 
 LOCK TABLES `question_set` WRITE;
 /*!40000 ALTER TABLE `question_set` DISABLE KEYS */;
-INSERT INTO `question_set` VALUES (1,'Pre-game Survey',0),(2,'Post-game Survey',0),(3,'End of the Day Survey',0),(4,'Main Questions',0),(5,'LOL',0),(7,'nigga',0),(8,'niggaeraafkgkgnkpqwgn',0),(9,'satisfy',0),(10,'stfyf,mjh,vh',0),(11,'iloveyou',0),(12,'niggahhhh',0),(13,'Submit works',0),(14,'ssssssssssssssssssssssssssssssssssssssss',0),(15,'siahwfpiqw',0),(16,'nana',0);
+INSERT INTO `question_set` VALUES (1,'Pre-game Survey',0,0),(2,'Post-game Survey',0,0),(3,'End of the Day Survey',0,0),(4,'Main Questions',0,0);
 /*!40000 ALTER TABLE `question_set` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,7 +185,7 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,1,1,'My financial knowledge is enough for me to manage my income and wealth.'),(2,1,2,'I understand business cycles and their effect on my finance and the economy.'),(3,1,3,'I have a good understanding how risk and reward are linked.'),(4,1,4,'I understand how insurance works.'),(5,1,5,'I understand why people need to save for the long and short term.'),(6,1,6,'I understand how stock markets and unit-linked policies work.'),(7,1,7,'I understand how financial products can benefit me and my family.'),(8,1,8,'I feel that I can talk knowledgeably about finance to others.'),(9,2,1,'My financial knowledge is enough for me to manage my income and wealth.'),(10,2,2,'I understand business cycles and their effect on my finance and the economy.'),(11,2,3,'I have a good understanding how risk and reward are linked.'),(12,2,4,'I understand how insurance works.'),(13,2,5,'I understand why people need to save for the long and short term.'),(14,2,6,'I understand how stock markets and unit-linked policies work.'),(15,2,7,'I understand how financial products can benefit me and my family.'),(16,2,8,'I feel that I can talk knowledgeably about finance to others.'),(17,3,1,'I learned a lot about general financial principles and products through Praxis gameplay.'),(18,3,2,'Including Praxis in new staff agent training will make the training more interesting and attractive.'),(19,3,3,'Praxis is an interesting and innovative way to introduce financial principles and products to staff, agents, partners and customers.'),(20,3,4,'I think Praxis is very effective for building our brand as a company that provides financial education to its stakeholders.'),(21,3,5,'After the Praxis training, I feel very confident about being a GameFaster.'),(22,3,6,'I would like to have more training or practice before I conduct my first gameplay.'),(23,3,7,'The Praxis training session was well conducted by the SMFM team.'),(24,4,1,'I think I did well in the game.'),(25,4,2,'I enjoyed the game.'),(26,4,3,'I learned something new by playing the game.'),(27,4,4,'I would like to play this game again.'),(28,4,5,'The game made me act today to change my financial future.'),(29,5,1,'jgbjwebgj'),(30,5,12,'RAK'),(31,13,1,'Submit'),(32,14,1,'ssssssssssssss'),(33,15,1,'s'),(34,16,1,'n n n');
+INSERT INTO `questions` VALUES (1,1,1,'My financial knowledge is enough for me to manage my income and wealth.'),(2,1,2,'I understand business cycles and their effect on my finance and the economy.'),(3,1,3,'I have a good understanding how risk and reward are linked.'),(4,1,4,'I understand how insurance works.'),(5,1,5,'I understand why people need to save for the long and short term.'),(6,1,6,'I understand how stock markets and unit-linked policies work.'),(7,1,7,'I understand how financial products can benefit me and my family.'),(8,1,8,'I feel that I can talk knowledgeably about finance to others.'),(9,2,1,'My financial knowledge is enough for me to manage my income and wealth.'),(10,2,2,'I understand business cycles and their effect on my finance and the economy.'),(11,2,3,'I have a good understanding how risk and reward are linked.'),(12,2,4,'I understand how insurance works.'),(13,2,5,'I understand why people need to save for the long and short term.'),(14,2,6,'I understand how stock markets and unit-linked policies work.'),(15,2,7,'I understand how financial products can benefit me and my family.'),(16,2,8,'I feel that I can talk knowledgeably about finance to others.'),(17,3,1,'I learned a lot about general financial principles and products through Praxis gameplay.'),(18,3,2,'Including Praxis in new staff agent training will make the training more interesting and attractive.'),(19,3,3,'Praxis is an interesting and innovative way to introduce financial principles and products to staff, agents, partners and customers.'),(20,3,4,'I think Praxis is very effective for building our brand as a company that provides financial education to its stakeholders.'),(21,3,5,'After the Praxis training, I feel very confident about being a GameFaster.'),(22,3,6,'I would like to have more training or practice before I conduct my first gameplay.'),(23,3,7,'The Praxis training session was well conducted by the SMFM team.'),(24,4,1,'I think I did well in the game.'),(25,4,2,'I enjoyed the game.'),(26,4,3,'I learned something new by playing the game.'),(27,4,4,'I would like to play this game again.'),(28,4,5,'The game made me act today to change my financial future.');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +207,7 @@ CREATE TABLE `url` (
   KEY `fk_set_idx` (`Set_ID`),
   CONSTRAINT `fk_event` FOREIGN KEY (`Event_ID`) REFERENCES `event` (`Event_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_set` FOREIGN KEY (`Set_ID`) REFERENCES `question_set` (`Set_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +216,7 @@ CREATE TABLE `url` (
 
 LOCK TABLES `url` WRITE;
 /*!40000 ALTER TABLE `url` DISABLE KEYS */;
-INSERT INTO `url` VALUES (1,1,4,'hehe'),(2,1,13,'ahhh');
+INSERT INTO `url` VALUES (3,1,1,'hehehe');
 /*!40000 ALTER TABLE `url` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,4 +253,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-23 12:37:38
+-- Dump completed on 2017-02-24  9:23:07
