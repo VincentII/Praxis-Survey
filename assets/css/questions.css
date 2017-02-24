@@ -143,7 +143,7 @@
 
 /*space for cards, buttons go on top of cards and stay put regardless of scroll*/
 .card-container{
-    display: inherit;
+    /*display: inherit;*/
     flex: 1;
 }
 
@@ -157,7 +157,7 @@ ul.card-list{
     overflow-x: hidden;
 }
 
-li.card{
+card{
     height: 77vh;
     list-style: none;
     display: flex;
