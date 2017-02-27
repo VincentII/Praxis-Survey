@@ -54,7 +54,6 @@
     <!-- FULLPAGE -->
     <link href="<?=base_url()?>/assets/js/fullPage/jquery.fullPage.css" rel="stylesheet" type="text/css" />
     <script src="<?=base_url()?>/assets/js/fullPage/jquery.fullPage.min.js"></script>
-    <script src="<?=base_url()?>/assets/js/fullPage/vendors/scrolloverflow.min.js" type="text/javascript"></script>
 
     <script type="text/javascript">
         //toastr["error"]("You cannot select more than 4 slots at once!", "Error")

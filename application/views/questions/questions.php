@@ -279,12 +279,17 @@ $(document).on('ready', function(){
             var text = [$questions[questionIndex]['Question_Act']];
             var id = [$questions[questionIndex]['Question_Num']];
 
-            var newQuestion = '<div class="card section">' +
+            var newQuestion = '<div class="card section card--question">' +
+                                '<div class="card__content">' +
+                                '<div class="content__text-area text-area--question">' +
+                                '<img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">' +
+                                '<h2 class="question__text">' +
                                 text.join('') +
-                                '</div>';
+                                '</h2>' +
+                                '</div></div></div>';
 
             console.log(questionIndex); console.log(id); console.log(text);
-            $(newQuestion).insertAfter('.card--start');
+            $(newQuestion).insertBefore('.card--comment'); //don't mind this weird warning it is a lie
         }
     }//end of getQuestions
 
@@ -331,15 +336,15 @@ $(document).on('ready', function(){
                 <i class="fa fa-hand-pointer-o fa-4x"></i>
             </div>
         </div>
-        <div class="card section card--question">
-            <div class="card__content">
-                <div class="content__text-area question">
-                    <img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">
-                    <h2 class="question__text">I think I did well in the game.</h2>
-                </div>
-            </div>
-        </div>
-        <div class="card section">
+<!--        <div class="card section card--question">-->
+<!--            <div class="card__content">-->
+<!--                <div class="content__text-area text-area--question">-->
+<!--                    <img class="ribbon" src="--><?//=base_url()?><!--/assets/img/ribbon.svg">-->
+<!--                    <h2 class="question__text">I think I did well in the game.</h2>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="card section card--comment">
             <div class="card__content">
                 <div class="form-group">
                     <textarea class="form-control" placeholder="Write your love letter to Praxis here." rows="5" id="comment"></textarea>
