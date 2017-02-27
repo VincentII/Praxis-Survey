@@ -250,10 +250,11 @@
 
 /////////////////////////////////////    new stuff    ////////////////////////////////////////////////
 
-var $questions;
+    var $questions;
 //var $questionIndex = 0;
+    var $answerCount = 0;
 
-$(document).on('ready', function(){
+    $(document).on('ready', function(){
 
         $questions = <?php echo json_encode($questions)?>;
         console.log($questions);
@@ -261,18 +262,25 @@ $(document).on('ready', function(){
 
         $('.card-container').fullpage();
 
-        $('.btn--prev').click(function(){
+//        BUTTON VISIBILITY TOGGLES
+
+//        BUTTON FUNCTIONS
+        $('.custbtn--prev').on('click',function(){
             console.log("prev click!");
             $.fn.fullpage.moveSectionUp();
         });
 
-        $('.btn--next').click(function(){
+        $('.custbtn--next').on('click',function(){
             console.log("next click!");
+            //if there are stars that have not been filled in the active card
+            //do nothing
+            //else
             $.fn.fullpage.moveSectionDown();
         });
     });
 
-//load all questions
+//load all questions at the beginning
+//might have to change this back to the old version if I can't implement the stopped scrolling
     function getQuestions(){
         for(var questionIndex=0; questionIndex<$questions.length; questionIndex++){
 
@@ -312,11 +320,19 @@ $(document).on('ready', function(){
                     5: 'text-success'
                 }
             });
-        }
+        }//end of for loop
     }//end of getQuestions
 
     function updateStar(star){
-        
+//        $.fn.fullpage.moveSectionDown(); //FIXME: buggy right now due to layout
+        $answerCount++;
+        updateProgressBar();
+    }
+
+    function updateProgressBar(){
+        var size = ($answerCount * 1.0)/$questions.length *100;
+
+        $('.progress-bar__bar').css('width', size+"vw");
     }
 
 
@@ -349,8 +365,8 @@ $(document).on('ready', function(){
 <!--TODO: make scroll animation quicker-->
 <!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
 <!--FIXME: fix formatting which got fucked after implementing fullPage-->
-<div class="btn-container">
-    <i class="btn btn--prev fa fa-chevron-up"></i>
+<div class="custbtn-container">
+    <i class="custbtn custbtn--prev fa fa-chevron-up"></i>
 </div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
@@ -405,11 +421,12 @@ $(document).on('ready', function(){
         </div>
     </div>
 </div>
-<div class="btn-container">
-    <i class="btn btn--next fa fa-chevron-down"></i>
+<div class="custbtn-container">
+    <i class="custbtn custbtn--next fa fa-chevron-down"></i>
 </div>
 <footer>
-    <div class="footer__progress-bar">footer
+    <div class="footer__progress-bar">
+        <div class="progress-bar__bar"></div>
     </div>
     <div class="footer__copyright">
         copyright

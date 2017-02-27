@@ -115,26 +115,35 @@
     /*}*/
 
 /*TODO: find a better way to position elements*/
-.btn-container{
+.custbtn-container{
     display: flex;
     /*align-items: center;*/
     justify-content: center;
 }
 
-.btn{
+.custbtn{
     position: fixed;
     font-size: 3em !important;
 }
 /*TODO: Find a solution that doesn't use !important'*/
 
-.btn--prev{
-    /*top: 3vh;*/
+.custbtn:active{
+    color: #0f0f0f;
+}
+
+custbtn:disabled{
+    color: #c5c5c5;
+}
+/*TODO: improve colors for UX*/
+
+.custbtn--prev{
+    top: 3vh;
     z-index: 99999 !important;
 }
 /*FIXME: THIS IS SO BAD*/
 
-.btn--next{
-    top: 65vh;
+.custbtn--next{
+    top: 67vh;
 }
 
 .container{
@@ -222,6 +231,17 @@ footer{
     position: absolute;
     width: 100%;
 }
+
+.progress-bar__bar{
+    position: absolute;
+    height: inherit;
+    width: 0vw;
+    left: 0;
+    background-color: #080808;
+    -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+    transition: width 2s;
+}
+/*FIXME: not working don't know why*/
 
 .footer__copyright{
     position: absolute;
