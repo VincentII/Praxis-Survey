@@ -283,15 +283,41 @@ $(document).on('ready', function(){
                                 '<div class="card__content">' +
                                 '<div class="content__text-area text-area--question">' +
                                 '<img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">' +
-                                '<h2 class="question__text">' +
-                                text.join('') +
-                                '</h2>' +
-                                '</div></div></div>';
+                                '<h2 class="question__text">' + text.join('') + '</h2>' +
+                                '</div>' +
+                                '<div class="content__stars">' +
+                                '<input id="star' + questionIndex +'" name="input-name" type="number" class="rating-loading" onchange="updateStar(this.id)"></div>' +
+                                '</div></div>';
 
             console.log(questionIndex); console.log(id); console.log(text);
             $(newQuestion).insertBefore('.card--comment'); //don't mind this weird warning it is a lie
+
+            $('.rating-loading').rating({
+                step: 1,
+                showClear: false,
+                size: 'xl',
+                theme:'krajee-fa',
+                starCaptions: {
+                    1: 'Totally Disagree',
+                    2: 'Partly Disagree',
+                    3: 'Neutral',
+                    4: 'Partly Agree',
+                    5: 'Totally Agree'
+                },
+                starCaptionClasses: {
+                    1: 'text-danger',
+                    2: 'text-warning',
+                    3: 'text-info',
+                    4: 'text-primary',
+                    5: 'text-success'
+                }
+            });
         }
     }//end of getQuestions
+
+    function updateStar(star){
+        
+    }
 
 
 </script>
