@@ -250,16 +250,14 @@
 
 /////////////////////////////////////    new stuff    ////////////////////////////////////////////////
 
-//    $(function(){
-//       $('.scrollify')({
-//           section: "li",
-//       }) ;
-//    });
+var $questions;
+//var $questionIndex = 0;
 
-    $(document).on('ready', function(){
+$(document).on('ready', function(){
 
         $questions = <?php echo json_encode($questions)?>;
         console.log($questions);
+        getQuestions();
 
         $('.card-container').fullpage();
 
@@ -273,6 +271,22 @@
             $.fn.fullpage.moveSectionDown();
         });
     });
+
+//load all questions
+    function getQuestions(){
+        for(var questionIndex=0; questionIndex<$questions.length; questionIndex++){
+
+            var text = [$questions[questionIndex]['Question_Act']];
+            var id = [$questions[questionIndex]['Question_Num']];
+
+            var newQuestion = '<div class="card section">' +
+                                text.join('') +
+                                '</div>';
+
+            console.log(questionIndex); console.log(id); console.log(text);
+            $(newQuestion).insertAfter('.card--start');
+        }
+    }//end of getQuestions
 
 
 </script>
@@ -311,13 +325,13 @@
     <!--main area where background will go if ever-->
 <!--    FIXME: how do format-->
     <div class="card-container">
-        <div class="card section active">
+        <div class="card section card--start active">
             <div class="card__content">
                 <div class="content__text-area">TAP ANYWHERE <br>TO START THE <br>SURVEY</div>
                 <i class="fa fa-hand-pointer-o fa-4x"></i>
             </div>
         </div>
-        <div class="card section">
+        <div class="card section card--question">
             <div class="card__content">
                 <div class="content__text-area question">
                     <img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">

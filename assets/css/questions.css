@@ -160,7 +160,7 @@ ul.card-list{
     overflow-x: hidden;
 }
 
-card{
+.card{
     height: 77vh;
     list-style: none;
     display: flex;
