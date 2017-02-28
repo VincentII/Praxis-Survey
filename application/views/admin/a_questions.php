@@ -5,7 +5,10 @@
             format: 'mm/dd/yyyy',
             startDate: '0d'
         });
+
+
     });
+
 
 
     function submitQuestionSet($tableID,$button) {
@@ -172,7 +175,19 @@
     function loadViewModal($setID){
 
         currSetID = $setID;
+        deletedQuestions =[];
+        initialTableData=[];
+
+        var header = '<tr> <th>Q#</th> <th>Question</th> </tr>'
+        $("#view_modal_header").html(header);
+
+        var buttons =   '<span class = "col-md-3 pull-right">'+
+                        '<button class="btn btn-default btn-block col-md-2 " type="button" onclick="changeViewToEdit(\'question_table\',\'question_table_button\')">Edit Question Set</button>'+
+                        '</span>'
+        $("#question_table_button").html(buttons);
+
         var $questionSet = <?=json_encode($questionSets)?>;
+
         for(i=0;i<$questionSet.length;i++)
             if($questionSet[i]['Set_ID']==$setID){
             $("#modal_view_title").html($questionSet[i]['Question_Set_Description']);
@@ -632,19 +647,19 @@
     </div>
 </div>
 
-<div id="ViewQuestionsModal" class="modal fade" role="dialog">
+<div id="ViewQuestionsModal" class="modal fade" role="dialog" >
     <div class="modal-dialog modal-lg">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" >&times;</button>
                 <h4 class="modal-title" id="modal_view_title">Question Set</h4>
             </div>
             <form>
                 <div class="modal-body clearfix">
                     <table class="table table-hover" id="question_table" name="">  <!-- TODO: somehow insert table id in name for add ? -->
-                        <thead>
+                        <thead id="view_modal_header">
                         <tr>
                             <th>Q#</th>
                             <th>Question</th>
