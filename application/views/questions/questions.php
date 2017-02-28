@@ -282,17 +282,26 @@
 
         $('.card--start').on('click',function(){
            console.log("START!");
-           $.fn.fullpage.moveSectionDown();
-           $(this).hide(); //FIXME: There are no words for how bad this looks
-           //FIXME: fullPage still thinks card--start is still there, might be able to fix it by disabling scroll or doing that recalculate thing with fullPage.
+//           $.fn.fullpage.moveSectionDown();
+//           $(this).hide(); //FIXME: There are no words for how bad this looks
+//           //FIXME: fullPage still thinks card--start is still there, might be able to fix it by disabling scroll or doing that recalculate thing with fullPage.
+        });
+
+        $('.card--submit').on('click',function(){
+            if($('.card--question').find("input").val() > 0){
+                console.log("Submitting Answers!");
+//            submitAnswers();
+            }
+            else alert("You missed a spot");
         });
 
         //TODO: disable submit button until all questions have been answered (as a precaution)
     });
 
-//load all questions at the beginning
-//might have to change this back to the old version if I can't implement the stopped scrolling
+
     function getQuestions(){
+//        load all questions at the beginning
+//        might have to change this back to the old version if I can't implement the stopped scrolling
         for(var questionIndex=0; questionIndex<$questions.length; questionIndex++){
 
             var text = [$questions[questionIndex]['Question_Act']];
@@ -351,6 +360,75 @@
         $('.progress-bar__bar').css('width', size+"vw");
     }
 
+    function submitAnswers(){
+        var $answers = [];
+        var $questionIDs = [];
+        for(var i =0; i<$questions.length;i++){
+            $answers[i] = $('#star'+(i)).val();
+            $questionIDs[i] = $questions[i]['question_ID']; //TODO: double check if I fucked up here
+        }
+
+        $.ajax({
+            url: '<?php echo base_url('questions/submitAnswers') ?>',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                answers : $answers,
+                questionIDs : $questionIDs
+            }
+        })
+            .done(function(result) {
+                console.log("done");
+                if (result['status']=="success") {
+                    toastr.success(result['message']);
+                }
+                else {
+                    toastr.error(result['message']);
+                }
+
+            })
+            .fail(function() {
+                console.log("fail");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+
+        submitComment();
+    }
+
+    function submitComment(){
+        if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#form-comment').val())){ //TODO: change to id of comment box
+            $.ajax({
+                url: '<?php echo base_url('questions/submitComment') ?>',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    comment : $('#form-comment').val()
+                }
+            })
+                .done(function(result) {
+                    console.log("done");
+                    if (result['status']=="success") {
+                        toastr.success(result['message']);
+                    }
+                    else {
+                        toastr.error(result['message']);
+                    }
+
+                })
+                .fail(function() {
+                    console.log("fail");
+                })
+                .always(function() {
+                    console.log("complete");
+                });
+        }
+        else{
+            toastr.info("Comment not submitted");//TODO TAKE THIS OUT
+        }
+    }
+
 
 </script>
 
@@ -405,13 +483,13 @@
                 <input type="text" class="form-control" id="email">
             </div>
         </div>
-        <div class="card section">
+        <div class="card section card--submit">
             <div class="card__content">
                 <i class="fa fa-paper-plane-o fa-5x"></i>
                 <div class="content__text-area">SUBMIT</div>
             </div>
         </div>
-        <div class="card section">
+        <div class="card section card--thanks">
             <div class="card__content">
                 <img class="thank" src="<?=base_url()?>/assets/img/thank.png">
                 <!--                    TODO: convert png to svg-->
@@ -419,7 +497,7 @@
                 <div class="content__text-area">submit another response</div>
             </div>
         </div>
-        <div class="card section">
+        <div class="card section card--error">
             <div class="card__content">
                 <img class="oops" src="<?=base_url()?>/assets/img/oops.png">
                 <div class="content__text-area">Something went wrong. Please try again.</div>
