@@ -142,7 +142,7 @@
         tableA.deleteRow(index);
     }
 
-    var deletedRows = [];
+    var deletedQuestions = [];
 
   function deleteUpdateRow(table, $id){
         var tableA = document.getElementById(table);
@@ -152,7 +152,7 @@
 
         if(tableA.rows[index].id != 'new'){
             //console.log("deleted"+tableA.rows[index].id);
-            deletedRows.push(tableA.rows[index].id);
+            deletedQuestions.push(tableA.rows[index].id);
         }
 
         for(i=index;i<tableA.rows.length;i++){
@@ -167,7 +167,11 @@
     }
 
 
+    var currSetID;
+
     function loadViewModal($setID){
+
+        currSetID = $setID;
         var $questionSet = <?=json_encode($questionSets)?>;
         for(i=0;i<$questionSet.length;i++)
             if($questionSet[i]['Set_ID']==$setID){
@@ -367,7 +371,7 @@
                             newTableData[i][1]!=initialTableData[j][1])
                         {
                             changedData[changedDataIndex] = newTableData[i];
-                           //changedData[changedDataIndex][2] = newTableData[i]['id'];
+                           changedData[changedDataIndex][2] = newTableData[i]['id'];
                             changedDataIndex++;
                         }
                     }
@@ -375,7 +379,7 @@
             }
             else{
                 changedData[changedDataIndex] = newTableData[i];
-                //changedData[changedDataIndex][2] = newTableData[i]['id'];
+                changedData[changedDataIndex][2] = newTableData[i]['id'];
                 changedDataIndex++;
             }
 
@@ -405,6 +409,18 @@
 
        // console.log(newTable);
 
+        if(newTable.length==0){
+            toastr.error("You can't have an empty question set","Opps");
+            return;
+        }
+
+        for(var i = 0; i<newTable.length; i++) {
+            if (!isValidString(newTable[i][1])){
+                toastr.error("One or more question/s given is Invalid","Error");
+                return;
+            }
+        }
+
         /*
         for(var i = 0; i<newTable.length; i++) {
             for(var j=i+1;j<newTable.length;j++){
@@ -429,14 +445,16 @@
         */
 
         console.log(changedData);
-
-        if(changedData.length>0) {
+        console.log(deletedQuestions);
+        if(changedData.length>0||deletedQuestions.length>0) {
             $.ajax({
                 url: '<?=base_url('admin/' . ADMIN_UPDATE_QUESTIONS)?>',
                 type: 'GET',
                 dataType: 'json',
                 data: {
-                    changedData: changedData
+                    changedData: changedData,
+                    deletedQuestions: deletedQuestions,
+                    setID: currSetID
                 }
             })
                 .done(function (result) {
@@ -445,7 +463,22 @@
 
                     if (result['status'] == "success") {
                         toastr.success("Changes were made successfully.", "Success");
+
+
                         var delay = 1000;
+                        if(result['added']>0){
+                            toastr.info(result['added']+" new Question/s", "Added");
+                            delay+=1000;
+                        }
+                        if(result['updated']>0){
+                            toastr.info(result['updated']+" Question/s", "Updated");
+                            delay+=1000;
+                        }
+                        if(result['deleted']>0){
+                            toastr.info(result['deleted']+" Question/s", "Deleted");
+                            delay+=1000;
+                        }
+
                         setTimeout(reloadPage, delay);
 
 
