@@ -328,8 +328,13 @@
     }//end of getQuestions
 
     function updateStar(star){
+        //TODO: add back code that prevents giving a score of zero
+        if($('#' + star).val() < 1){
+            $('#' + star).rating('update', 1);
+        }
+
 //        $.fn.fullpage.moveSectionDown(); //FIXME: buggy right now due to layout
-        $answerCount++;
+//        $answerCount++; //FIXME: this is just going to keep incrementing
         updateProgressBar();
     }
 
