@@ -263,6 +263,8 @@
         $('.card-container').fullpage();
 
 //        BUTTON VISIBILITY TOGGLES
+        $('.custbtn--prev').toggleClass("custbtn--disabled", $('.active').hasClass("card--start")); //FIXME: Doesn't work. custbtn--disabled remains a class of custbtn--prev
+        $('.custbtn--next').toggleClass("custbtn--disabled", $('.active').hasClass("card--submit")); //FIXME: Doesn't work. custbtn--disabled is not added as a class of custbtn--next
 
 //        BUTTON FUNCTIONS
         $('.custbtn--prev').on('click',function(){
@@ -272,11 +274,13 @@
 
         $('.custbtn--next').on('click',function(){
             console.log("next click!");
-            //if there are stars that have not been filled in the active card
-            //do nothing
-            //else
-            $.fn.fullpage.moveSectionDown();
+            //if the card is a question card, and the question card's stars have been filled in
+            if(!($('.active').hasClass("card--question"))){
+                $.fn.fullpage.moveSectionDown();
+            }
         });
+
+        //TODO: disable submit button until all questions have been answered (as a precaution)
     });
 
 //load all questions at the beginning
