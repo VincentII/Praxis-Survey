@@ -263,6 +263,8 @@
         $('.card-container').fullpage();
 
 //        BUTTON VISIBILITY TOGGLES
+        $('.custbtn--prev').toggleClass("custbtn--disabled", $('.active').hasClass("card--start")); //FIXME: Doesn't work. custbtn--disabled remains a class of custbtn--prev
+        $('.custbtn--next').toggleClass("custbtn--disabled", $('.active').hasClass("card--submit")); //FIXME: Doesn't work. custbtn--disabled is not added as a class of custbtn--next
 
 //        BUTTON FUNCTIONS
         $('.custbtn--prev').on('click',function(){
@@ -272,11 +274,20 @@
 
         $('.custbtn--next').on('click',function(){
             console.log("next click!");
-            //if there are stars that have not been filled in the active card
-            //do nothing
-            //else
-            $.fn.fullpage.moveSectionDown();
+            //if the card is a question card, and the question card's stars have been filled in, active card's star has a .val() > 0
+            if(!($('.active').hasClass("card--question")) || $('.active').find("input").val() > 0){
+                $.fn.fullpage.moveSectionDown();
+            }
         });
+
+        $('.card--start').on('click',function(){
+           console.log("START!");
+           $.fn.fullpage.moveSectionDown();
+           $(this).hide(); //FIXME: There are no words for how bad this looks
+           //FIXME: fullPage still thinks card--start is still there, might be able to fix it by disabling scroll or doing that recalculate thing with fullPage.
+        });
+
+        //TODO: disable submit button until all questions have been answered (as a precaution)
     });
 
 //load all questions at the beginning
@@ -324,8 +335,13 @@
     }//end of getQuestions
 
     function updateStar(star){
+        //TODO: add back code that prevents giving a score of zero
+        if($('#' + star).val() < 1){
+            $('#' + star).rating('update', 1);
+        }
+
 //        $.fn.fullpage.moveSectionDown(); //FIXME: buggy right now due to layout
-        $answerCount++;
+//        $answerCount++; //FIXME: this is just going to keep incrementing
         updateProgressBar();
     }
 
@@ -378,14 +394,6 @@
                 <i class="fa fa-hand-pointer-o fa-4x"></i>
             </div>
         </div>
-<!--        <div class="card section card--question">-->
-<!--            <div class="card__content">-->
-<!--                <div class="content__text-area text-area--question">-->
-<!--                    <img class="ribbon" src="--><?//=base_url()?><!--/assets/img/ribbon.svg">-->
-<!--                    <h2 class="question__text">I think I did well in the game.</h2>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
         <div class="card section card--comment">
             <div class="card__content">
                 <div class="form-group">
