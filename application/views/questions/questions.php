@@ -274,8 +274,8 @@
 
         $('.custbtn--next').on('click',function(){
             console.log("next click!");
-            //if the card is a question card, and the question card's stars have been filled in
-            if(!($('.active').hasClass("card--question"))){
+            //if the card is a question card, and the question card's stars have been filled in, active card's star has a .val() > 0
+            if(!($('.active').hasClass("card--question")) || $('.active').find("input").val() > 0){
                 $.fn.fullpage.moveSectionDown();
             }
         });
