@@ -98,7 +98,6 @@ class admin_model extends CI_Model
 
         );
         $this->db->insert(TABLE_QUESTIONS, $insertData);
-
     }
 
     function isExistingURL($url){
@@ -127,10 +126,19 @@ class admin_model extends CI_Model
         $this->db->update(TABLE_URL, $url);
     }
 
+    function updateQuestion($q) {
+        $this->db->where(COLUMN_QUESTION_ID, $q[COLUMN_QUESTION_ID]);
+        $this->db->update(TABLE_QUESTIONS, $q);
+    }
+
     function deleteURL($id) {
         $this->db->where(COLUMN_URL_ID, $id);
         $this->db->delete(TABLE_URL);
     }
 
+    function deleteQuestion($id) {
+        $this->db->where(COLUMN_QUESTION_ID, $id);
+        $this->db->delete(TABLE_QUESTIONS);
+    }
 
 }

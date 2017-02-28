@@ -70,6 +70,9 @@ class AdminController extends CI_Controller
                 case ADMIN_UPDATE_URLS:
                     $this->updateURL();
                     break;
+                case ADMIN_UPDATE_QUESTIONS:
+                    $this->updateQuestions();
+                    break;
                 default:
                     $this->initAdmin();
             }
@@ -373,6 +376,54 @@ class AdminController extends CI_Controller
         $datum = array(
             'status' => 'success',
             'message' => 'Successfully UPDATED'
+            //         'check' => $getData['questions'][0][1]
+        );
+
+        echo json_encode($datum);
+    }
+
+    public function updateQuestions(){
+        $questions = $this->input->get('changedData');
+        $deletedQuestions = $this->input->get('deletedQuestions');
+        $setID = $this->input->get('setID');
+
+        $added = 0;
+        $deleted = 0;
+        $updated = 0;
+
+
+        if(count($deletedQuestions)>0)
+        foreach ($deletedQuestions as $deletedQuestion){
+            $this->admin->deleteQuestion(intval($deletedQuestion));
+            $deleted++;
+        }
+
+        if(count($questions)>0)
+        foreach ($questions as $question){
+            if($question[2]!='new') {
+                $data = array(
+                    COLUMN_QUESTION_ID => intval($question[2]),
+                    COLUMN_QUESTION_Num => intval($question[0]),
+                    COLUMN_QUESTION_ACT => $question[1],
+                );
+
+                $this->admin->updateQuestion($data);
+                $updated++;
+            }
+            else{
+                $this->admin->insertQuestion($question[1],$question[0],$setID);
+                $added++;
+            }
+
+        }
+
+        $datum = array(
+            'status' => 'success',
+            'message' => 'Successfully UPDATED',
+            'added' => $added,
+            'deleted' => $deleted,
+            'updated' => $updated,
+
             //         'check' => $getData['questions'][0][1]
         );
 
