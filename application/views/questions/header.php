@@ -51,7 +51,9 @@
     <!-- optionally if you need translation for your language then include locale file as mentioned below -->
    <!-- <script src="path/to/js/locales/{lang}.js"></script> -->
 
-
+    <!-- FULLPAGE -->
+    <link href="<?=base_url()?>/assets/js/fullPage/jquery.fullPage.css" rel="stylesheet" type="text/css" />
+    <script src="<?=base_url()?>/assets/js/fullPage/jquery.fullPage.min.js"></script>
 
     <script type="text/javascript">
         //toastr["error"]("You cannot select more than 4 slots at once!", "Error")
@@ -74,36 +76,6 @@
             "hideMethod": "fadeOut"
         }
     </script>
-
-
-<!--TODO: Delete later-->
-<!--    <script>-->
-<!--        $(document).ready(function() {-->
-<!--            var win = $(window);-->
-<!--            win.scroll(function() {-->
-<!--                if($(document).height() - win.height() == win.scrollTop()) {-->
-<!--                    $('#next-button').show();-->
-<!--                }-->
-<!--            });-->
-<!--        });-->
-<!---->
-<!--        function getNextQuestion() {-->
-<!--            var paragraphs = [-->
-<!--                'wow ANOTHER question!'-->
-<!--            ]-->
-<!--            var post = '<li>';-->
-<!--            post += '<div class="question-card">'-->
-<!--            post += paragraphs.join('');-->
-<!--            post += '</div>';-->
-<!--            post += '</li>';-->
-<!---->
-<!--            return post;-->
-<!--        }-->
-<!---->
-<!--        function clickFunction(){-->
-<!--            $('#posts').append(getNextQuestion());-->
-<!--        }-->
-<!--    </script>-->
 
 </head>
 <body>
