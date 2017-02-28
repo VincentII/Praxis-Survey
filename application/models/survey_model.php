@@ -89,6 +89,15 @@ class survey_model extends CI_Model
         return $query->result();
     }
 
+    function queryNotArchivedQuestionSets(){
+        $this->db->select('*');
+        $this->db->from(TABLE_QUESTION_SET);
+        $this->db->where(COLUMN_IS_ARCHIVED,0);
+        $this->db->order_by(COLUMN_SET_ID);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function queryQuestionSetByDescription($desc){
         $this->db->select("*");
         $this->db->from(TABLE_QUESTION_SET);

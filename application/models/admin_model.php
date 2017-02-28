@@ -126,6 +126,11 @@ class admin_model extends CI_Model
         $this->db->update(TABLE_URL, $url);
     }
 
+    function updateQuestionSet($set) {
+        $this->db->where(COLUMN_SET_ID, $set[COLUMN_SET_ID]);
+        $this->db->update(TABLE_QUESTION_SET, $set);
+    }
+
     function updateQuestion($q) {
         $this->db->where(COLUMN_QUESTION_ID, $q[COLUMN_QUESTION_ID]);
         $this->db->update(TABLE_QUESTIONS, $q);

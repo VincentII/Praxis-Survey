@@ -148,7 +148,7 @@ class AdminController extends CI_Controller
 
     private function questionsView(){
 
-        $data['questionSets'] = $this->survey->queryAllQuestionSets();
+        $data['questionSets'] = $this->survey->queryNotArchivedQuestionSets();
 
         $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
         $this->load->view('admin/a_navbar');
@@ -386,6 +386,33 @@ class AdminController extends CI_Controller
         $questions = $this->input->get('changedData');
         $deletedQuestions = $this->input->get('deletedQuestions');
         $setID = $this->input->get('setID');
+        $title = $this->input->get('title');
+        $isOpen = $this->input->get('isOpen');
+        $isArchived = $this->input->get('isArchived');
+
+        if($title!='null'){
+            $data = array(
+                COLUMN_SET_ID => intval($setID),
+                COLUMN_QUESTION_SET_DESCRIPTION => $title
+            );
+            $this->admin->updateQuestionSet($data);
+        }
+
+        if($isOpen!='null'){
+            $data = array(
+                COLUMN_SET_ID => intval($setID),
+                COLUMN_IS_CLOSED => $isOpen=='true'?0:1
+            );
+            $this->admin->updateQuestionSet($data);
+        }
+
+        if($isArchived!='null'){
+            $data = array(
+                COLUMN_SET_ID => intval($setID),
+                COLUMN_IS_ARCHIVED => 1
+            );
+            $this->admin->updateQuestionSet($data);
+        }
 
         $added = 0;
         $deleted = 0;
