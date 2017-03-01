@@ -61,9 +61,9 @@ CREATE TABLE `answers` (
   PRIMARY KEY (`Answer_ID`),
   KEY `fkset_idx` (`Set_ID`),
   KEY `fkevent_idx` (`Event_ID`),
-  CONSTRAINT `fkevent` FOREIGN KEY (`Event_ID`) REFERENCES `event` (`Event_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fkset` FOREIGN KEY (`Set_ID`) REFERENCES `question_set` (`Set_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `fkevent` FOREIGN KEY (`Event_ID`) REFERENCES `event` (`Event_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fkset` FOREIGN KEY (`Set_ID`) REFERENCES `question_set` (`Set_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,6 +72,7 @@ CREATE TABLE `answers` (
 
 LOCK TABLES `answers` WRITE;
 /*!40000 ALTER TABLE `answers` DISABLE KEYS */;
+INSERT INTO `answers` VALUES (1,1,1,1,1),(2,2,1,1,2),(3,3,1,1,3),(4,4,1,1,4),(5,5,1,1,1),(6,6,1,1,5),(7,7,1,1,3),(8,8,1,1,2);
 /*!40000 ALTER TABLE `answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,7 +129,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (1,'wegqwet','1gag','2017-02-17',0,0,0),(2,'qrqfqwf','2qr','2017-02-17',1,0,0);
+INSERT INTO `event` VALUES (1,'Praxis Cafe Session','Cafe','2017-02-17',0,0,0),(2,'Sun Life','Cafe','2017-02-17',1,0,0);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +147,7 @@ CREATE TABLE `question_set` (
   `is_archived` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Set_ID`),
   UNIQUE KEY `Question_Set_Description_UNIQUE` (`Question_Set_Description`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,7 +177,7 @@ CREATE TABLE `questions` (
   KEY `question_idx` (`Question_Num`),
   CONSTRAINT `Set` FOREIGN KEY (`Set_ID`) REFERENCES `question_set` (`Set_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `question` FOREIGN KEY (`Question_Num`) REFERENCES `questions` (`question_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,7 +230,7 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `User_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(45) DEFAULT NULL,
+  `Name` varchar(45) DEFAULT 'No Name',
   `Email` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`User_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -253,4 +254,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-02-24  9:23:07
+-- Dump completed on 2017-03-01 16:05:36
