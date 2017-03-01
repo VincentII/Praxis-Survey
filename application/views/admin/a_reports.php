@@ -153,7 +153,7 @@
 
 </script>
 
-<div class="col-md-4 col-md-offset-2" >
+<div class="col-md-4 col-md-offset-1" >
         <div class = "form-group col-md-2">
         <b>REPORTS</b>
         </div>

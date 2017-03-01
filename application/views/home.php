@@ -46,7 +46,7 @@
 
 </script>
 
-<div class="col-md-4 col-md-offset-4" >
+<div class="col-md-10 col-md-offset-4" >
         <div class = "form-group col-md-2">
             Events:
             <select class="form-control" id="form_event" name="form-event"">
