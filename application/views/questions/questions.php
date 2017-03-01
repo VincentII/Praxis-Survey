@@ -262,7 +262,7 @@
 
         $('.card-container').fullpage();
 
-//        BUTTON VISIBILITY TOGGLES
+//        BUTTON VISIBILITY TOGGLES 
         $('.custbtn--prev').toggleClass("custbtn--disabled", $('.active').hasClass("card--start")); //FIXME: Doesn't work. custbtn--disabled remains a class of custbtn--prev
         $('.custbtn--next').toggleClass("custbtn--disabled", $('.active').hasClass("card--submit")); //FIXME: Doesn't work. custbtn--disabled is not added as a class of custbtn--next
 
@@ -355,6 +355,7 @@
     }
 
     function updateProgressBar(){
+//        FIXME: friends
         var size = ($answerCount * 1.0)/$questions.length *100;
 
         $('.progress-bar__bar').css('width', size+"vw");
