@@ -135,7 +135,7 @@
             </select>
         </div>
         <div class = "form-group col-md-4">
-            <b>
+            <button type ="button" data-toggle="modal" data-target="#ViewCommentsModal" class="btn btn-default btn-block  col-md-1" onclick="">View Comments</button>
         </div>
 
 
