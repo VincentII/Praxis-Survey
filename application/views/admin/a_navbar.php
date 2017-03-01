@@ -45,9 +45,10 @@
 
             <ul class="nav navbar-nav navbar-right">
 
+                <li id="overview_button"><a href="<?=site_url("admin/" . ADMIN_EMAILS)?>">Check Emails<span class="sr-only"></span></a></li>
                         <!--<li><a href="#">Modify Account</a></li>
                         <li role="separator" class="divider"></li>-->
-                        <li><a href="<?=site_url('admin/' . ADMIN_SIGN_OUT)?>">Sign Out</a></li>
+                <li><a href="<?=site_url('admin/' . ADMIN_SIGN_OUT)?>">Sign Out</a></li>
 
             </ul>
         </div><!-- /.navbar-collapse -->

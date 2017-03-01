@@ -144,6 +144,7 @@ define("ADMIN_REPORTS", "admin_reports");
 define("ADMIN_EVENTS", "admin_events");
 define("ADMIN_QUESTIONS", "admin_questions");
 define("ADMIN_LINKS", "admin_links");
+define("ADMIN_EMAILS", "admin_email");
 
 
 define("ADMIN_GET_REPORTS", "getReports");
