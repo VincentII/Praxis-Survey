@@ -27,7 +27,6 @@
 //            var top = $.grep($lis, function(item){
 //                return $(item).position().top <= winTop;
 //            });
-////            ^^^FIXME: only have one active element at a time^^^
 //            $lis.removeClass('active');
 //            $(top).addClass('active');
 //
@@ -50,7 +49,6 @@
 //                }else{
 //                    $('.down-button').css('visibility','visible');
 //                }
-////                TODO: move
 //
 //                $currCard = activeArray[activeArray.length-1];
 //                console.log($currCard);
@@ -64,7 +62,6 @@
 ////                  console.log("down should be disabled");
 //              }
 //            });
-////            FIXME: Is there a better solution for this?^^^
 //        }); //end of scroll function
 //    });
 //
@@ -78,7 +75,6 @@
 //        } else {
 //            console.log("NEXT NEXT NEXT");
 //            console.log("I will go to " + $("#" + $currCard).next('li').attr('id'));
-////            TODO: something something href next element
 //            scrollTo($("#" + $currCard).next('li').attr('id'));
 //        }
 //    }
@@ -88,7 +84,6 @@
 //        console.log("scrolling to " + id);
 //        var elemTop = $("#" + id).position().top;
 //        console.log(elemTop);
-////        FIXME: elemTop gets the exact same offset regardless of id whyyyyyyy check css etc
 //        $('.card-container').scrollTop(elemTop);
 //    }
 //
@@ -244,7 +239,7 @@
 //                });
 //        }
 //        else{
-//            toastr.info("Comment not submitted");//TODO TAKE THIS OUT
+//            toastr.info("Comment not submitted");
 //        }
 //    }
 
@@ -294,8 +289,6 @@
             }
             else alert("You missed a spot");
         });
-
-        //TODO: disable submit button until all questions have been answered (as a precaution)
     });
 
 
@@ -344,18 +337,22 @@
     }//end of getQuestions
 
     function updateStar(star){
-        //TODO: add back code that prevents giving a score of zero
+//        if(){
+//            $answerCount++;
+//            updateProgressBar();
+//        }
+
+        //prevent rating of zero stars
         if($('#' + star).val() < 1){
             $('#' + star).rating('update', 1);
         }
 
 //        $.fn.fullpage.moveSectionDown(); //FIXME: buggy right now due to layout
-//        $answerCount++; //FIXME: this is just going to keep incrementing
         updateProgressBar();
     }
 
     function updateProgressBar(){
-//        FIXME: friends
+        //TODO: get this to work
         var size = ($answerCount * 1.0)/$questions.length *100;
 
         $('.progress-bar__bar').css('width', size+"vw");

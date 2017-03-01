@@ -229,6 +229,7 @@ footer{
 
 .footer__progress-bar{
     position: absolute;
+    height: 3vh;
     width: 100%;
 }
 
@@ -241,7 +242,6 @@ footer{
     -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
     transition: width 2s;
 }
-/*FIXME: not working don't know why*/
 
 .footer__copyright{
     position: absolute;
