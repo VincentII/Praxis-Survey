@@ -148,6 +148,7 @@ define("ADMIN_LINKS", "admin_links");
 
 define("ADMIN_GET_REPORTS", "getReports");
 define("ADMIN_GET_QUESTIONS", "getQuestions");
+define("ADMIN_GET_COMMENTS", "getComments");
 define("ADMIN_SUBMIT_EVENT", "submitEvent");
 define("ADMIN_SUBMIT_URL", "submitURL");
 define("ADMIN_SUBMIT_QUESTION_SET", "submitQuestionsSet");

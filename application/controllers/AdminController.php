@@ -55,6 +55,9 @@ class AdminController extends CI_Controller
                 case ADMIN_GET_QUESTIONS:
                     $this->getQuestions();
                     break;
+                case ADMIN_GET_COMMENTS:
+                    $this->getComments();
+                    break;
                 case ADMIN_SUBMIT_EVENT:
                     $this->submitEvent();
                     break;
@@ -239,6 +242,26 @@ class AdminController extends CI_Controller
        //     'message' => 'Successfully added!',
             'questions' => $this->survey->queryQuestionsBySetID($setID)
         );
+
+        echo json_encode($data);
+    }
+
+    public function getComments(){
+        $setID= $this->input->get('setID');
+        $eventID= $this->input->get('eventID');
+
+        if($eventID!='0')
+            $data = array(
+                'status' => 'success',
+           //     'message' => 'Successfully added!',
+                'comments' => $this->survey->queryCommentsBySetIDAndEventID($setID,$eventID)
+            );
+        else
+            $data = array(
+                'status' => 'success',
+                //     'message' => 'Successfully added!',
+                'comments' => $this->survey->queryCommentsBySetID($setID)
+            );
 
         echo json_encode($data);
     }
