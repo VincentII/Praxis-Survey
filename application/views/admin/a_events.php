@@ -314,7 +314,7 @@
         echo 'window.location = "'. site_url("admin/".ADMIN_EVENTS) .'";';
         ?>
     }
-    
+
     function isValidString($s){
        return /[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($s);
     }
@@ -322,8 +322,8 @@
     function isValidDate($d){
         return/[0-9][0-9][\/][0-9][0-9][\/][0-9][0-9][0-9][0-9]/mi.test($d);
     }
-    
-    
+
+
 
 
 </script>
