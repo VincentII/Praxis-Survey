@@ -262,7 +262,7 @@
 
         $('.card-container').fullpage();
 
-//        BUTTON VISIBILITY TOGGLES 
+//        BUTTON VISIBILITY TOGGLES
         $('.custbtn--prev').toggleClass("custbtn--disabled", $('.active').hasClass("card--start")); //FIXME: Doesn't work. custbtn--disabled remains a class of custbtn--prev
         $('.custbtn--next').toggleClass("custbtn--disabled", $('.active').hasClass("card--submit")); //FIXME: Doesn't work. custbtn--disabled is not added as a class of custbtn--next
 
@@ -290,7 +290,7 @@
         $('.card--submit').on('click',function(){
             if($('.card--question').find("input").val() > 0){
                 console.log("Submitting Answers!");
-//            submitAnswers();
+            submitAnswers();
             }
             else alert("You missed a spot");
         });
@@ -366,7 +366,7 @@
         var $questionIDs = [];
         for(var i =0; i<$questions.length;i++){
             $answers[i] = $('#star'+(i)).val();
-            $questionIDs[i] = $questions[i]['question_ID']; //TODO: double check if I fucked up here
+            $questionIDs[i] = $questions[i]['question_ID'];
         }
 
         $.ajax({
@@ -399,13 +399,14 @@
     }
 
     function submitComment(){
-        if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#form-comment').val())){ //TODO: change to id of comment box
+//        TODO: get the email too
+        if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#comment').val())){
             $.ajax({
                 url: '<?php echo base_url('questions/submitComment') ?>',
                 type: 'GET',
                 dataType: 'json',
                 data: {
-                    comment : $('#form-comment').val()
+                    comment : $('#comment').val()
                 }
             })
                 .done(function(result) {
