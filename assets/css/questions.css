@@ -148,7 +148,7 @@ custbtn:disabled{
 
 .container{
     width: 100%;
-    height: 77vh;
+    height: 78vh;
     display: flex;
     flex-flow: column;
 }
@@ -223,13 +223,13 @@ footer{
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 23vh;
+    height: 22vh;
 }
 /*TODO: change fixed footer to a sticky one that hides when the soft keyboard comes out*/
 
 .footer__progress-bar{
     position: absolute;
-    height: 3vh;
+    height: 2vh;
     width: 100%;
 }
 
