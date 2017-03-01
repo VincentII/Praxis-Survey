@@ -27,7 +27,6 @@
 //            var top = $.grep($lis, function(item){
 //                return $(item).position().top <= winTop;
 //            });
-////            ^^^FIXME: only have one active element at a time^^^
 //            $lis.removeClass('active');
 //            $(top).addClass('active');
 //
@@ -50,7 +49,6 @@
 //                }else{
 //                    $('.down-button').css('visibility','visible');
 //                }
-////                TODO: move
 //
 //                $currCard = activeArray[activeArray.length-1];
 //                console.log($currCard);
@@ -64,7 +62,6 @@
 ////                  console.log("down should be disabled");
 //              }
 //            });
-////            FIXME: Is there a better solution for this?^^^
 //        }); //end of scroll function
 //    });
 //
@@ -78,7 +75,6 @@
 //        } else {
 //            console.log("NEXT NEXT NEXT");
 //            console.log("I will go to " + $("#" + $currCard).next('li').attr('id'));
-////            TODO: something something href next element
 //            scrollTo($("#" + $currCard).next('li').attr('id'));
 //        }
 //    }
@@ -88,7 +84,6 @@
 //        console.log("scrolling to " + id);
 //        var elemTop = $("#" + id).position().top;
 //        console.log(elemTop);
-////        FIXME: elemTop gets the exact same offset regardless of id whyyyyyyy check css etc
 //        $('.card-container').scrollTop(elemTop);
 //    }
 //
@@ -244,7 +239,7 @@
 //                });
 //        }
 //        else{
-//            toastr.info("Comment not submitted");//TODO TAKE THIS OUT
+//            toastr.info("Comment not submitted");
 //        }
 //    }
 
@@ -282,33 +277,40 @@
 
         $('.card--start').on('click',function(){
            console.log("START!");
-           $.fn.fullpage.moveSectionDown();
-           $(this).hide(); //FIXME: There are no words for how bad this looks
-           //FIXME: fullPage still thinks card--start is still there, might be able to fix it by disabling scroll or doing that recalculate thing with fullPage.
+//           $.fn.fullpage.moveSectionDown();
+//           $(this).hide(); //FIXME: There are no words for how bad this looks
+//           //FIXME: fullPage still thinks card--start is still there, might be able to fix it by disabling scroll or doing that recalculate thing with fullPage.
         });
 
-        //TODO: disable submit button until all questions have been answered (as a precaution)
+        $('.card--submit').on('click',function(){
+            if($('.card--question').find("input").val() > 0){
+                console.log("Submitting Answers!");
+            submitAnswers();
+            }
+            else alert("You missed a spot");
+        });
     });
 
-//load all questions at the beginning
-//might have to change this back to the old version if I can't implement the stopped scrolling
+
     function getQuestions(){
+//        load all questions at the beginning
+//        might have to change this back to the old version if I can't implement the stopped scrolling
         for(var questionIndex=0; questionIndex<$questions.length; questionIndex++){
 
             var text = [$questions[questionIndex]['Question_Act']];
-            var id = [$questions[questionIndex]['Question_Num']];
+            var id = [$questions[questionIndex]['Question_Num']]; //TODO: where will this be added/should I add it back
 
             var newQuestion = '<div class="card section card--question">' +
                                 '<div class="card__content">' +
                                 '<div class="content__text-area text-area--question">' +
                                 '<img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">' +
-                                '<h2 class="question__text">' + text.join('') + '</h2>' +
+                                '<h2 class="question__text" id="' + id.join('') + '">' + text.join('') + '</h2>' +
                                 '</div>' +
                                 '<div class="content__stars">' +
                                 '<input id="star' + questionIndex +'" name="input-name" type="number" class="rating-loading" onchange="updateStar(this.id)"></div>' +
                                 '</div></div>';
 
-            console.log(questionIndex); console.log(id); console.log(text);
+            console.log("question index: "+questionIndex); console.log("question id: "+id); console.log("question text: "+text);
             $(newQuestion).insertBefore('.card--comment'); //don't mind this weird warning it is a lie
 
             $('.rating-loading').rating({
@@ -335,20 +337,120 @@
     }//end of getQuestions
 
     function updateStar(star){
-        //TODO: add back code that prevents giving a score of zero
+//        console.log("h2 id of active" + $('.active').find('h2').attr('id'));
+        if(($('.active').hasClass("card--question")) && $('.active').find('h2').attr('id') > $answerCount){
+            $answerCount++;
+//            console.log($answerCount);
+            updateProgressBar();
+        }
+
+        //prevent rating of zero stars
         if($('#' + star).val() < 1){
             $('#' + star).rating('update', 1);
         }
 
 //        $.fn.fullpage.moveSectionDown(); //FIXME: buggy right now due to layout
-//        $answerCount++; //FIXME: this is just going to keep incrementing
         updateProgressBar();
     }
 
     function updateProgressBar(){
+        //TODO: get this to work
         var size = ($answerCount * 1.0)/$questions.length *100;
 
         $('.progress-bar__bar').css('width', size+"vw");
+    }
+
+    function submitAnswers(){
+        var $answers = [];
+        var $questionIDs = [];
+        for(var i =0; i<$questions.length;i++){
+            $answers[i] = $('#star'+(i)).val();
+            $questionIDs[i] = $questions[i]['question_ID'];
+        }
+
+        $.ajax({
+            url: '<?php echo base_url('questions/submitAnswers') ?>',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                answers : $answers,
+                questionIDs : $questionIDs
+            }
+        })
+            .done(function(result) {
+                console.log("done");
+                if (result['status']=="success") {
+                    toastr.success(result['message']);
+                }
+                else {
+                    toastr.error(result['message']);
+                }
+
+            })
+            .fail(function() {
+                console.log("fail");
+            })
+            .always(function() {
+                console.log("complete");
+            });
+
+        submitComment();
+    }
+
+    function submitComment(){
+        if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#comment').val())){
+            $.ajax({
+                url: '<?php echo base_url('questions/submitComment') ?>',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    comment : $('#comment').val()
+                }
+            })
+                .done(function(result) {
+                    console.log("done");
+                    if (result['status']=="success") {
+                        toastr.success(result['message']);
+                    }
+                    else {
+                        toastr.error(result['message']);
+                    }
+
+                })
+                .fail(function() {
+                    console.log("fail");
+                })
+                .always(function() {
+                    console.log("complete");
+                });
+        }
+        if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#email').val())){//TODO Add email
+            $.ajax({
+                url: '<?php echo base_url('questions/submitEmail') ?>',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    name : $('#name').val(), //TODO also add a form-name
+                    email : $('email').val()
+                }
+            })
+                .done(function(result) {
+                    console.log("done");
+                    if (result['status']=="success") {
+                        toastr.success(result['message']);
+                    }
+                    else {
+                        toastr.error(result['message']);
+                    }
+
+                })
+                .fail(function() {
+                    console.log("fail");
+                })
+                .always(function() {
+                    console.log("complete");
+                });
+        }
     }
 
 
@@ -401,17 +503,18 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="email">Love Praxis so much you would sign up for a newsletter? Give us your email below.</label>
+                <label for="email">Love Praxis so much you would sign up for a newsletter? Give us your name and email below.</label>
+                <input type="text" class="form-control" id="name">
                 <input type="text" class="form-control" id="email">
             </div>
         </div>
-        <div class="card section">
+        <div class="card section card--submit">
             <div class="card__content">
                 <i class="fa fa-paper-plane-o fa-5x"></i>
                 <div class="content__text-area">SUBMIT</div>
             </div>
         </div>
-        <div class="card section">
+        <div class="card section card--thanks">
             <div class="card__content">
                 <img class="thank" src="<?=base_url()?>/assets/img/thank.png">
                 <!--                    TODO: convert png to svg-->
@@ -419,7 +522,7 @@
                 <div class="content__text-area">submit another response</div>
             </div>
         </div>
-        <div class="card section">
+        <div class="card section card--error">
             <div class="card__content">
                 <img class="oops" src="<?=base_url()?>/assets/img/oops.png">
                 <div class="content__text-area">Something went wrong. Please try again.</div>

@@ -220,6 +220,24 @@ class survey_model extends CI_Model
         $this->db->insert(TABLE_COMMENT, $insertCommentData);
     }
 
+    function insertEmail($name,$email){
+        $insertEmailData=array(
+            COLUMN_NAME => $name,
+            COLUMN_EMAIL => $email
+        );
+        $this->db->insert(TABLE_USER, $insertEmailData);
+    }
+
+    function isExistingEmail($email) {
+        $this->db->select('*');
+        $this->db->from(TABLE_USER);
+        $this->db->where(COLUMN_EMAIL, $email);
+        $query = $this->db->get();
+        $result = $query->result();
+        
+        return count($result)>=1;
+    }
+
     function isExistingEvent($eventID) {
         $this->db->select('*');
         $this->db->from(TABLE_EVENT);
