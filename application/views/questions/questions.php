@@ -396,7 +396,6 @@
     }
 
     function submitComment(){
-//        TODO: get the email too
         if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#comment').val())){
             $.ajax({
                 url: '<?php echo base_url('questions/submitComment') ?>',
@@ -502,7 +501,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="email">Love Praxis so much you would sign up for a newsletter? Give us your email below.</label>
+                <label for="email">Love Praxis so much you would sign up for a newsletter? Give us your name and email below.</label>
+                <input type="text" class="form-control" id="name">
                 <input type="text" class="form-control" id="email">
             </div>
         </div>
