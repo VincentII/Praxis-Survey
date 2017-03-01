@@ -298,19 +298,19 @@
         for(var questionIndex=0; questionIndex<$questions.length; questionIndex++){
 
             var text = [$questions[questionIndex]['Question_Act']];
-            var id = [$questions[questionIndex]['Question_Num']];
+            var id = [$questions[questionIndex]['Question_Num']]; //TODO: where will this be added/should I add it back
 
             var newQuestion = '<div class="card section card--question">' +
                                 '<div class="card__content">' +
                                 '<div class="content__text-area text-area--question">' +
                                 '<img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">' +
-                                '<h2 class="question__text">' + text.join('') + '</h2>' +
+                                '<h2 class="question__text" id="' + id.join('') + '">' + text.join('') + '</h2>' +
                                 '</div>' +
                                 '<div class="content__stars">' +
                                 '<input id="star' + questionIndex +'" name="input-name" type="number" class="rating-loading" onchange="updateStar(this.id)"></div>' +
                                 '</div></div>';
 
-            console.log(questionIndex); console.log(id); console.log(text);
+            console.log("question index: "+questionIndex); console.log("question id: "+id); console.log("question text: "+text);
             $(newQuestion).insertBefore('.card--comment'); //don't mind this weird warning it is a lie
 
             $('.rating-loading').rating({
@@ -337,10 +337,12 @@
     }//end of getQuestions
 
     function updateStar(star){
-//        if(){
-//            $answerCount++;
-//            updateProgressBar();
-//        }
+//        console.log("h2 id of active" + $('.active').find('h2').attr('id'));
+        if(($('.active').hasClass("card--question")) && $('.active').find('h2').attr('id') > $answerCount){
+            $answerCount++;
+//            console.log($answerCount);
+            updateProgressBar();
+        }
 
         //prevent rating of zero stars
         if($('#' + star).val() < 1){
