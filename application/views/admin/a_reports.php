@@ -114,14 +114,15 @@
         <b>REPORTS</b>
         </div>
 </div>
-<div class="col-md-10 col-md-offset-2">
+<div class="panel panel-default col-md-10 col-md-offset-1">
+    <div class="panel-body ">
         <div class = "form-group col-md-6">
             Question Set:
             <select class="form-control" id="form_set" name="form-set" onclick="getAnalytics() ">
-            <option value="" selected disabled>Choose a Question Set...</option>
-            <?php foreach($questionSets as $row):?>
-                <option value="<?=$row->Set_ID?>"><?=$row->Question_Set_Description?></option>
-            <?php endforeach;?>
+                <option value="" selected disabled>Choose a Question Set...</option>
+                <?php foreach($questionSets as $row):?>
+                    <option value="<?=$row->Set_ID?>"><?=$row->Question_Set_Description?></option>
+                <?php endforeach;?>
             </select>
         </div>
         <div class = "form-group col-md-4">
@@ -133,5 +134,19 @@
                 <?php endforeach;?>
             </select>
         </div>
-        <div class = "col-md-10" id="charts"></div>
+        <div class = "form-group col-md-4">
+            <b>
+        </div>
+
+
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class = "form-group col-md-6">
+                <div class = "col-md-10" id="charts"></div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
