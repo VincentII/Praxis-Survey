@@ -146,6 +146,7 @@ custbtn:disabled{
     top: 67vh;
 }
 
+/*TODO: changed the heights of stuff to make the prog bar slimmer, check if that fucked anything up*/
 .container{
     width: 100%;
     height: 78vh;
