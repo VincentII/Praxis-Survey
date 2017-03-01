@@ -190,7 +190,9 @@
 
         for(i=0;i<$questionSet.length;i++)
             if($questionSet[i]['Set_ID']==$setID){
-            $("#modal_view_title").html($questionSet[i]['Question_Set_Description']);
+            $temp = $questionSet[i]['is_closed']+""=="0"? 'Yes':'No';
+            var checkBoxes = '<div>Open: <span id="isOpenSet">'+$temp+'</span><span id="isArchiveSet"></span></div>';
+            $("#modal_view_title").html('<div id="set_title">'+$questionSet[i]['Question_Set_Description']+"</div>" + checkBoxes);
             break;
             }
 
@@ -304,6 +306,7 @@
     }
 
     var initialTableData;
+    var initialSetData;
 
     function changeViewToEdit(table, buttons){
         //console.log(table);
@@ -316,6 +319,27 @@
 
         initialTableData = getTableDataWithID(tID);
         console.log(initialTableData);
+
+        initialSetData =[];
+        {
+            initialSetData[0] = $('#set_title').html();
+
+            var title = '<'
+
+            var check="";
+            if($("#isOpenSet").html()=="Yes"){
+                check = '<input type="checkbox" id="check_open" value="" checked>';
+                initialSetData[1] = true;
+            }else {
+                check = '<input type="checkbox" id="check_open" value="">';
+                initialSetData[1] = false;
+            }
+
+            $('#set_title').html("<input type=\"text\" class=\"form-control\" id=\"set_title_form\"value=\"" + initialSetData[0] + "\">");
+            $("#isOpenSet").html(check);
+            $("#isArchiveSet").html('<div class="pull-right">Archive:<input type="checkbox" id="check_archive" value=""></div>');
+        }
+
 
 
 
@@ -418,11 +442,45 @@
         return changedData;
     }
 
+    function getChangedSetData(){
+        var changedData = [];
+        var final = false
+        if($('#set_title_form').val() != initialSetData[0]) {
+            changedData[0] = $('#set_title_form').val();
+            final = true;
+        }
+        else
+            changedData[0] = 'null';
+
+        if($('#check_open').is(':checked') != initialSetData[1]) {
+            changedData[1] = $('#check_open').is(':checked');
+            final = true;
+        }
+        else
+            changedData[1] = 'null';
+
+        if($('#check_archive').is(':checked')) {
+            changedData[2] = $('#check_archive').is(':checked');
+            final = true;
+        }
+        else
+            changedData[2] = 'null';
+
+        if(final){
+            return changedData;
+        }
+        else
+            return final;
+
+    }
+
     function submitChanges(tableID) {
 
         var newTable = getChangesTableDataWithID(tableID);
 
        // console.log(newTable);
+
+        //TODO Add if Opened then open AND CHANGING QUESTION DESC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         if(newTable.length==0){
             toastr.error("You can't have an empty question set","Opps");
@@ -448,6 +506,7 @@
         }
         */
 
+        var setData = getChangedSetData();
         var changedData = getChangedData(newTable);
 
         /*
@@ -461,7 +520,7 @@
 
         console.log(changedData);
         console.log(deletedQuestions);
-        if(changedData.length>0||deletedQuestions.length>0) {
+        if(changedData.length>0||deletedQuestions.length>0||setData!=false) {
             $.ajax({
                 url: '<?=base_url('admin/' . ADMIN_UPDATE_QUESTIONS)?>',
                 type: 'GET',
@@ -469,7 +528,9 @@
                 data: {
                     changedData: changedData,
                     deletedQuestions: deletedQuestions,
-                    setID: currSetID
+                    setID: currSetID,
+                    title: setData[0],
+                    isOpen: setData[1]
                 }
             })
                 .done(function (result) {

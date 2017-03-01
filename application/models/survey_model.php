@@ -89,6 +89,15 @@ class survey_model extends CI_Model
         return $query->result();
     }
 
+    function queryNotArchivedQuestionSets(){
+        $this->db->select('*');
+        $this->db->from(TABLE_QUESTION_SET);
+        $this->db->where(COLUMN_IS_ARCHIVED,0);
+        $this->db->order_by(COLUMN_SET_ID);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function queryQuestionSetByDescription($desc){
         $this->db->select("*");
         $this->db->from(TABLE_QUESTION_SET);
@@ -199,6 +208,24 @@ class survey_model extends CI_Model
             COLUMN_COMMENT_ANS => $comment
         );
         $this->db->insert(TABLE_COMMENT, $insertCommentData);
+    }
+
+    function insertEmail($name,$email){
+        $insertEmailData=array(
+            COLUMN_NAME => $name,
+            COLUMN_EMAIL => $email
+        );
+        $this->db->insert(TABLE_USER, $insertEmailData);
+    }
+
+    function isExistingEmail($email) {
+        $this->db->select('*');
+        $this->db->from(TABLE_USER);
+        $this->db->where(COLUMN_EMAIL, $email);
+        $query = $this->db->get();
+        $result = $query->result();
+        
+        return count($result)>=1;
     }
 
     function isExistingEvent($eventID) {

@@ -93,4 +93,30 @@ class QuestionsController extends CI_Controller
 
         echo json_encode($data);
     }
+
+    public function submitEmail(){
+        $getData = array(
+            'name' => $this->input->get('name'),
+            'email' => $this->input->get('email')
+        );
+
+
+        if($getData['name']==null||$getData['name']==""){
+            $getData['name']="No name";
+        }
+
+        if(!isExistingEmail($getData['email']))
+        $this->survey->insertComment($getData['name'],$getData['email']);
+
+
+        $data = array(
+            'status' => 'success',
+            'message' => 'Email Submitted!'
+        );
+
+
+
+
+        echo json_encode($data);
+    }
 }

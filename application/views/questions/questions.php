@@ -423,8 +423,32 @@
                     console.log("complete");
                 });
         }
-        else{
-            toastr.info("Comment not submitted");//TODO TAKE THIS OUT
+        if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#email').val())){//TODO Add email
+            $.ajax({
+                url: '<?php echo base_url('questions/submitEmail') ?>',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    name : $('#name').val(), //TODO also add a form-name
+                    email : $('email').val()
+                }
+            })
+                .done(function(result) {
+                    console.log("done");
+                    if (result['status']=="success") {
+                        toastr.success(result['message']);
+                    }
+                    else {
+                        toastr.error(result['message']);
+                    }
+
+                })
+                .fail(function() {
+                    console.log("fail");
+                })
+                .always(function() {
+                    console.log("complete");
+                });
         }
     }
 
