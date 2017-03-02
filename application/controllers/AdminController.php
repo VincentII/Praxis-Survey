@@ -46,6 +46,9 @@ class AdminController extends CI_Controller
                 case ADMIN_LINKS:
                     $this->linksView();
                     break;
+                case ADMIN_EMAILS:
+                    $this->emailsView();
+                    break;
                 case ADMIN_SIGN_OUT:
                     $this->signOut();
                     break;
@@ -54,6 +57,9 @@ class AdminController extends CI_Controller
                     break;
                 case ADMIN_GET_QUESTIONS:
                     $this->getQuestions();
+                    break;
+                case ADMIN_GET_COMMENTS:
+                    $this->getComments();
                     break;
                 case ADMIN_SUBMIT_EVENT:
                     $this->submitEvent();
@@ -143,6 +149,16 @@ class AdminController extends CI_Controller
         $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
         $this->load->view('admin/a_navbar');
         $this->load->view('admin/a_links', $data); // $this->load->view('admin', $data); set to this if data is set
+        $this->load->view('admin/a_footer'); // include bootstrap 3 footer
+    }
+
+    private function emailsView(){
+
+        $data['emails'] = $this->survey->queryAllUsers();
+
+        $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
+        $this->load->view('admin/a_navbar');
+        $this->load->view('admin/a_emails', $data); // $this->load->view('admin', $data); set to this if data is set
         $this->load->view('admin/a_footer'); // include bootstrap 3 footer
     }
 
@@ -239,6 +255,26 @@ class AdminController extends CI_Controller
        //     'message' => 'Successfully added!',
             'questions' => $this->survey->queryQuestionsBySetID($setID)
         );
+
+        echo json_encode($data);
+    }
+
+    public function getComments(){
+        $setID= $this->input->get('setID');
+        $eventID= $this->input->get('eventID');
+
+        if($eventID!='0')
+            $data = array(
+                'status' => 'success',
+           //     'message' => 'Successfully added!',
+                'comments' => $this->survey->queryCommentsBySetIDAndEventID($setID,$eventID)
+            );
+        else
+            $data = array(
+                'status' => 'success',
+                //     'message' => 'Successfully added!',
+                'comments' => $this->survey->queryCommentsBySetID($setID)
+            );
 
         echo json_encode($data);
     }

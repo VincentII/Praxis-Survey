@@ -181,6 +181,16 @@ class survey_model extends CI_Model
         return $query->result();
     }
 
+    function queryCommentsBySetID($setID){
+        $this->db->select("*");
+        $this->db->from(TABLE_COMMENT);
+        $this->db->where(COLUMN_SET_ID, $setID);
+        $this->db->order_by(COLUMN_COMMENT_ID);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     function queryURLbyURL($url){
         $this->db->select("*");
         $this->db->from(TABLE_URL);
