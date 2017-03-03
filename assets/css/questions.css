@@ -191,7 +191,9 @@ ul.card-list{
 .content__text-area{
     /*flex: 1;*/
     text-align: center;
+    font-size: 2em;
 }
+/*FIXME: This does not looked centered for some reason*/
 
 .content__star-caption{
     height: 2em;

@@ -37,6 +37,16 @@
 //        BUTTON VISIBILITY TOGGLES
 //        $('.custbtn--prev').toggleClass("custbtn--disabled", $('.active').hasClass("card--start")); //FIXME: Doesn't work. custbtn--disabled remains a class of custbtn--prev
 //        $('.custbtn--next').toggleClass("custbtn--disabled", $('.active').hasClass("card--submit")); //FIXME: Doesn't work. custbtn--disabled is not added as a class of custbtn--next
+//        $('body').on('swipe',function(){
+//            console.log("Swipe!");
+//        });
+//        $('body').on('onkeypress',function(){
+//            console.log("Key!");
+//        });
+//        $('body').on('onwheel',function(){
+//            console.log("Wheel!");
+//        });
+//        $('body').on('onwheel', '.card-container', disableCustbtn);
 
 //        BUTTON FUNCTIONS
         $('.custbtn--prev').on('click',function(){
@@ -68,6 +78,12 @@
 
         $('.fa-repeat').on('click',function(){
            location.reload();
+        });
+
+        $('.fa-refresh').on('click',function(){
+//            while(trying again){
+//                make fa-refresh spin
+//            }
         });
     });
 
@@ -131,6 +147,7 @@
             $('#' + star).rating('update', 1);
         }
 
+//        CUSTOM STAR CAPTIONS
         switch($('#' + star).val()){
             case '1':
                 $('.active').find('.content__star-caption').text("Totally Disagree");
@@ -148,7 +165,6 @@
                 $('.active').find('.content__star-caption').text("Totally Agree");
                 break;
         }
-
 //        $.fn.fullpage.moveSectionDown(); //FIXME: buggy right now due to layout
     }
 
