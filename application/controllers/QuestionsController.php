@@ -97,21 +97,29 @@ class QuestionsController extends CI_Controller
     public function submitEmail(){
         $getData = array(
             'name' => $this->input->get('name'),
-            'email' => $this->input->get('email')
+            'email' => $this->input->get('email'),
+            'mobile' => $this->input->get('mobile')
         );
 
 
         if($getData['name']==null||$getData['name']==""){
             $getData['name']="No name";
         }
+        if($getData['email']==null||$getData['email']==""){
+            $getData['email']="No email";
+        }
+        if($getData['mobile']==null||$getData['mobile']==""){
+            $getData['mobile']="No mobile";
+        }
 
-        if(!isExistingEmail($getData['email']))
-        $this->survey->insertComment($getData['name'],$getData['email']);
+
+
+        $this->survey->insertEmail($getData['name'],$getData['email'],$getData['email']);
 
 
         $data = array(
             'status' => 'success',
-            'message' => 'Email Submitted!'
+            'message' => 'Contact Submitted!'
         );
 
 

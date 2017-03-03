@@ -25,6 +25,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Mobile#</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -34,6 +35,7 @@
                                         <tr>
                                             <td><?=$email->Name?></td>
                                             <td><?=$email->Email?></td>
+                                            <td><?=$email->Mobile?></td>
                                         </tr>
                                     <?php endforeach;?>
                                     </tbody>
