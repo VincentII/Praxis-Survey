@@ -1,5 +1,6 @@
 /*@media only screen and (max-device-width: 1024px){*/
     /**{border: 1px solid red;}*/
+*{font-family: "Calibri Light", "Calibri", sans-serif}
 
     /*.main{*/
         /*border-style: solid;*/
@@ -190,6 +191,12 @@ ul.card-list{
 .content__text-area{
     /*flex: 1;*/
     text-align: center;
+}
+
+.content__star-caption{
+    height: 2em;
+    font-size: 2em;
+    color: #c5c5c5;
 }
 
 .text-area--question{

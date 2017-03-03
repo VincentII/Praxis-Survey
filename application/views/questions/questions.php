@@ -56,9 +56,6 @@
             console.log("START!");
             $hasStarted = true;
             $.fn.fullpage.moveSectionDown();
-            $('.custbtn').show();
-//            $(this).hide(1000); //FIXME: There are no words for how bad this looks, prevent access to start card but must retain scroll down animation
-//            $.fn.fullpage.reBuild();
         });
 
         $('.card--submit').on('click',function(){
@@ -91,6 +88,7 @@
                                 '</div>' +
                                 '<div class="content__stars">' +
                                 '<input id="star' + questionIndex +'" name="input-name" type="number" data-size="lg" class="rating-loading" onchange="updateStar(this.id)"></div>' +
+                                '<div class="content__star-caption"></div>' +
                                 '</div></div>';
 
             console.log("question index: "+questionIndex); console.log("question id: "+id); console.log("question text: "+text);
@@ -133,8 +131,25 @@
             $('#' + star).rating('update', 1);
         }
 
+        switch($('#' + star).val()){
+            case '1':
+                $('.active').find('.content__star-caption').text("Totally Disagree");
+                break;
+            case '2':
+                $('.active').find('.content__star-caption').text("Partly Disagree");
+                break;
+            case '3':
+                $('.active').find('.content__star-caption').text("Neutral");
+                break;
+            case '4':
+                $('.active').find('.content__star-caption').text("Partly Agree");
+                break;
+            case '5':
+                $('.active').find('.content__star-caption').text("Totally Agree");
+                break;
+        }
+
 //        $.fn.fullpage.moveSectionDown(); //FIXME: buggy right now due to layout
-        updateProgressBar();
     }
 
     function updateProgressBar(){
