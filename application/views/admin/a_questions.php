@@ -444,33 +444,27 @@
 
     function getChangedSetData(){
         var changedData = [];
-        var final = false
+
         if($('#set_title_form').val() != initialSetData[0]) {
             changedData[0] = $('#set_title_form').val();
-            final = true;
         }
         else
             changedData[0] = 'null';
 
         if($('#check_open').is(':checked') != initialSetData[1]) {
             changedData[1] = $('#check_open').is(':checked');
-            final = true;
         }
         else
             changedData[1] = 'null';
-
         if($('#check_archive').is(':checked')) {
             changedData[2] = $('#check_archive').is(':checked');
-            final = true;
         }
         else
             changedData[2] = 'null';
 
-        if(final){
+
             return changedData;
-        }
-        else
-            return final;
+
 
     }
 
@@ -518,9 +512,17 @@
         }
         */
 
+        var checkSetData = false;
+        for(ctr = 0; ctr<setData.length;ctr++){
+            if(setData[ctr]!='null'){
+                checkSetData=true;
+            }
+        }
+
+
         console.log(changedData);
-        console.log(deletedQuestions);
-        if(changedData.length>0||deletedQuestions.length>0||setData!=false) {
+        console.log(setData);
+        if(changedData.length>0||deletedQuestions.length>0||checkSetData!=false) {
             $.ajax({
                 url: '<?=base_url('admin/' . ADMIN_UPDATE_QUESTIONS)?>',
                 type: 'GET',
@@ -530,7 +532,8 @@
                     deletedQuestions: deletedQuestions,
                     setID: currSetID,
                     title: setData[0],
-                    isOpen: setData[1]
+                    isOpen: setData[1],
+                    isArchived: setData[2]
                 }
             })
                 .done(function (result) {
