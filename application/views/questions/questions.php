@@ -106,9 +106,8 @@
 //                '</li>';
 //
 //            $('#questionList').append($submitButton);
-////            $('#next_button').prop('disabled',true); //FIXME: disabled down button bug
+////            $('#next_button').prop('disabled',true);
 //            $questionIndex++;
-////            ^^^FIXME: better implementation of preventing the additional submit button bug?
 //        }
 //        else if($questionIndex ==0 ||($questionIndex !=0&&!$('next_button').isDisabled)){
 //            var text = [
@@ -150,7 +149,7 @@
 //                    5: 'text-success'
 //                }
 //            });
-////            $('#next_button').prop('disabled',true); //FIXME: disabled down button bug
+////            $('#next_button').prop('disabled',true);
 //        }
 //    }//end of getNextQuestion
 //
@@ -164,7 +163,7 @@
 //            $('#' + star).rating('update', 1);
 //        }
 //        if($('#star'+($questionIndex-1)).val() >= 1 && !($questionIndex>$questions.length)) {
-//            $('#next_button').prop('disabled', false); //FIXME: disabled down button bug
+//            $('#next_button').prop('disabled', false);
 //        }
 //    }
 //
@@ -334,8 +333,9 @@
            onLeave: function(index, nextIndex, direction){
                if(($('.active').hasClass("card--question") && $('.active').find("input").val() < 1 && direction == 'down') ||
                    ($('.active').hasClass("card--submit") && $hasSubmitted == false && direction == 'down') ||
-                   (($('.active').hasClass("card--thanks") || $('.active').hasClass("card--error")) && (direction == 'up' || direction == 'down'))){
-                   console.log("you can't move down");
+                   (($('.active').hasClass("card--thanks") || $('.active').hasClass("card--error")) && (direction == 'up' || direction == 'down')) /*||
+                   ($('.active').hasClass("card--start"))*/){
+                   console.log("you can't move");
                    return false;
                }
            }
@@ -362,8 +362,8 @@
         $('.card--start').on('click',function(){
             console.log("START!");
             $.fn.fullpage.moveSectionDown();
-            $(this).hide(); //FIXME: There are no words for how bad this looks
-            $.fn.fullpage.reBuild();
+//            $(this).hide(); //FIXME: There are no words for how bad this looks, must retain scroll down animation
+//            $.fn.fullpage.reBuild();
         });
 
         $('.card--submit').on('click',function(){
@@ -594,8 +594,8 @@
             </div>
             <div class="form-group">
                 <label for="email">Love Praxis so much you would sign up for a newsletter? Give us your name and email below.</label>
-                <input type="text" class="form-control" id="name">
-                <input type="text" class="form-control" id="email">
+                <input type="text" class="form-control" placeholder="Name" id="name">
+                <input type="text" class="form-control" placeholder="Email" id="email">
             </div>
         </div>
         <div class="card section card--submit">

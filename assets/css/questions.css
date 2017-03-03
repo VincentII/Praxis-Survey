@@ -239,7 +239,8 @@ footer{
     height: inherit;
     width: 0vw;
     left: 0;
-    background-color: #080808;
+    /*background-color: #080808;*/
+    background-color: #ed1c24;
     -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
     transition: width 2s;
 }
