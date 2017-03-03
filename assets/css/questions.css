@@ -1,5 +1,5 @@
 /*@media only screen and (max-device-width: 1024px){*/
-    *{border: 1px solid red;}
+    /**{border: 1px solid red;}*/
     *{font-family: "Calibri Light", "Calibri", sans-serif}
 
     /*.main{*/
@@ -126,7 +126,6 @@
 .custbtn{
     position: fixed;
     font-size: 3em !important;
-    visibility: hidden;
 }
 /*TODO: Find a solution that doesn't use !important'*/
 
@@ -215,6 +214,10 @@ ul.card-list{
 
 .fa-hand-pointer-o{
     margin-top: 5vh;
+}
+
+.form-group{
+    margin: 3vh;
 }
 
 img{

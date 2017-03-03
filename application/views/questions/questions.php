@@ -47,6 +47,7 @@
 //            console.log("Wheel!");
 //        });
 //        $('body').on('onwheel', '.card-container', disableCustbtn);
+        //TODO: try hide and show
 
 //        BUTTON FUNCTIONS
         $('.custbtn--prev').on('click',function(){
@@ -274,14 +275,6 @@
         }
     }
 
-    function togglePrev(){
-
-    }
-
-    function toggleNext(){
-
-    }
-
 
 </script>
 
@@ -306,14 +299,17 @@
         <div class="card section card--comment">
             <div class="card__content">
                 <div class="form-group">
-                    <textarea class="form-control" placeholder="Write your love letter to Praxis here." rows="5" id="comment"></textarea>
+                    <label for="name">Comments</label>
+                    <textarea class="form-control" rows="5" id="comment"></textarea>
                 </div>
             </div>
             <div class="form-group">
-                <label for="email">Love Praxis so much you would sign up for a newsletter? Give us your name and email below.</label>
-                <input type="text" class="form-control" placeholder="Name" id="name">
-                <input type="text" class="form-control" placeholder="Cellphone Number" id="cellphone">
-                <input type="text" class="form-control" placeholder="Email" id="email">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name"><br>
+                <label for="name">Email</label>
+                <input type="text" class="form-control" id="email"><br>
+                <label for="name">Cellphone Number</label>
+                <input type="text" class="form-control" id="cellphone"><br>
             </div>
         </div>
         <div class="card section card--submit">
