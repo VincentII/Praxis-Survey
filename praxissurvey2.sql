@@ -230,7 +230,8 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `User_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) DEFAULT 'No Name',
-  `Email` varchar(45) DEFAULT NULL,
+  `Email` varchar(45) DEFAULT 'No Email',
+  `Mobile` varchar(45) DEFAULT 'No Number',
   PRIMARY KEY (`User_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -253,4 +254,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-03 15:12:38
+-- Dump completed on 2017-03-03 15:48:32
