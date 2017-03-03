@@ -373,6 +373,10 @@
             }
             else alert("You missed a spot");
         });
+
+        $('.fa-repeat').on('click',function(){
+           location.reload();
+        });
     });
 
 
