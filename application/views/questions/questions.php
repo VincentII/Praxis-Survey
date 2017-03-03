@@ -247,6 +247,7 @@
     var $questions;
 //var $questionIndex = 0;
     var $answerCount = 0;
+    var $hasStarted = false;
     var $hasSubmitted = false;
 
     $(document).on('ready', function(){
@@ -255,86 +256,15 @@
         console.log($questions);
         getQuestions();
 
-//        FIXME: prevent any fuckups here
-//        $('.card-container').fullpage(/*{
-//            //Navigation
-////            menu: '#menu',
-//            lockAnchors: false,
-//            anchors:['firstPage', 'secondPage'],
-//            navigation: false,
-//            navigationPosition: 'right',
-//            navigationTooltips: ['firstSlide', 'secondSlide'],
-//            showActiveTooltip: false,
-//            slidesNavigation: false,
-//            slidesNavPosition: 'bottom',
-//
-//            //Scrolling
-//            css3: true,
-//            scrollingSpeed: 700,
-//            autoScrolling: true,
-//            fitToSection: true,
-//            fitToSectionDelay: 1000,
-//            scrollBar: false,
-//            easing: 'easeInOutCubic',
-////            easingcss3: 'ease',
-//            loopBottom: false,
-//            loopTop: false,
-//            loopHorizontal: true,
-//            continuousVertical: false,
-//            continuousHorizontal: false,
-//            scrollHorizontally: false,
-//            interlockedSlides: false,
-//            dragAndMove: false,
-//            offsetSections: false,
-//            resetSliders: false,
-//            fadingEffect: false,
-//            normalScrollElements: '#element1, .element2',
-//            scrollOverflow: false,
-//            scrollOverflowReset: false,
-//            scrollOverflowOptions: null,
-//            touchSensitivity: 15,
-//            normalScrollElementTouchThreshold: 5,
-//            bigSectionsDestination: null,
-//
-//            //Accessibility
-//            keyboardScrolling: false,
-//            animateAnchor: true,
-//            recordHistory: true,
-//
-//            //Design
-//            controlArrows: true,
-//            verticalCentered: true,
-////            sectionsColor : ['#ccc', '#fff'],
-//            paddingTop: '3em',
-//            paddingBottom: '10px',
-//            fixedElements: '#header, .footer',
-//            responsiveWidth: 0,
-//            responsiveHeight: 0,
-//            responsiveSlides: false,
-//
-//            //Custom selectors
-//            sectionSelector: '.section',
-//            slideSelector: '.slide',
-//
-//            lazyLoading: true,
-//
-//            //events
-//            onLeave: function(index, nextIndex, direction){},
-//            afterLoad: function(anchorLink, index){},
-//            afterRender: function(){},
-//            afterResize: function(){},
-//            afterResponsive: function(isResponsive){},
-//            afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
-//            onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
-//        }*/);
-
+//        INITIALIZE FULLPAGE
 //        SCROLLING TOGGLES
         $('.card-container').fullpage({
            onLeave: function(index, nextIndex, direction){
                if(($('.active').hasClass("card--question") && $('.active').find("input").val() < 1 && direction == 'down') ||
                    ($('.active').hasClass("card--submit") && $hasSubmitted == false && direction == 'down') ||
-                   (($('.active').hasClass("card--thanks") || $('.active').hasClass("card--error")) && (direction == 'up' || direction == 'down')) /*||
-                   ($('.active').hasClass("card--start"))*/){
+                   (($('.active').hasClass("card--thanks") || $('.active').hasClass("card--error")) && (direction == 'up' || direction == 'down')) ||
+                   ($('.active').hasClass("card--start") && $hasStarted == false) ||
+                   (index == 2 && direction == 'up')){
                    console.log("you can't move");
                    return false;
                }
@@ -344,6 +274,13 @@
 //        BUTTON VISIBILITY TOGGLES
 //        $('.custbtn--prev').toggleClass("custbtn--disabled", $('.active').hasClass("card--start")); //FIXME: Doesn't work. custbtn--disabled remains a class of custbtn--prev
 //        $('.custbtn--next').toggleClass("custbtn--disabled", $('.active').hasClass("card--submit")); //FIXME: Doesn't work. custbtn--disabled is not added as a class of custbtn--next
+//        if($('.active').hasClass("card--start") || $('.active').hasClass("card--submit") || $('.active').hasClass("card--thanks")){
+//            $('.custbtn--prev').hide();
+//            $('.custbtn--next').hide();
+//        } else{
+//            $('.custbtn--prev').show();
+//            $('.custbtn--next').show();
+//        } //FIXME: implement a better solution
 
 //        BUTTON FUNCTIONS
         $('.custbtn--prev').on('click',function(){
@@ -361,8 +298,9 @@
 
         $('.card--start').on('click',function(){
             console.log("START!");
+            $hasStarted = true;
             $.fn.fullpage.moveSectionDown();
-//            $(this).hide(); //FIXME: There are no words for how bad this looks, must retain scroll down animation
+//            $(this).hide(1000); //FIXME: There are no words for how bad this looks, prevent access to start card but must retain scroll down animation
 //            $.fn.fullpage.reBuild();
         });
 
