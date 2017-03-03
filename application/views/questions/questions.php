@@ -327,7 +327,7 @@
                                 '<h2 class="question__text" id="' + id.join('') + '">' + text.join('') + '</h2>' +
                                 '</div>' +
                                 '<div class="content__stars">' +
-                                '<input id="star' + questionIndex +'" name="input-name" type="number" class="rating-loading" onchange="updateStar(this.id)"></div>' +
+                                '<input id="star' + questionIndex +'" name="input-name" type="number" data-size="lg" class="rating-loading" onchange="updateStar(this.id)"></div>' +
                                 '</div></div>';
 
             console.log("question index: "+questionIndex); console.log("question id: "+id); console.log("question text: "+text);
@@ -338,21 +338,21 @@
                 showClear: false,
                 showCaption: false,
                 size: 'xl',
-                theme:'krajee-fa',
-                starCaptions: {
-                    1: 'Totally Disagree',
-                    2: 'Partly Disagree',
-                    3: 'Neutral',
-                    4: 'Partly Agree',
-                    5: 'Totally Agree'
-                },
-                starCaptionClasses: {
-                    1: 'text-danger',
-                    2: 'text-warning',
-                    3: 'text-info',
-                    4: 'text-primary',
-                    5: 'text-success'
-                }
+                theme:'krajee-svg',
+//                starCaptions: {
+//                    1: 'Totally Disagree',
+//                    2: 'Partly Disagree',
+//                    3: 'Neutral',
+//                    4: 'Partly Agree',
+//                    5: 'Totally Agree'
+//                },
+//                starCaptionClasses: {
+//                    1: 'text-danger',
+//                    2: 'text-warning',
+//                    3: 'text-info',
+//                    4: 'text-primary',
+//                    5: 'text-success'
+//                }
             });
         }//end of for loop
     }//end of getQuestions
