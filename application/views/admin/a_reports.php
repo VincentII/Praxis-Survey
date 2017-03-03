@@ -98,13 +98,17 @@
                                 seriesBarDistance: 15,
                                 axisY: {onlyInteger: true},
                                 showGridBackground: true,
-                                distributeSeries: false
+                                distributeSeries: false,
+                                width:'100%',
+                                height: '300px'
 
                             };
 
                             var responsiveOptions = [
                                 ['screen and (min-width: 641px) and (max-width: 1024px)', {
                                     seriesBarDistance: 10,
+                                    width:'100%',
+                                    height: '300px',
                                     axisX: {
                                         labelInterpolationFnc: function (value) {
                                             return value;
@@ -113,6 +117,8 @@
                                 }],
                                 ['screen and (max-width: 640px)', {
                                     seriesBarDistance: 5,
+                                    width:'100%',
+                                    height: '300px',
                                     axisX: {
                                         labelInterpolationFnc: function (value) {
                                             return value[0];
@@ -187,8 +193,8 @@
     </div>
     <div class="panel panel-default" hidden id="container-chart">
         <div class="panel-body">
-            <div class = "form-group col-md-6">
-                <div class = "col-md-10" id="charts"></div>
+            <div class = "form-group col-md-10">
+                <div  id="charts"></div>
             </div>
         </div>
     </div>
