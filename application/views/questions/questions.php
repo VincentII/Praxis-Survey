@@ -274,33 +274,19 @@
         }
     }
 
+    function togglePrev(){
+
+    }
+
+    function toggleNext(){
+
+    }
+
 
 </script>
 
 <!------------------------------------------HTML----------------------------------------------------->
 <!--TODO: change color of todos-->
-
-<!--<div class="main">-->
-<!--    <div class="main-card">-->
-<!--        <button class="up-button">up button</button>-->
-<!--        <div class="card-container">-->
-<!--            <ul class="card-list" id="questionList">-->
-<!--                <li class="list-element" id="start">-->
-<!--                    <p>I am the start card</p>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--        <button class="down-button" id='next_button' onclick="clickDownButton()">down button</button>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<footer>-->
-<!--    <div class="footer-progBar">-->
-<!--        <div class="progBar-child">-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="footer-copyright">this is the footer and copyright info go here</div>-->
-<!--</footer>-->
-
 <!--TODO: make scroll animation quicker-->
 <!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
 <!--FIXME: fix formatting which got fucked after implementing fullPage-->
@@ -326,6 +312,7 @@
             <div class="form-group">
                 <label for="email">Love Praxis so much you would sign up for a newsletter? Give us your name and email below.</label>
                 <input type="text" class="form-control" placeholder="Name" id="name">
+                <input type="text" class="form-control" placeholder="Cellphone Number" id="cellphone">
                 <input type="text" class="form-control" placeholder="Email" id="email">
             </div>
         </div>

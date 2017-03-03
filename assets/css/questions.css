@@ -1,6 +1,6 @@
 /*@media only screen and (max-device-width: 1024px){*/
-    /**{border: 1px solid red;}*/
-*{font-family: "Calibri Light", "Calibri", sans-serif}
+    *{border: 1px solid red;}
+    *{font-family: "Calibri Light", "Calibri", sans-serif}
 
     /*.main{*/
         /*border-style: solid;*/
@@ -116,6 +116,7 @@
     /*}*/
 
 /*TODO: find a better way to position elements*/
+/*TODO: move card__content up in container*/
 .custbtn-container{
     display: flex;
     /*align-items: center;*/
