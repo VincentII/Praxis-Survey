@@ -297,11 +297,15 @@
             </div>
         </div>
         <div class="card section card--comment">
-            <div class="card__content">
-                <div class="form-group">
-                    <label for="name">Comments</label>
-                    <textarea class="form-control" rows="5" id="comment"></textarea>
-                </div>
+<!--            <div class="card__content">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="name">Comments</label>-->
+<!--                    <textarea class="form-control" id="comment"></textarea>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="form-group">
+                <label for="name">Comments</label>
+                <textarea class="form-control" id="comment"></textarea>
             </div>
             <div class="form-group">
                 <label for="name">Name</label>
