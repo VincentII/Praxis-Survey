@@ -124,6 +124,7 @@
 .custbtn{
     position: fixed;
     font-size: 3em !important;
+    visibility: hidden;
 }
 /*TODO: Find a solution that doesn't use !important'*/
 

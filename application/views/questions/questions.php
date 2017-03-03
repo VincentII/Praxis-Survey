@@ -274,13 +274,6 @@
 //        BUTTON VISIBILITY TOGGLES
 //        $('.custbtn--prev').toggleClass("custbtn--disabled", $('.active').hasClass("card--start")); //FIXME: Doesn't work. custbtn--disabled remains a class of custbtn--prev
 //        $('.custbtn--next').toggleClass("custbtn--disabled", $('.active').hasClass("card--submit")); //FIXME: Doesn't work. custbtn--disabled is not added as a class of custbtn--next
-//        if($('.active').hasClass("card--start") || $('.active').hasClass("card--submit") || $('.active').hasClass("card--thanks")){
-//            $('.custbtn--prev').hide();
-//            $('.custbtn--next').hide();
-//        } else{
-//            $('.custbtn--prev').show();
-//            $('.custbtn--next').show();
-//        } //FIXME: implement a better solution
 
 //        BUTTON FUNCTIONS
         $('.custbtn--prev').on('click',function(){
@@ -300,6 +293,7 @@
             console.log("START!");
             $hasStarted = true;
             $.fn.fullpage.moveSectionDown();
+            $('.custbtn').show();
 //            $(this).hide(1000); //FIXME: There are no words for how bad this looks, prevent access to start card but must retain scroll down animation
 //            $.fn.fullpage.reBuild();
         });
@@ -342,6 +336,7 @@
             $('.rating-loading').rating({
                 step: 1,
                 showClear: false,
+                showCaption: false,
                 size: 'xl',
                 theme:'krajee-fa',
                 starCaptions: {
