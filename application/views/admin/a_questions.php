@@ -358,7 +358,7 @@
                 "<button class=\"btn  btn-danger btn-block col-md-2\" type=\"button\" onclick=\"changeViewToView('"+tID+"','"+bID+"')\">Cancel</button>"+
                 "</span>"+
                 "<span class = \"col-md-3 pull-right\">"+
-                "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" >Save Changes</div>"+
+                "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" >Save Changes <span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\"></span></div>"+
                 "</span>";
 
             document.getElementById(buttons).innerHTML = buttonsStr;
@@ -394,11 +394,14 @@
         }else{
             var funct = "submitChanges";
 
-            var buttonsStr ="<span class = \"col-md-3 pull-right\">"+
+            var buttonsStr =
+                "<span class = \"pull-left\"><span class=\"glyphicon glyphicon-lock\" aria-hidden=\"true\"></span> Survey has been answered, you cannot edit the survey.</span>"+
+                "<br>"+
+                "<span class = \"col-md-3 pull-right\">"+
                 "<button class=\"btn  btn-danger btn-block col-md-2\" type=\"button\" onclick=\"changeViewToView('"+tID+"','"+bID+"')\">Cancel</button>"+
                 "</span>"+
                 "<span class = \"col-md-3 pull-right\">"+
-                "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" >Save Changes</div>"+
+                "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" >Save Changes <span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\"></span></div>"+
                 "</span>";
 
             document.getElementById(buttons).innerHTML = buttonsStr;

@@ -158,7 +158,7 @@
             "<button class=\"btn  btn-danger btn-block col-md-2\" type=\"button\" onclick=\"changeViewToView('"+tID+"','"+bID+"', '"+modal+"')\">Cancel</button>"+
             "</span>"+
             "<span class = \"col-md-3\">"+
-            "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" >Save Changes</div>"+
+            "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" >Save Changes <span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\"></span></div>"+
             "</span>";
 
 
