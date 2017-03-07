@@ -45,8 +45,7 @@
 //        }else{
 //            $('.custbtn--prev').css('visibility','visible');
 //        }
-        $('.custbtn--prev, .custbtn--next').toggle();
-        //TODO: try hide and show
+        $('.custbtn--prev, .custbtn--next').toggle(); //FIXME: bad
 
 //        BUTTON FUNCTIONS
         $('.custbtn--prev').on('click',function(){
@@ -84,6 +83,7 @@
         $('.fa-refresh').on('click',function(){
 //            while(trying again){
 //                make fa-refresh spin
+            $('.fa-refresh').addClass("fa-spin"); //TODO: check
 //            }
         });
     });
