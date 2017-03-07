@@ -79,6 +79,9 @@ class AdminController extends CI_Controller
                 case ADMIN_UPDATE_QUESTIONS:
                     $this->updateQuestions();
                     break;
+                case ADMIN_CHECK_ANSWERED_SET:
+                    $this->isSetAnswered();
+                    break;
                 default:
                     $this->initAdmin();
             }
@@ -142,8 +145,8 @@ class AdminController extends CI_Controller
 
     private function linksView(){
 
-        $data['events'] = $this->survey->queryAllEvents();
-        $data['questionSets'] = $this->survey->queryAllQuestionSets();
+        $data['events'] = $this->survey->queryNotArchivedEvents();
+        $data['questionSets'] = $this->survey->queryNotArchivedQuestionSets();
         $data['links'] = $this->admin->queryURLWithEventAndSet();
 
         $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
@@ -493,5 +496,16 @@ class AdminController extends CI_Controller
         echo json_encode($datum);
     }
 
+    public function isSetAnswered(){
+        $setID = $this->input->get('setID');
+
+
+        $datum = array(
+            'status' => 'success',
+            'isAnswered' => $this->admin->isAnsweredQuestionSet($setID)
+        );
+
+        echo json_encode($datum);
+    }
 
 }

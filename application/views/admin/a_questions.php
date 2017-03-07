@@ -171,10 +171,12 @@
 
 
     var currSetID;
+    var isSetAnswered;
 
     function loadViewModal($setID){
 
         currSetID = $setID;
+        getIsSetAnswered(currSetID);
         deletedQuestions =[];
         initialTableData=[];
 
@@ -306,9 +308,12 @@
     }
 
     var initialTableData;
+
     var initialSetData;
 
     function changeViewToEdit(table, buttons){
+
+
         //console.log(table);
         var tableA = document.getElementById(table);
         var rows = tableA.rows;
@@ -318,7 +323,8 @@
         console.log("TABLE ID = "+table);
 
         initialTableData = getTableDataWithID(tID);
-        console.log(initialTableData);
+        //console.log(initialTableData);
+
 
         initialSetData =[];
         {
@@ -341,53 +347,89 @@
         }
 
 
+        if(!isSetAnswered) {
+
+            var funct = "submitChanges";
+
+            var buttonsStr =
+                '<button type = "button" class = "btn btn-default btn-block  " onclick = "addUpdateQuestion(\'question_table\')">Add Another Question</button>'+
+                '<br>'+
+                "<span class = \"col-md-3 pull-right\">"+
+                "<button class=\"btn  btn-danger btn-block col-md-2\" type=\"button\" onclick=\"changeViewToView('"+tID+"','"+bID+"')\">Cancel</button>"+
+                "</span>"+
+                "<span class = \"col-md-3 pull-right\">"+
+                "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" >Save Changes</div>"+
+                "</span>";
+
+            document.getElementById(buttons).innerHTML = buttonsStr;
+
+            rows[0].insertCell(2).outerHTML = "<th>Delete</th>";
+
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].cells;
+
+                rows[i].insertCell(2);
+
+                cells[0].id = "C0R" + i;
+                cells[1].id = "C1R" + i;
+                cells[2].id = "C2R" + i;
+
+                var curNumID = $(cells[0]).attr("id");
+                var curActID = $(cells[1]).attr("id");
+                var curDeleteID = $(cells[2]).attr("id");
 
 
-        var funct = "submitChanges";
+                var curNum = cells[0].innerHTML;
+                var curAct = cells[1].innerHTML;
+                var curDelete = cells[2].innerHTML;
 
-        var buttonsStr =
-            '<button type = "button" class = "btn btn-default btn-block  " onclick = "addUpdateQuestion(\'question_table\')">Add Another Question</button>'+
-            '<br>'+
-            "<span class = \"col-md-3 pull-right\">"+
-            "<button class=\"btn  btn-danger btn-block col-md-2\" type=\"button\" onclick=\"changeViewToView('"+tID+"','"+bID+"')\">Cancel</button>"+
-            "</span>"+
-            "<span class = \"col-md-3 pull-right\">"+
-            "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" >Save Changes</div>"+
-            "</span>";
+                //console.log(cells);
 
 
+                //console.log(curDeptID);
+                // cells[0].innerHTML = "<input type=\"text\" class=\"form-control\" id=\"" + curNumID + "\"value=\"" + curNum + "\">";
+                cells[1].innerHTML = "<input type=\"text\" class=\"form-control\" id=\"" + curActID + "\"value=\"" + curAct + "\">";
+                cells[2].innerHTML = '<button type ="button" name="update_delete_' + i + '" onclick="deleteUpdateRow(\'question_table\',this.name)" class="btn btn-default pull-right clearmod-btn">&times;</button>';
+            }
+        }else{
+            var funct = "submitChanges";
 
-        document.getElementById(buttons).innerHTML = buttonsStr;
+            var buttonsStr ="<span class = \"col-md-3 pull-right\">"+
+                "<button class=\"btn  btn-danger btn-block col-md-2\" type=\"button\" onclick=\"changeViewToView('"+tID+"','"+bID+"')\">Cancel</button>"+
+                "</span>"+
+                "<span class = \"col-md-3 pull-right\">"+
+                "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" >Save Changes</div>"+
+                "</span>";
 
-        rows[0].insertCell(2).outerHTML = "<th>Delete</th>";
-
-        for(var i = 1; i < rows.length; i++) {
-            var cells = rows[i].cells;
-
-            rows[i].insertCell(2);
-
-            cells[0].id = "C0R" + i;
-            cells[1].id = "C1R" + i;
-            cells[2].id = "C2R" + i;
-
-            var curNumID = $(cells[0]).attr("id");
-            var curActID = $(cells[1]).attr("id");
-            var curDeleteID = $(cells[2]).attr("id");
-
-
-            var curNum = cells[0].innerHTML;
-            var curAct = cells[1].innerHTML;
-            var curDelete = cells[2].innerHTML;
-
-            //console.log(cells);
-
-
-            //console.log(curDeptID);
-           // cells[0].innerHTML = "<input type=\"text\" class=\"form-control\" id=\"" + curNumID + "\"value=\"" + curNum + "\">";
-            cells[1].innerHTML = "<input type=\"text\" class=\"form-control\" id=\"" + curActID + "\"value=\"" + curAct + "\">";
-            cells[2].innerHTML = '<button type ="button" name="update_delete_'+i+'" onclick="deleteUpdateRow(\'question_table\',this.name)" class="btn btn-default pull-right clearmod-btn">&times;</button>';
+            document.getElementById(buttons).innerHTML = buttonsStr;
         }
 
+
+    }
+
+    function getIsSetAnswered($setID) {
+        var final = true;
+        $.ajax({
+            url: '<?=base_url('admin/' . ADMIN_CHECK_ANSWERED_SET)?>',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                setID: currSetID,
+            }
+        })
+            .done(function (result) {
+                console.log("Is Answered?");
+                final = result['isAnswered'];
+                console.log(final);
+
+            })
+            .fail(function (result) {
+                console.log("fail");
+            })
+            .always(function () {
+                console.log("complete");
+                isSetAnswered=final;
+            });
 
     }
 
@@ -473,9 +515,6 @@
         var newTable = getChangesTableDataWithID(tableID);
 
        // console.log(newTable);
-
-        //TODO Add if Opened then open AND CHANGING QUESTION DESC!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
         if(newTable.length==0){
             toastr.error("You can't have an empty question set","Opps");
             return;
@@ -488,29 +527,15 @@
             }
         }
 
-        /*
-        for(var i = 0; i<newTable.length; i++) {
-            for(var j=i+1;j<newTable.length;j++){
-                console.log(newTable[i][0] +" "+ newTable[j][0]);
-                if(newTable[i][0]==newTable[j][0]){
-                    toastr.error("You can't have same named URLS","Oops");
-                    return;
-                }
-            }
-        }
-        */
 
         var setData = getChangedSetData();
-        var changedData = getChangedData(newTable);
+        var changedData;
 
-        /*
-        for(var i = 0; i<changedData.length; i++) {
-            if (!isValidString(changedData[i][0])){
-                toastr.error("Url given is Invalid","Error");
-                return;
-            }
+        if(!isSetAnswered) {
+            changedData = getChangedData(newTable);
+        }else{
+            changedData=[];
         }
-        */
 
         var checkSetData = false;
         for(ctr = 0; ctr<setData.length;ctr++){

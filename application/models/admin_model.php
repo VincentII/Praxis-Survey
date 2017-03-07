@@ -117,6 +117,15 @@ class admin_model extends CI_Model
 
     }
 
+    function isAnsweredQuestionSet($set){
+        $this->db->select('*');
+        $this->db->from(TABLE_ANSWERS);
+        $this->db->where(COLUMN_SET_ID,$set);
+        $query = $this->db->get();
+        return count($query->result())>=1;
+
+    }
+
     function updateEvent($event) {
         $this->db->where(COLUMN_EVENT_ID, $event[COLUMN_EVENT_ID]);
         $this->db->update(TABLE_EVENT, $event);
