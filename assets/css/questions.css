@@ -1,5 +1,5 @@
 /*@media only screen and (max-device-width: 1024px){*/
-    /**{border: 1px solid red;}*/
+    *{border: 1px solid red;}
     *{font-family: "Calibri Light", "Calibri", sans-serif}
 
     /*.main{*/
@@ -190,10 +190,21 @@ ul.card-list{
 
 .content__text-area{
     /*flex: 1;*/
-    text-align: center;
-    font-size: 2em;
+    /*font-size: 2em;*/
 }
 /*FIXME: This does not looked centered for some reason*/
+
+h2{
+    /*margin-left: 5%;*/
+    /*margin-right: 5%; !*FIXME: not sure if percent means percent of parent or what*!*/
+    height: auto;
+    text-align: center;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-bottom: 5%;
+    border-color: blue;
+}
+/*TODO: change h2 into div*/
 
 .content__star-caption{
     height: 2em;

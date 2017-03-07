@@ -45,7 +45,7 @@
 //        }else{
 //            $('.custbtn--prev').css('visibility','visible');
 //        }
-        $('.custbtn--prev, .custbtn--next').toggle(); //FIXME: bad
+        $('.custbtn--prev, .custbtn--next').toggle(); //FIXME: bad, try add class method
 
 //        BUTTON FUNCTIONS
         $('.custbtn--prev').on('click',function(){
