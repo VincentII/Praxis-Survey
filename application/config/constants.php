@@ -132,6 +132,7 @@ define("COLUMN_ANSWER_ID", "answer_id");
 define("COLUMN_USER_ID", "user_id");
 define("COLUMN_NAME", "name");
 define("COLUMN_EMAIL", "email");
+define("COLUMN_MOBILE", "Mobile");
 
 /*URL*/
 define("COLUMN_URL_ID", "url_id");

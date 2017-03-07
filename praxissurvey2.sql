@@ -145,8 +145,7 @@ CREATE TABLE `question_set` (
   `Question_Set_Description` varchar(45) NOT NULL,
   `is_closed` int(11) NOT NULL DEFAULT '0',
   `is_archived` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`Set_ID`),
-  UNIQUE KEY `Question_Set_Description_UNIQUE` (`Question_Set_Description`)
+  PRIMARY KEY (`Set_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -217,7 +216,7 @@ CREATE TABLE `url` (
 
 LOCK TABLES `url` WRITE;
 /*!40000 ALTER TABLE `url` DISABLE KEYS */;
-INSERT INTO `url` VALUES (3,1,1,'hehehe');
+INSERT INTO `url` VALUES (3,1,1,'FreePreGame');
 /*!40000 ALTER TABLE `url` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -231,7 +230,8 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `User_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) DEFAULT 'No Name',
-  `Email` varchar(45) DEFAULT NULL,
+  `Email` varchar(45) DEFAULT 'No Email',
+  `Mobile` varchar(45) DEFAULT 'No Number',
   PRIMARY KEY (`User_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -254,4 +254,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-01 16:05:36
+-- Dump completed on 2017-03-03 15:48:32
