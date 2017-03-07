@@ -40,13 +40,12 @@
 //        $('body').on('swipe',function(){
 //            console.log("Swipe!");
 //        });
-//        $('body').on('onkeypress',function(){
-//            console.log("Key!");
-//        });
-//        $('body').on('onwheel',function(){
-//            console.log("Wheel!");
-//        });
-//        $('body').on('onwheel', '.card-container', disableCustbtn);
+//        if($('.active').hasClass("card--start")){
+//            $('.custbtn--prev').css('visibility','hidden');
+//        }else{
+//            $('.custbtn--prev').css('visibility','visible');
+//        }
+        $('.custbtn--prev, .custbtn--next').toggle();
         //TODO: try hide and show
 
 //        BUTTON FUNCTIONS
@@ -66,6 +65,7 @@
         $('.card--start').on('click',function(){
             console.log("START!");
             $hasStarted = true;
+            $('.custbtn--next').toggle(); //FIXME: this works but is also really bad
             $.fn.fullpage.moveSectionDown();
         });
 
