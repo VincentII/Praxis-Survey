@@ -358,7 +358,7 @@
                 "<button class=\"btn  btn-danger btn-block col-md-2\" type=\"button\" onclick=\"changeViewToView('"+tID+"','"+bID+"')\">Cancel</button>"+
                 "</span>"+
                 "<span class = \"col-md-3 pull-right\">"+
-                "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" >Save Changes <span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\"></span></div>"+
+                "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" ><span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\"></span> Save Changes</button>"+
                 "</span>";
 
             document.getElementById(buttons).innerHTML = buttonsStr;
@@ -401,7 +401,7 @@
                 "<button class=\"btn  btn-danger btn-block col-md-2\" type=\"button\" onclick=\"changeViewToView('"+tID+"','"+bID+"')\">Cancel</button>"+
                 "</span>"+
                 "<span class = \"col-md-3 pull-right\">"+
-                "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" >Save Changes <span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\"></span></div>"+
+                "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" ><span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\"></span> Save Changes</button>"+
                 "</span>";
 
             document.getElementById(buttons).innerHTML = buttonsStr;
@@ -671,7 +671,7 @@
                                     <?php foreach($questionSets as $set):?>
                                         <tr id="<?=$set->Set_ID?>">
                                             <td><?=$set->Question_Set_Description?></td>
-                                            <td> <button type ="button" data-toggle="modal" data-target="#ViewQuestionsModal" class="btn btn-default btn-block  col-md-1" onclick="loadViewModal(this.value)" value=<?=$set->Set_ID?>>View</button></td>
+                                            <td> <button type ="button" data-toggle="modal" data-target="#ViewQuestionsModal" class="btn btn-default btn-block  col-md-1" onclick="loadViewModal(this.value)" value=<?=$set->Set_ID?>><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View</button></td>
                                             <?php if($set->is_closed==0): ?>
                                                 <td>Yes</td>
                                             <?php else:?>
