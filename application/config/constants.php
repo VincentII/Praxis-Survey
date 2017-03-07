@@ -157,3 +157,4 @@ define("ADMIN_SUBMIT_QUESTION_SET", "submitQuestionsSet");
 define("ADMIN_UPDATE_EVENTS", "updateEvents");
 define("ADMIN_UPDATE_URLS", "updateURLs");
 define("ADMIN_UPDATE_QUESTIONS", "updateQuestions");
+define("ADMIN_CHECK_ANSWERED_SET", "checkAnsweredSet");

@@ -158,7 +158,7 @@
             "<button class=\"btn  btn-danger btn-block col-md-2\" type=\"button\" onclick=\"changeViewToView('"+tID+"','"+bID+"', '"+modal+"')\">Cancel</button>"+
             "</span>"+
             "<span class = \"col-md-3\">"+
-            "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" >Save Changes</div>"+
+            "<button class=\"btn  btn-success btn-block col-md-20\" type=\"button\" onclick=\""+funct+"('"+tID+"')\" ><span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\"></span> Save Changes</button>"+
             "</span>";
 
 
@@ -270,7 +270,7 @@
             for(var j=i+1;j<newTable.length;j++){
                 console.log(newTable[i][0] +" "+ newTable[j][0]);
                 if(newTable[i][0]==newTable[j][0]){
-                    toastr.error("You can't have same named URLS","Oops");
+                    toastr.error("You can't have same named Links","Oops");
                     return;
                 }
             }
@@ -280,7 +280,7 @@
 
         for(var i = 0; i<changedData.length; i++) {
             if (!isValidString(changedData[i][0])){
-                toastr.error("Url given is Invalid","Error");
+                toastr.error("Link given is Invalid","Error");
                 return;
             }
         }
@@ -330,6 +330,10 @@
        return /[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($s);
     }
 
+    function isValidLink($s){
+       return /[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($s);
+    }
+
     function isValidDate($d){
         return/[0-9][0-9][\/][0-9][0-9][\/][0-9][0-9][0-9][0-9]/mi.test($d);
     }
@@ -374,7 +378,7 @@
                                 <table class="table table-hover" id="linkTable">
                                     <thead>
                                     <tr>
-                                        <th>URL</th>
+                                        <th>Link</th>
                                         <th>Event</th>
                                         <th>Question Set</th>
                                         <th></th>
@@ -419,7 +423,7 @@
                     <table class="table table-hover" id="add_table" name="">  <!-- TODO: somehow insert table id in name for add ? -->
                         <thead>
                         <tr>
-                            <th>URL</th>
+                            <th>Link</th>
                             <th>Event Name</th>
                             <th>Question Set</th>
 
@@ -429,7 +433,7 @@
                         <tbody>
 
                         <tr>
-                            <td><input type="text" class="form-control" placeholder="Enter URL"></td>
+                            <td><input type="text" class="form-control" placeholder="Enter Link"></td>
                             <td>
                                 <select class="form-control" id="form_submit_event" name="form-submit-event"">
                                 <option value="0" selected disabled>Choose an Event...</option>
