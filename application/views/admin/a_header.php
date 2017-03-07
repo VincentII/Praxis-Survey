@@ -47,9 +47,10 @@
    <!-- <script src="path/to/js/locales/{lang}.js"></script> -->
 
 
-    <!-- Chartist-->
-    <link href="<?=base_url()?>/assets/chartist-js-develop/dist/chartist.min.css" media="all" rel="stylesheet" type="text/css" />
-    <script  src="<?=base_url()?>/assets/chartist-js-develop/dist/chartist.min.js" ></script>
+    <!-- Google Charts-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
 
     <!-- Date Picker-->
     <link href="<?=base_url()?>/assets/js/datepicker/dist/css/bootstrap-datepicker3.css" media="all" rel="stylesheet" type="text/css" />

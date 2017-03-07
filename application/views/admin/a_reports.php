@@ -1,3 +1,13 @@
+<!--CHARTS-->
+<script type="text/javascript">
+
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {'packages':['corechart']});
+
+    // Set a callback to run when the Google Visualization API is loaded.
+   // google.charts.setOnLoadCallback(getAnalytics());
+</script>
+
 <script>
 
     $(document).on('ready', function(){
@@ -70,69 +80,47 @@
                         var $answers = result['answers'];
                         var $questions = result['questions'];
 
-                        var sum = function (a, b) {
-                            return a + b
-                        };
 
                         var actualLabels = ["Totally Disagree", "Partly Disagree", "Neutral", "Partly Agree", "Totally Agree"];
 
                         $('#charts').html("");
 
-                        for (var i = 0; i < $questions.length; i++) {
+                        try {
+                            for (var i = 0; i < $questions.length; i++) {
 
-                            var actualData = [];
 
-                            for (var j = 0; j < 5; j++) {
-                                actualData.push(parseInt($answers[i][j]['count']));
+                                var sum = 0;
+                                var actualData = [];
+                                for (var j = 0; j < 5; j++) {
+                                    sum += parseInt($answers[i][j]['count']);
+                                }
+
+                                actualData.push(['Rating', 'Count', {role: 'style'}, {role: 'annotation'}]);
+
+                                for (var j = 0; j < 5; j++) {
+                                    var count = parseInt($answers[i][j]['count']);
+                                    actualData.push([actualLabels[j], count, '#127094', (count / sum * 100) + '%']);
+                                }
+
+
+                                var chartData = google.visualization.arrayToDataTable(actualData);
+
+
+                                $('#charts').append("<div class = 'report-questions'> Q" + (i + 1) + ". " + $questions[i]['Question_Act'] + "</div>");
+                                $('#charts').append("<div id='dataChart" + i + "' class='chart-b'></div>");
+
+                                var options = {
+                                    legend: {position: "none"},
+                                    height: 400
+                                }
+
+                                var chart = new google.visualization.ColumnChart(document.getElementById('dataChart' + i));
+                                chart.draw(chartData, options);
+
                             }
-
-                            console.log(actualData);
-                            var data = {
-                                labels: actualLabels,
-                                series: [
-                                    actualData
-                                ]
-                            };
-
-                            var options = {
-                                seriesBarDistance: 15,
-                                axisY: {onlyInteger: true},
-                                showGridBackground: true,
-                                distributeSeries: false,
-                                width:'100%',
-                                height: '300px'
-
-                            };
-
-                            var responsiveOptions = [
-                                ['screen and (min-width: 641px) and (max-width: 1024px)', {
-                                    seriesBarDistance: 10,
-                                    width:'100%',
-                                    height: '300px',
-                                    axisX: {
-                                        labelInterpolationFnc: function (value) {
-                                            return value;
-                                        }
-                                    }
-                                }],
-                                ['screen and (max-width: 640px)', {
-                                    seriesBarDistance: 5,
-                                    width:'100%',
-                                    height: '300px',
-                                    axisX: {
-                                        labelInterpolationFnc: function (value) {
-                                            return value[0];
-                                        }
-                                    }
-                                }]
-                            ];
-
-
-                            $('#charts').append("<div class = 'report-questions'> Q" + (i + 1) + ". " + $questions[i]['Question_Act'] + "</div>");
-                            $('#charts').append("<div class='ct-chart ct-square' id='dataChart" + i + "'></div>");
-
-                            new Chartist.Bar("#dataChart" + i, data, options, responsiveOptions);
-
+                        }
+                        catch (err){
+                            $('#charts').html('Oops! Please reconnect to the internet and try again!');
                         }
                     }else if(result['status']=='noReps'){
                         $('#charts').html("No Reports Available");
@@ -142,9 +130,13 @@
                 })
                 .fail(function() {
                     console.log("fail");
+                    $('#charts').html('Oops! Please reconnect to the internet and try again!');
+
                 })
                 .always(function() {
                     console.log("complete");
+
+
                 });
         }
 
