@@ -190,15 +190,15 @@ ul.card-list{
 
 .content__text-area{
     /*flex: 1;*/
-    /*font-size: 2em;*/
+    font-size: 2em;
+    text-align: center;
 }
 /*FIXME: This does not looked centered for some reason*/
 
 h2{
     /*margin-left: 5%;*/
     /*margin-right: 5%; !*FIXME: not sure if percent means percent of parent or what*!*/
-    height: auto;
-    text-align: center;
+    /*height: 10vh;*/
     padding-left: 7%;
     padding-right: 7%;
     padding-bottom: 5%;

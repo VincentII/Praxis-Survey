@@ -292,7 +292,7 @@
     <div class="card-container">
         <div class="card section card--start active">
             <div class="card__content">
-                <div class="content__text-area">TAP ANYWHERE <br>TO START THE <br>SURVEY</div>
+                <div class="content__text-area">TAP ANYWHERE<br>TO START THE<br>SURVEY</div>
                 <i class="fa fa-hand-pointer-o fa-4x"></i>
             </div>
         </div>
