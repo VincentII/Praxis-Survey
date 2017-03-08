@@ -246,14 +246,15 @@
                     console.log("complete");
                 });
         }
-        if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#email').val())){//TODO Add email
+        if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#email').val())||/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#cellphone').val())){//TODO Add email
             $.ajax({
                 url: '<?php echo base_url('questions/submitEmail') ?>',
                 type: 'GET',
                 dataType: 'json',
                 data: {
                     name : $('#name').val(), //TODO also add a form-name
-                    email : $('email').val()
+                    email : $('#email').val(),
+                    cell : $('#cellphone').val(),
                 }
             })
                 .done(function(result) {
