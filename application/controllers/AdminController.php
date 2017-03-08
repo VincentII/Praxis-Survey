@@ -49,6 +49,9 @@ class AdminController extends CI_Controller
                 case ADMIN_EMAILS:
                     $this->emailsView();
                     break;
+                case ADMIN_ACCOUNT:
+                    $this->accountView();
+                    break;
                 case ADMIN_SIGN_OUT:
                     $this->signOut();
                     break;
@@ -79,6 +82,9 @@ class AdminController extends CI_Controller
                 case ADMIN_UPDATE_QUESTIONS:
                     $this->updateQuestions();
                     break;
+                case ADMIN_UPDATE_PASSWORD:
+                    $this->updatePassword();
+                    break;
                 case ADMIN_CHECK_ANSWERED_SET:
                     $this->isSetAnswered();
                     break;
@@ -105,7 +111,7 @@ class AdminController extends CI_Controller
 
 
 
-        if ($this->admin->isValidUser($n,$p)) {
+        if ($this->admin->isValidUser($n,md5($p))) {
             $admin = $this->admin->queryAdminAccount($n);
             //$this->session->set_userdata($admin);
             $this->setSession($admin);
@@ -172,6 +178,13 @@ class AdminController extends CI_Controller
         $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
         $this->load->view('admin/a_navbar');
         $this->load->view('admin/a_questions', $data); // $this->load->view('admin', $data); set to this if data is set
+        $this->load->view('admin/a_footer'); // include bootstrap 3 footer
+    }
+
+    private function accountView(){
+        $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
+        $this->load->view('admin/a_navbar');
+        $this->load->view('admin/a_account'); // $this->load->view('admin', $data); set to this if data is set
         $this->load->view('admin/a_footer'); // include bootstrap 3 footer
     }
 
@@ -492,6 +505,37 @@ class AdminController extends CI_Controller
 
             //         'check' => $getData['questions'][0][1]
         );
+
+        echo json_encode($datum);
+    }
+
+    public function updatePassword(){
+        $curr = $this->input->get('curr');
+        $new = $this->input->get('new');
+        $adminID = $this->input->get('adminID');
+
+        if ($this->admin->isValidUserByID($adminID,md5($curr))){
+
+            $changeData = array(
+                COLUMN_ADMIN_ID => $adminID,
+                COLUMN_ADMIN_PASSWORD => md5($new)
+            );
+
+            $this->admin->updateAdmin($changeData);
+
+            $datum = array(
+                'status' => 'success',
+                'message' => 'Password Change'
+                //         'check' => $getData['questions'][0][1]
+            );
+        }else{
+            $datum = array(
+                'status' => 'Fail',
+                'message' => 'Old Password does not Match'
+                //         'check' => $getData['questions'][0][1]
+            );
+        }
+
 
         echo json_encode($datum);
     }

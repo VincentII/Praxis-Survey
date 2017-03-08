@@ -146,6 +146,7 @@ define("ADMIN_EVENTS", "admin_events");
 define("ADMIN_QUESTIONS", "admin_questions");
 define("ADMIN_LINKS", "admin_links");
 define("ADMIN_EMAILS", "admin_email");
+define("ADMIN_ACCOUNT", "admin_account");
 
 
 define("ADMIN_GET_REPORTS", "getReports");
@@ -157,4 +158,5 @@ define("ADMIN_SUBMIT_QUESTION_SET", "submitQuestionsSet");
 define("ADMIN_UPDATE_EVENTS", "updateEvents");
 define("ADMIN_UPDATE_URLS", "updateURLs");
 define("ADMIN_UPDATE_QUESTIONS", "updateQuestions");
+define("ADMIN_UPDATE_PASSWORD", "updatePassword");
 define("ADMIN_CHECK_ANSWERED_SET", "checkAnsweredSet");

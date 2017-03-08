@@ -26,15 +26,22 @@ class admin_model extends CI_Model
     }
 
     function isValidUser($name, $pass) {
-        $sql = "SELECT *
-                      FROM ".TABLE_ADMIN."
-                      WHERE ".COLUMN_ADMIN_USERNAME." = ? AND ".COLUMN_ADMIN_PASSWORD." = ?";
 
-        $result = $this->db->query($sql, array($name, $pass))->result();
-        // If credentials is found.
+        $this->db->select("*");
+        $this->db->from(TABLE_ADMIN);
+        $this->db->where(COLUMN_ADMIN_USERNAME, $name);
+        $this->db->where(COLUMN_ADMIN_PASSWORD, $pass);
+        $query = $this->db->get();
+        return count($query->result())>=1;
+    }
 
-
-        return count($result)>=1;
+    function isValidUserByID($ID, $pass) {
+        $this->db->select("*");
+        $this->db->from(TABLE_ADMIN);
+        $this->db->where(COLUMN_ADMIN_ID, $ID);
+        $this->db->where(COLUMN_ADMIN_PASSWORD, $pass);
+        $query = $this->db->get();
+        return count($query->result())>=1;
     }
 
     function queryAdminAccount($name) {
@@ -143,6 +150,11 @@ class admin_model extends CI_Model
     function updateQuestion($q) {
         $this->db->where(COLUMN_QUESTION_ID, $q[COLUMN_QUESTION_ID]);
         $this->db->update(TABLE_QUESTIONS, $q);
+    }
+
+    function updateAdmin($a) {
+        $this->db->where(COLUMN_ADMIN_ID, $a[COLUMN_ADMIN_ID]);
+        $this->db->update(TABLE_ADMIN, $a);
     }
 
     function deleteURL($id) {

@@ -48,8 +48,14 @@
                 <li id="overview_button"><a href="<?=site_url("admin/" . ADMIN_EMAILS)?>">Check Emails<span class="sr-only"></span></a></li>
                         <!--<li><a href="#">Modify Account</a></li>
                         <li role="separator" class="divider"></li>-->
-                <li><a href="<?=site_url('admin/' . ADMIN_SIGN_OUT)?>">Sign Out</a></li>
-
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Account<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?=site_url('admin/' . ADMIN_ACCOUNT)?>"><?=$_SESSION['adminUsername']?></a></li>
+                        <li><a href="<?=site_url('admin/' . ADMIN_SIGN_OUT)?>">Sign Out</a></li>
+                    </ul>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
