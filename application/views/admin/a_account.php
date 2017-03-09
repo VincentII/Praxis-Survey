@@ -36,9 +36,12 @@
                     console.log("done");
                     if (result['status'] == "success") {
                         toastr.success(result['message'],'Success');
-                        setTimeout(reloadPage, delay);
+                        setTimeout(reloadPage, 1000);
 
 
+                    }
+                    else{
+                        toastr.error(result['message'],'Oops');
                     }
                 })
                 .fail(function (result) {
