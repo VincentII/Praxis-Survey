@@ -81,50 +81,19 @@
                         var $answers = result['answers'];
                         var $questions = result['questions'];
 
-
-                        var actualLabels = ["Totally Disagree", "Partly Disagree", "Neutral", "Partly Agree", "Totally Agree"];
-
-                        $($chart).html("");
-
-                        try {
-                            for (var i = 0; i < $questions.length; i++) {
-
-
-                                var sum = 0;
-                                var actualData = [];
-                                for (var j = 0; j < 5; j++) {
-                                    sum += parseInt($answers[i][j]['count']);
-                                }
-
-                                actualData.push(['Rating', 'Count', {role: 'style'}, {role: 'annotation'}]);
-
-                                for (var j = 0; j < 5; j++) {
-                                    var count = parseInt($answers[i][j]['count']);
-                                    actualData.push([actualLabels[j], count, '#127094', (Math.round(count / sum * 100*10)/10) + '%']);
-                                }
-
-
-                                var chartData = google.visualization.arrayToDataTable(actualData);
-
-
-                                $($chart).append("<div class = 'report-questions'> Q" + (i + 1) + ". " + $questions[i]['Question_Act'] + "</div>");
-                                $($chart).append("<div id='dataChart"+$type + i + "' class='chart-b'></div>");
-
-                                var options = {
-                                    legend: {position: "none"},
-                                    height: 400
-                                }
-
-                                var chart = new google.visualization.ColumnChart(document.getElementById('dataChart'+$type + i));
-                                chart.draw(chartData, options);
-
-                            }
+                        if($type=='s'){
+                            $singleAnswers = $answers;
+                            $singleQuestions = $questions;
                         }
-                        catch (err){
-                            $($chart).html('Oops! Please reconnect to the internet and try again!');
-                        }
+
+                        redrawTables($chart,$type,$answers,$questions);
+
                     }else if(result['status']=='noReps'){
                         $($chart).html("No Reports Available");
+                        if($type=='s'){
+                            $singleAnswers = null;
+                            $singleQuestions = null;
+                        }
 
                     }
 
@@ -132,6 +101,10 @@
                 .fail(function() {
                     console.log("fail");
                     $($chart).html('Oops! Please reconnect to the internet and try again!');
+                    if($type=='s'){
+                        $singleAnswers = null;
+                        $singleQuestions = null;
+                    }
 
                 })
                 .always(function() {
@@ -146,6 +119,55 @@
 
     }
 
+    var $singleAnswers = null, $singleQuestions = null;
+
+    function redrawTables($chart,$type,$answers,$questions){
+
+        if($answers!=null&&$questions!=null){
+            var actualLabels = ["Totally Disagree", "Partly Disagree", "Neutral", "Partly Agree", "Totally Agree"];
+
+            $($chart).html("");
+
+            try {
+                for (var i = 0; i < $questions.length; i++) {
+
+
+                    var sum = 0;
+                    var actualData = [];
+                    for (var j = 0; j < 5; j++) {
+                        sum += parseInt($answers[i][j]['count']);
+                    }
+
+                    actualData.push(['Rating', 'Count', {role: 'style'}, {role: 'annotation'}]);
+
+                    for (var j = 0; j < 5; j++) {
+                        var count = parseInt($answers[i][j]['count']);
+                        actualData.push([actualLabels[j], count, '#127094', (Math.round(count / sum * 100 * 10) / 10) + '%']);
+                    }
+
+
+                    var chartData = google.visualization.arrayToDataTable(actualData);
+
+
+                    $($chart).append("<div class = 'report-questions'> Q" + (i + 1) + ". " + $questions[i]['Question_Act'] + "</div>");
+                    $($chart).append("<div id='dataChart" + $type + i + "' class='chart-b'></div>");
+
+                    var options = {
+                        legend: {position: "none"},
+                        height: 400
+                    }
+
+                    var chart = new google.visualization.ColumnChart(document.getElementById('dataChart' + $type + i));
+                    chart.draw(chartData, options);
+
+                }
+            }
+            catch (err) {
+                $($chart).html('Oops! Please reconnect to the internet and try again!');
+            }
+        }
+    }
+
 
 function selectSingle() {
     $('#panel_single').toggleClass('col-md-5 col-md-10');
@@ -155,7 +177,7 @@ function selectSingle() {
     $('#btn_compare').toggleClass('btn-primary btn-default');
     $('#panel_compare').hide();
     $('.comment-button').show();
-    getAnalytics('#form_set','#form_event','#container-chart','#charts','s');
+    redrawTables('#charts','s',$singleAnswers,$singleQuestions);
 }
 function selectCompare() {
     $('#panel_single').toggleClass('col-md-10 col-md-5');
@@ -165,7 +187,7 @@ function selectCompare() {
     $('#btn_compare').toggleClass('btn-primary btn-default');
     $('#panel_compare').show();
     $('.comment-button').hide();
-    getAnalytics('#form_set','#form_event','#container-chart','#charts','s');
+    redrawTables('#charts','s',$singleAnswers,$singleQuestions);
 }
 
 
