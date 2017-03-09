@@ -99,7 +99,7 @@
 
                                 for (var j = 0; j < 5; j++) {
                                     var count = parseInt($answers[i][j]['count']);
-                                    actualData.push([actualLabels[j], count, '#127094', (count / sum * 100) + '%']);
+                                    actualData.push([actualLabels[j], count, '#127094', (Math.round(count / sum * 100*10)/10) + '%']);
                                 }
 
 
