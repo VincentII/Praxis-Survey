@@ -56,7 +56,7 @@
     function reloadPage() {
         <?php
         // TODO Might be better if it didn't have to reload page. Clear table data then query through database?
-        echo 'window.location = "'. site_url("admin/".ADMIN_EVENTS) .'";';
+        echo 'window.location = "'. site_url("admin/".ADMIN_ACCOUNT) .'";';
         ?>
     }
 </script>
