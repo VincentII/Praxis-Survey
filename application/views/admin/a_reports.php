@@ -54,16 +54,17 @@
             });
     }
 
-    function getAnalytics(){
-        if($('#form_set').val()!=null){
+    function getAnalytics($formSet,$formEvent,$container,$chart,$type){
 
-            $('#container-chart').show();
+        if($($formSet).val()!=null){
+
+            $($container).show();
             $('#btn-comments').prop('disabled', false);
 
 
-            var $eventID = $('#form_event').val();
-            var $setID = $('#form_set').val();
-            $('#form_event').prop('disabled', false);
+            var $eventID = $($formEvent).val();
+            var $setID = $($formSet).val();
+            $($formEvent).prop('disabled', false);
             $.ajax({
                 url: '<?php echo base_url('admin/'.ADMIN_GET_REPORTS) ?>',
                 type: 'GET',
@@ -83,7 +84,7 @@
 
                         var actualLabels = ["Totally Disagree", "Partly Disagree", "Neutral", "Partly Agree", "Totally Agree"];
 
-                        $('#charts').html("");
+                        $($chart).html("");
 
                         try {
                             for (var i = 0; i < $questions.length; i++) {
@@ -106,31 +107,31 @@
                                 var chartData = google.visualization.arrayToDataTable(actualData);
 
 
-                                $('#charts').append("<div class = 'report-questions'> Q" + (i + 1) + ". " + $questions[i]['Question_Act'] + "</div>");
-                                $('#charts').append("<div id='dataChart" + i + "' class='chart-b'></div>");
+                                $($chart).append("<div class = 'report-questions'> Q" + (i + 1) + ". " + $questions[i]['Question_Act'] + "</div>");
+                                $($chart).append("<div id='dataChart"+$type + i + "' class='chart-b'></div>");
 
                                 var options = {
                                     legend: {position: "none"},
                                     height: 400
                                 }
 
-                                var chart = new google.visualization.ColumnChart(document.getElementById('dataChart' + i));
+                                var chart = new google.visualization.ColumnChart(document.getElementById('dataChart'+$type + i));
                                 chart.draw(chartData, options);
 
                             }
                         }
                         catch (err){
-                            $('#charts').html('Oops! Please reconnect to the internet and try again!');
+                            $($chart).html('Oops! Please reconnect to the internet and try again!');
                         }
                     }else if(result['status']=='noReps'){
-                        $('#charts').html("No Reports Available");
+                        $($chart).html("No Reports Available");
 
                     }
 
                 })
                 .fail(function() {
                     console.log("fail");
-                    $('#charts').html('Oops! Please reconnect to the internet and try again!');
+                    $($chart).html('Oops! Please reconnect to the internet and try again!');
 
                 })
                 .always(function() {
@@ -146,21 +147,52 @@
     }
 
 
-
+function selectSingle() {
+    $('#panel_single').toggleClass('col-md-5 col-md-10');
+    $('#btn_single').prop('disabled', true);
+    $('#btn_compare').prop('disabled', false);
+    $('#btn_single').toggleClass('btn-primary btn-default');
+    $('#btn_compare').toggleClass('btn-primary btn-default');
+    $('#panel_compare').hide();
+    $('.comment-button').show();
+    getAnalytics('#form_set','#form_event','#container-chart','#charts','s');
+}
+function selectCompare() {
+    $('#panel_single').toggleClass('col-md-10 col-md-5');
+    $('#btn_compare').prop('disabled', true);
+    $('#btn_single').prop('disabled', false);
+    $('#btn_single').toggleClass('btn-primary btn-default');
+    $('#btn_compare').toggleClass('btn-primary btn-default');
+    $('#panel_compare').show();
+    $('.comment-button').hide();
+    getAnalytics('#form_set','#form_event','#container-chart','#charts','s');
+}
 
 
 </script>
 
-<div class="col-md-4 col-md-offset-1" >
+<div class="col-md-10 col-md-offset-1" >
         <div class = "form-group col-md-2">
         <b>REPORTS</b>
+    </div>
+
+    <div class = "col-md-2 pull-right">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group" role="group">
+                <button id="btn_single" type="button" disabled class="btn btn-primary" onclick="selectSingle()">Single</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button id="btn_compare" type="button" class="btn btn-default" onclick="selectCompare()">Compare</button>
+            </div>
         </div>
+    </div>
 </div>
-<div class="panel panel-default col-md-10 col-md-offset-1">
+
+<div id="panel_single" class="panel panel-default col-md-10 col-md-offset-1">
     <div class="panel-body ">
         <div class = "form-group col-md-6">
             Question Set:
-            <select class="form-control" id="form_set" name="form-set" onclick="getAnalytics() ">
+            <select class="form-control" id="form_set" name="form-set" onchange="getAnalytics('#form_set','#form_event','#container-chart','#charts','s') ">
                 <option value="" selected disabled>Choose a Question Set...</option>
                 <?php foreach($questionSets as $row):?>
                     <option value="<?=$row->Set_ID?>"><?=$row->Question_Set_Description?></option>
@@ -169,7 +201,7 @@
         </div>
         <div class = "form-group col-md-4">
             Events:
-            <select class="form-control" id="form_event" name="form-event" onclick="getAnalytics()" disabled>
+            <select class="form-control" id="form_event" name="form-event" onchange="getAnalytics('#form_set','#form_event','#container-chart','#charts','s')" disabled>
                 <option value="0" selected>All Events</option>
                 <?php foreach($events as $row):?>
                     <option value="<?=$row->Event_ID?>"><?=$row->Event_Name?></option>
@@ -178,7 +210,7 @@
         </div>
         <div class = "form-group col-md-2">
             <br>
-            <button id="btn-comments" type ="button" data-toggle="modal" data-target="#ViewCommentsModal" class="btn btn-toolbar btn-block  col-md-1" onclick="viewComments()" disabled>View Comments</button>
+            <button id="btn-comments" type ="button" data-toggle="modal" data-target="#ViewCommentsModal" class="btn btn-toolbar btn-block  col-md-1 comment-button" onclick="viewComments()" disabled>View Comments</button>
         </div>
 
 
@@ -190,7 +222,44 @@
             </div>
         </div>
     </div>
+</div>
 
+<div id="panel_compare" hidden>
+    <div class="panel panel-default col-md-5">
+        <div class="panel-body ">
+            <div class = "form-group col-md-6">
+                Question Set:
+                <select class="form-control" id="form_set2" name="form-set" onchange="getAnalytics('#form_set2','#form_event2','#container-chart2','#charts2','c') ">
+                    <option value="" selected disabled>Choose a Question Set...</option>
+                    <?php foreach($questionSets as $row):?>
+                        <option value="<?=$row->Set_ID?>"><?=$row->Question_Set_Description?></option>
+                    <?php endforeach;?>
+                </select>
+            </div>
+            <div class = "form-group col-md-4">
+                Events:
+                <select class="form-control" id="form_event2" name="form-event" onchange="getAnalytics('#form_set2','#form_event2','#container-chart2','#charts2','c')" disabled>
+                    <option value="0" selected>All Events</option>
+                    <?php foreach($events as $row):?>
+                        <option value="<?=$row->Event_ID?>"><?=$row->Event_Name?></option>
+                    <?php endforeach;?>
+                </select>
+            </div>
+            <div class = "form-group col-md-2">
+                <br>
+                <button id="btn-comments2" type ="button" data-toggle="modal" data-target="#ViewCommentsModal" class="btn btn-toolbar btn-block  col-md-1 comment-button" onclick="viewComments()" disabled>View Comments</button>
+            </div>
+
+
+        </div>
+        <div class="panel panel-default" hidden id="container-chart2">
+            <div class="panel-body">
+                <div class = "form-group col-md-10">
+                    <div  id="charts2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 
