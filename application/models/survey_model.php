@@ -220,7 +220,7 @@ class survey_model extends CI_Model
         $this->db->insert(TABLE_COMMENT, $insertCommentData);
     }
 
-    function insertEmail($name,$email){
+    function insertEmail($name,$email,$mobile){
         $insertEmailData=array(
             COLUMN_NAME => $name,
             COLUMN_EMAIL => $email,

@@ -36,14 +36,16 @@
     <!-- Karjee Star Rating-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
     <link href="<?=base_url()?>/assets/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
-    <link href="<?=base_url()?>/assets/css/krajee-fa.min.css" media="all" rel="stylesheet" type="text/css" />
+<!--    <link href="--><?//=base_url()?><!--/assets/css/krajee-fa.min.css" media="all" rel="stylesheet" type="text/css" />-->
+    <link href="<?=base_url()?>/assets/css/krajee-svg/theme.min.css" media="all" rel="stylesheet" type="text/css" />
 
     <!-- optionally if you need to use a theme, then include the theme file as mentioned below -->
    <!-- <link href="path/to/themes/krajee-svg/theme.css" media="all" rel="stylesheet" type="text/css" /> -->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
     <script src="<?=base_url()?>/assets/js/star-rating.min.js" type="text/javascript"></script>
-    <script src="<?=base_url()?>/assets/js/krajee-fa.min.js" type="text/javascript"></script>
+<!--    <script src="--><?//=base_url()?><!--/assets/js/krajee-fa.min.js" type="text/javascript"></script>-->
+    <script src="<?=base_url()?>/assets/css/krajee-svg/theme.min.js" type="text/javascript"></script>
 
     <!-- optionally if you need to use a theme, then include the theme file as mentioned below -->
    <!-- <script src="path/to/themes/krajee-svg/theme.js"></script> -->

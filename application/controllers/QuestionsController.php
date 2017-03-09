@@ -98,7 +98,7 @@ class QuestionsController extends CI_Controller
         $getData = array(
             'name' => $this->input->get('name'),
             'email' => $this->input->get('email'),
-            'mobile' => $this->input->get('mobile')
+            'mobile' => $this->input->get('cell')
         );
 
 
@@ -113,8 +113,7 @@ class QuestionsController extends CI_Controller
         }
 
 
-
-        $this->survey->insertEmail($getData['name'],$getData['email'],$getData['email']);
+        $this->survey->insertEmail($getData['name'],$getData['email'],$getData['mobile']);
 
 
         $data = array(
