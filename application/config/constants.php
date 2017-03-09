@@ -160,3 +160,5 @@ define("ADMIN_UPDATE_URLS", "updateURLs");
 define("ADMIN_UPDATE_QUESTIONS", "updateQuestions");
 define("ADMIN_UPDATE_PASSWORD", "updatePassword");
 define("ADMIN_CHECK_ANSWERED_SET", "checkAnsweredSet");
+
+define("HASH_PASS", "sfmPRAXIS");

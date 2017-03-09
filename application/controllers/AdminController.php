@@ -111,7 +111,7 @@ class AdminController extends CI_Controller
 
 
 
-        if ($this->admin->isValidUser($n,md5($p))) {
+        if ($this->admin->isValidUser($n,md5($p+HASH_PASS))) {
             $admin = $this->admin->queryAdminAccount($n);
             //$this->session->set_userdata($admin);
             $this->setSession($admin);
@@ -514,11 +514,11 @@ class AdminController extends CI_Controller
         $new = $this->input->get('new');
         $adminID = $this->input->get('adminID');
 
-        if ($this->admin->isValidUserByID($adminID,md5($curr))){
+        if ($this->admin->isValidUserByID($adminID,md5($curr+HASH_PASS))){
 
             $changeData = array(
                 COLUMN_ADMIN_ID => $adminID,
-                COLUMN_ADMIN_PASSWORD => md5($new)
+                COLUMN_ADMIN_PASSWORD => md5($new+HASH_PASS)
             );
 
             $this->admin->updateAdmin($changeData);
