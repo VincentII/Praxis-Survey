@@ -548,58 +548,72 @@
         }
 
 
-        console.log(changedData);
-        console.log(setData);
-        if(changedData.length>0||deletedQuestions.length>0||checkSetData!=false) {
-            $.ajax({
-                url: '<?=base_url('admin/' . ADMIN_UPDATE_QUESTIONS)?>',
-                type: 'GET',
-                dataType: 'json',
-                data: {
-                    changedData: changedData,
-                    deletedQuestions: deletedQuestions,
-                    setID: currSetID,
-                    title: setData[0],
-                    isOpen: setData[1],
-                    isArchived: setData[2]
-                }
-            })
-                .done(function (result) {
-                    console.log("done");
-                    console.log(result);
+        var finalData = [changedData,setData];
 
-                    if (result['status'] == "success") {
-                        toastr.success("Changes were made successfully.", "Success");
+        var func = function (data) {
 
+            var changedData = data[0];
+            var setData = data[1];
 
-                        var delay = 1000;
-                        if(result['added']>0){
-                            toastr.info(result['added']+" new Question/s", "Added");
-                            delay+=1000;
-                        }
-                        if(result['updated']>0){
-                            toastr.info(result['updated']+" Question/s", "Updated");
-                            delay+=1000;
-                        }
-                        if(result['deleted']>0){
-                            toastr.info(result['deleted']+" Question/s", "Deleted");
-                            delay+=1000;
-                        }
-
-                        setTimeout(reloadPage, delay);
-
-
+            if(changedData.length>0||deletedQuestions.length>0||checkSetData!=false) {
+                $.ajax({
+                    url: '<?=base_url('admin/' . ADMIN_UPDATE_QUESTIONS)?>',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        changedData: changedData,
+                        deletedQuestions: deletedQuestions,
+                        setID: currSetID,
+                        title: setData[0],
+                        isOpen: setData[1],
+                        isArchived: setData[2]
                     }
                 })
-                .fail(function (result) {
-                    console.log("fail");
-                })
-                .always(function () {
-                    console.log("complete");
-                });
+                    .done(function (result) {
+                        console.log("done");
+                        console.log(result);
+
+                        if (result['status'] == "success") {
+                            toastr.success("Changes were made successfully.", "Success");
+
+
+                            var delay = 1000;
+                            if(result['added']>0){
+                                toastr.info(result['added']+" new Question/s", "Added");
+                                delay+=1000;
+                            }
+                            if(result['updated']>0){
+                                toastr.info(result['updated']+" Question/s", "Updated");
+                                delay+=1000;
+                            }
+                            if(result['deleted']>0){
+                                toastr.info(result['deleted']+" Question/s", "Deleted");
+                                delay+=1000;
+                            }
+
+                            setTimeout(reloadPage, delay);
+
+
+                        }
+                    })
+                    .fail(function (result) {
+                        console.log("fail");
+                    })
+                    .always(function () {
+                        console.log("complete");
+                    });
+            }
+            else
+                toastr.error("No changes were made.", "Oops!");
         }
-        else
-            toastr.error("No changes were made.", "Oops!");
+
+        if(setData[2]!='null'){
+            showAlertModal("Are you sure you want to archive this question set?.",func,finalData);
+        }else{
+            func(finalData);
+        }
+
+
 
     }
 

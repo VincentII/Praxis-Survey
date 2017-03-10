@@ -180,6 +180,7 @@ class AdminController extends CI_Controller
         $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
         $this->load->view('admin/a_navbar');
         $this->load->view('admin/a_questions', $data); // $this->load->view('admin', $data); set to this if data is set
+        $this->load->view('admin/a_alert'); // Alert HTML and Javascript file
         $this->load->view('admin/a_footer'); // include bootstrap 3 footer
     }
 
