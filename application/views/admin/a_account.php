@@ -124,7 +124,7 @@
                 </div>
                                 <div class="modal-footer" id="modal_button">
                                     <span class = "col-md-3 pull-right">
-                                               <button class="btn btn-success btn-block col-md-2 " type="button" onclick="changePassword()">Save Password Changes</button>
+                                               <button class="btn btn-success btn-block col-md-2 " type="button" onclick="changePassword()"><span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\"></span> Save Password Changes</button>
                                          </span>
                                 </div>
             </form>
