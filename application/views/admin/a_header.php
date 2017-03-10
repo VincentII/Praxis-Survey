@@ -36,7 +36,7 @@
     <!-- optionally if you need to use a theme, then include the theme file as mentioned below -->
    <!-- <link href="path/to/themes/krajee-svg/theme.css" media="all" rel="stylesheet" type="text/css" /> -->
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<!--    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>-->
     <script src="<?=base_url()?>/assets/js/star-rating.min.js" type="text/javascript"></script>
 
 

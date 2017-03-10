@@ -2,6 +2,7 @@
 
     $(document).on('ready', function(){
 
+
     });
 
 
@@ -278,44 +279,55 @@
 
         var changedData = getChangedData(newTable);
 
+        var deleteCount = 0;
+
         for(var i = 0; i<changedData.length; i++) {
             if (!isValidString(changedData[i][0])){
                 toastr.error("Link given is Invalid","Error");
                 return;
             }
+            if(changedData[i][3])
+                deleteCount++;
         }
 
-        if(changedData.length>0) {
-            $.ajax({
-                url: '<?=base_url('admin/' . ADMIN_UPDATE_URLS)?>',
-                type: 'GET',
-                dataType: 'json',
-                data: {
-                    changedData: changedData
-                }
-            })
-                .done(function (result) {
-                    console.log("done");
-                    console.log(result);
-
-                    if (result['status'] == "success") {
-                        toastr.success("Changes were made successfully.", "Success");
-                        var delay = 1000;
-                        setTimeout(reloadPage, delay);
-
-
+        var func = function(changedData){
+            if(changedData.length>0) {
+                $.ajax({
+                    url: '<?=base_url('admin/' . ADMIN_UPDATE_URLS)?>',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        changedData: changedData
                     }
                 })
-                .fail(function (result) {
-                    console.log("fail");
-                })
-                .always(function () {
-                    console.log("complete");
-                });
-        }
-        else
-            toastr.error("No changes were made.", "Oops!");
+                    .done(function (result) {
+                        console.log("done");
+                        console.log(result);
 
+                        if (result['status'] == "success") {
+                            toastr.success("Changes were made successfully.", "Success");
+                            var delay = 1000;
+                            setTimeout(reloadPage, delay);
+                        }
+                    })
+                    .fail(function (result) {
+                        console.log("fail");
+                    })
+                    .always(function () {
+                        console.log("complete");
+                    });
+            }
+            else
+                toastr.error("No changes were made.", "Oops!");
+        }
+
+        if(deleteCount==0){
+            func(changedData);
+        }
+
+        else{
+            showAlertModal("Are you sure you want to delete " + deleteCount +" link/s.",func,changedData);
+        }
     }
 
 
@@ -337,9 +349,6 @@
     function isValidDate($d){
         return/[0-9][0-9][\/][0-9][0-9][\/][0-9][0-9][0-9][0-9]/mi.test($d);
     }
-    
-    
-
 
 </script>
 
@@ -362,6 +371,7 @@
 
                         <span class = "col-md-3">
                             <button type ="button"data-toggle="modal" data-target="#AddNewLinkModal" class="btn btn-default btn-block  col-md-2"> +Add Link</button>
+                            <button type ="button" onclick="showAlertModal('Are you sure')"> alert</button>
 
                                   </span>
                             <span class = "col-md-3">
@@ -466,3 +476,48 @@
 
     </div>
 </div>
+
+<div id="alertModal" class="modal fade" role="dialog"
+     data-backdrop="static"
+     data-keyboard="false"
+     href="#">
+    <div class="modal-dialog modal-sm">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Wait a second!</h4>
+            </div>
+
+
+                <div class="modal-body clearfix">
+                    <h3 id="alertTitle" class="modal-title"></h3>
+                    <button type="button" class="btn btn-danger" id="btn_alert_no">NO!</button>
+                    <button type="button" class="btn btn-success" id="btn_alert_yes")">YES!</button>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+
+    function showAlertModal($s,$callback,$data){
+        $('#alertModal').modal('toggle');
+        $('#alertTitle').html($s);
+        $('#btn_alert_yes').on("click",function(){
+            console.log("YES")
+            $callback($data);
+            $('#alertModal').modal('hide');
+        });
+        $('#btn_alert_no').on("click",function(){
+            $('#alertModal').modal('hide');
+        });
+    }
+
+</script>
