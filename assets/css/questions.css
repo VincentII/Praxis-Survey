@@ -1,5 +1,6 @@
-/*@media only screen and (max-device-width: 1024px){*/
-    *{border: 1px solid red;}
+/*Mobile version*/
+@media only screen and (max-device-width: /*480*/3000px){
+    /**{border: 1px solid red;}*/
     *{font-family: "Calibri Light", "Calibri", sans-serif}
 
     /*.main{*/
@@ -249,7 +250,7 @@ footer{
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 22vh;
+    height: 16vh;
 }
 /*TODO: change fixed footer to a sticky one that hides when the soft keyboard comes out*/
 
@@ -277,12 +278,74 @@ footer{
     text-align: center;
     padding: 1vh;
     width: 100%;
-    height: 20vh;
+    height: 15vh;
     bottom: 0;
     left: 0;
 }
 
-/*}*/
+}
+
+/*Desktop version*/
+/*TODO: experiment with a horizontal fullpage*/
+/*FIXME: does not work AT ALL and I have no idea why*/
+/*
+@media only screen and (max-device-width: 1024px){
+    *{border: 1px solid red;}
+    *{font-family: "Calibri Light", "Calibri", sans-serif}
+
+    .custbtn-container
+
+    .custbtn
+
+    .custbtn--prev
+    .custbtn--next
+
+    .container
+
+    .card-container{
+        height: 78vh;
+    }
+
+    .card{
+    }
+
+    .card__content
+
+    .content__text-area
+
+    .content__star-caption
+
+    .text-area--question
+
+    .question__text
+
+    .fa-hand-pointer-o
+
+    .form-group
+
+    footer{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 22vh;
+    }
+
+    .footer__progress-bar
+
+    .progress-bar__bar
+
+    .footer__copyright{
+        position: absolute;
+        background-color: #127094;
+        color: white;
+        text-align: center;
+    }
+
+}
+*/
+
+
 
 
 
