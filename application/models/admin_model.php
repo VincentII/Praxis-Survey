@@ -25,6 +25,15 @@ class admin_model extends CI_Model
         return $query->result();
     }
 
+    function queryAllAdmins(){
+        $this->db->select("*");
+        $this->db->from(TABLE_ADMIN);
+        $this->db->order_by(COLUMN_ADMIN_USERNAME);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     function isValidUser($name, $pass) {
 
         $this->db->select("*");
@@ -106,11 +115,29 @@ class admin_model extends CI_Model
         );
         $this->db->insert(TABLE_QUESTIONS, $insertData);
     }
+    function insertAdmin($name,$type,$pass){
+        $insertData=array(
+            COLUMN_ADMIN_USERNAME => $name,
+            COLUMN_ADMIN_TYPE => intval($type),
+            COLUMN_ADMIN_PASSWORD => $pass
+        );
+        $this->db->insert(TABLE_ADMIN, $insertData);
+
+    }
 
     function isExistingURL($url){
         $this->db->select('*');
         $this->db->from(TABLE_URL);
         $this->db->where(COLUMN_URL,$url);
+        $query = $this->db->get();
+        return count($query->result())>=1;
+
+    }
+
+    function isExistingAdmin($name){
+        $this->db->select('*');
+        $this->db->from(TABLE_ADMIN);
+        $this->db->where(COLUMN_ADMIN_USERNAME,$name);
         $query = $this->db->get();
         return count($query->result())>=1;
 

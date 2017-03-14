@@ -38,6 +38,9 @@
 
                     </ul>
                 </li>
+                <?php if($_SESSION['adminType'] == 1): ?>
+                    <li id="overview_button"><a href="<?=site_url("admin/" . ADMIN_ADMINS)?>">Admins<span class="sr-only"></span></a></li>
+                <?php endif;?>
 
             </ul>
 
@@ -45,9 +48,11 @@
 
             <ul class="nav navbar-nav navbar-right">
 
+
                 <li id="overview_button"><a href="<?=site_url("admin/" . ADMIN_EMAILS)?>">Check Emails<span class="sr-only"></span></a></li>
                         <!--<li><a href="#">Modify Account</a></li>
                         <li role="separator" class="divider"></li>-->
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         Account<span class="caret"></span></a>

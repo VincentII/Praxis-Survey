@@ -46,6 +46,9 @@ class AdminController extends CI_Controller
                 case ADMIN_LINKS:
                     $this->linksView();
                     break;
+                case ADMIN_ADMINS:
+                    $this->adminsView();
+                    break;
                 case ADMIN_EMAILS:
                     $this->emailsView();
                     break;
@@ -72,6 +75,9 @@ class AdminController extends CI_Controller
                     break;
                 case ADMIN_SUBMIT_URL:
                     $this->submitURL();
+                    break;
+                case ADMIN_SUBMIT_ADMIN:
+                    $this->submitAdmin();
                     break;
                 case ADMIN_UPDATE_EVENTS:
                     $this->updateEvents();
@@ -183,6 +189,18 @@ class AdminController extends CI_Controller
         $this->load->view('admin/a_alert'); // Alert HTML and Javascript file
         $this->load->view('admin/a_footer'); // include bootstrap 3 footer
     }
+
+    private function adminsView(){
+
+        $data['admins'] = $this->admin->queryAllAdmins();
+
+        $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
+        $this->load->view('admin/a_navbar');
+        $this->load->view('admin/a_admins', $data); // $this->load->view('admin', $data); set to this if data is set
+        $this->load->view('admin/a_alert'); // Alert HTML and Javascript file
+        $this->load->view('admin/a_footer'); // include bootstrap 3 footer
+    }
+
 
     private function accountView(){
         $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
@@ -342,6 +360,31 @@ class AdminController extends CI_Controller
             $data = array(
                 'status' => 'fail',
                 'message' => $getData["url"] . ' link already exists, use another name!'
+            );
+        }
+        echo json_encode($data);
+
+    }
+
+    public function submitAdmin(){
+        $getData = array(
+            'name' => $this->input->get('name'),
+            'type' => $this->input->get('type'),
+            'pass' => $this->input->get('password'),
+        );
+
+        if(!$this->admin->isExistingAdmin($getData['name'])) {
+            $this->admin->insertAdmin($getData['name'], $getData['type'], md5($getData['pass']));
+            $data = array(
+                'status' => 'success',
+                'message' => 'Successfully added ' . $getData["name"] . '!'
+            );
+        }
+        else{
+
+            $data = array(
+                'status' => 'fail',
+                'message' => $getData["name"] . ' already exists, use another name!'
             );
         }
         echo json_encode($data);
