@@ -67,6 +67,169 @@
             });
     }
 
+    var currID;
+    var currType;
+    var isPassChange;
+    function loadViewModal($id){
+
+        currID = parseInt($id);
+
+        var $admins = <?=json_encode($admins)?>;
+
+        var i = 0;
+        for(i=0;i<$admins.length;i++)
+            if($admins[i]['Admin_ID']==currID){
+                $('#view_name').html($admins[i]['Username']);
+
+                if($admins[i]['Admin_Type']=='0'){
+                    $('#view_type').html("Admin");
+                    $('#view_type').val(0);
+                    currType = 0;
+                }else {
+                    $('#view_type').html("Super Admin");
+                    $('#view_type').val(1);
+                    currType = 1;
+                }
+                break;
+            }
+
+
+        $("#view_extra").html('');
+        isPassChange =  false;
+        $("#view_delete").html('');
+
+        var buttonStr='<span class = "col-md-3 pull-right">'+
+            '<button class="btn btn-default btn-block col-md-2 " type="button" onclick="changeViewToEdit(\'view_buttons\')">Edit Question Set</button>'+
+        '</span>';
+        $("#view_buttons").html(buttonStr);
+    }
+
+    function changeViewToEdit($buttons) {
+
+        var type = $('#view_type').val();
+
+        var typeEdit = '<select class="form-control" id="form_change_type" name="form-submit-type">'
+        if(type=='0')
+            typeEdit += '<option value="0" selected>Admin</option>'+
+                        '<option value="1">Super Admin</option>';
+        else
+            typeEdit += '<option value="0">Admin</option>'+
+                        '<option value="1" selected>Super Admin</option>';
+            typeEdit+='</select>';
+
+        $('#view_type').html(typeEdit);
+
+        cancelPasswordChange();
+
+        var del="<br><br><div class='pull-right'>Delete:"+'<input id="check_delete" type="checkbox"></div>';
+        $("#view_delete").html(del);
+
+
+
+        console.log($buttons);
+        var funct = "submitChanges";
+        var buttonsStr =
+            "<span class = \"col-md-3 pull-right\">"+
+            "<button class=\"btn  btn-danger btn-block col-md-2\" type=\"button\" onclick=\"changeViewToView()\">Cancel</button>"+
+            "</span>"+
+            "<span class = \"col-md-3 pull-right\">"+
+            "<button class=\"btn  btn-success btn-block col-md-2\" type=\"button\" onclick=\""+funct+"()\" ><span class=\"glyphicon glyphicon-floppy-disk\" aria-hidden=\"true\"></span> Save Changes</button>"+
+            "</span>";
+
+        $("#"+$buttons).html(buttonsStr);
+
+    }
+
+
+    function passwordChange(){
+        //$("#view_extra").html('');
+        isPassChange = true;
+
+        var extra = "<br><br>"+
+            '<div class="form-group">'+
+            '<label for="newPassword">New Password:</label>'+
+            '<input type="password" class="form-control" name="newPassword" id="form_change_password" placeholder="Enter Your New Password Here" required>'+
+            '</div>'+
+            '<div class="form-group">'+
+            '<label for="adminPassword">Confirm Password:</label>'+
+            '<input type="password" class="form-control" name="rePassword" id="form_change_rePassword" placeholder="Enter Your New Password Again" required>'+
+            '<br>'+
+            "<span class = \"col-md-3 pull-left\"><button class=\"btn  btn-danger btn-block col-md-2\" type=\"button\" onclick=\"cancelPasswordChange()\">Cancel</button></span>"
+        '</div>'
+
+        $("#view_extra").html(extra);
+    }
+
+    function cancelPasswordChange() {
+        isPassChange=false;
+        $('#view_extra').html("<span class = \"col-md-3 pull-left\"><button class=\"btn btn-default col-md-2\" type=\"button\" onclick=\"passwordChange()\">Change Password</button></span>");
+    }
+
+    function changeViewToView(table, button){
+        reloadPage(); //TODO
+    }
+
+    function submitChanges(){
+        var type = $('#form_change_type').val();
+        var nPass = null;
+        var rPass = null;
+
+        if(parseInt(type)==parseInt(currType))
+            type=null;
+
+        if(isPassChange){
+            nPass = $('#form_change_password').val();
+            rPass = $('#form_change_rePassword').val();
+            console.log(nPass,rPass);
+            if(!isValidPassword(nPass)){
+                toastr.error('Password needs to be 8-25 characters long.','Oops');
+                return;
+            }
+            else if(nPass!=rPass){
+                toastr.error('Passwords do not match','Oops');
+                return;
+            }
+        }
+
+        var isDelete = $('#check_delete').prop("checked");
+        console.log(type);
+        if(type!=null||(nPass!=null&&rPass!=null)||isDelete){
+            $.ajax({
+                url: '<?php echo base_url('admin/' . ADMIN_UPDATE_ADMIN) ?>',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    type: type,
+                    pass: nPass,
+                    delete: isDelete,
+                    adminID: currID
+                }
+            })
+                .done(function (result) {
+                    console.log("success");
+
+                    if(result['status']=='success'){
+                        toastr.success(result['message'], "Success");
+                        var delay = 1000;
+                        setTimeout(function () {
+                            reloadPage();
+                        }, delay);
+                    }
+                    else{
+                        toastr.error(result['message'], "Error");
+                    }
+                })
+                .fail(function () {
+                    console.log("fail");
+                })
+                .always(function () {
+                    console.log("complete");
+                });
+        }else{
+            toastr.error('No changes were made.','Oops')
+        }
+
+    }
 
     function reloadPage() {
         <?php
@@ -140,7 +303,7 @@
                                             <?php else: ?>
                                             <td title="<?=$admin->Admin_Type?>">Super Admin</td>
                                             <?php endif;?>
-                                            <td> <button type ="button" data-toggle="modal" data-target="#ViewQuestionsModal" class="btn btn-default btn-block  col-md-1" onclick="loadViewModal(this.value)" value=<?=$admin->Admin_ID?>><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View</button></td>
+                                            <td> <button type ="button" data-toggle="modal" data-target="#ViewAdminModal" class="btn btn-default btn-block  col-md-1" onclick="loadViewModal(this.value)" value=<?=$admin->Admin_ID?>><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View</button></td>
 
                                         </tr>
                                     <?php endif;?>
@@ -185,7 +348,7 @@
                         <tr>
                             <td><input id="form_submit_username" type="text" class="form-control" placeholder="Enter Username"></td>
                             <td>
-                                <select class="form-control" id="form_submit_type" name="form-submit-type"">
+                                <select class="form-control" id="form_submit_type" name="form-submit-type">
                                 <option value="0" selected>Admin</option>
                                 <option value="1">Super Admin</option>
                                 </select>
@@ -211,34 +374,36 @@
     </div>
 </div>
 
-<div id="ViewQuestionsModal" class="modal fade" role="dialog" >
+<div id="ViewAdminModal" class="modal fade" role="dialog" >
     <div class="modal-dialog modal-lg">
 
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" >&times;</button>
-                <h4 class="modal-title" id="modal_view_title">Question Set</h4>
+                <h4 class="modal-title" id="modal_view_title">View Admin</h4>
             </div>
             <form>
                 <div class="modal-body clearfix">
-                    <table class="table table-hover" id="question_table" name="">  <!-- TODO: somehow insert table id in name for add ? -->
-                        <thead id="view_modal_header">
-                        <tr>
-                            <th>Q#</th>
-                            <th>Question</th>
+                    <div class="panel-group">
+                        <br>
+                        <b>Username: </b>
+                        <b><span id="view_name"></span></b>
+                        <br>
+                        <br>
+                        <b>Account Type: </b>
+                        <span id="view_type"></span>
+                    </div>
+                    <div id="view_extra" class="panel-group">
 
-                        </tr>
-                        </thead>
-                        <tbody id="view_modal_body">
+                    </div>
+                    <div id="view_delete" class="panel-group">
 
-                        </tbody>
-                    </table>
-
+                    </div>
                 </div>
-                <div class="modal-footer" id="question_table_button">
+                <div class="modal-footer" id="view_buttons">
                     <span class = "col-md-3 pull-right">
-                               <button class="btn btn-default btn-block col-md-2 " type="button" onclick="changeViewToEdit('question_table','question_table_button')">Edit Question Set</button>
+                               <button class="btn btn-default btn-block col-md-2 " type="button" onclick="changeViewToEdit('view_buttons')">Edit Question Set</button>
                          </span>
                 </div>
             </form>

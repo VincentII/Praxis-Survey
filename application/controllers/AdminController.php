@@ -91,6 +91,9 @@ class AdminController extends CI_Controller
                 case ADMIN_UPDATE_PASSWORD:
                     $this->updatePassword();
                     break;
+                case ADMIN_UPDATE_ADMIN:
+                    $this->updateAdmin();
+                    break;
                 case ADMIN_CHECK_ANSWERED_SET:
                     $this->isSetAnswered();
                     break;
@@ -581,6 +584,50 @@ class AdminController extends CI_Controller
                 //         'check' => $getData['questions'][0][1]
             );
         }
+
+
+        echo json_encode($datum);
+    }
+
+    public function updateAdmin(){
+        $type = $this->input->get('type');
+        $pass = $this->input->get('pass');
+        $delete = $this->input->get('delete');
+        $adminID = $this->input->get('adminID');
+
+
+        if($delete=='true'){
+            $this->admin->deleteAdmin($adminID);
+            $datum = array(
+                'status' => 'success',
+                'message' => 'Admin Deleted'
+                //         'check' => $getData['questions'][0][1]
+            );
+        }
+        else {
+            if ($type!='') {
+                $changeData = array(
+                    COLUMN_ADMIN_ID => $adminID,
+                    COLUMN_ADMIN_TYPE => intval($type)
+                );
+                $this->admin->updateAdmin($changeData);
+            }
+            if ($pass!='') {
+                $changeData = array(
+                    COLUMN_ADMIN_ID => $adminID,
+                    COLUMN_ADMIN_PASSWORD => md5($pass)
+                );
+                $this->admin->updateAdmin($changeData);
+            }
+
+            $datum = array(
+                'status' => 'success',
+                'message' => 'Admin Changed'
+                //         'check' => $getData['questions'][0][1]
+            );
+        }
+
+
 
 
         echo json_encode($datum);
