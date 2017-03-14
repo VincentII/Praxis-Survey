@@ -99,7 +99,7 @@
         $("#view_delete").html('');
 
         var buttonStr='<span class = "col-md-3 pull-right">'+
-            '<button class="btn btn-default btn-block col-md-2 " type="button" onclick="changeViewToEdit(\'view_buttons\')">Edit Question Set</button>'+
+            '<button class="btn btn-default btn-block col-md-2 " type="button" onclick="changeViewToEdit(\'view_buttons\')">Edit Admin</button>'+
         '</span>';
         $("#view_buttons").html(buttonStr);
     }
@@ -154,7 +154,7 @@
             '<label for="adminPassword">Confirm Password:</label>'+
             '<input type="password" class="form-control" name="rePassword" id="form_change_rePassword" placeholder="Enter Your New Password Again" required>'+
             '<br>'+
-            "<span class = \"col-md-3 pull-left\"><button class=\"btn  btn-danger btn-block col-md-2\" type=\"button\" onclick=\"cancelPasswordChange()\">Cancel</button></span>"
+            "<span class = \"col-md-3 pull-left\"><button class=\"btn  btn-danger btn-block col-md-3\" type=\"button\" onclick=\"cancelPasswordChange()\">Cancel</button></span>"
         '</div>'
 
         $("#view_extra").html(extra);
@@ -162,7 +162,7 @@
 
     function cancelPasswordChange() {
         isPassChange=false;
-        $('#view_extra').html("<span class = \"col-md-3 pull-left\"><button class=\"btn btn-default col-md-2\" type=\"button\" onclick=\"passwordChange()\">Change Password</button></span>");
+        $('#view_extra').html("<span class = \"col-md-3 pull-left\"><button class=\"btn btn-default btn-block col-md-3\" type=\"button\" onclick=\"passwordChange()\">Change Password</button></span>");
     }
 
     function changeViewToView(table, button){
@@ -403,7 +403,7 @@
                 </div>
                 <div class="modal-footer" id="view_buttons">
                     <span class = "col-md-3 pull-right">
-                               <button class="btn btn-default btn-block col-md-2 " type="button" onclick="changeViewToEdit('view_buttons')">Edit Question Set</button>
+                               <button class="btn btn-default btn-block col-md-2 " type="button" onclick="changeViewToEdit('view_buttons')">Edit Admin</button>
                          </span>
                 </div>
             </form>
