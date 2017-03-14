@@ -4,7 +4,7 @@
 
     <div class="form-group">
         <label for="adminName">Username:</label>
-        <input  class="form-control" name="adminName" id="adminName" placeholder="Enter Username Here" required>
+        <input type="text" class="form-control" name="adminName" id="adminName" placeholder="Enter Username Here" required>
     </div>
 
     <BR><BR>

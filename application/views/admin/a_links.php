@@ -342,7 +342,7 @@
        return /[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($s);
     }
 
-    function isValidLink($s){
+    function isValidURL($s){
        return /[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($s);
     }
 
@@ -437,7 +437,6 @@
 
                         </tr>
                         </thead>
-                        <tbody>
                         <tbody>
 
                         <tr>
