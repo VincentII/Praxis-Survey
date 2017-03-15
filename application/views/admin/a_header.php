@@ -81,5 +81,8 @@
     </script>
 
 
+    <link href="<?=base_url()?>/assets/css/style_admin.css?<?php echo time(); ?>" rel="stylesheet" />
+
+
 </head>
 <body>

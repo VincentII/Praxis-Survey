@@ -161,6 +161,7 @@ define("ADMIN_UPDATE_EVENTS", "updateEvents");
 define("ADMIN_UPDATE_URLS", "updateURLs");
 define("ADMIN_UPDATE_QUESTIONS", "updateQuestions");
 define("ADMIN_UPDATE_PASSWORD", "updatePassword");
+define("ADMIN_UPDATE_ADMIN", "updateAdmin");
 define("ADMIN_CHECK_ANSWERED_SET", "checkAnsweredSet");
 
 define("HASH_PASS", "sfmPRAXIS");

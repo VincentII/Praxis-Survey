@@ -140,9 +140,16 @@
 
                     actualData.push(['Rating', 'Count', {role: 'style'}, {role: 'annotation'}]);
 
+                    var clr = '#127094';
+
+                    if($type=='c')
+                        clr = '#f26922'
+
                     for (var j = 0; j < 5; j++) {
                         var count = parseInt($answers[i][j]['count']);
-                        actualData.push([actualLabels[j], count, '#127094', (Math.round(count / sum * 100 * 10) / 10) + '%']);
+
+
+                        actualData.push([actualLabels[j], count, clr, (Math.round(count / sum * 100 * 10) / 10) + '%']);
                     }
 
 

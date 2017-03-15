@@ -189,6 +189,11 @@ class admin_model extends CI_Model
         $this->db->delete(TABLE_URL);
     }
 
+    function deleteAdmin($id) {
+        $this->db->where(COLUMN_ADMIN_ID, $id);
+        $this->db->delete(TABLE_ADMIN);
+    }
+
     function deleteQuestion($id) {
         $this->db->where(COLUMN_QUESTION_ID, $id);
         $this->db->delete(TABLE_QUESTIONS);
