@@ -1,0 +1,83 @@
+*{font-family: "Calibri", "Calibri", sans-serif}
+:root{
+    --dark_blue: #187aa1;
+    --light_blue: #78b6e4;
+    --yellow_orange: #fbb040;
+    --orange: #f26922;
+    --gray: #676768;
+    --praxis_red: #ed1c24
+}
+
+body{
+}
+
+.navbar-default{
+    background-color: var(--light_blue);
+
+}
+
+ul.dropdown-menu {
+    background-color: var(--light_blue);
+}
+
+.nav li:hover{
+    background-color: var(--dark_blue);
+}
+div.panel .panel-heading {
+    background-color: var(--orange);
+    color: whitesmoke;
+
+}
+
+div.panel-single {
+    background-color: var(--orange);
+}
+
+.panel-footer{
+    background-color: var(--orange);
+}
+
+li.list-group-item{
+    background-color: var(--yellow_orange);
+
+}
+
+li.list-group-item table tr:hover td{
+    background-color: var(--orange);
+    color:whitesmoke;
+}
+
+li.list-group-item table tr td{
+    border-color: var(--orange);
+}
+
+li.list-group-item table tr th{
+    border-color: var(--orange);
+}
+
+div.modal-content .modal-header{
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: var(--light_blue);
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+div.modal-content .modal-footer{
+    padding:9px 15px;
+    border-top:1px solid #eee;
+    background-color: var(--light_blue);
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.btn-primary{
+    background-color: var(--dark_blue);
+}

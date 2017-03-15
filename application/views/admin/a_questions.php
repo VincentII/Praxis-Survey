@@ -641,7 +641,7 @@
 </script>
 
 <div class="col-md-2 col-md-offset-2" >
-        <div class = "form-group col-md-2">
+        <div class = "form-group col-md-10">
         <b>Question Sets</b>
         </div>
 </div>

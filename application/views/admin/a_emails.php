@@ -129,7 +129,7 @@
                                 </table>
                             </li>
                             <div class = "panel-footer clearfix" id = "emailtable_footer">
-                                <a class="btn btn-success col-md-2 pull-left" href="#" id ="export" role='button'> <span class='glyphicon glyphicon-export' aria-hidden=\"true\"></span> Export Table
+                                <a class="btn btn-default col-md-2 pull-left" href="#" id ="export" role='button'> <span class='glyphicon glyphicon-export' aria-hidden=\"true\"></span> Export Table
                                 </a>
                             </div>
 
