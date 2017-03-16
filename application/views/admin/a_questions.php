@@ -34,7 +34,7 @@
                 console.log(addData);
 
 
-                if (!isValidString(addData['question'])) {
+                if (!isValidString(addData[1])) {
                     toastr.error("Question given in Q#" + i + " is Invalid", "Error");
                     return;
                 }
