@@ -86,6 +86,8 @@
             $('.fa-refresh').addClass("fa-spin"); //TODO: check
 //            }
         });
+
+        //TODO: fitin function to reduce text size to fit in ribbon
     });
 
 
@@ -101,7 +103,7 @@
                                 '<div class="card__content">' +
                                 '<div class="content__text-area text-area--question">' +
                                 '<img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">' +
-                                '<h2 class="question__text" id="' + id.join('') + '">' + text.join('') + '</h2>' +
+                                '<div class="question__text" id="' + id.join('') + '">' + text.join('') + '</div>' +
                                 '</div>' +
                                 '<div class="content__stars">' +
                                 '<input id="star' + questionIndex +'" name="input-name" type="number" data-size="lg" class="rating-loading" onchange="updateStar(this.id)"></div>' +
@@ -137,7 +139,7 @@
 
     function updateStar(star){
 //        console.log("h2 id of active" + $('.active').find('h2').attr('id'));
-        if(($('.active').hasClass("card--question")) && $('.active').find('h2').attr('id') > $answerCount){
+        if(($('.active').hasClass("card--question")) && $('.active').find('.question__text').attr('id') > $answerCount){
             $answerCount++;
 //            console.log($answerCount);
             updateProgressBar();
@@ -298,23 +300,19 @@
             </div>
         </div>
         <div class="card section card--comment">
-<!--            <div class="card__content">-->
-<!--                <div class="form-group">-->
-<!--                    <label for="name">Comments</label>-->
-<!--                    <textarea class="form-control" id="comment"></textarea>-->
-<!--                </div>-->
-<!--            </div>-->
-            <div class="form-group">
-                <label for="name">Comments</label>
-                <textarea class="form-control" id="comment"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name"><br>
-                <label for="name">Email</label>
-                <input type="text" class="form-control" id="email"><br>
-                <label for="name">Cellphone Number</label>
-                <input type="text" class="form-control" id="cellphone"><br>
+            <div class="comment--container">
+                <div class="form-group">
+                    <label for="name">Comments</label>
+                    <textarea class="form-control" id="comment"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name"><br>
+                    <label for="name">Email</label>
+                    <input type="text" class="form-control" id="email"><br>
+                    <label for="name">Cellphone Number</label>
+                    <input type="text" class="form-control" id="cellphone"><br>
+                </div>
             </div>
         </div>
         <div class="card section card--submit">
