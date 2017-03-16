@@ -111,7 +111,7 @@
                                 '<div class="card__content">' +
                                 '<div class="content__text-area text-area--question">' +
                                 '<img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">' +
-                                '<div class="question__text" id="' + id.join('') + '">' + text.join('') + '</div>' +
+                                '<div class="question__container"><div class="question__text" id="' + id.join('') + '">' + text.join('') + '</div></div>' +
                                 '</div>' +
                                 '<div class="content__stars">' +
                                 '<input id="star' + questionIndex +'" name="input-name" type="number" data-size="lg" class="rating-loading" onchange="updateStar(this.id)"></div>' +

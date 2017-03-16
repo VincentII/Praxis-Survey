@@ -1,6 +1,6 @@
 /*Mobile version*/
 @media only screen and (max-device-width: /*480*/3000px){
-    *{border: 1px solid red;}
+    /**{border: 1px solid red;}*/
     *{font-family: "Calibri Light", "Calibri", sans-serif}
 
     /*.main{*/
@@ -213,11 +213,6 @@
     }
     /*FIXME: This does not looked centered for some reason*/
 
-    .question__text{
-        border-color: blue;
-    }
-    /*TODO: center inside content__text-area*/
-
     .content__star-caption{
         height: 2em;
         font-size: 2em;
@@ -226,13 +221,27 @@
 
     .text-area--question{
         position: relative;
+        display: flex;
+        justify-content: center;
     }
 
-    .question__text{
+    .question__container{
+        border-color: yellow;
+        height: 80%;
+        width: 80%;
         position: absolute;
+        top: 0;
+        display: flex;
+        align-items: center;
+    }
+    /*yaaay*/
+
+    .question__text{
+        border-color: blue;
+        /*position: absolute;*/
         width: 100%;
         color: white;
-        top: 5vh;
+        /*top: 5vh;*/
     }
 
     .fa-hand-pointer-o{
