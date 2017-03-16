@@ -214,12 +214,6 @@
     /*FIXME: This does not looked centered for some reason*/
 
     .question__text{
-        /*margin-left: 5%;*/
-        /*margin-right: 5%; !*FIXME: not sure if percent means percent of parent or what*!*/
-        /*height: 10vh;*/
-        padding-left: 7%;
-        padding-right: 7%;
-        padding-bottom: 5%;
         border-color: blue;
     }
     /*TODO: center inside content__text-area*/

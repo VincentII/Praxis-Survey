@@ -5,10 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Praxis</title>
-
-    <!--STYLESHEET-->
-    <link href="<?=base_url()?>/assets/css/questions.css?<?php echo time(); ?>" rel="stylesheet" />
+    <title>Praxis Survey</title>
 
     <!-- Bootstrap -->
     <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -21,6 +18,9 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
     <![endif]-->
+
+    <!--STYLESHEET-->
+    <link href="<?=base_url()?>/assets/css/questions.css?<?php echo time(); ?>" rel="stylesheet" />
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="<?=base_url()?>/assets/js/jquery-3.1.1.min.js"></script>
