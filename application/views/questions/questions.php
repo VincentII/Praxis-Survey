@@ -97,6 +97,7 @@
         });
 
         $('.fa-repeat').on('click',function(){
+            $('.fa-repeat').addClass("fa-spin");
            location.reload();
         });
 
