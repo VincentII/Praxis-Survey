@@ -31,7 +31,9 @@
 
 
     <!-- Font-Awesome -->
-    <link href="<?=base_url()?>/assets/css/font-awesome/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="http://localhost/Praxis-Survey/assets/css/font-awesome/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
+    <!--TODO ^^^^^^^^^^^^^^^^^^^^ FIX THIS-->
+
 
     <!-- Karjee Star Rating-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
