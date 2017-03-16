@@ -32,7 +32,7 @@
                    return false;
                }
            },
-
+//        BUTTON VISIBILITY TOGGLES
            afterLoad: function(anchorLink,index){
 
                console.log($('.active').attr('class'));
@@ -54,19 +54,6 @@
            }
         });
 
-
-//        BUTTON VISIBILITY TOGGLES
-//        $('.custbtn--prev').toggleClass("custbtn--disabled", $('.active').hasClass("card--start")); //FIXME: Doesn't work. custbtn--disabled remains a class of custbtn--prev
-//        $('.custbtn--next').toggleClass("custbtn--disabled", $('.active').hasClass("card--submit")); //FIXME: Doesn't work. custbtn--disabled is not added as a class of custbtn--next
-//        $('body').on('swipe',function(){
-//            console.log("Swipe!");
-//        });
-//        if($('.active').hasClass("card--start")){
-//            $('.custbtn--prev').css('visibility','hidden');
-//        }else{
-//            $('.custbtn--prev').css('visibility','visible');
-//        }
-        $('.custbtn--prev, .custbtn--next').toggle(); //FIXME: bad, try add class method
 
 //        BUTTON FUNCTIONS
         $('.custbtn--prev').on('click',function(){
