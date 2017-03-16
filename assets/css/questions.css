@@ -1,6 +1,6 @@
 /*Mobile version*/
 @media only screen and (max-device-width: /*480*/3000px){
-    /**{border: 1px solid red;}*/
+    *{border: 1px solid red;}
     *{font-family: "Calibri Light", "Calibri", sans-serif}
 
     /*.main{*/
@@ -207,7 +207,6 @@
     }
 
     .content__text-area{
-        /*flex: 1;*/
         font-size: 2em;
         text-align: center;
     }
@@ -227,10 +226,11 @@
 
     .question__container{
         border-color: yellow;
-        height: 80%;
-        width: 80%;
+        height: 77%;
+        width: 85%;
+        padding: 2vh;
         position: absolute;
-        top: 0;
+        top: 2vh;
         display: flex;
         align-items: center;
     }
@@ -241,6 +241,8 @@
         /*position: absolute;*/
         width: 100%;
         color: white;
+        font-size: 2em;
+        text-align: center;
         /*top: 5vh;*/
     }
 

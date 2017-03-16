@@ -96,12 +96,18 @@
         });
 
         //TODO: fitin function to reduce text size to fit in ribbon
+        $(function(){
+//            $('.question__text').css('font-size', '2em');
+
+//            while($('.question__text').height() > $('.question__container').height()){
+//                $('.question__text').css('font-size', (parseInt($('.question__text').css('font-size'))-1)+"px");
+//            }
+        });
     });
 
 
     function getQuestions(){
 //        load all questions at the beginning
-//        might have to change this back to the old version if I can't implement the stopped scrolling
         for(var questionIndex=0; questionIndex<$questions.length; questionIndex++){
 
             var text = [$questions[questionIndex]['Question_Act']];
@@ -109,7 +115,7 @@
 
             var newQuestion = '<div class="card section card--question">' +
                                 '<div class="card__content">' +
-                                '<div class="content__text-area text-area--question">' +
+                                '<div class="text-area--question">' + //rename class
                                 '<img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">' +
                                 '<div class="question__container"><div class="question__text" id="' + id.join('') + '">' + text.join('') + '</div></div>' +
                                 '</div>' +
@@ -176,7 +182,7 @@
                 $('.active').find('.content__star-caption').text("Totally Agree");
                 break;
         }
-//        $.fn.fullpage.moveSectionDown(); //FIXME: buggy right now due to layout
+        $.fn.fullpage.moveSectionDown();
     }
 
     function updateProgressBar(){
