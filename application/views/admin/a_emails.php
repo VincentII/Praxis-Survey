@@ -88,8 +88,10 @@
 </script>
 
 <div class="col-md-2 col-md-offset-2" >
-        <div class = "form-group col-md-2">
-        <b>Emails</b>
+        <div class = "form-group">
+            <ol class="breadcrumb">
+                <li>Admin</li>
+                <li class="active">Emails</li></ol>
         </div>
 </div>
     <div id="panels" class = "col-md-8 col-md-offset-2">

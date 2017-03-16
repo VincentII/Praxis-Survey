@@ -256,8 +256,11 @@
 </script>
 
 <div class="col-md-2 col-md-offset-2" >
-    <div class = "form-group col-md-2">
-        <b>Admins</b>
+    <div class = "form-group">
+        <ol class="breadcrumb">
+            <li>Super Admin</li>
+            <li class="active">Manage Admins</li>
+        </ol>
     </div>
 </div>
 <div id="panels" class = "col-md-8 col-md-offset-2">

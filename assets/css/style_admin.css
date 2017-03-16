@@ -5,14 +5,32 @@
     --yellow_orange: #fbb040;
     --orange: #f26922;
     --gray: #676768;
-    --praxis_red: #ed1c24
+    --praxis_red: #ed1c24;
+    --white: whitesmoke;
 }
 
 body{
+    background-color: var(--white);
 }
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.breadcrumb{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 
 .navbar-default{
     background-color: var(--light_blue);
+    border-color: var(--light_blue);
+    border-top-left-radius: 0px;
+    border-top-right-radius:0px;
+    border-bottom-right-radius:0px;
+    border-bottom-left-radius:0px;
 
 }
 
@@ -20,12 +38,15 @@ ul.dropdown-menu {
     background-color: var(--light_blue);
 }
 
-.nav li:hover{
+
+.navbar-default .navbar-nav > li:hover > a {
     background-color: var(--dark_blue);
+    color: white; /*Change active text color here*/
 }
+
 div.panel .panel-heading {
     background-color: var(--orange);
-    color: whitesmoke;
+    color: var(--white);
 
 }
 
@@ -44,7 +65,7 @@ li.list-group-item{
 
 li.list-group-item table tr:hover td{
     background-color: var(--orange);
-    color:whitesmoke;
+    color:var(--white);
 }
 
 li.list-group-item table tr td{

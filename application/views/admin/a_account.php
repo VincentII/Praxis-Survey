@@ -65,8 +65,11 @@
 
 
 <div class="col-md-3 col-md-offset-2" >
-    <div class = "form-group col-lg-4">
-        <b>Your Account:</b>
+    <div class = "form-group">
+        <ol class="breadcrumb">
+            <li>Admin</li>
+            <li class="active">Your Account</li>
+        </ol>
     </div>
 </div>
 

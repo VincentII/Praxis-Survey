@@ -201,8 +201,11 @@ function selectCompare() {
 </script>
 
 <div class="col-md-10 col-md-offset-1" >
-        <div class = "form-group col-md-2">
-        <b>REPORTS</b>
+        <div class = "form-group col-md-8">
+            <ol class="breadcrumb col-md-8">
+                <li>Admin</li>
+                <li class="active">Reports Management</li>
+            </ol>
     </div>
 
     <div class = "col-md-2 pull-right">
