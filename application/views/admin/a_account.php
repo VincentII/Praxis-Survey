@@ -64,7 +64,7 @@
 
 
 
-<div class="col-md-3 col-md-offset-2" >
+<div class="col-md-10 col-md-offset-2" >
     <div class = "form-group">
         <ol class="breadcrumb">
             <li>Admin</li>

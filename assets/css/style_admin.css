@@ -6,11 +6,13 @@
     --orange: #f26922;
     --gray: #676768;
     --praxis_red: #ed1c24;
-    --white: whitesmoke;
+    --whiteSmoke: whitesmoke;
+    --white: white;
+    --black: black;
 }
 
 body{
-    background-color: var(--white);
+    background-color: var(--whiteSmoke);
 }
 
 .nopadding {
@@ -18,10 +20,7 @@ body{
     margin: 0 !important;
 }
 
-.breadcrumb{
-    margin: 0 !important;
-    padding: 0 !important;
-}
+
 
 
 .navbar-default{
@@ -44,36 +43,42 @@ ul.dropdown-menu {
     color: white; /*Change active text color here*/
 }
 
-div.panel .panel-heading {
-    background-color: var(--orange);
-    color: var(--white);
-
+.breadcrumb{
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
+div.panel .panel-heading {
+    background-color: var(--dark_blue);
+    color: var(--whiteSmoke);
+
+    border-color: var(--dark_blue);
+}
+
+
+
 div.panel-single {
-    background-color: var(--orange);
+    background-color: var(--light_blue);
 }
 
 .panel-footer{
-    background-color: var(--orange);
+    background-color: var(--dark_blue);
+    border-color: var(--dark_blue);
 }
 
 li.list-group-item{
-    background-color: var(--yellow_orange);
+    background-color: var(--white);
+    color: var(--black);
 
 }
 
 li.list-group-item table tr:hover td{
-    background-color: var(--orange);
+    background-color: var(--yellow_orange);
     color:var(--white);
 }
 
-li.list-group-item table tr td{
-    border-color: var(--orange);
-}
-
-li.list-group-item table tr th{
-    border-color: var(--orange);
+li.list-group-item table tr td,li.list-group-item table tr th{
+    border-color: var(--yellow_orange);
 }
 
 div.modal-content .modal-header{
@@ -101,4 +106,13 @@ div.modal-content .modal-footer{
 
 .btn-primary{
     background-color: var(--dark_blue);
+}
+
+.btn-default{
+    background-color: var(--whiteSmoke);
+}
+
+
+.btn-danger{
+    background-color: var(--praxis_red);
 }

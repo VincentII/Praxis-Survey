@@ -255,7 +255,7 @@
 
 </script>
 
-<div class="col-md-2 col-md-offset-2" >
+<div class="col-md-10 col-md-offset-2" >
     <div class = "form-group">
         <ol class="breadcrumb">
             <li>Super Admin</li>
@@ -269,14 +269,14 @@
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="collapseListGroupHeadingMod">
                 <h4 class="panel-title clearfix">
-                    <a role="button" class="col-md-6" data-toggle="collapse" href="#collapseListGroupMod" aria-expanded="true" aria-controls="collapseListGroupMod">
+                    <div class="col-md-6" data-toggle="collapse" href="#collapseListGroupMod" aria-expanded="true" aria-controls="collapseListGroupMod">
                         List of Admins
-                    </a>
+                    </div>
 
                     <div id = "adminTable_buttons">
 
                         <span class = "col-md-3 pull-right">
-                            <button type ="button"data-toggle="modal" data-target="#AddNewAdminModal" class="btn btn-default btn-block  col-md-2"> +Add Admin</button>
+                            <button type ="button"data-toggle="modal" data-target="#AddNewAdminModal" class="btn btn-default btn-block  col-md-2"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Admin</button>
                                   </span>
                     </div>
 
@@ -332,7 +332,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Add Admin</h4>
+                <h4 class="modal-title"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Admin</h4>
             </div>
             <form>
                 <div class="modal-body clearfix">

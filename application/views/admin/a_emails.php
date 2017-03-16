@@ -87,7 +87,7 @@
     });
 </script>
 
-<div class="col-md-2 col-md-offset-2" >
+<div class="col-md-10 col-md-offset-2" >
         <div class = "form-group">
             <ol class="breadcrumb">
                 <li>Admin</li>
@@ -100,9 +100,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="collapseListGroupHeadingMod">
                     <h4 class="panel-title clearfix">
-                        <a role="button" class="col-md-6" data-toggle="collapse" href="#collapseListGroupMod" aria-expanded="true" aria-controls="collapseListGroupMod">
+                        <div class="col-md-6">
                             List of Emails
-                        </a>
+                        </div>
                     </h4>
                 </div>
                 <div class="panel-collapse collapse in" role="tabpanel" id="collapseListGroupEvent" aria-labelledby="collapseListGroupHeadingEvent" aria-expanded="false">
