@@ -306,6 +306,10 @@
         left: 0;
     }
 
+    .btn_off{
+        color:lightgrey;
+    }
+
 }
 
 /*Desktop version*/

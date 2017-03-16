@@ -33,11 +33,24 @@
                }
            },
 
-           afterLoad: function(){
-               console.log("THIS IS YOUR CARD");
-               console.log($('.active').attr('class'));
+           afterLoad: function(anchorLink,index){
 
-               //TODO DANTE DIS IS THE FUNCTION
+               console.log($('.active').attr('class'));
+               console.log(index);
+
+               if(index == 1||$('.active').hasClass("card--start"))
+                   $('.custbtn--next').hide();
+               if($('.active').hasClass("card--submit")||$('.active').hasClass("card--thanks"))
+                   $('.custbtn--next').hide();
+               else
+                    $('.custbtn--next').show();
+
+               if(index == 2||$('.active').hasClass("card--thanks"))
+                   $('.custbtn--prev').hide();
+               else
+                   $('.custbtn--prev').show();
+
+               updateNextButton();
            }
         });
 
@@ -71,8 +84,7 @@
 
         $('.card--start').on('click',function(){
             console.log("START!");
-            $hasStarted = true;
-            $('.custbtn--next').toggle(); //FIXME: this works but is also really bad
+            $hasStarted = true; //FIXME: this works but is also really bad
             $.fn.fullpage.moveSectionDown();
         });
 
@@ -159,30 +171,31 @@
             updateProgressBar();
         }
 
+
+
         //prevent rating of zero stars
         if($('#' + star).val() < 1){
             $('#' + star).rating('update', 1);
         }
 
+        var labels = ["Totally Disagree","Partly Disagree","Neutral","Partly Agree","Totally Agree"];
+
 //        CUSTOM STAR CAPTIONS
-        switch($('#' + star).val()){
-            case '1':
-                $('.active').find('.content__star-caption').text("Totally Disagree");
-                break;
-            case '2':
-                $('.active').find('.content__star-caption').text("Partly Disagree");
-                break;
-            case '3':
-                $('.active').find('.content__star-caption').text("Neutral");
-                break;
-            case '4':
-                $('.active').find('.content__star-caption').text("Partly Agree");
-                break;
-            case '5':
-                $('.active').find('.content__star-caption').text("Totally Agree");
-                break;
+          $('.active').find('.content__star-caption').text(labels[parseInt($('#' + star).val())-1]);
+//        $.fn.fullpage.moveSectionDown(); //FIXME: buggy right now due to layout
+
+        updateNextButton();
+    }
+
+    function updateNextButton(){
+        if($('.active').hasClass("card--question") && $('.active').find("input").val()<1){
+            $('.btn-next').addClass('btn_off');
+            console.log ('off');
         }
-        $.fn.fullpage.moveSectionDown();
+        else {
+            console.log('on');
+            $('.btn-next').removeClass('btn_off');
+        }
     }
 
     function updateProgressBar(){
@@ -301,7 +314,7 @@
 <!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
 <!--FIXME: fix formatting which got fucked after implementing fullPage-->
 <div class="custbtn-container">
-    <i class="custbtn custbtn--prev fa fa-chevron-up"></i>
+    <i class="custbtn custbtn--prev"><span id='btn-prev' class="glyphicon glyphicon-chevron-up btn-prev"></i>
 </div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
@@ -354,7 +367,7 @@
     </div>
 </div>
 <div class="custbtn-container">
-    <i class="custbtn custbtn--next fa fa-chevron-down"></i>
+    <i class="custbtn custbtn--next"><span id='btn-next' class="glyphicon glyphicon-chevron-down btn-next"></span></i>
 </div>
 <footer>
     <div class="footer__progress-bar">
