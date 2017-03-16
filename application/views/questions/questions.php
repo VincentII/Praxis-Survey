@@ -31,8 +31,16 @@
                    console.log("you can't move");
                    return false;
                }
+           },
+
+           afterLoad: function(){
+               console.log("THIS IS YOUR CARD");
+               console.log($('.active').attr('class'));
+
+               //TODO DANTE DIS IS THE FUNCTION
            }
         });
+
 
 //        BUTTON VISIBILITY TOGGLES
 //        $('.custbtn--prev').toggleClass("custbtn--disabled", $('.active').hasClass("card--start")); //FIXME: Doesn't work. custbtn--disabled remains a class of custbtn--prev
