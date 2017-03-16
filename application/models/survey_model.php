@@ -255,6 +255,31 @@ class survey_model extends CI_Model
         $this->db->where(COLUMN_SET_ID, $setID);
         $query = $this->db->get();
         $result = $query->result();
+        return count($result)>=1;
+    }
+
+    function isOpenEvent($id){
+        $this->db->select('*');
+        $this->db->from(TABLE_EVENT);
+        $this->db->where(COLUMN_EVENT_ID,$id);
+        $this->db->where(COLUMN_IS_CLOSED,0);
+        $this->db->where(COLUMN_IS_ARCHIVED,0);
+        $this->db->order_by(COLUMN_EVENT_ID);
+        $query = $this->db->get();
+        $result = $query->result();
+
+        return count($result)>=1;
+    }
+
+    function isOpenSet($id){
+        $this->db->select('*');
+        $this->db->from(TABLE_QUESTION_SET);
+        $this->db->where(COLUMN_SET_ID,$id);
+        $this->db->where(COLUMN_IS_CLOSED,0);
+        $this->db->where(COLUMN_IS_ARCHIVED,0);
+        $this->db->order_by(COLUMN_SET_ID);
+        $query = $this->db->get();
+        $result = $query->result();
 
         return count($result)>=1;
     }

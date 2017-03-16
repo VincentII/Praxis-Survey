@@ -225,9 +225,9 @@
             .fail(function() {
                 console.log("fail");
 //                TODO: add code to jump to card--error
-                $('.card--thanks').hide();
-                $.fn.fullpage.reBuild();
-                $.fn.fullpage.moveSectionDown();
+               // $('.card--thanks').hide();
+                //$.fn.fullpage.reBuild();
+                //$.fn.fullpage.moveSectionDown();
             })
             .always(function() {
                 console.log("complete");
