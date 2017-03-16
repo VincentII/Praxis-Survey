@@ -38,7 +38,18 @@ ul.dropdown-menu {
 }
 
 
+
+
 .navbar-default .navbar-nav > li:hover > a {
+    background-color: var(--dark_blue);
+    color: white; /*Change active text color here*/
+}
+
+.navbar-default .navbar-nav> li.dropdown.open>a{
+    background-color: var(--dark_blue);
+    color: white; /*Change active text color here*/
+}
+.navbar-default .navbar-nav> li.dropdown.open> ul.dropdown-menu>li:hover>a{
     background-color: var(--dark_blue);
     color: white; /*Change active text color here*/
 }
