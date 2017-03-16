@@ -145,10 +145,11 @@
                     if($type=='c')
                         clr = '#f26922'
 
+                    var $total=0;
                     for (var j = 0; j < 5; j++) {
                         var count = parseInt($answers[i][j]['count']);
 
-
+                        $total+=count;
                         actualData.push([actualLabels[j], count, clr, (Math.round(count / sum * 100 * 10) / 10) + '%']);
                     }
 
@@ -157,6 +158,7 @@
 
 
                     $($chart).append("<div class = 'report-questions'> Q" + (i + 1) + ". " + $questions[i]['Question_Act'] + "</div>");
+                    $($chart).append("<div class = 'report-number'><i> Total Answers: "+$total+ "</i></div>");
                     $($chart).append("<div id='dataChart" + $type + i + "' class='chart-b'></div>");
 
                     var options = {
@@ -208,7 +210,7 @@ function selectCompare() {
             </ol>
     </div>
 
-    <div class = "col-md-2 pull-right">
+    <div class = "col-md-4 pull-right">
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <button id="btn_single" type="button" disabled class="btn btn-primary" onclick="selectSingle()">Single</button>
