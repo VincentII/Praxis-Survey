@@ -33,11 +33,26 @@
                }
            },
 
-           afterLoad: function(){
-               console.log("THIS IS YOUR CARD");
-               console.log($('.active').attr('class'));
+           afterLoad: function(anchorLink,index){
 
-               //TODO DANTE DIS IS THE FUNCTION
+               console.log(index);
+
+               if($('.active').hasClass("card--start")||$('.active').hasClass("card--submit")||$('.active').hasClass("card--thanks"))
+                   $('.custbtn--next').hide();
+               else
+                    $('.custbtn--next').show();
+
+               if(index == 2||$('.active').hasClass("card--thanks"))
+                   $('.custbtn--prev').hide();
+               else
+                   $('.custbtn--prev').show();
+
+               if($('.active').hasClass("card--question") && $('.active').find("input").val()){
+                   $('.custbtn--next').removeClass('custbtn_on');
+               }
+               else {
+                   $('.custbtn--next').addClass('custbtn_on')
+               }
            }
         });
 
@@ -71,8 +86,7 @@
 
         $('.card--start').on('click',function(){
             console.log("START!");
-            $hasStarted = true;
-            $('.custbtn--next').toggle(); //FIXME: this works but is also really bad
+            $hasStarted = true; //FIXME: this works but is also really bad
             $.fn.fullpage.moveSectionDown();
         });
 
@@ -158,24 +172,10 @@
             $('#' + star).rating('update', 1);
         }
 
+        var labels = ["Totally Disagree","Partly Disagree","Neutral","Partly Agree","Totally Agree"];
+
 //        CUSTOM STAR CAPTIONS
-        switch($('#' + star).val()){
-            case '1':
-                $('.active').find('.content__star-caption').text("Totally Disagree");
-                break;
-            case '2':
-                $('.active').find('.content__star-caption').text("Partly Disagree");
-                break;
-            case '3':
-                $('.active').find('.content__star-caption').text("Neutral");
-                break;
-            case '4':
-                $('.active').find('.content__star-caption').text("Partly Agree");
-                break;
-            case '5':
-                $('.active').find('.content__star-caption').text("Totally Agree");
-                break;
-        }
+          $('.active').find('.content__star-caption').text(labels[parseInt($('#' + star).val())-1]);
 //        $.fn.fullpage.moveSectionDown(); //FIXME: buggy right now due to layout
     }
 
