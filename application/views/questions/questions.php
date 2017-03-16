@@ -35,9 +35,12 @@
 
            afterLoad: function(anchorLink,index){
 
+               console.log($('.active').attr('class'));
                console.log(index);
 
-               if($('.active').hasClass("card--start")||$('.active').hasClass("card--submit")||$('.active').hasClass("card--thanks"))
+               if(index == 1||$('.active').hasClass("card--start"))
+                   $('.custbtn--next').hide();
+               if($('.active').hasClass("card--submit")||$('.active').hasClass("card--thanks"))
                    $('.custbtn--next').hide();
                else
                     $('.custbtn--next').show();
@@ -47,12 +50,7 @@
                else
                    $('.custbtn--prev').show();
 
-               if($('.active').hasClass("card--question") && $('.active').find("input").val()){
-                   $('.custbtn--next').removeClass('custbtn_on');
-               }
-               else {
-                   $('.custbtn--next').addClass('custbtn_on')
-               }
+               updateNextButton();
            }
         });
 
@@ -167,6 +165,8 @@
             updateProgressBar();
         }
 
+
+
         //prevent rating of zero stars
         if($('#' + star).val() < 1){
             $('#' + star).rating('update', 1);
@@ -177,6 +177,19 @@
 //        CUSTOM STAR CAPTIONS
           $('.active').find('.content__star-caption').text(labels[parseInt($('#' + star).val())-1]);
 //        $.fn.fullpage.moveSectionDown(); //FIXME: buggy right now due to layout
+
+        updateNextButton();
+    }
+
+    function updateNextButton(){
+        if($('.active').hasClass("card--question") && $('.active').find("input").val()<1){
+            $('.btn-next').addClass('btn_off');
+            console.log ('off');
+        }
+        else {
+            console.log('on');
+            $('.btn-next').removeClass('btn_off');
+        }
     }
 
     function updateProgressBar(){
@@ -295,7 +308,7 @@
 <!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
 <!--FIXME: fix formatting which got fucked after implementing fullPage-->
 <div class="custbtn-container">
-    <i class="custbtn custbtn--prev fa fa-chevron-up"></i>
+    <i class="custbtn custbtn--prev"><span id='btn-prev' class="glyphicon glyphicon-chevron-up btn-prev"></i>
 </div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
@@ -348,7 +361,7 @@
     </div>
 </div>
 <div class="custbtn-container">
-    <i class="custbtn custbtn--next fa fa-chevron-down"></i>
+    <i class="custbtn custbtn--next"><span id='btn-next' class="glyphicon glyphicon-chevron-down btn-next"></span></i>
 </div>
 <footer>
     <div class="footer__progress-bar">
