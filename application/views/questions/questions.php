@@ -329,7 +329,7 @@
 <!--TODO: make scroll animation quicker-->
 <!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
 <div class="custbtn-container">
-    <i class="custbtn custbtn--prev"><span id='custbtn--prev' class="glyphicon glyphicon-chevron-up custbtn--prev"></i>
+    <i class="custbtn custbtn--prev"><span class="glyphicon glyphicon-chevron-up"></i>
 </div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
@@ -385,7 +385,7 @@
     </div>
 </div>
 <div class="custbtn-container">
-    <i class="custbtn custbtn--next"><span id='custbtn--next' class="glyphicon glyphicon-chevron-down custbtn--next"></span></i>
+    <i class="custbtn custbtn--next"><span class="glyphicon glyphicon-chevron-down"></span></i>
 </div>
 <footer>
     <div class="footer__progress-bar">
