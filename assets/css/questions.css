@@ -1,6 +1,6 @@
 /*Mobile version*/
 @media only screen and (max-device-width: /*480*/3000px){
-    /**{border: 1px solid red;}*/
+    *{border: 1px solid red;}
     *{font-family: "Calibri Light", "Calibri", sans-serif}
 
     /*TODO: find a better way to position elements*/
@@ -38,17 +38,16 @@
 
     /*TODO: changed the heights of stuff to make the prog bar slimmer, check if that fucked anything up*/
     .container{
-        width: 100%;
-        height: 78vh;
-        /*display: flex;*/
-        flex-flow: column;
+        width: 100vw;
+        /*height: 78vh;*/
+        height:100vh;
+        border-color: green;
     }
 
     /*space for cards, buttons go on top of cards and stay put regardless of scroll*/
     .card-container{
-        /*display: inherit;*/
         bottom: 5vh;
-        /*flex: 1;*/
+        border-color: green;
     }
 
     /*scrollable section*/

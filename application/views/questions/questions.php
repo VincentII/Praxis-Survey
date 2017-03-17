@@ -22,18 +22,18 @@
 //        INITIALIZE FULLPAGE
 //        SCROLLING TOGGLES
         $('.card-container').fullpage({
-           onLeave: function(index, nextIndex, direction){
-               if(($('.active').hasClass("card--question") && $('.active').find("input").val() < 1 && direction == 'down') ||
+            onLeave: function(index, nextIndex, direction){
+                if(($('.active').hasClass("card--question") && $('.active').find("input").val() < 1 && direction == 'down') ||
                    ($('.active').hasClass("card--submit") && $hasSubmitted == false && direction == 'down') ||
                    (($('.active').hasClass("card--thanks") || $('.active').hasClass("card--error")) && (direction == 'up' || direction == 'down')) ||
                    ($('.active').hasClass("card--start") && $hasStarted == false) ||
                    (index == 2 && direction == 'up')){
                    console.log("you can't move");
                    return false;
-               }
-           },
+                }
+            },
 //        BUTTON VISIBILITY TOGGLES
-           afterLoad: function(anchorLink,index){
+            afterLoad: function(anchorLink,index){
 
                console.log($('.active').attr('class'));
                console.log(index);
@@ -55,20 +55,25 @@
         });
 
 //        WOW what a fix
+//        prevents buttons from showing while the start card is active
         $('.custbtn--prev').hide();
         $('.custbtn--next').hide();
 
-        //HIDE FOOTER (MOBILE ONLY)
+//        HIDE AND SHOW FOOTER
         $('.form-control').focus(function(){
            $('footer').hide();
            $('.custbtn--next').hide();
+           $.fn.fullpage.setAutoScrolling(false)
+           //MOBILE ONLY^^^
            $.fn.fullpage.setAllowScrolling(false);
-           $.fn.fullpage.setKeyboardScrolling(false);
+           $.fn.fullpage.setKeyboardScrolling(false);;
         });
 
         $('.form-control').blur(function(){
            $('footer').show();
             $('.custbtn--next').show();
+            $.fn.fullpage.setAutoScrolling(true);
+
             $.fn.fullpage.setAllowScrolling(true);
             $.fn.fullpage.setKeyboardScrolling(true);
         });
@@ -168,7 +173,7 @@
             });
         }//end of for loop
     }//end of getQuestions
-
+    
     function updateStar(star){
 //        console.log("h2 id of active" + $('.active').find('h2').attr('id'));
         if(($('.active').hasClass("card--question")) && $('.active').find('.question__text').attr('id') > $answerCount){
