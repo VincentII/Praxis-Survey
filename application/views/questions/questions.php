@@ -38,8 +38,8 @@
                console.log($('.active').attr('class'));
                console.log(index);
 
-               if(index == 1||$('.active').hasClass("card--start"))
-                   $('.custbtn--next').hide();
+//               if(index == 1||$('.active').hasClass("card--start"))
+//                   $('.custbtn--next').hide();
                if($('.active').hasClass("card--submit")||$('.active').hasClass("card--thanks"))
                    $('.custbtn--next').hide();
                else
@@ -54,15 +54,21 @@
            }
         });
 
+//        WOW what a fix
+        $('.custbtn--prev').hide();
+        $('.custbtn--next').hide();
+
         //HIDE FOOTER (MOBILE ONLY)
         $('.form-control').focus(function(){
            $('footer').hide();
+           $('.custbtn--next').hide();
            $.fn.fullpage.setAllowScrolling(false);
            $.fn.fullpage.setKeyboardScrolling(false);
         });
 
         $('.form-control').blur(function(){
            $('footer').show();
+            $('.custbtn--next').show();
             $.fn.fullpage.setAllowScrolling(true);
             $.fn.fullpage.setKeyboardScrolling(true);
         });
@@ -189,12 +195,12 @@
 
     function updateNextButton(){
         if($('.active').hasClass("card--question") && $('.active').find("input").val()<1){
-            $('.btn-next').addClass('btn_off');
+            $('.custbtn--next').addClass('custbtn--off');
             console.log ('off');
         }
         else {
             console.log('on');
-            $('.btn-next').removeClass('btn_off');
+            $('.custbtn--next').removeClass('custbtn--off');
         }
     }
 
@@ -313,7 +319,7 @@
 <!--TODO: make scroll animation quicker-->
 <!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
 <div class="custbtn-container">
-    <i class="custbtn custbtn--prev"><span id='btn-prev' class="glyphicon glyphicon-chevron-up btn-prev"></i>
+    <i class="custbtn custbtn--prev"><span id='custbtn--prev' class="glyphicon glyphicon-chevron-up custbtn--prev"></i>
 </div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
@@ -366,7 +372,7 @@
     </div>
 </div>
 <div class="custbtn-container">
-    <i class="custbtn custbtn--next"><span id='btn-next' class="glyphicon glyphicon-chevron-down btn-next"></span></i>
+    <i class="custbtn custbtn--next"><span id='custbtn--next' class="glyphicon glyphicon-chevron-down custbtn--next"></span></i>
 </div>
 <footer>
     <div class="footer__progress-bar">
