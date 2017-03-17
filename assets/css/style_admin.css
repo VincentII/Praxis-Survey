@@ -3,6 +3,7 @@
     --dark_blue: #187aa1;
     --light_blue: #78b6e4;
     --yellow_orange: #fbb040;
+    --light_orange: #fff6e5;
     --orange: #f26922;
     --gray: #676768;
     --praxis_red: #ed1c24;
@@ -38,7 +39,18 @@ ul.dropdown-menu {
 }
 
 
+
+
 .navbar-default .navbar-nav > li:hover > a {
+    background-color: var(--dark_blue);
+    color: white; /*Change active text color here*/
+}
+
+.navbar-default .navbar-nav> li.dropdown.open>a{
+    background-color: var(--dark_blue);
+    color: white; /*Change active text color here*/
+}
+.navbar-default .navbar-nav> li.dropdown.open> ul.dropdown-menu>li:hover>a{
     background-color: var(--dark_blue);
     color: white; /*Change active text color here*/
 }
@@ -80,6 +92,24 @@ li.list-group-item table tr:hover td{
 li.list-group-item table tr td,li.list-group-item table tr th{
     border-color: var(--yellow_orange);
 }
+
+li.list-group-item table tbody tr:nth-child(2n+1){
+    background-color: #fff6e5
+}
+
+table.table-hover tr:hover td{
+    background-color: var(--yellow_orange);
+    color:var(--white);
+}
+
+table.table-hover tr td,div.modal-body table tr th{
+    border-color: var(--yellow_orange);
+}
+
+table.table-hover tbody tr:nth-child(2n+1){
+    background-color: #fff6e5
+}
+
 
 div.modal-content .modal-header{
     padding:9px 15px;

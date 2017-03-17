@@ -26,23 +26,26 @@ class QuestionsController extends CI_Controller
         //$maxNumberOfSlots = $this->student->getMaxNumberOfSlots();
         //$data['stuff'] = $this->survey->queryAnswerCountByQuestionID(1);
 
+        if($this->survey->isOpenSet($_SESSION['setID'])&&$this->survey->isOpenEvent($_SESSION['eventID'])){
         $data['questions'] = $this->survey->queryQuestionsBySetID($_SESSION['setID']);
         $data['eventID'] = $_SESSION['eventID'];
         $data['setID'] = $_SESSION['setID'];
 
-        $this->load->view('questions/header');
-        $this->load->view('questions/questions', $data); // $this->load->view('home', $data); set to this if data is set
-        $this->load->view('questions/footer');
-
-
+            $this->load->view('questions/header');
+            $this->load->view('questions/questions', $data); // $this->load->view('home', $data); set to this if data is set
+            $this->load->view('questions/footer');
+        }else{
+        redirect("index.html");
+        }
     }
+
 
     public function linkSurvey($url){
         $data = $this->survey->queryURLbyURL($url);
 
         if($data!=null) {
             $_SESSION['eventID'] = intval($data['Event_ID']);
-            $_SESSION['setID'] = intval($data['Event_ID']);
+            $_SESSION['setID'] = intval($data['Set_ID']);
 
             $this->loadSurvey();
         }

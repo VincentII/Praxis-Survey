@@ -18,8 +18,8 @@
 
         console.log(addData);
 
-        if(!isValidString(addData[0])){
-            toastr.error("URL given is Invalid","Error");
+        if(!isValidURL(addData[0])){
+            toastr.error("Link given is Invalid","Error");
             return;
         }
         if(addData[1]==null){
@@ -282,7 +282,7 @@
         var deleteCount = 0;
 
         for(var i = 0; i<changedData.length; i++) {
-            if (!isValidString(changedData[i][0])){
+            if (!isValidURL(changedData[i][0])){
                 toastr.error("Link given is Invalid","Error");
                 return;
             }
@@ -339,11 +339,11 @@
     }
     
     function isValidString($s){
-       return /[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($s);
+       return /\w../mi.test($s);
     }
 
     function isValidURL($s){
-       return /[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($s);
+        return /^[\w][\w][\w][\w]*$/mi.test($s);
     }
 
     function isValidDate($d){

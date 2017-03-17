@@ -17,7 +17,7 @@
 
         console.log(addData);
 
-        if(!isValidString(addData[0])){
+        if(!isValidName(addData[0])){
             toastr.error("Username given is Invalid","Oops");
             return;
         }
@@ -239,12 +239,13 @@
     }
 
     function isValidString($s){
-        return /[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($s);
+        return /\w../mi.test($s);
     }
 
-    function isValidLink($s){
-        return /[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($s);
+    function isValidName($s){
+        return /^[\w][\w][\w][\w]*$/mi.test($s);
     }
+
 
     function isValidDate($d){
         return/[0-9][0-9][\/][0-9][0-9][\/][0-9][0-9][0-9][0-9]/mi.test($d);

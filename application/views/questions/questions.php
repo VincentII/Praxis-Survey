@@ -225,9 +225,9 @@
             .fail(function() {
                 console.log("fail");
 //                TODO: add code to jump to card--error
-                $('.card--thanks').hide();
-                $.fn.fullpage.reBuild();
-                $.fn.fullpage.moveSectionDown();
+               // $('.card--thanks').hide();
+                //$.fn.fullpage.reBuild();
+                //$.fn.fullpage.moveSectionDown();
             })
             .always(function() {
                 console.log("complete");
@@ -237,7 +237,7 @@
     }
 
     function submitComment(){
-        if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#comment').val())){
+        if(/\w../mi.test($('#comment').val())){
             $.ajax({
                 url: '<?php echo base_url('questions/submitComment') ?>',
                 type: 'GET',
