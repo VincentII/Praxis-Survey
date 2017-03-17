@@ -18,7 +18,7 @@
 
         console.log(addData);
 
-        if(!isValidString(addData[0])){
+        if(!isValidURL(addData[0])){
             toastr.error("URL given is Invalid","Error");
             return;
         }
@@ -282,7 +282,7 @@
         var deleteCount = 0;
 
         for(var i = 0; i<changedData.length; i++) {
-            if (!isValidString(changedData[i][0])){
+            if (!isValidURL(changedData[i][0])){
                 toastr.error("Link given is Invalid","Error");
                 return;
             }
