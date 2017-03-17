@@ -189,7 +189,11 @@
             var curSet = cells[2].innerHTML;
             var curDelete = cells[3].innerHTML;
 
+
+            $("#"+curEventID).removeClass('is_closed');
+            $("#"+curSetID).removeClass('is_closed');
             //console.log(cells);
+
 
 
             //console.log(curDeptID);
@@ -401,8 +405,17 @@
                                     <?php foreach($links as $link):?>
                                         <tr id="<?=$link->url_id?>">
                                             <td><?=$link->url?></td>
-                                            <td title="<?=$link->event_id?>"><?=$link->event_name?></td>
+                                            <?php if($link->eventClosed=='1'||$link->eventArchived=='1'):?>
+                                            <td class="is_closed" title="<?=$link->event_id?>"><?=$link->event_name?></td>
+                                            <?php else:?>
+                                            <td title="<?=$link->event_id?>"><?=$link->event_name?>
+                                            <?php endif;?>
+
+                                            <?php if($link->setClosed=='1'||$link->setArchived=='1'):?>
+                                            <td class="is_closed" title="<?=$link->set_id?>"><?=$link->question_set_description?></td>
+                                            <?php else:?>
                                             <td title="<?=$link->set_id?>"><?=$link->question_set_description?></td>
+                                            <?php endif;?>
                                             <td></td>
                                         </tr>
                                     <?php endforeach;?>
@@ -410,6 +423,7 @@
                                 </table>
                             </li>
                             <div class = "panel-footer clearfix" id = "eventtable_footer">
+                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Closed Events and Sets with are marked with a <del>STRIKED</del>
                             </div>
                         </form>
                     </ul>
