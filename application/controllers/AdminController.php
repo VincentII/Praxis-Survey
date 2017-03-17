@@ -413,7 +413,7 @@ class AdminController extends CI_Controller
 
           $data = array(
                 'status' => 'success',
-                'message' => 'Successfully added '.$getData['questionSet'].'!'.$getData['questionSet'],
+                'message' => 'Successfully added '.$getData['questionSet'].'! '.$getData['questionSet'],
        //         'check' => $getData['questions'][0][1]
             );
 
