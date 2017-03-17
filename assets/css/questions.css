@@ -3,119 +3,6 @@
     /**{border: 1px solid red;}*/
     *{font-family: "Calibri Light", "Calibri", sans-serif}
 
-    /*.main{*/
-        /*border-style: solid;*/
-        /*position: relative;*/
-        /*width: 100vw;*/
-        /*height: 75vh;*/
-        /*display: flex;*/
-    /*}*/
-
-    /*!*main card area where buttons are*!*/
-    /*.main-card{*/
-        /*height: 75vh;*/
-        /*width: 100%;*/
-        /*position: absolute;*/
-        /*align-items: stretch;*/
-    /*}*/
-
-    /*!*scrollable section*!*/
-    /*.card-container{*/
-        /*width: 100%;*/
-        /*position: absolute;*/
-        /*height: 65vh;*/
-        /*overflow-y: auto;*/
-    /*}*/
-
-    /*.up-button{*/
-        /*border-style: solid;*/
-        /*width: 100%;*/
-        /*visibility: hidden;*/
-    /*}*/
-
-    /*.down-button{*/
-        /*width: 100%;*/
-        /*position: absolute;*/
-        /*bottom: 0;*/
-
-    /*}*/
-
-    /*ul{*/
-        /*list-style-type: none;*/
-        /*padding: 0;*/
-        /*margin: 0;*/
-    /*}*/
-
-    /*li{*/
-        /*!*position: relative;*!*/
-        /*width: 100%;*/
-        /*height: 65vh;*/
-        /*list-style-type: none;*/
-        /*padding: 0;*/
-        /*margin: 0;*/
-    /*}*/
-
-    /*li.active{*/
-        /*background-color: #336699;*/
-    /*}*/
-
-    /*!*contains question text and rating stars*!*/
-    /*.question{*/
-    /*}*/
-
-    /*p .question-text{*/
-        /*border-style: solid;*/
-    /*}*/
-
-    /*.question-stars{*/
-        /*border-style: solid;*/
-    /*}*/
-
-    /*.comment-area{*/
-        /*overflow-y: auto;*/
-        /*resize: none;*/
-    /*}*/
-
-    /*!*area for progress bar*!*/
-    /*.main-progBar{*/
-        /*border-style: solid;*/
-        /*position: absolute;*/
-        /*bottom: 0;*/
-        /*width: 100vw;*/
-    /*}*/
-
-    /*footer{*/
-        /*position: fixed;*/
-        /*bottom: 0;*/
-        /*left: 0;*/
-        /*right: 0;*/
-        /*height: 25vh;*/
-    /*}*/
-
-    /*.footer-progBar{*/
-        /*position: absolute;*/
-        /*height: 5vh;*/
-    /*}*/
-    /*.progBar-child{*/
-        /*position: absolute;*/
-        /*height: inherit;*/
-        /*width: 0vw;*/
-        /*left: 0;*/
-        /*background-color: #080808;*/
-        /*-webkit-transition: width 2s; !* For Safari 3.1 to 6.0 *!*/
-        /*transition: width 2s;*/
-
-    /*}*/
-
-    /*.footer-copyright{*/
-        /*position: absolute;*/
-        /*background-color: #127094;*/
-        /*bottom: 0;*/
-        /*left: 0;*/
-        /*right: 0;*/
-        /*height: 20vh;*/
-    /*}*/
-
     /*TODO: find a better way to position elements*/
     /*TODO: move card__content up in container*/
     .custbtn-container{
@@ -160,7 +47,8 @@
     /*space for cards, buttons go on top of cards and stay put regardless of scroll*/
     .card-container{
         /*display: inherit;*/
-        flex: 1;
+        bottom: 5vh;
+        /*flex: 1;*/
     }
 
     /*scrollable section*/
@@ -189,21 +77,26 @@
         justify-content: center;
     }
 
+    /*DESKTOP ONLY*/
+    /*.comment--container{*/
+        /*width: 100%;*/
+        /*display: flex;*/
+        /*align-content: baseline;*/
+        /*justify-content: center;*/
+        /*position: absolute;*/
+        /*top: 15vh;*/
+    /*}*/
+
+    /*.form-group{*/
+        /*min-width: 45%;*/
+    /*}*/
+
+    /*#comment{*/
+        /*height: 80%; //beautiful*/
+    /*}*/
+
     .comment--container{
-        width: 100%;
-        display: flex;
-        align-content: baseline;
-        justify-content: center;
-        position: absolute;
-        top: 15vh;
-    }
-
-    .form-group{
-        min-width: 45%;
-    }
-
-    #comment{
-        height: 80%; //beautiful
+        bottom: 5vh;
     }
 
     .content__text-area{
@@ -241,7 +134,7 @@
         /*position: absolute;*/
         width: 100%;
         color: white;
-        font-size: 1em;
+        font-size: 1.5em;
         text-align: center;
         /*top: 5vh;*/
     }

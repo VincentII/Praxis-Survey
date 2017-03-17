@@ -54,6 +54,14 @@
            }
         });
 
+        //HIDE FOOTER (MOBILE ONLY)
+        $('.form-control').focus(function(){
+           $('footer').hide();
+        });
+        
+        $('.form-control').blur(function(){
+           $('footer').show();
+        });
 
 //        BUTTON FUNCTIONS
         $('.custbtn--prev').on('click',function(){
@@ -120,7 +128,7 @@
                                 '<div class="question__container"><div class="question__text" id="' + id.join('') + '">' + text.join('') + '</div></div>' +
                                 '</div>' +
                                 '<div class="content__stars">' +
-                                '<input id="star' + questionIndex +'" name="input-name" type="number" data-size="lg" class="rating-loading" onchange="updateStar(this.id)"></div>' +
+                                '<input id="star' + questionIndex +'" name="input-name" type="number" data-size="md" class="rating-loading" onchange="updateStar(this.id)"></div>' +
                                 '<div class="content__star-caption"></div>' +
                                 '</div></div>';
 
@@ -300,7 +308,6 @@
 <!--TODO: change color of todos-->
 <!--TODO: make scroll animation quicker-->
 <!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
-<!--FIXME: fix formatting which got fucked after implementing fullPage-->
 <div class="custbtn-container">
     <i class="custbtn custbtn--prev"><span id='btn-prev' class="glyphicon glyphicon-chevron-up btn-prev"></i>
 </div>
