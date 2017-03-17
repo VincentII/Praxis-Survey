@@ -1,6 +1,6 @@
 /*Mobile version*/
 @media only screen and (max-device-width: /*480*/3000px){
-    *{border: 1px solid red;}
+    /**{border: 1px solid red;}*/
     *{font-family: "Calibri Light", "Calibri", sans-serif}
 
     /*.main{*/
@@ -146,7 +146,7 @@
     /*FIXME: THIS IS SO BAD*/
 
     .custbtn--next{
-        bottom: 15vh;
+        bottom: 15vh; /*ideal for web but not mobile*/
     }
 
     /*TODO: changed the heights of stuff to make the prog bar slimmer, check if that fucked anything up*/
@@ -241,7 +241,7 @@
         /*position: absolute;*/
         width: 100%;
         color: white;
-        font-size: 5em;
+        font-size: 1em;
         text-align: center;
         /*top: 5vh;*/
     }
