@@ -22,24 +22,24 @@
 //        INITIALIZE FULLPAGE
 //        SCROLLING TOGGLES
         $('.card-container').fullpage({
-           onLeave: function(index, nextIndex, direction){
-               if(($('.active').hasClass("card--question") && $('.active').find("input").val() < 1 && direction == 'down') ||
+            onLeave: function(index, nextIndex, direction){
+                if(($('.active').hasClass("card--question") && $('.active').find("input").val() < 1 && direction == 'down') ||
                    ($('.active').hasClass("card--submit") && $hasSubmitted == false && direction == 'down') ||
                    (($('.active').hasClass("card--thanks") || $('.active').hasClass("card--error")) && (direction == 'up' || direction == 'down')) ||
                    ($('.active').hasClass("card--start") && $hasStarted == false) ||
                    (index == 2 && direction == 'up')){
                    console.log("you can't move");
                    return false;
-               }
-           },
+                }
+            },
 //        BUTTON VISIBILITY TOGGLES
-           afterLoad: function(anchorLink,index){
+            afterLoad: function(anchorLink,index){
 
                console.log($('.active').attr('class'));
                console.log(index);
 
-               if(index == 1||$('.active').hasClass("card--start"))
-                   $('.custbtn--next').hide();
+//               if(index == 1||$('.active').hasClass("card--start"))
+//                   $('.custbtn--next').hide();
                if($('.active').hasClass("card--submit")||$('.active').hasClass("card--thanks"))
                    $('.custbtn--next').hide();
                else
@@ -54,6 +54,29 @@
            }
         });
 
+//        WOW what a fix
+//        prevents buttons from showing while the start card is active
+        $('.custbtn--prev').hide();
+        $('.custbtn--next').hide();
+
+//        HIDE AND SHOW FOOTER
+        $('.form-control').focus(function(){
+           $('footer').hide();
+           $('.custbtn--next').hide();
+           $.fn.fullpage.setAutoScrolling(false)
+           //MOBILE ONLY^^^
+           $.fn.fullpage.setAllowScrolling(false);
+           $.fn.fullpage.setKeyboardScrolling(false);;
+        });
+
+        $('.form-control').blur(function(){
+           $('footer').show();
+            $('.custbtn--next').show();
+            $.fn.fullpage.setAutoScrolling(true);
+
+            $.fn.fullpage.setAllowScrolling(true);
+            $.fn.fullpage.setKeyboardScrolling(true);
+        });
 
 //        BUTTON FUNCTIONS
         $('.custbtn--prev').on('click',function(){
@@ -120,7 +143,7 @@
                                 '<div class="question__container"><div class="question__text" id="' + id.join('') + '">' + text.join('') + '</div></div>' +
                                 '</div>' +
                                 '<div class="content__stars">' +
-                                '<input id="star' + questionIndex +'" name="input-name" type="number" data-size="lg" class="rating-loading" onchange="updateStar(this.id)"></div>' +
+                                '<input id="star' + questionIndex +'" name="input-name" type="number" data-size="md" class="rating-loading" onchange="updateStar(this.id)"></div>' +
                                 '<div class="content__star-caption"></div>' +
                                 '</div></div>';
 
@@ -150,7 +173,7 @@
             });
         }//end of for loop
     }//end of getQuestions
-
+    
     function updateStar(star){
 //        console.log("h2 id of active" + $('.active').find('h2').attr('id'));
         if(($('.active').hasClass("card--question")) && $('.active').find('.question__text').attr('id') > $answerCount){
@@ -177,12 +200,12 @@
 
     function updateNextButton(){
         if($('.active').hasClass("card--question") && $('.active').find("input").val()<1){
-            $('.btn-next').addClass('btn_off');
+            $('.custbtn--next').addClass('custbtn--off');
             console.log ('off');
         }
         else {
             console.log('on');
-            $('.btn-next').removeClass('btn_off');
+            $('.custbtn--next').removeClass('custbtn--off');
         }
     }
 
@@ -300,9 +323,8 @@
 <!--TODO: change color of todos-->
 <!--TODO: make scroll animation quicker-->
 <!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
-<!--FIXME: fix formatting which got fucked after implementing fullPage-->
 <div class="custbtn-container">
-    <i class="custbtn custbtn--prev"><span id='btn-prev' class="glyphicon glyphicon-chevron-up btn-prev"></i>
+    <i class="custbtn custbtn--prev"><span id='custbtn--prev' class="glyphicon glyphicon-chevron-up custbtn--prev"></i>
 </div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
@@ -355,7 +377,7 @@
     </div>
 </div>
 <div class="custbtn-container">
-    <i class="custbtn custbtn--next"><span id='btn-next' class="glyphicon glyphicon-chevron-down btn-next"></span></i>
+    <i class="custbtn custbtn--next"><span id='custbtn--next' class="glyphicon glyphicon-chevron-down custbtn--next"></span></i>
 </div>
 <footer>
     <div class="footer__progress-bar">

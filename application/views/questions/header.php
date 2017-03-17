@@ -31,8 +31,7 @@
 
 
     <!-- Font-Awesome -->
-    <link href="http://localhost/Praxis-Survey/assets/css/font-awesome/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
-    <!--TODO ^^^^^^^^^^^^^^^^^^^^ FIX THIS-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
 
 
     <!-- Karjee Star Rating-->
