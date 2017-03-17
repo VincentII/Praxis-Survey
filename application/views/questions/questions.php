@@ -57,10 +57,14 @@
         //HIDE FOOTER (MOBILE ONLY)
         $('.form-control').focus(function(){
            $('footer').hide();
+           $.fn.fullpage.setAllowScrolling(false);
+           $.fn.fullpage.setKeyboardScrolling(false);
         });
-        
+
         $('.form-control').blur(function(){
            $('footer').show();
+            $.fn.fullpage.setAllowScrolling(true);
+            $.fn.fullpage.setKeyboardScrolling(true);
         });
 
 //        BUTTON FUNCTIONS
