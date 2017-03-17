@@ -92,6 +92,17 @@ li.list-group-item table tr td,li.list-group-item table tr th{
     border-color: var(--yellow_orange);
 }
 
+
+table.table-hover tr:hover td{
+    background-color: var(--yellow_orange);
+    color:var(--white);
+}
+
+table.table-hover tr td,div.modal-body table tr th{
+    border-color: var(--yellow_orange);
+}
+
+
 div.modal-content .modal-header{
     padding:9px 15px;
     border-bottom:1px solid #eee;

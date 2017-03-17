@@ -19,7 +19,7 @@
         console.log(addData);
 
         if(!isValidURL(addData[0])){
-            toastr.error("URL given is Invalid","Error");
+            toastr.error("Link given is Invalid","Error");
             return;
         }
         if(addData[1]==null){
