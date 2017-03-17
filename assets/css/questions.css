@@ -1,6 +1,6 @@
 /*Mobile version*/
 @media only screen and (max-device-width: /*480*/3000px){
-    *{border: 1px solid red;}
+    /**{border: 1px solid red;}*/
     *{font-family: "Calibri Light", "Calibri", sans-serif}
 
     /*TODO: find a better way to position elements*/
