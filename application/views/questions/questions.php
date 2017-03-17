@@ -237,7 +237,7 @@
     }
 
     function submitComment(){
-        if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#comment').val())){
+        if(/\w../mi.test($('#comment').val())){
             $.ajax({
                 url: '<?php echo base_url('questions/submitComment') ?>',
                 type: 'GET',

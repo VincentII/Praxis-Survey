@@ -339,11 +339,11 @@
     }
     
     function isValidString($s){
-       return /[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($s);
+       return /\w../mi.test($s);
     }
 
     function isValidURL($s){
-       return /[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($s);
+        return /^[\w][\w][\w][\w]*$/mi.test($s);
     }
 
     function isValidDate($d){
