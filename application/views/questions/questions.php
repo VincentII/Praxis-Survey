@@ -62,17 +62,21 @@
 //        HIDE AND SHOW FOOTER
         $('.form-control').focus(function(){
            $('footer').hide();
+           $('.custbtn--prev').hide();
            $('.custbtn--next').hide();
-           $.fn.fullpage.setAutoScrolling(false)
+//           $('.comment--container').css("bottom", "10vh");
+           $.fn.fullpage.setResponsive(true);
            //MOBILE ONLY^^^
-           $.fn.fullpage.setAllowScrolling(false);
-           $.fn.fullpage.setKeyboardScrolling(false);;
+           $.fn.fullpage.setAllowScrolling(false); //doesn't work any more for some reason
+           $.fn.fullpage.setKeyboardScrolling(false);
         });
 
         $('.form-control').blur(function(){
            $('footer').show();
+            $('.custbtn--prev').show();
             $('.custbtn--next').show();
-            $.fn.fullpage.setAutoScrolling(true);
+//            $('.comment--container').css("bottom", "5vh");
+            $.fn.fullpage.setResponsive(false);
 
             $.fn.fullpage.setAllowScrolling(true);
             $.fn.fullpage.setKeyboardScrolling(true);
@@ -102,6 +106,7 @@
             if($('.card--question').find("input").val() > 0){
                 console.log("Submitting Answers!");
                 submitAnswers();
+                $('.card--submit').find('.content__text-area').text("submitting");
             }
             else alert("You missed a spot");
         });
@@ -173,7 +178,7 @@
             });
         }//end of for loop
     }//end of getQuestions
-    
+
     function updateStar(star){
 //        console.log("h2 id of active" + $('.active').find('h2').attr('id'));
         if(($('.active').hasClass("card--question")) && $('.active').find('.question__text').attr('id') > $answerCount){
@@ -355,6 +360,7 @@
         <div class="card section card--submit">
             <div class="card__content">
                 <i class="fa fa-paper-plane-o fa-5x"></i>
+                <br>
                 <div class="content__text-area">SUBMIT</div>
             </div>
         </div>
@@ -363,7 +369,8 @@
                 <img class="thank" src="<?=base_url()?>/assets/img/thank.png">
                 <!--                    TODO: convert png to svg-->
                 <i class="fa fa-repeat fa-5x"></i>
-                <div class="content__text-area">submit another response</div>
+                <br>
+                <div>submit another response</div>
             </div>
         </div>
         <div class="card section card--error">
@@ -371,6 +378,7 @@
                 <img class="oops" src="<?=base_url()?>/assets/img/oops.png">
                 <div class="content__text-area">Something went wrong. Please try again.</div>
                 <i class="fa fa-refresh fa-5x fa-fw"></i>
+                <br>
                 <div>try again</div>
             </div>
         </div>
