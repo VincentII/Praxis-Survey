@@ -1,69 +1,45 @@
+
 <script>
 
     $(document).on('ready', function(){
 
-
-
-        //console.log(<?php echo json_encode($events) ?>)
     });
 
-    function enter(){
-        $eventID = $('#form_event').val();
-        $setID = $('#form_set').val();
+    function enter() {
+        var $link = $('#link').val();
 
-
-
-        $.ajax({
-            url: '<?php echo base_url('home/checkInputs') ?>',
-            type: 'GET',
-            dataType: 'json',
-            data: {
-                eventID : $eventID,
-                setID : $setID
-            }
-        })
-            .done(function(result) {
-                console.log("done");
-                if (result['status']=="success") {
-                    toastr.success("WOW");
-
-                    window.location.href = '<?=base_url('questions')?>';
-
-                }
-                else {
-                    toastr.error(result['message']);
-                }
-
-            })
-            .fail(function() {
-                console.log("fail");
-            })
-            .always(function() {
-                console.log("complete");
-            });
-
+        if($link!=null&&$link!="")
+        window.location.href='<?=base_url()?>survey/'+$link;
     }
+
+    document.getElementById("#link")
+        .addEventListener("keyup", function(event) {
+            event.preventDefault();
+            if (event.keyCode == 13) {
+                enter()
+            }
+        });
 
 </script>
 
-<div class="col-md-10 col-md-offset-4" >
-        <div class = "form-group col-md-2">
-            Events:
-            <select class="form-control" id="form_event" name="form-event"">
-                <option value="" selected disabled>Choose an Event...</option>
-                <?php foreach($events as $row):?>
-                    <option value="<?=$row->Event_ID?>"><?=$row->Event_Name?></option>
-                <?php endforeach;?>
-            </select>
+<div class="center_container">
+    <div class="col-md-8 center">
+
+        <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon1">
+                Praxis-Survey.com/survey/
+            </span>
+            <input type="text" id="link" class="form-control" placeholder="Link" onkeydown = "if (event.keyCode == 13)enter()">
+            <span class="input-group-btn">
+                <button class="btn btn-default" id="submit-sign-in" onclick="enter()">GO!</button>
+            </span>
+        </div><!-- /input-group -->
+        <div>
+            <div class="error_message"><?=$errorMessage?>
+            </div>
         </div>
-        <div class = "form-group col-md-2">
-            Question Set:
-            <select class="form-control" id="form_set" name="form-set"">
-                <option value="" selected disabled>Choose a Question Set...</option>
-                <?php foreach($questionSets as $row):?>
-                    <option value="<?=$row->Set_ID?>"><?=$row->Question_Set_Description?></option>
-                <?php endforeach;?>
-            </select>
-        </div>
-    <button class="btn btn-default" id="submit-sign-in" onclick="enter()">Enter</button>
+
+
+
+    </div>
 </div>

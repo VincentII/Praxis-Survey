@@ -423,7 +423,7 @@
                                 </table>
                             </li>
                             <div class = "panel-footer clearfix" id = "eventtable_footer">
-                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Closed Events and Sets with are marked with a <del>STRIKED</del>
+                                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Closed Events and Sets with are marked with a <del>STRIKE.</del>
                             </div>
                         </form>
                     </ul>
