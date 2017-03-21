@@ -261,8 +261,8 @@
 
                         <div id = "eventTable_buttons">
 
-                            <span class = "col-md-3">
-                               <button class="btn btn-default btn-block col-md-3 pull-right" type="button" onclick="changeViewToEdit('eventTable','eventTable_buttons')">Edit Archived Events </button>
+                            <span class = "col-md-4 pull-right">
+                               <button class="btn btn-default btn-block col-md-3" type="button" onclick="changeViewToEdit('eventTable','eventTable_buttons')">Edit Archived Events </button>
                          </span>
                         </div>
 
@@ -314,7 +314,7 @@
 
                     <div id = "setTable_buttons">
 
-                            <span class = "col-md-3">
+                            <span class = "col-md-4 pull-right">
                                <button class="btn btn-default btn-block col-md-3 pull-right" type="button" onclick="changeViewToEdit('setTable','setTable_buttons')">Edit Archived Sets</button>
                          </span>
                     </div>
