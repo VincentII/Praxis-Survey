@@ -143,7 +143,7 @@
 
             var newQuestion = '<div class="card section card--question">' +
                                 '<div class="card__content">' +
-                                '<div class="text-area--question">' + //rename class
+                                '<div class="text-area--question">' +
                                 '<img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">' +
                                 '<div class="question__container"><div class="question__text" id="' + id.join('') + '">' + text.join('') + '</div></div>' +
                                 '</div>' +

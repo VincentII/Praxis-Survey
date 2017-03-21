@@ -3,6 +3,10 @@
     /**{border: 1px solid red;}*/
     *{font-family: "Calibri Light", "Calibri", sans-serif}
 
+    .custbtn{
+        font-size: 3em;
+    }
+
     .custbtn-container--next{
         position: fixed;
         bottom: 15vh;
@@ -33,11 +37,6 @@
         text-align: -webkit-center;
         /*border: 1px solid blue;*/
     }
-
-    .custbtn{
-        font-size: 3em !important;
-    }
-    /*TODO: Find a solution that doesn't use !important'*/
 
     .custbtn:active{
         color: #0f0f0f;
@@ -131,36 +130,58 @@
     }
 
     .text-area--question{
+        /*border: 1px solid green;*/
         position: relative;
-        display: flex;
-        display: -webkit-flex;
-        justify-content: center;
+        /*padding-right: 15%;*/
+        /*padding-left: 15%;*/
+        /*display: flex;*/
+        /*display: -webkit-flex;*/
+        /*justify-content: center;*/
     }
 
     .question__container{
-        border-color: yellow;
-        height: 77%;
-        width: 85%;
-        padding: 2vh;
+        /*border: 1px solid red;*/
         position: absolute;
-        top: 2vh;
-        display: flex;
-        display: -webkit-flex;
-        align-items: center;
-        -webkit-align-items: center;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 25%;
+        top: 0;
     }
-    /*yaaay*/
 
     .question__text{
-        border-color: blue;
-        /*position: absolute;*/
-        width: 100%;
-        color: white;
+        /*border: 1px solid blue;*/
         font-size: 1.5em;
+        color: white;
         text-align: center;
         text-align: -webkit-center;
-        /*top: 5vh;*/
+        margin-top: 3vh;
     }
+
+    /*.question__container{*/
+        /*border:1px solid red;*/
+        /*height: 77%;*/
+        /*width: 85%;*/
+        /*padding: 2vh;*/
+        /*position: absolute;*/
+        /*top: 2vh;*/
+        /*display: flex;*/
+        /*display: -webkit-flex;*/
+        /*align-items: center;*/
+        /*-webkit-align-items: center;*/
+    /*}*/
+    /*!*yaaay*!*/
+
+    /*.question__text{*/
+        /*border: 1px solid blue;*/
+        /*!*position: absolute;*!*/
+        /*width: 100%;*/
+        /*color: white;*/
+        /*font-size: 1.5em;*/
+        /*text-align: center;*/
+        /*text-align: -webkit-center;*/
+        /*!*top: 5vh;*!*/
+    /*}*/
 
     .fa-hand-pointer-o{
         margin-top: 5vh;
