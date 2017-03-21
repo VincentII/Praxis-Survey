@@ -7,6 +7,7 @@
     /*TODO: move card__content up in container*/
     .custbtn-container{
         display: flex;
+        display: -webkit-flex;
         /*align-items: center;*/
         justify-content: center;
     }
@@ -53,6 +54,7 @@
     /*scrollable section*/
     ul.card-list{
         flex: inherit;
+        -webkit-flex: inherit;
         padding: 0;
         margin: 0;
         border-color: blue;
@@ -64,14 +66,18 @@
         height: 77vh;
         list-style: none;
         display: flex;
+        display: -webkit-flex;
         flex-flow: column;
+        -webkit-flex-flow: column;
         align-items: center;
         justify-content: center;
     }
 
     .card__content{
         display: flex;
+        display: -webkit-flex;
         flex-flow: column;
+        -webkit-flex-flow: column;
         align-items: center;
         justify-content: center;
     }
@@ -113,6 +119,7 @@
     .text-area--question{
         position: relative;
         display: flex;
+        display: -webkit-flex;
         justify-content: center;
     }
 
@@ -124,6 +131,7 @@
         position: absolute;
         top: 2vh;
         display: flex;
+        display: -webkit-flex;
         align-items: center;
     }
     /*yaaay*/
