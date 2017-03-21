@@ -148,6 +148,7 @@ define("ADMIN_LINKS", "admin_links");
 define("ADMIN_EMAILS", "admin_email");
 define("ADMIN_ACCOUNT", "admin_account");
 define("ADMIN_ADMINS", "admin_admins");
+define("ADMIN_ARCHIVE", "admin_archive");
 
 
 define("ADMIN_GET_REPORTS", "getReports");
@@ -163,5 +164,5 @@ define("ADMIN_UPDATE_QUESTIONS", "updateQuestions");
 define("ADMIN_UPDATE_PASSWORD", "updatePassword");
 define("ADMIN_UPDATE_ADMIN", "updateAdmin");
 define("ADMIN_CHECK_ANSWERED_SET", "checkAnsweredSet");
-
-define("HASH_PASS", "sfmPRAXIS");
+define("ADMIN_ARCHIVE_EVENTS", "archiveEvents");
+define("ADMIN_ARCHIVE_SETS", "archiveSets");

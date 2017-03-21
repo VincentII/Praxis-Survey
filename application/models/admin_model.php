@@ -199,4 +199,14 @@ class admin_model extends CI_Model
         $this->db->delete(TABLE_QUESTIONS);
     }
 
+    function deleteQuestionSet($id) {
+        $this->db->where(COLUMN_SET_ID, $id);
+        $this->db->delete(TABLE_QUESTION_SET);
+    }
+
+    function deleteEvent($id) {
+        $this->db->where(COLUMN_EVENT_ID, $id);
+        $this->db->delete(TABLE_EVENT);
+    }
+
 }

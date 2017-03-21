@@ -32,9 +32,12 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         Manage<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li id="add_button"><a href="<?=site_url("admin/" . ADMIN_EVENTS)?>">Manage Events</a></li>
-                        <li id="add_button"><a href="<?=site_url("admin/" . ADMIN_QUESTIONS)?>">Manage Questions</a></li>
-                        <li id="add_button"><a href="<?=site_url("admin/" . ADMIN_LINKS)?>">Manage Links</a></li>
+                        <li><a href="<?=site_url("admin/" . ADMIN_EVENTS)?>">Manage Events</a></li>
+                        <li><a href="<?=site_url("admin/" . ADMIN_QUESTIONS)?>">Manage Questions</a></li>
+                        <li><a href="<?=site_url("admin/" . ADMIN_LINKS)?>">Manage Links</a></li>
+                        <?php if($_SESSION['adminType'] == 1): ?>
+                        <li><a href="<?=site_url("admin/" . ADMIN_ARCHIVE)?>">Manage Archive</a></li>
+                        <?php endif;?>
 
                     </ul>
                 </li>
