@@ -22,6 +22,9 @@
 //        INITIALIZE FULLPAGE
 //        SCROLLING TOGGLES
         $('.card-container').fullpage({
+            scrollOverflow: true,
+            scrollOverflowReset: true,
+//            responsiveHeight: 480,
             onLeave: function(index, nextIndex, direction){
                 if(($('.active').hasClass("card--question") && $('.active').find("input").val() < 1 && direction == 'down') ||
                    ($('.active').hasClass("card--submit") && $hasSubmitted == false && direction == 'down') ||
@@ -62,21 +65,19 @@
 //        HIDE AND SHOW FOOTER
         $('.form-control').focus(function(){
            $('footer').hide();
-           $('.custbtn--prev').hide();
            $('.custbtn--next').hide();
 //           $('.comment--container').css("bottom", "10vh");
-           $.fn.fullpage.setResponsive(true);
+//           $.fn.fullpage.setResponsive(true);
            //MOBILE ONLY^^^
-           $.fn.fullpage.setAllowScrolling(false); //doesn't work any more for some reason
+           $.fn.fullpage.setAllowScrolling(false); //doesn't work any more because of setresponsive?
            $.fn.fullpage.setKeyboardScrolling(false);
         });
 
         $('.form-control').blur(function(){
            $('footer').show();
-            $('.custbtn--prev').show();
             $('.custbtn--next').show();
 //            $('.comment--container').css("bottom", "5vh");
-            $.fn.fullpage.setResponsive(false);
+//            $.fn.fullpage.setResponsive(false);
 
             $.fn.fullpage.setAllowScrolling(true);
             $.fn.fullpage.setKeyboardScrolling(true);
@@ -143,7 +144,7 @@
 
             var newQuestion = '<div class="card section card--question">' +
                                 '<div class="card__content">' +
-                                '<div class="text-area--question">' + //rename class
+                                '<div class="text-area--question">' +
                                 '<img class="ribbon" src="<?=base_url()?>/assets/img/ribbon.svg">' +
                                 '<div class="question__container"><div class="question__text" id="' + id.join('') + '">' + text.join('') + '</div></div>' +
                                 '</div>' +
@@ -328,8 +329,8 @@
 <!--TODO: change color of todos-->
 <!--TODO: make scroll animation quicker-->
 <!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
-<div class="custbtn-container">
-    <i class="custbtn custbtn--prev"><span class="glyphicon glyphicon-chevron-up"></i>
+<div class="custbtn-container--prev">
+    <div class="custbtn custbtn--prev"><span class="glyphicon glyphicon-chevron-up"></span></div>
 </div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
@@ -384,8 +385,8 @@
         </div>
     </div>
 </div>
-<div class="custbtn-container">
-    <i class="custbtn custbtn--next"><span class="glyphicon glyphicon-chevron-down"></span></i>
+<div class="custbtn-container--next">
+    <div class="custbtn custbtn--next"><span class="glyphicon glyphicon-chevron-down"></span></div>
 </div>
 <footer>
     <div class="footer__progress-bar">
