@@ -23,8 +23,6 @@
 //        SCROLLING TOGGLES
         $('.card-container').fullpage({
             scrollOverflow: true,
-            scrollOverflowReset: true,
-//            responsiveHeight: 480,
             onLeave: function(index, nextIndex, direction){
                 if(($('.active').hasClass("card--question") && $('.active').find("input").val() < 1 && direction == 'down') ||
                    ($('.active').hasClass("card--submit") && $hasSubmitted == false && direction == 'down') ||
@@ -41,14 +39,12 @@
                console.log($('.active').attr('class'));
                console.log(index);
 
-//               if(index == 1||$('.active').hasClass("card--start"))
-//                   $('.custbtn--next').hide();
-               if($('.active').hasClass("card--submit")||$('.active').hasClass("card--thanks"))
+               if(index <= 1||$('.active').hasClass("card--submit")||$('.active').hasClass("card--thanks"))
                    $('.custbtn--next').hide();
                else
                     $('.custbtn--next').show();
 
-               if(index == 2||$('.active').hasClass("card--thanks"))
+               if(index <= 2||$('.active').hasClass("card--thanks"))
                    $('.custbtn--prev').hide();
                else
                    $('.custbtn--prev').show();
@@ -57,11 +53,6 @@
            }
         });
 
-//        WOW what a fix
-//        prevents buttons from showing while the start card is active
-        $('.custbtn--prev').hide();
-        $('.custbtn--next').hide();
-
 //        HIDE AND SHOW FOOTER
         $('.form-control').focus(function(){
            $('footer').hide();
@@ -69,7 +60,7 @@
 //           $('.comment--container').css("bottom", "10vh");
 //           $.fn.fullpage.setResponsive(true);
            //MOBILE ONLY^^^
-           $.fn.fullpage.setAllowScrolling(false); //doesn't work any more because of setresponsive?
+           $.fn.fullpage.setAllowScrolling(false); //doesn't work on mobile any more because of setresponsive?
            $.fn.fullpage.setKeyboardScrolling(false);
         });
 
@@ -330,7 +321,7 @@
 <!--TODO: make scroll animation quicker-->
 <!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
 <div class="custbtn-container--prev">
-    <div class="custbtn custbtn--prev"><span class="glyphicon glyphicon-chevron-up"></span></div>
+    <div class="custbtn custbtn--prev" hidden><span class="glyphicon glyphicon-chevron-up"></span></div>
 </div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
@@ -386,7 +377,7 @@
     </div>
 </div>
 <div class="custbtn-container--next">
-    <div class="custbtn custbtn--next"><span class="glyphicon glyphicon-chevron-down"></span></div>
+    <div class="custbtn custbtn--next" style="display: 'none'"><span class="glyphicon glyphicon-chevron-down"></span></div>
 </div>
 <footer>
     <div class="footer__progress-bar">
