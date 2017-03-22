@@ -80,5 +80,15 @@
         }
     </script>
 
+    <!--    DISABLE RIGHT CLICK ON IMAGES-->
+    <script>
+        document.addEventListener("contextmenu", function(e){
+            if (e.target.nodeName === "IMG") {
+                e.preventDefault();
+            }
+        }, false);
+    </script>
+
+
 </head>
 <body>

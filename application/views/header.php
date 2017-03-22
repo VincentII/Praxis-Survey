@@ -73,5 +73,13 @@
     <link href="<?=base_url()?>/assets/css/home.css?<?php echo time(); ?>" rel="stylesheet" />
 
 
+<!--    DISABLE RIGHT CLICK ON IMAGES-->
+    <script>
+        document.addEventListener("contextmenu", function(e){
+            if (e.target.nodeName === "IMG") {
+                e.preventDefault();
+            }
+        }, false);
+    </script>
 </head>
 <body>
