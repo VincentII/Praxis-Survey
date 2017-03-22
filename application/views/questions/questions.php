@@ -78,7 +78,6 @@
             $('.custbtn--next').show();
 //            $('.comment--container').css("bottom", "5vh");
 //            $.fn.fullpage.setResponsive(false);
-//            $.fn.fullpage.reBuild(); //
 
             $.fn.fullpage.setAllowScrolling(true);
             $.fn.fullpage.setKeyboardScrolling(true);

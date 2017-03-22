@@ -4,7 +4,7 @@
     *{font-family: "Calibri Light", "Calibri", sans-serif}
 
     .custbtn{
-        font-size: 3em;
+        font-size: 2.5em; /*for tiny iPhone 5c*/
     }
 
     .custbtn-container--next{
