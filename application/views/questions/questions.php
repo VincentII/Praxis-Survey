@@ -358,18 +358,18 @@
                 <div class="content__text-area">SUBMIT</div>
             </div>
         </div>
-        <div class="card section card--thanks">
+        <div class="card section card--thanks fp-noscroll">
             <div class="card__content">
-                <img class="thank" src="<?=base_url()?>/assets/img/thank.png">
+                <img class="thank" src="<?=base_url()?>/assets/img/thank.png" style="padding-bottom: 0px">
                 <!--                    TODO: convert png to svg-->
                 <i class="fa fa-repeat fa-5x" alt="Click here to submit another response!"></i>
                 <br>
                 <div>submit another response</div>
             </div>
         </div>
-        <div class="card section card--error">
+        <div class="card section card--error fp-noscroll">
             <div class="card__content">
-                <img class="oops" src="<?=base_url()?>/assets/img/oops.png">
+                <img class="oops" src="<?=base_url()?>/assets/img/oops.png" style="padding-bottom: 0px">
                 <div class="content__text-area">Something went wrong. Please try again.</div>
                 <i class="fa fa-refresh fa-5x fa-fw"></i>
                 <br>

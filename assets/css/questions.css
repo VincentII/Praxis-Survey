@@ -203,6 +203,16 @@
         margin-top: 10vh;
     }
 
+    .thank{
+        max-width: 700px;
+        padding: 0;
+    }
+
+    .oops{
+        max-width: 700px;
+        padding: 0;
+    }
+
 
     footer{
         position: fixed;
