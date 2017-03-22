@@ -12,12 +12,16 @@
     var $answerCount = 0;
     var $hasStarted = false;
     var $hasSubmitted = false;
+    var $device;
 
     $(document).on('ready', function(){
 
         $questions = <?php echo json_encode($questions)?>;
         console.log($questions);
         getQuestions();
+
+        $device = getDevice();
+
 
 //        INITIALIZE FULLPAGE
 //        SCROLLING TOGGLES
@@ -105,10 +109,9 @@
 
         $('.fa-repeat').on('click',function(){
             $('.fa-repeat').addClass("fa-spin");
-           location.reload();
+            $('.card--thanks').find('.content__text-area').text("refreshing..."); //TODO: add a ... animation
+            location.reload();
         });
-
-//        TODO: reload when text is clicked too/have alt text
 
         $('.fa-refresh').on('click',function(){
 //            while(trying again){
@@ -316,6 +319,25 @@
     }
 
 
+    function getDevice(){
+        return '<?php
+            $device = 'desktop';
+
+            if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
+                $device = "ipad";
+            } else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
+                $device = "iphone";
+            } else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
+                $device = "blackberry";
+            } else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
+                $device = "android";
+            }
+
+            if( $device ) {
+                echo $device;
+            }echo false; ?>' +"";
+    }
+
 </script>
 
 <!------------------------------------------HTML----------------------------------------------------->
@@ -364,7 +386,7 @@
                 <!--                    TODO: convert png to svg-->
                 <i class="fa fa-repeat fa-5x" alt="Click here to submit another response!"></i>
                 <br>
-                <div>submit another response</div>
+                <div class="content__text-area">submit another response</div>
             </div>
         </div>
         <div class="card section card--error fp-noscroll">
