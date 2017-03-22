@@ -48,7 +48,7 @@
                else
                     $('.custbtn--next').show();
 
-               if(index == 2||$('.active').hasClass("card--thanks"))
+               if(index <= 2||$('.active').hasClass("card--thanks"))
                    $('.custbtn--prev').hide();
                else
                    $('.custbtn--prev').show();
