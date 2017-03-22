@@ -98,7 +98,7 @@
             if($('.card--question').find("input").val() > 0){
                 console.log("Submitting Answers!");
                 submitAnswers();
-                $('.card--submit').find('.content__text-area').text("submitting");
+                $('.card--submit').find('.content__text-area').text("submitting..."); //TODO: add a ... animation
             }
             else alert("You missed a spot");
         });
@@ -107,6 +107,8 @@
             $('.fa-repeat').addClass("fa-spin");
            location.reload();
         });
+
+//        TODO: reload when text is clicked too/have alt text
 
         $('.fa-refresh').on('click',function(){
 //            while(trying again){
@@ -321,7 +323,7 @@
 <!--TODO: make scroll animation quicker-->
 <!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
 <div class="custbtn-container--prev">
-    <div class="custbtn custbtn--prev" hidden><span class="glyphicon glyphicon-chevron-up"></span></div>
+    <div class="custbtn custbtn--prev"><span class="glyphicon glyphicon-chevron-up"></span></div>
 </div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
@@ -360,7 +362,7 @@
             <div class="card__content">
                 <img class="thank" src="<?=base_url()?>/assets/img/thank.png">
                 <!--                    TODO: convert png to svg-->
-                <i class="fa fa-repeat fa-5x"></i>
+                <i class="fa fa-repeat fa-5x" alt="Click here to submit another response!"></i>
                 <br>
                 <div>submit another response</div>
             </div>
@@ -377,7 +379,7 @@
     </div>
 </div>
 <div class="custbtn-container--next">
-    <div class="custbtn custbtn--next" style="display: 'none'"><span class="glyphicon glyphicon-chevron-down"></span></div>
+    <div class="custbtn custbtn--next"><span class="glyphicon glyphicon-chevron-down"></span></div>
 </div>
 <footer>
     <div class="footer__progress-bar">
