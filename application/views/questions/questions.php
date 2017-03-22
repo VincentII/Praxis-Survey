@@ -22,6 +22,9 @@
 //        INITIALIZE FULLPAGE
 //        SCROLLING TOGGLES
         $('.card-container').fullpage({
+            scrollOverflow: true,
+            scrollOverflowReset: true,
+//            responsiveHeight: 480,
             onLeave: function(index, nextIndex, direction){
                 if(($('.active').hasClass("card--question") && $('.active').find("input").val() < 1 && direction == 'down') ||
                    ($('.active').hasClass("card--submit") && $hasSubmitted == false && direction == 'down') ||
@@ -62,21 +65,20 @@
 //        HIDE AND SHOW FOOTER
         $('.form-control').focus(function(){
            $('footer').hide();
-           $('.custbtn--prev').hide();
            $('.custbtn--next').hide();
 //           $('.comment--container').css("bottom", "10vh");
-           $.fn.fullpage.setResponsive(true);
+//           $.fn.fullpage.setResponsive(true);
            //MOBILE ONLY^^^
-           $.fn.fullpage.setAllowScrolling(false); //doesn't work any more for some reason
+           $.fn.fullpage.setAllowScrolling(false); //doesn't work any more because of setresponsive?
            $.fn.fullpage.setKeyboardScrolling(false);
         });
 
         $('.form-control').blur(function(){
            $('footer').show();
-            $('.custbtn--prev').show();
             $('.custbtn--next').show();
 //            $('.comment--container').css("bottom", "5vh");
-            $.fn.fullpage.setResponsive(false);
+//            $.fn.fullpage.setResponsive(false);
+//            $.fn.fullpage.reBuild(); //
 
             $.fn.fullpage.setAllowScrolling(true);
             $.fn.fullpage.setKeyboardScrolling(true);
