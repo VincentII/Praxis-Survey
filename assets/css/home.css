@@ -1,0 +1,71 @@
+*{font-family: "Calibri", "Calibri", sans-serif}
+
+:root{
+    --dark_blue: #187aa1;
+    --light_blue: #78b6e4;
+    --yellow_orange: #fbb040;
+    --light_orange: #fff6e5;
+    --orange: #f26922;
+    --gray: #676768;
+    --praxis_red: #ed1c24;
+    --whiteSmoke: whitesmoke;
+    --white: white;
+    --black: black;
+}
+
+
+body{
+    background-color: var(--whiteSmoke);
+    height: 99vh;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+div.input-group> span.input-group-btn > .btn-default{
+    background-color: var(--yellow_orange);
+    border-color-color: var(--yellow_orange);
+    color: var(--white);
+}
+
+span.input-group-btn > .btn-default:hover{
+    background-color: var(--orange);
+    border-color-color: var(--orange);
+    color: var(--white);
+}
+span.input-group-addon{
+    background-color: var(--light_blue);
+    color: var(--white);
+}
+
+.btn-default{
+    background-color: var(--whiteSmoke);
+}
+
+
+.btn-danger{
+    background-color: var(--praxis_red);
+}
+
+
+.is_closed
+{
+    text-decoration: line-through;
+}
+
+.center{
+    margin: auto;
+    padding: 10px;
+}
+.center_container{
+    height: 100%;
+    padding: 10px;
+    display: flex;
+}
+
+.error_message{
+    left:0px;
+}

@@ -49,7 +49,13 @@ class QuestionsController extends CI_Controller
 
             $this->loadSurvey();
         }
-        else redirect("index.html");
+        else{
+            $data['errorMessage'] = "Link does not Exist";
+
+            $this->load->view('header');
+            $this->load->view('home', $data); // $this->load->view('home', $data); set to this if data is set
+            $this->load->view('footer');
+        }
     }
 
 

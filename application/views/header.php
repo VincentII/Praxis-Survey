@@ -7,13 +7,12 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Praxis</title>
 
-    <link href="<?=base_url()?>/assets/css/home.css" rel="stylesheet" />
+
 
     <!-- Bootstrap -->
     <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=base_url()?>/assets/css/toastr.css" rel="stylesheet" />
     <link href="<?=base_url()?>/assets/css/mobirise/style.css" rel="stylesheet" />
-    <link href="<?=base_url()?>/assets/css/font-awesome.min.css" rel="stylesheet"/>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -28,7 +27,6 @@
     <script src="<?=base_url()?>/assets/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>/assets/js/toastr.min.js"></script>
     <script src="<?=base_url()?>/assets/js/jquery.numeric.min.js"></script>
-    <script src="<?=base_url()?>/assets/js/scrollify/jquery.scrollify.min.js"></script>
 
 
     <!-- Karjee Star Rating-->
@@ -71,6 +69,8 @@
             "hideMethod": "fadeOut"
         }
     </script>
+
+    <link href="<?=base_url()?>/assets/css/home.css?<?php echo time(); ?>" rel="stylesheet" />
 
 
 </head>

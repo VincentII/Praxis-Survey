@@ -75,6 +75,7 @@ div.panel-single {
 
 .panel-footer{
     background-color: var(--dark_blue);
+    color: var(--whiteSmoke);
     border-color: var(--dark_blue);
 }
 
@@ -145,4 +146,10 @@ div.modal-content .modal-footer{
 
 .btn-danger{
     background-color: var(--praxis_red);
+}
+
+
+.is_closed
+{
+    text-decoration: line-through;
 }

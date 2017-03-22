@@ -73,7 +73,7 @@ class admin_model extends CI_Model
     }
 
     function queryURLWithEventAndSet(){
-        $sql = "SELECT ".COLUMN_URL_ID.", ".COLUMN_URL.", url.".COLUMN_EVENT_ID.", url.".COLUMN_SET_ID." , s.".COLUMN_QUESTION_SET_DESCRIPTION.", e.".COLUMN_EVENT_NAME." 
+        $sql = "SELECT ".COLUMN_URL_ID.", ".COLUMN_URL.", url.".COLUMN_EVENT_ID.", url.".COLUMN_SET_ID." , s.".COLUMN_QUESTION_SET_DESCRIPTION.", e.".COLUMN_EVENT_NAME.", s.".COLUMN_IS_CLOSED." as setClosed, e.".COLUMN_IS_CLOSED." as eventClosed, s.".COLUMN_IS_ARCHIVED." as setArchived, e.".COLUMN_IS_ARCHIVED." as eventArchived 
                 FROM ".TABLE_URL." as url, ".TABLE_EVENT." as e, ".TABLE_QUESTION_SET." as s
                 WHERE e.".COLUMN_EVENT_ID." = url.".COLUMN_EVENT_ID." AND s.".COLUMN_SET_ID." = url.".COLUMN_SET_ID."";
         return $this->db->query($sql)->result();
@@ -197,6 +197,16 @@ class admin_model extends CI_Model
     function deleteQuestion($id) {
         $this->db->where(COLUMN_QUESTION_ID, $id);
         $this->db->delete(TABLE_QUESTIONS);
+    }
+
+    function deleteQuestionSet($id) {
+        $this->db->where(COLUMN_SET_ID, $id);
+        $this->db->delete(TABLE_QUESTION_SET);
+    }
+
+    function deleteEvent($id) {
+        $this->db->where(COLUMN_EVENT_ID, $id);
+        $this->db->delete(TABLE_EVENT);
     }
 
 }

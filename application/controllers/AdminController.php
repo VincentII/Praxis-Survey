@@ -55,6 +55,9 @@ class AdminController extends CI_Controller
                 case ADMIN_ACCOUNT:
                     $this->accountView();
                     break;
+                case ADMIN_ARCHIVE:
+                    $this->archiveView();
+                    break;
                 case ADMIN_SIGN_OUT:
                     $this->signOut();
                     break;
@@ -96,6 +99,12 @@ class AdminController extends CI_Controller
                     break;
                 case ADMIN_CHECK_ANSWERED_SET:
                     $this->isSetAnswered();
+                    break;
+                case ADMIN_ARCHIVE_EVENTS:
+                    $this->archiveEvents();
+                    break;
+                case ADMIN_ARCHIVE_SETS:
+                    $this->archiveSets();
                     break;
                 default:
                     $this->initAdmin();
@@ -200,6 +209,18 @@ class AdminController extends CI_Controller
         $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
         $this->load->view('admin/a_navbar');
         $this->load->view('admin/a_admins', $data); // $this->load->view('admin', $data); set to this if data is set
+        $this->load->view('admin/a_alert'); // Alert HTML and Javascript file
+        $this->load->view('admin/a_footer'); // include bootstrap 3 footer
+    }
+
+    private function archiveView(){
+
+        $data['questionSets'] = $this->survey->queryArchivedQuestionSets();
+        $data['events'] = $this->survey->queryArchivedEvents();
+
+        $this->load->view('admin/a_header'); // include bootstrap 3 header -> included in home
+        $this->load->view('admin/a_navbar');
+        $this->load->view('admin/a_archive', $data); // $this->load->view('admin', $data); set to this if data is set
         $this->load->view('admin/a_alert'); // Alert HTML and Javascript file
         $this->load->view('admin/a_footer'); // include bootstrap 3 footer
     }
@@ -413,7 +434,7 @@ class AdminController extends CI_Controller
 
           $data = array(
                 'status' => 'success',
-                'message' => 'Successfully added '.$getData['questionSet'].'!'.$getData['questionSet'],
+                'message' => 'Successfully added '.$getData['questionSet'].'! '.$getData['questionSet'],
        //         'check' => $getData['questions'][0][1]
             );
 
@@ -645,4 +666,56 @@ class AdminController extends CI_Controller
         echo json_encode($datum);
     }
 
+
+    public function archiveEvents(){
+
+        $events = $this->input->get('changedData');
+
+        foreach ($events as $event){
+            if($event[2]=='true'){
+                $this->admin->deleteEvent($event[0]);
+            }
+            else if($event[1]=='false'){
+                $data = array(
+                    COLUMN_EVENT_ID => $event[0],
+                    COLUMN_IS_ARCHIVED => 0,
+                );
+
+                $this->admin->updateEvent($data);
+            }
+        }
+
+        $datum = array(
+            'status' => 'success',
+            'message' => 'Successfully Updated Events'
+        );
+
+        echo json_encode($datum);
+    }
+
+    public function archivesets(){
+
+        $sets = $this->input->get('changedData');
+
+        foreach ($sets as $set){
+            if($set[2]=='true'){
+                $this->admin->deleteQuestionSet($set[0]);
+            }
+            else if($set[1]=='false'){
+                $data = array(
+                    COLUMN_SET_ID => $set[0],
+                    COLUMN_IS_ARCHIVED => 0,
+                );
+
+                $this->admin->updateQuestionSet($data);
+            }
+        }
+
+        $datum = array(
+            'status' => 'success',
+            'message' => 'Successfully Updated Question Set'
+        );
+
+        echo json_encode($datum);
+    }
 }
