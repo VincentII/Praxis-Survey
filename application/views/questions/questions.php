@@ -8,7 +8,7 @@
 ?>
 
 <!--TODO: if iphone, add iphone stylesheet-->
-<!--TODO: if iphone, -->
+<!--TODO: disable scrollOverflow for non-iphone if needed-->
 
 <script>
     var $questions;
@@ -25,6 +25,13 @@
         getQuestions();
 
         $device = getDevice();
+
+        if($device == "iphone"){
+            var cssLink = document.createElement("link");
+            cssLink.href = "<?=base_url()?>/assets/css/questions_iphone.css?<?php echo time(); ?>";
+            cssLink.rel = "stylesheet";
+            document.head.appendChild(cssLink);
+        }
 
 
 //        INITIALIZE FULLPAGE
@@ -68,9 +75,11 @@
            if($device != "desktop"){
                $('footer').hide();
                $('.custbtn--next').hide();
-//           $.fn.fullpage.setResponsive(true);
+               if($device != "iphone"){
+                    $.fn.fullpage.setResponsive(true);
+               }
            }
-           //MOBILE ONLY^^^
+
            $.fn.fullpage.setAllowScrolling(false); //doesn't work on mobile any more because of setresponsive?
            $.fn.fullpage.setKeyboardScrolling(false);
         });
@@ -78,7 +87,9 @@
         $('.form-control').blur(function(){
            $('footer').show();
             $('.custbtn--next').show();
-//            $.fn.fullpage.setResponsive(false);
+            if($device != "iphone"){
+                $.fn.fullpage.setResponsive(false);
+            }
 
             $.fn.fullpage.setAllowScrolling(true);
             $.fn.fullpage.setKeyboardScrolling(true);
