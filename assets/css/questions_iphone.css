@@ -1,4 +1,3 @@
-/*MOBILE VERSION*/
 /**{border: 1px solid red;}*/
 *{font-family: "Calibri Light", "Calibri", sans-serif}
 
@@ -252,21 +251,3 @@ footer{
     bottom: 0;
     left: 0;
 }
-
-
-/*DESKTOP VERSION*/
-@media only screen and (min-device-width: 481px){
-    *{border: 1px solid blue;}
-
-}
-
-
-
-
-
-
-
-
-
-
-
