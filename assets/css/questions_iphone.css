@@ -1,210 +1,266 @@
-*{border: 1px solid red;}
-*{font-family: "Calibri Light", "Calibri", sans-serif}
+/*Mobile version*/
+@media only screen and (max-device-width: /*480*/3000px){
+    *{border: 1px solid red;}
+    *{font-family: "Calibri Light", "Calibri", sans-serif}
 
-.custbtn{
-    font-size: 2.5em; /*for tiny iPhone 5c*/
-}
+    .custbtn{
+        font-size: 2.5em; /*for tiny iPhone 5c*/
+    }
 
-.custbtn-container--next{
-    position: fixed;
-    bottom: 15vh;
-    width: 100vw;
-    /*border: 1px solid red;*/
-}
+    .custbtn-container--next{
+        position: fixed;
+        bottom: 15vh;
+        width: 100vw;
+        /*border: 1px solid red;*/
+    }
 
-.custbtn--next{
-    margin: 0 auto;
-    width: 100vw;
-    text-align: center;
-    text-align: -webkit-center;
-    /*border: 1px solid blue;*/
-}
+    .custbtn--next{
+        margin: 0 auto;
+        width: 100vw;
+        text-align: center;
+        text-align: -webkit-center;
+        /*border: 1px solid blue;*/
+    }
 
-.custbtn-container--prev{
-    z-index: 99999 !important;
-    position: fixed;
-    top: 3vh;
-    width: 100vw;
-    /*border: 1px solid red;*/
-}
+    .custbtn-container--prev{
+        z-index: 99999 !important;
+        position: fixed;
+        top: 3vh;
+        width: 100vw;
+        /*border: 1px solid red;*/
+    }
 
-.custbtn--prev{
-    margin: 0 auto;
-    width: 100vw;
-    text-align: center;
-    text-align: -webkit-center;
-    /*border: 1px solid blue;*/
-}
+    .custbtn--prev{
+        margin: 0 auto;
+        width: 100vw;
+        text-align: center;
+        text-align: -webkit-center;
+        /*border: 1px solid blue;*/
+    }
 
-.custbtn:active{
-    color: #0f0f0f;
-}
+    .custbtn:active{
+        color: #0f0f0f;
+    }
 
-.custbtn--off{
-    color:lightgrey;
-}
-/*TODO: improve colors for UX*/
+    .custbtn--off{
+        color:lightgrey;
+    }
+    /*TODO: improve colors for UX*/
 
-/*TODO: changed the heights of stuff to make the prog bar slimmer, check if that fucked anything up*/
-.container{
-    width: 100vw;
-    /*height: 78vh;*/
-    height:100vh;
-    border-color: green;
-}
+    /*TODO: changed the heights of stuff to make the prog bar slimmer, check if that fucked anything up*/
+    .container{
+        width: 100vw;
+        /*height: 78vh;*/
+        height:100vh;
+        border-color: green;
+    }
 
-/*space for cards, buttons go on top of cards and stay put regardless of scroll*/
-.card-container{
-    bottom: 5vh;
-    border-color: green;
-}
+    /*space for cards, buttons go on top of cards and stay put regardless of scroll*/
+    .card-container{
+        bottom: 5vh;
+        border-color: green;
+    }
 
-/*scrollable section*/
-ul.card-list{
-    flex: inherit;
-    -webkit-flex: inherit;
-    padding: 0;
-    margin: 0;
-    border-color: blue;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
+    /*scrollable section*/
+    ul.card-list{
+        flex: inherit;
+        -webkit-flex: inherit;
+        padding: 0;
+        margin: 0;
+        border-color: blue;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
 
-.card{
-    height: 77vh;
-    list-style: none;
-    display: flex;
-    display: -webkit-flex;
-    flex-flow: column;
-    -webkit-flex-flow: column;
-    align-items: center;
-    -webkit-align-items: center;
-    justify-content: center;
-}
+    .card{
+        height: 77vh;
+        list-style: none;
+        display: flex;
+        display: -webkit-flex;
+        flex-flow: column;
+        -webkit-flex-flow: column;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: center;
+    }
 
-.card__content{
-    display: flex;
-    display: -webkit-flex;
-    flex-flow: column;
-    -webkit-flex-flow: column;
-    align-items: center;
-    -webkit-align-items: center;
-    justify-content: center;
-}
+    .card__content{
+        display: flex;
+        display: -webkit-flex;
+        flex-flow: column;
+        -webkit-flex-flow: column;
+        align-items: center;
+        -webkit-align-items: center;
+        justify-content: center;
+    }
 
-.comment--container{
-    bottom: 5vh;
-}
+    /*DESKTOP ONLY*/
+    /*.comment--container{*/
+    /*width: 100%;*/
+    /*display: flex;*/
+    /*align-content: baseline;*/
+    /*justify-content: center;*/
+    /*position: absolute;*/
+    /*top: 15vh;*/
+    /*}*/
 
-.content__text-area{
-    font-size: 2em;
-    text-align: center;
-    text-align: -webkit-center;
-}
-/*FIXME: This does not looked centered for some reason*/
+    /*.form-group{*/
+    /*min-width: 45%;*/
+    /*}*/
 
-.content__star-caption{
-    height: 2em;
-    font-size: 2em;
-    color: #c5c5c5;
-}
+    /*#comment{*/
+    /*height: 80%; //beautiful*/
+    /*}*/
 
-.text-area--question{
-    /*border: 1px solid green;*/
-    position: relative;
-    /*padding-right: 15%;*/
-    /*padding-left: 15%;*/
+    .comment--container{
+        bottom: 5vh;
+    }
+
+    .content__text-area{
+        font-size: 2em;
+        text-align: center;
+        text-align: -webkit-center;
+    }
+    /*FIXME: This does not looked centered for some reason*/
+
+    .content__star-caption{
+        height: 2em;
+        font-size: 2em;
+        color: #c5c5c5;
+    }
+
+    .text-area--question{
+        /*border: 1px solid green;*/
+        position: relative;
+        /*padding-right: 15%;*/
+        /*padding-left: 15%;*/
+        /*display: flex;*/
+        /*display: -webkit-flex;*/
+        /*justify-content: center;*/
+    }
+
+    .question__container{
+        /*border: 1px solid red;*/
+        position: absolute;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 25%;
+        top: 0;
+    }
+
+    .question__text{
+        /*border: 1px solid blue;*/
+        font-size: 1.5em;
+        color: white;
+        text-align: center;
+        text-align: -webkit-center;
+        margin-top: 3vh;
+    }
+
+    /*.question__container{*/
+    /*border:1px solid red;*/
+    /*height: 77%;*/
+    /*width: 85%;*/
+    /*padding: 2vh;*/
+    /*position: absolute;*/
+    /*top: 2vh;*/
     /*display: flex;*/
     /*display: -webkit-flex;*/
-    /*justify-content: center;*/
-}
+    /*align-items: center;*/
+    /*-webkit-align-items: center;*/
+    /*}*/
+    /*!*yaaay*!*/
 
-.question__container{
-    /*border: 1px solid red;*/
-    position: absolute;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 25%;
-    top: 0;
-}
-
-.question__text{
+    /*.question__text{*/
     /*border: 1px solid blue;*/
-    font-size: 1.5em;
-    color: white;
-    text-align: center;
-    text-align: -webkit-center;
-    margin-top: 3vh;
-}
+    /*!*position: absolute;*!*/
+    /*width: 100%;*/
+    /*color: white;*/
+    /*font-size: 1.5em;*/
+    /*text-align: center;*/
+    /*text-align: -webkit-center;*/
+    /*!*top: 5vh;*!*/
+    /*}*/
 
-.fa-hand-pointer-o{
-    margin-top: 5vh;
-}
+    .fa-hand-pointer-o{
+        margin-top: 5vh;
+    }
 
-.form-group{
-    margin: 3vh;
-}
+    .form-group{
+        margin: 3vh;
+    }
 
-img{
-    width: 100%;
-}
+    img{
+        width: 100%;
+    }
 
-img.thank{
-    padding: 5vw;
-}
+    img.thank{
+        padding: 5vw;
+    }
 
-.fa-repeat{
-    margin-top: 10vh;
-}
-
-.thank{
-    max-width: 700px;
-    padding: 0;
-}
-
-.oops{
-    max-width: 700px;
-    padding: 0;
-}
+    .fa-repeat{
+        margin-top: 10vh;
+    }
 
 
-footer{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 15vh;
-}
-/*TODO: change fixed footer to a sticky one that hides when the soft keyboard comes out*/
+    footer{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 15vh;
+    }
+    /*TODO: change fixed footer to a sticky one that hides when the soft keyboard comes out*/
 
-.footer__progress-bar{
-    position: absolute;
-    height: 2vh;
-    width: 100%;
+    .footer__progress-bar{
+        position: absolute;
+        height: 2vh;
+        width: 100%;
+    }
+
+    .progress-bar__bar{
+        position: absolute;
+        height: inherit;
+        width: 0vw;
+        left: 0;
+        background-color: #464646;
+        /*background-color: #ed1c24;*/
+        /*^^This looks like a smurf!!*/
+        -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+        transition: width 2s;
+    }
+
+    .footer__copyright{
+        position: absolute;
+        background-color: #127094;
+        color: white;
+        text-align: center;
+        text-align: -webkit-center;
+        padding: 1vh;
+        width: 100%;
+        height: 13vh;
+        bottom: 0;
+        left: 0;
+    }
+
 }
 
-.progress-bar__bar{
-    position: absolute;
-    height: inherit;
-    width: 0vw;
-    left: 0;
-    background-color: #464646;
-    /*background-color: #ed1c24;*/
-    /*^^This looks like a smurf!!*/
-    -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
-    transition: width 2s;
+/*Desktop version*/
+/*TODO: experiment with a horizontal fullpage*/
+/*FIXME: does not work AT ALL and I have no idea why*/
+/*
+@media only screen and (max-device-width: 1024px){
 }
+*/
 
-.footer__copyright{
-    position: absolute;
-    background-color: #127094;
-    color: white;
-    text-align: center;
-    text-align: -webkit-center;
-    padding: 1vh;
-    width: 100%;
-    height: 13vh;
-    bottom: 0;
-    left: 0;
-}
+
+
+
+
+
+
+
+
+
+

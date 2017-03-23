@@ -28,9 +28,12 @@
 
         if($device == "iphone"){
             var cssLink = document.createElement("link");
+            cssLink.title = "iphone";
             cssLink.href = "<?=base_url()?>/assets/css/questions_iphone.css?<?php echo time(); ?>";
             cssLink.rel = "stylesheet";
-            document.head.appendChild(cssLink);
+            document.head.appendChild(cssLink); //FIXME: need to remove the basic stylesheet to avoid specificity issues
+
+//            $('link[title=basic]')[0].disabled=true; //FIXME: removes any and all styling
         }
 
 
