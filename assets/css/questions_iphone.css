@@ -92,24 +92,6 @@ ul.card-list{
     justify-content: center;
 }
 
-/*DESKTOP ONLY*/
-/*.comment--container{*/
-/*width: 100%;*/
-/*display: flex;*/
-/*align-content: baseline;*/
-/*justify-content: center;*/
-/*position: absolute;*/
-/*top: 15vh;*/
-/*}*/
-
-/*.form-group{*/
-/*min-width: 45%;*/
-/*}*/
-
-/*#comment{*/
-/*height: 80%; //beautiful*/
-/*}*/
-
 .comment--container{
     bottom: 5vh;
 }
@@ -155,31 +137,6 @@ ul.card-list{
     text-align: -webkit-center;
     margin-top: 3vh;
 }
-
-/*.question__container{*/
-/*border:1px solid red;*/
-/*height: 77%;*/
-/*width: 85%;*/
-/*padding: 2vh;*/
-/*position: absolute;*/
-/*top: 2vh;*/
-/*display: flex;*/
-/*display: -webkit-flex;*/
-/*align-items: center;*/
-/*-webkit-align-items: center;*/
-/*}*/
-/*!*yaaay*!*/
-
-/*.question__text{*/
-/*border: 1px solid blue;*/
-/*!*position: absolute;*!*/
-/*width: 100%;*/
-/*color: white;*/
-/*font-size: 1.5em;*/
-/*text-align: center;*/
-/*text-align: -webkit-center;*/
-/*!*top: 5vh;*!*/
-/*}*/
 
 .fa-hand-pointer-o{
     margin-top: 5vh;

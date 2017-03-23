@@ -1,7 +1,12 @@
+/*TODO: Add vendor prefixes?*/
+/*TODO: Add stuff to ask for comments*/
+/*TODO: Add copyright stuff*/
+
 /*MOBILE VERSION*/
 /**{border: 1px solid red;}*/
 *{font-family: "Calibri Light", "Calibri", sans-serif}
 
+/*Buttons*/
 .custbtn{
     font-size: 2.5em; /*for tiny iPhone 5c*/
 }
@@ -44,9 +49,8 @@
 .custbtn--off{
     color:lightgrey;
 }
-/*TODO: improve colors for UX*/
 
-/*TODO: changed the heights of stuff to make the prog bar slimmer, check if that fucked anything up*/
+/*Main Area*/
 .container{
     width: 100vw;
     /*height: 78vh;*/
@@ -54,21 +58,10 @@
     border-color: green;
 }
 
-/*space for cards, buttons go on top of cards and stay put regardless of scroll*/
+/*Space For Cards*/
 .card-container{
     bottom: 5vh;
     border-color: green;
-}
-
-/*scrollable section*/
-ul.card-list{
-    flex: inherit;
-    -webkit-flex: inherit;
-    padding: 0;
-    margin: 0;
-    border-color: blue;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 
 .card{
@@ -83,6 +76,7 @@ ul.card-list{
     justify-content: center;
 }
 
+/*Main Area in Card*/
 .card__content{
     display: flex;
     display: -webkit-flex;
@@ -93,34 +87,20 @@ ul.card-list{
     justify-content: center;
 }
 
-/*DESKTOP ONLY*/
-/*.comment--container{*/
-/*width: 100%;*/
-/*display: flex;*/
-/*align-content: baseline;*/
-/*justify-content: center;*/
-/*position: absolute;*/
-/*top: 15vh;*/
-/*}*/
-
-/*.form-group{*/
-/*min-width: 45%;*/
-/*}*/
-
-/*#comment{*/
-/*height: 80%; //beautiful*/
-/*}*/
-
-.comment--container{
-    bottom: 5vh;
-}
-
 .content__text-area{
     font-size: 2em;
     text-align: center;
     text-align: -webkit-center;
 }
-/*FIXME: This does not looked centered for some reason*/
+
+/*Question*/
+.text-area--question{
+    /*border: 1px solid green;*/
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
 
 .content__star-caption{
     height: 2em;
@@ -128,74 +108,52 @@ ul.card-list{
     color: #c5c5c5;
 }
 
-.text-area--question{
-    /*border: 1px solid green;*/
-    position: relative;
-    /*padding-right: 15%;*/
-    /*padding-left: 15%;*/
-    /*display: flex;*/
-    /*display: -webkit-flex;*/
-    /*justify-content: center;*/
-}
-
 .question__container{
-    /*border: 1px solid red;*/
-    position: absolute;
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 25%;
-    top: 0;
+/*border:1px solid red;*/
+height: 77%;
+width: 85%;
+padding: 2vh;
+position: absolute;
+top: 2vh;
+display: flex;
+display: -webkit-flex;
+align-items: center;
+-webkit-align-items: center;
 }
+/*yaaay*/
+/*FIXME: ^^^center*/
 
 .question__text{
-    /*border: 1px solid blue;*/
-    font-size: 1.5em;
-    color: white;
-    text-align: center;
-    text-align: -webkit-center;
-    margin-top: 3vh;
+/*border: 1px solid blue;*/
+/*position: absolute;*/
+width: 100%;
+color: white;
+font-size: 1.5em;
+text-align: center;
+text-align: -webkit-center;
+/*top: 5vh;*/
 }
 
-/*.question__container{*/
-/*border:1px solid red;*/
-/*height: 77%;*/
-/*width: 85%;*/
-/*padding: 2vh;*/
-/*position: absolute;*/
-/*top: 2vh;*/
-/*display: flex;*/
-/*display: -webkit-flex;*/
-/*align-items: center;*/
-/*-webkit-align-items: center;*/
-/*}*/
-/*!*yaaay*!*/
-
-/*.question__text{*/
-/*border: 1px solid blue;*/
-/*!*position: absolute;*!*/
-/*width: 100%;*/
-/*color: white;*/
-/*font-size: 1.5em;*/
-/*text-align: center;*/
-/*text-align: -webkit-center;*/
-/*!*top: 5vh;*!*/
-/*}*/
-
-.fa-hand-pointer-o{
-    margin-top: 5vh;
+/*Comment Card*/
+.comment--container{
+    bottom: 5vh;
 }
 
 .form-group{
     margin: 3vh;
 }
 
+/*Assets*/
 img{
     width: 100%;
 }
 
 img.thank{
     padding: 5vw;
+}
+
+.fa-hand-pointer-o{
+    margin-top: 5vh;
 }
 
 .fa-repeat{
@@ -212,7 +170,7 @@ img.thank{
     padding: 0;
 }
 
-
+/*Footer*/
 footer{
     position: fixed;
     bottom: 0;
@@ -256,7 +214,33 @@ footer{
 
 /*DESKTOP VERSION*/
 @media only screen and (min-device-width: 481px){
-    *{border: 1px solid blue;}
+    /**{border: 1px solid blue;}*/
+
+    /*Buttons*/
+    .custbtn{
+        font-size: 3em; /*for tiny iPhone 5c*/
+    }
+
+    .question__text{
+        font-size: 2em;
+    }
+
+    .comment--container{
+    width: 100%;
+    display: flex;
+    align-content: baseline;
+    justify-content: center;
+    position: absolute;
+    top: 15vh;
+    }
+
+    .form-group{
+    min-width: 45%;
+    }
+
+    #comment{
+    height: 80%; //beautiful
+    }
 
 }
 

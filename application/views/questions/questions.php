@@ -7,6 +7,9 @@
  */
 ?>
 
+<!--TODO: if iphone, add iphone stylesheet-->
+<!--TODO: if iphone, -->
+
 <script>
     var $questions;
     var $answerCount = 0;
@@ -59,10 +62,11 @@
 
 //        HIDE AND SHOW FOOTER
         $('.form-control').focus(function(){
-           $('footer').hide();
-           $('.custbtn--next').hide();
-//           $('.comment--container').css("bottom", "10vh");
+           if($device != "desktop"){
+               $('footer').hide();
+               $('.custbtn--next').hide();
 //           $.fn.fullpage.setResponsive(true);
+           }
            //MOBILE ONLY^^^
            $.fn.fullpage.setAllowScrolling(false); //doesn't work on mobile any more because of setresponsive?
            $.fn.fullpage.setKeyboardScrolling(false);
@@ -71,7 +75,6 @@
         $('.form-control').blur(function(){
            $('footer').show();
             $('.custbtn--next').show();
-//            $('.comment--container').css("bottom", "5vh");
 //            $.fn.fullpage.setResponsive(false);
 
             $.fn.fullpage.setAllowScrolling(true);
@@ -120,14 +123,6 @@
 //            }
         });
 
-        //TODO: fitin function to reduce text size to fit in ribbon
-        $(function(){
-//            $('.question__text').css('font-size', '2em');
-
-//            while($('.question__text').height() > $('.question__container').height()){
-//                $('.question__text').css('font-size', (parseInt($('.question__text').css('font-size'))-1)+"px");
-//            }
-        });
     });
 
 
