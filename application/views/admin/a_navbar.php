@@ -16,7 +16,7 @@
             </button>
 <!--            <a class="navbar-brand" href="#">-->
 
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand">
                     <img class="img-responsive" src="<?=base_url()?>/assets/img/Praxis%20Logo.svg" width="55" height="auto" >
                 </a>
 
