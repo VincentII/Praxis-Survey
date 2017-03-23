@@ -15,6 +15,7 @@
     var $answerCount = 0;
     var $hasStarted = false;
     var $hasSubmitted = false;
+    var $error = false;
     var $device;
 
     $(document).on('ready', function(){
@@ -33,7 +34,9 @@
             onLeave: function(index, nextIndex, direction){
                 if(($('.active').hasClass("card--question") && $('.active').find("input").val() < 1 && direction == 'down') ||
                    ($('.active').hasClass("card--submit") && $hasSubmitted == false && direction == 'down') ||
-                   (($('.active').hasClass("card--thanks") || $('.active').hasClass("card--error")) && (direction == 'up' || direction == 'down')) ||
+                   ($('.active').hasClass("card--thanks") && (direction == 'up' || direction == 'down') && $error == false) ||
+                   ($('.active').hasClass("card--error") && direction == 'up' && $error == true) ||
+                   ($('.active').hasClass("card--error") && direction == 'down') ||
                    ($('.active').hasClass("card--start") && $hasStarted == false) ||
                    (index == 2 && direction == 'up')){
                    console.log("you can't move");
@@ -46,12 +49,12 @@
                console.log($('.active').attr('class'));
                console.log(index);
 
-               if(index <= 1||$('.active').hasClass("card--submit")||$('.active').hasClass("card--thanks"))
+               if(index <= 1||$('.active').hasClass("card--submit")||$('.active').hasClass("card--thanks")||$('.active').hasClass("card--error"))
                    $('.custbtn--next').hide();
                else
                     $('.custbtn--next').show();
 
-               if(index <= 2||$('.active').hasClass("card--thanks"))
+               if(index <= 2||$('.active').hasClass("card--thanks")||$('.active').hasClass("card--error"))
                    $('.custbtn--prev').hide();
                else
                    $('.custbtn--prev').show();
@@ -117,10 +120,9 @@
         });
 
         $('.fa-refresh').on('click',function(){
-//            while(trying again){
-//                make fa-refresh spin
-            $('.fa-refresh').addClass("fa-spin"); //TODO: check
-//            }
+            $('.fa-refresh').addClass("fa-spin");
+            $('.card--error').find('.content__text-area').text("trying again..."); //TODO: add a ... animation
+            submitAnswers();
         });
 
     });
@@ -235,25 +237,33 @@
                 console.log("done");
                 if (result['status']=="success") {
                     toastr.success(result['message']);
+                    submitComment();
                 }
                 else {
                     toastr.error(result['message']);
                 }
-//                TODO: add code to jump to card--thanks
-                $.fn.fullpage.moveSectionDown();
+                if($error){
+                    $error = false;
+                    $.fn.fullpage.moveSectionUp();
+                } else{
+                    $.fn.fullpage.moveSectionDown();
+                }
             })
             .fail(function() {
                 console.log("fail");
-//                TODO: add code to jump to card--error
-               // $('.card--thanks').hide();
-                //$.fn.fullpage.reBuild();
-                //$.fn.fullpage.moveSectionDown();
+                if($error == false){
+                    $error = true;
+                    $.fn.fullpage.moveSectionDown();
+                    $.fn.fullpage.moveSectionDown();
+                } else{
+                    $('.fa-refresh').removeClass("fa-spin");
+                    $('.card--error').find('.content__text-area').text("Something went wrong. Please try again.");
+                }
             })
             .always(function() {
                 console.log("complete");
             });
 
-        submitComment();
     }
 
     function submitComment(){
@@ -390,7 +400,7 @@
                 <div class="content__text-area">Something went wrong. Please try again.</div>
                 <i class="fa fa-refresh fa-5x fa-fw"></i>
                 <br>
-                <div>try again</div>
+<!--                <div>try again</div>-->
             </div>
         </div>
     </div>
