@@ -20,7 +20,8 @@
     <![endif]-->
 
     <!--STYLESHEET-->
-    <link href="<?=base_url()?>/assets/css/questions.css?<?php echo time(); ?>" rel="stylesheet" />
+<!--    <link title="basic" href="--><?//=base_url()?><!--/assets/css/questions.css?--><?php //echo time(); ?><!--" rel="stylesheet" />-->
+    <link title="iphone" href="<?=base_url()?>/assets/css/questions_iphone.css?<?php echo time(); ?>" rel="stylesheet" />
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="<?=base_url()?>/assets/js/jquery-3.1.1.min.js"></script>

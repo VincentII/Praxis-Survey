@@ -7,17 +7,35 @@
  */
 ?>
 
+<!--TODO: if iphone, add iphone stylesheet-->
+<!--TODO: disable scrollOverflow for non-iphone if needed-->
+
 <script>
     var $questions;
     var $answerCount = 0;
     var $hasStarted = false;
     var $hasSubmitted = false;
+    var $error = false;
+    var $device;
 
     $(document).on('ready', function(){
 
         $questions = <?php echo json_encode($questions)?>;
         console.log($questions);
         getQuestions();
+
+        $device = getDevice();
+
+        if($device == "iphone"){
+            var cssLink = document.createElement("link");
+            cssLink.title = "iphone";
+            cssLink.href = "<?=base_url()?>/assets/css/questions_iphone.css?<?php echo time(); ?>";
+            cssLink.rel = "stylesheet";
+            document.head.appendChild(cssLink); //FIXME: need to remove the basic stylesheet to avoid specificity issues
+
+//            $('link[title=basic]')[0].disabled=true; //FIXME: removes any and all styling
+        }
+
 
 //        INITIALIZE FULLPAGE
 //        SCROLLING TOGGLES
@@ -26,7 +44,9 @@
             onLeave: function(index, nextIndex, direction){
                 if(($('.active').hasClass("card--question") && $('.active').find("input").val() < 1 && direction == 'down') ||
                    ($('.active').hasClass("card--submit") && $hasSubmitted == false && direction == 'down') ||
-                   (($('.active').hasClass("card--thanks") || $('.active').hasClass("card--error")) && (direction == 'up' || direction == 'down')) ||
+                   ($('.active').hasClass("card--thanks") && (direction == 'up' || direction == 'down') && $error == false) ||
+                   ($('.active').hasClass("card--error") && direction == 'up' && $error == true) ||
+                   ($('.active').hasClass("card--error") && direction == 'down') ||
                    ($('.active').hasClass("card--start") && $hasStarted == false) ||
                    (index == 2 && direction == 'up')){
                    console.log("you can't move");
@@ -39,12 +59,12 @@
                console.log($('.active').attr('class'));
                console.log(index);
 
-               if(index <= 1||$('.active').hasClass("card--submit")||$('.active').hasClass("card--thanks"))
+               if(index <= 1||$('.active').hasClass("card--submit")||$('.active').hasClass("card--thanks")||$('.active').hasClass("card--error"))
                    $('.custbtn--next').hide();
                else
                     $('.custbtn--next').show();
 
-               if(index <= 2||$('.active').hasClass("card--thanks"))
+               if(index <= 2||$('.active').hasClass("card--thanks")||$('.active').hasClass("card--error"))
                    $('.custbtn--prev').hide();
                else
                    $('.custbtn--prev').show();
@@ -55,11 +75,14 @@
 
 //        HIDE AND SHOW FOOTER
         $('.form-control').focus(function(){
-           $('footer').hide();
-           $('.custbtn--next').hide();
-//           $('.comment--container').css("bottom", "10vh");
-//           $.fn.fullpage.setResponsive(true);
-           //MOBILE ONLY^^^
+           if($device != "desktop"){
+               $('footer').hide();
+               $('.custbtn--next').hide();
+               if($device != "iphone"){
+                    $.fn.fullpage.setResponsive(true);
+               }
+           }
+
            $.fn.fullpage.setAllowScrolling(false); //doesn't work on mobile any more because of setresponsive?
            $.fn.fullpage.setKeyboardScrolling(false);
         });
@@ -67,8 +90,9 @@
         $('.form-control').blur(function(){
            $('footer').show();
             $('.custbtn--next').show();
-//            $('.comment--container').css("bottom", "5vh");
-//            $.fn.fullpage.setResponsive(false);
+            if($device != "iphone"){
+                $.fn.fullpage.setResponsive(false);
+            }
 
             $.fn.fullpage.setAllowScrolling(true);
             $.fn.fullpage.setKeyboardScrolling(true);
@@ -98,31 +122,23 @@
             if($('.card--question').find("input").val() > 0){
                 console.log("Submitting Answers!");
                 submitAnswers();
-                $('.card--submit').find('.content__text-area').text("submitting");
+                $('.card--submit').find('.content__text-area').text("submitting..."); //TODO: add a ... animation
             }
             else alert("You missed a spot");
         });
 
         $('.fa-repeat').on('click',function(){
             $('.fa-repeat').addClass("fa-spin");
-           location.reload();
+            $('.card--thanks').find('.content__text-area').text("refreshing..."); //TODO: add a ... animation
+            location.reload();
         });
 
         $('.fa-refresh').on('click',function(){
-//            while(trying again){
-//                make fa-refresh spin
-            $('.fa-refresh').addClass("fa-spin"); //TODO: check
-//            }
+            $('.fa-refresh').addClass("fa-spin");
+            $('.card--error').find('.content__text-area').text("trying again..."); //TODO: add a ... animation
+            submitAnswers();
         });
 
-        //TODO: fitin function to reduce text size to fit in ribbon
-        $(function(){
-//            $('.question__text').css('font-size', '2em');
-
-//            while($('.question__text').height() > $('.question__container').height()){
-//                $('.question__text').css('font-size', (parseInt($('.question__text').css('font-size'))-1)+"px");
-//            }
-        });
     });
 
 
@@ -235,25 +251,33 @@
                 console.log("done");
                 if (result['status']=="success") {
                     toastr.success(result['message']);
+                    submitComment();
                 }
                 else {
                     toastr.error(result['message']);
                 }
-//                TODO: add code to jump to card--thanks
-                $.fn.fullpage.moveSectionDown();
+                if($error){
+                    $error = false;
+                    $.fn.fullpage.moveSectionUp();
+                } else{
+                    $.fn.fullpage.moveSectionDown();
+                }
             })
             .fail(function() {
                 console.log("fail");
-//                TODO: add code to jump to card--error
-               // $('.card--thanks').hide();
-                //$.fn.fullpage.reBuild();
-                //$.fn.fullpage.moveSectionDown();
+                if($error == false){
+                    $error = true;
+                    $.fn.fullpage.moveSectionDown();
+                    $.fn.fullpage.moveSectionDown();
+                } else{
+                    $('.fa-refresh').removeClass("fa-spin");
+                    $('.card--error').find('.content__text-area').text("Something went wrong. Please try again.");
+                }
             })
             .always(function() {
                 console.log("complete");
             });
 
-        submitComment();
     }
 
     function submitComment(){
@@ -314,6 +338,25 @@
     }
 
 
+    function getDevice(){
+        return '<?php
+            $device = 'desktop';
+
+            if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
+                $device = "ipad";
+            } else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
+                $device = "iphone";
+            } else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
+                $device = "blackberry";
+            } else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
+                $device = "android";
+            }
+
+            if( $device ) {
+                echo $device;
+            }echo false; ?>' +"";
+    }
+
 </script>
 
 <!------------------------------------------HTML----------------------------------------------------->
@@ -321,7 +364,7 @@
 <!--TODO: make scroll animation quicker-->
 <!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
 <div class="custbtn-container--prev">
-    <div class="custbtn custbtn--prev" hidden><span class="glyphicon glyphicon-chevron-up"></span></div>
+    <div class="custbtn custbtn--prev"><span class="glyphicon glyphicon-chevron-up"></span></div>
 </div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
@@ -356,28 +399,28 @@
                 <div class="content__text-area">SUBMIT</div>
             </div>
         </div>
-        <div class="card section card--thanks">
+        <div class="card section card--thanks fp-noscroll">
             <div class="card__content">
-                <img class="thank" src="<?=base_url()?>/assets/img/thank.png">
+                <img class="thank" src="<?=base_url()?>/assets/img/thank.png" style="padding-bottom: 0px">
                 <!--                    TODO: convert png to svg-->
-                <i class="fa fa-repeat fa-5x"></i>
+                <i class="fa fa-repeat fa-5x" alt="Click here to submit another response!"></i>
                 <br>
-                <div>submit another response</div>
+                <div class="content__text-area">submit another response</div>
             </div>
         </div>
-        <div class="card section card--error">
+        <div class="card section card--error fp-noscroll">
             <div class="card__content">
-                <img class="oops" src="<?=base_url()?>/assets/img/oops.png">
+                <img class="oops" src="<?=base_url()?>/assets/img/oops.png" style="padding-bottom: 0px">
                 <div class="content__text-area">Something went wrong. Please try again.</div>
                 <i class="fa fa-refresh fa-5x fa-fw"></i>
                 <br>
-                <div>try again</div>
+<!--                <div>try again</div>-->
             </div>
         </div>
     </div>
 </div>
 <div class="custbtn-container--next">
-    <div class="custbtn custbtn--next" style="display: 'none'"><span class="glyphicon glyphicon-chevron-down"></span></div>
+    <div class="custbtn custbtn--next"><span class="glyphicon glyphicon-chevron-down"></span></div>
 </div>
 <footer>
     <div class="footer__progress-bar">
