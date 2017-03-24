@@ -392,9 +392,9 @@
         <div class="card section card--error fp-noscroll">
             <div class="card__content">
                 <img class="oops" src="<?=base_url()?>/assets/img/oops.png" style="padding-bottom: 0px">
-                <div class="content__text-area">Something went wrong. Please try again.</div>
-                <i class="fa fa-refresh fa-5x fa-fw"></i>
+                <i class="fa fa-refresh fa-5x fa-fw" alt="Click here to try again!"></i>
                 <br>
+                <div class="content__text-area">Something went wrong. Please try again.</div>
             </div>
         </div>
     </div>

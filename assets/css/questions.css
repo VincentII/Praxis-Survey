@@ -147,9 +147,6 @@ img{
     width: 100%;
 }
 
-img.thank{
-    padding: 5vw;
-}
 
 .fa-hand-pointer-o{
     margin-top: 5vh;
@@ -159,13 +156,17 @@ img.thank{
     margin-top: 10vh;
 }
 
+.fa-refresh{
+    margin-top: 10vh;
+}
+
 .thank{
     max-width: 700px;
     padding: 0;
 }
 
 .oops{
-    max-width: 700px;
+    max-width: 350px;
     padding: 0;
 }
 
