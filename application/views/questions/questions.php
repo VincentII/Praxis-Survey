@@ -33,7 +33,7 @@
             $('link#basic').replaceWith('<link id="iphone" href="<?=base_url()?>/assets/css/questions_iphone.css?<?php echo time(); ?>" rel="stylesheet" />');
         }
 
-/*
+
 //        INITIALIZE FULLPAGE
 //        SCROLLING TOGGLES
         $('.card-container').fullpage({
@@ -65,7 +65,6 @@
                updateNextButton();
            }
         });
-        */
 
 //        HIDE AND SHOW FOOTER
         $('.form-control').focus(function(){
@@ -234,11 +233,11 @@
             .done(function(result) {
                 console.log("done");
                 if (result['status']=="success") {
-                    toastr.success(result['message']);
+//                    toastr.success(result['message']);
                     submitComment();
                 }
                 else {
-                    toastr.error(result['message']);
+//                    toastr.error(result['message']);
                 }
                 if($error){
                     $error = false;
@@ -277,10 +276,10 @@
                 .done(function(result) {
                     console.log("done");
                     if (result['status']=="success") {
-                        toastr.success(result['message']);
+//                        toastr.success(result['message']);
                     }
                     else {
-                        toastr.error(result['message']);
+//                        toastr.error(result['message']);
                     }
 
                 })
@@ -291,13 +290,13 @@
                     console.log("complete");
                 });
         }
-        if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#email').val())||/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#cellphone').val())){//TODO Add email
+        if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#email').val())||/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#cellphone').val())){
             $.ajax({
                 url: '<?php echo base_url('questions/submitEmail') ?>',
                 type: 'GET',
                 dataType: 'json',
                 data: {
-                    name : $('#name').val(), //TODO also add a form-name
+                    name : $('#name').val(), 
                     email : $('#email').val(),
                     cell : $('#cellphone').val(),
                 }
@@ -305,10 +304,10 @@
                 .done(function(result) {
                     console.log("done");
                     if (result['status']=="success") {
-                        toastr.success(result['message']);
+//                        toastr.success(result['message']);
                     }
                     else {
-                        toastr.error(result['message']);
+//                        toastr.error(result['message']);
                     }
 
                 })
