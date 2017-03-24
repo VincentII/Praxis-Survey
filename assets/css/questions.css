@@ -121,7 +121,6 @@ align-items: center;
 -webkit-align-items: center;
 }
 /*yaaay*/
-/*FIXME: ^^^center*/
 
 .question__text{
 /*border: 1px solid blue;*/
@@ -178,7 +177,6 @@ footer{
     width: 100%;
     height: 15vh;
 }
-/*TODO: change fixed footer to a sticky one that hides when the soft keyboard comes out*/
 
 .footer__progress-bar{
     position: absolute;

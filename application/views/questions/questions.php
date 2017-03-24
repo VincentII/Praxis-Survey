@@ -7,9 +7,6 @@
  */
 ?>
 
-<!--TODO: if iphone, add iphone stylesheet-->
-<!--TODO: disable scrollOverflow for non-iphone if needed-->
-
 <script>
     var $questions;
     var $answerCount = 0;
@@ -21,7 +18,7 @@
     $(document).on('ready', function(){
 
         $questions = <?php echo json_encode($questions)?>;
-        console.log($questions);
+//        console.log($questions);
         getQuestions();
 
         $device = getDevice();
@@ -31,9 +28,8 @@
             cssLink.title = "iphone";
             cssLink.href = "<?=base_url()?>/assets/css/questions_iphone.css?<?php echo time(); ?>";
             cssLink.rel = "stylesheet";
-            document.head.appendChild(cssLink); //FIXME: need to remove the basic stylesheet to avoid specificity issues
+            document.head.appendChild(cssLink);
 
-//            $('link[title=basic]')[0].disabled=true; //FIXME: removes any and all styling
             $('link#basic').replaceWith('<link id="iphone" href="<?=base_url()?>/assets/css/questions_iphone.css?<?php echo time(); ?>" rel="stylesheet" />');
         }
 
@@ -50,15 +46,11 @@
                    ($('.active').hasClass("card--error") && direction == 'down') ||
                    ($('.active').hasClass("card--start") && $hasStarted == false) ||
                    (index == 2 && direction == 'up')){
-                   console.log("you can't move");
                    return false;
                 }
             },
 //        BUTTON VISIBILITY TOGGLES
             afterLoad: function(anchorLink,index){
-
-               console.log($('.active').attr('class'));
-               console.log(index);
 
                if(index <= 1||$('.active').hasClass("card--submit")||$('.active').hasClass("card--thanks")||$('.active').hasClass("card--error"))
                    $('.custbtn--next').hide();
@@ -101,12 +93,10 @@
 
 //        BUTTON FUNCTIONS
         $('.custbtn--prev').on('click',function(){
-            console.log("prev click!");
             $.fn.fullpage.moveSectionUp();
         });
 
         $('.custbtn--next').on('click',function(){
-            console.log("next click!");
             //if the card is a question card, and the question card's stars have been filled in, active card's star has a .val() > 0
             if(!($('.active').hasClass("card--question")) || $('.active').find("input").val() > 0){
                 $.fn.fullpage.moveSectionDown();
@@ -114,14 +104,12 @@
         });
 
         $('.card--start').on('click',function(){
-            console.log("START!");
-            $hasStarted = true; //FIXME: this works but is also really bad
+            $hasStarted = true;
             $.fn.fullpage.moveSectionDown();
         });
 
         $('.card--submit').on('click',function(){
             if($('.card--question').find("input").val() > 0){
-                console.log("Submitting Answers!");
                 submitAnswers();
                 $('.card--submit').find('.content__text-area').text("submitting..."); //TODO: add a ... animation
             }
@@ -148,7 +136,7 @@
         for(var questionIndex=0; questionIndex<$questions.length; questionIndex++){
 
             var text = [$questions[questionIndex]['Question_Act']];
-            var id = [$questions[questionIndex]['Question_Num']]; //TODO: where will this be added/should I add it back
+            var id = [$questions[questionIndex]['Question_Num']];
 
             var newQuestion = '<div class="card section card--question">' +
                                 '<div class="card__content">' +
@@ -161,7 +149,7 @@
                                 '<div class="content__star-caption"></div>' +
                                 '</div></div>';
 
-            console.log("question index: "+questionIndex); console.log("question id: "+id); console.log("question text: "+text);
+//            console.log("question index: "+questionIndex); console.log("question id: "+id); console.log("question text: "+text);
             $(newQuestion).insertBefore('.card--comment'); //don't mind this weird warning it is a lie
 
             $('.rating-loading').rating({
@@ -189,10 +177,8 @@
     }//end of getQuestions
 
     function updateStar(star){
-//        console.log("h2 id of active" + $('.active').find('h2').attr('id'));
         if(($('.active').hasClass("card--question")) && $('.active').find('.question__text').attr('id') > $answerCount){
             $answerCount++;
-//            console.log($answerCount);
             updateProgressBar();
         }
 
@@ -207,7 +193,6 @@
 
 //        CUSTOM STAR CAPTIONS
           $('.active').find('.content__star-caption').text(labels[parseInt($('#' + star).val())-1]);
-//        $.fn.fullpage.moveSectionDown(); //FIXME: buggy right now due to layout
 
         updateNextButton();
     }
@@ -215,16 +200,13 @@
     function updateNextButton(){
         if($('.active').hasClass("card--question") && $('.active').find("input").val()<1){
             $('.custbtn--next').addClass('custbtn--off');
-            console.log ('off');
         }
         else {
-            console.log('on');
             $('.custbtn--next').removeClass('custbtn--off');
         }
     }
 
     function updateProgressBar(){
-        //TODO: get this to work
         var size = ($answerCount * 1.0)/$questions.length *100;
 
         $('.progress-bar__bar').css('width', size+"vw");
@@ -361,15 +343,11 @@
 </script>
 
 <!------------------------------------------HTML----------------------------------------------------->
-<!--TODO: change color of todos-->
-<!--TODO: make scroll animation quicker-->
-<!--TODO: make comment area scroll without going to another card. Use focus or something maybe?-->
 <div class="custbtn-container--prev">
     <div class="custbtn custbtn--prev"><span class="glyphicon glyphicon-chevron-up"></span></div>
 </div>
 <div class="container" style="padding-left: 0px; padding-right: 0px;">
     <!--main area where background will go if ever-->
-<!--    FIXME: how do format-->
     <div class="card-container">
         <div class="card section card--start active">
             <div class="card__content">
@@ -403,7 +381,6 @@
         <div class="card section card--thanks fp-noscroll">
             <div class="card__content">
                 <img class="thank" src="<?=base_url()?>/assets/img/thank.png" style="padding-bottom: 0px">
-                <!--                    TODO: convert png to svg-->
                 <i class="fa fa-repeat fa-5x" alt="Click here to submit another response!"></i>
                 <br>
                 <div class="content__text-area">submit another response</div>
