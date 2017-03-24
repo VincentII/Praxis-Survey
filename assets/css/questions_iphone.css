@@ -1,5 +1,7 @@
 /*iOS DEVICES*/
 
+/*TODO: try removing blue part of footer for iphone 5 and smaller*/
+
 /**{border: 1px solid red;}*/
 *{font-family: "Calibri Light", "Calibri", sans-serif}
 
@@ -88,7 +90,8 @@ ul.card-list{
 }
 
 .comment--container{
-    bottom: 5vh;
+    margin-top: 20vh;
+    margin-bottom: 25vh;
 }
 
 .content__text-area{
@@ -200,12 +203,19 @@ footer{
 @media screen and (min-device-width: 321px){
 /**{border: 1px solid red;}*/
     .custbtn{
-        font-size: 3em; /*for tiny iPhone 5c*/
+        font-size: 3em;
+    }
+
+    .comment--container{
+        margin: 0;
+        top: 5vh;
     }
 
     .footer__copyright{
         padding: 3vh 1vh;
     }
+
+
 }
 
 

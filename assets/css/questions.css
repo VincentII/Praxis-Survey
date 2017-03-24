@@ -211,6 +211,8 @@ footer{
     left: 0;
 }
 
+/*MOBILE bigger than iphone5*/
+/*TODO: if there are any problems*/
 
 /*DESKTOP VERSION*/
 @media only screen and (min-device-width: 481px){
