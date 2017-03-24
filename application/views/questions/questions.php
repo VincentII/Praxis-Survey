@@ -33,7 +33,7 @@
             $('link#basic').replaceWith('<link id="iphone" href="<?=base_url()?>/assets/css/questions_iphone.css?<?php echo time(); ?>" rel="stylesheet" />');
         }
 
-
+/*
 //        INITIALIZE FULLPAGE
 //        SCROLLING TOGGLES
         $('.card-container').fullpage({
@@ -65,6 +65,7 @@
                updateNextButton();
            }
         });
+        */
 
 //        HIDE AND SHOW FOOTER
         $('.form-control').focus(function(){

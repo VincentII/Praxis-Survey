@@ -95,6 +95,7 @@ ul.card-list{
     font-size: 2em;
     text-align: center;
     text-align: -webkit-center;
+    padding: 10px;
 }
 
 .content__star-caption{
@@ -136,15 +137,26 @@ img{
     width: 100%;
 }
 
-img.thank{
-    padding: 5vw;
-}
 
 .fa-repeat{
     margin-top: 10vh;
 }
 
+.fa-refresh{
+    margin-top: 10vh;
+}
 
+.thank{
+    max-width: 700px;
+    padding: 10px;
+}
+
+.oops{
+    max-width: 350px;
+    padding: 10px;
+}
+
+/*Footer*/
 footer{
     position: fixed;
     bottom: 0;

@@ -8,7 +8,7 @@
 
 /*Buttons*/
 .custbtn{
-    font-size: 3em; /*for tiny iPhone 5c*/
+    font-size: 2.5em; /*for tiny iPhone 5c*/
 }
 
 .custbtn-container--next{
@@ -91,6 +91,7 @@
     font-size: 2em;
     text-align: center;
     text-align: -webkit-center;
+    padding: 10px;
 }
 
 /*Question*/
@@ -162,12 +163,12 @@ img{
 
 .thank{
     max-width: 700px;
-    padding: 0;
+    padding: 10px;
 }
 
 .oops{
     max-width: 350px;
-    padding: 0;
+    padding: 10px;
 }
 
 /*Footer*/
