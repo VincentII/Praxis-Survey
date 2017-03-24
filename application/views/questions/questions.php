@@ -358,16 +358,19 @@
         <div class="card section card--comment">
             <div class="comment--container">
                 <div class="form-group">
-                    <label for="name">Comments</label>
+                    <label for="name" class="form-group__main-label form-label--comment">Talk to us about your Praxis experience:*</label>
                     <textarea class="form-control" id="comment"></textarea>
+<!--                    ^^^TODO: add a placeholder that says, leave a comment here-->
                 </div>
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name" class="form-group__main-label">Leave your email OR cellphone number to receive updates on Praxis, and future game play!</label><br>
+                    <label for="name">Name*</label>
                     <input type="text" class="form-control" id="name"><br>
-                    <label for="name">Email</label>
+                    <label for="name">Email*</label>
                     <input type="text" class="form-control" id="email"><br>
-                    <label for="name">Cellphone Number</label>
+                    <label for="name">Cellphone Number*</label>
                     <input type="text" class="form-control" id="cellphone"><br>
+                    <span>* optional</span>
                 </div>
             </div>
         </div>
@@ -392,7 +395,6 @@
                 <div class="content__text-area">Something went wrong. Please try again.</div>
                 <i class="fa fa-refresh fa-5x fa-fw"></i>
                 <br>
-<!--                <div>try again</div>-->
             </div>
         </div>
     </div>
@@ -405,6 +407,6 @@
         <div class="progress-bar__bar"></div>
     </div>
     <div class="footer__copyright">
-        copyright
+        Copyright © Sense For Money Philippines, Inc., 2016-2017. <br>All rights reserved.
     </div>
 </footer>

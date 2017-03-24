@@ -1,247 +1,200 @@
-/*Mobile version*/
-@media only screen and (max-device-width: /*480*/3000px){
-    *{border: 1px solid red;}
-    *{font-family: "Calibri Light", "Calibri", sans-serif}
+/*iOS DEVICES*/
 
+/**{border: 1px solid red;}*/
+*{font-family: "Calibri Light", "Calibri", sans-serif}
+
+.custbtn{
+    font-size: 2em; /*for tiny iPhone 5c*/
+}
+
+.custbtn-container--next{
+    position: fixed;
+    bottom: 15vh;
+    width: 100vw;
+}
+
+.custbtn--next{
+    margin: 0 auto;
+    width: 100vw;
+    text-align: center;
+    text-align: -webkit-center;
+}
+
+.custbtn-container--prev{
+    z-index: 99999 !important;
+    position: fixed;
+    top: 3vh;
+    width: 100vw;
+}
+
+.custbtn--prev{
+    margin: 0 auto;
+    width: 100vw;
+    text-align: center;
+    text-align: -webkit-center;
+}
+
+.custbtn:active{
+    color: #0f0f0f;
+}
+
+.custbtn--off{
+    color:lightgrey;
+}
+
+.container{
+    width: 100vw;
+    height:100vh;
+    border-color: green;
+}
+
+/*space for cards, buttons go on top of cards and stay put regardless of scroll*/
+.card-container{
+    bottom: 5vh;
+    border-color: green;
+}
+
+/*scrollable section*/
+ul.card-list{
+    flex: inherit;
+    -webkit-flex: inherit;
+    padding: 0;
+    margin: 0;
+    border-color: blue;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.card{
+    height: 77vh;
+    list-style: none;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column;
+    -webkit-flex-flow: column;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+}
+
+.card__content{
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column;
+    -webkit-flex-flow: column;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+}
+
+.comment--container{
+    bottom: 5vh;
+}
+
+.content__text-area{
+    font-size: 2em;
+    text-align: center;
+    text-align: -webkit-center;
+}
+
+.content__star-caption{
+    height: 2em;
+    font-size: 2em;
+    color: #c5c5c5;
+}
+
+.text-area--question{
+    position: relative;
+}
+
+.question__container{
+    position: absolute;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 25%;
+    top: 0;
+}
+
+.question__text{
+    font-size: 1.5em;
+    color: white;
+    text-align: center;
+    text-align: -webkit-center;
+    margin-top: 3vh;
+}
+
+.fa-hand-pointer-o{
+    margin-top: 5vh;
+}
+
+.form-group{
+    margin: 3vh;
+}
+
+img{
+    width: 100%;
+}
+
+img.thank{
+    padding: 5vw;
+}
+
+.fa-repeat{
+    margin-top: 10vh;
+}
+
+
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15vh;
+}
+
+.footer__progress-bar{
+    position: absolute;
+    height: 2vh;
+    width: 100%;
+}
+
+.progress-bar__bar{
+    position: absolute;
+    height: inherit;
+    width: 0vw;
+    left: 0;
+    background-color: #464646;
+    /*background-color: #ed1c24;*/
+    /*^^This looks like a smurf!!*/
+    -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+    transition: width 2s;
+}
+
+.footer__copyright{
+    position: absolute;
+    background-color: #127094;
+    color: white;
+    text-align: center;
+    text-align: -webkit-center;
+    padding: 1vh 3vh;
+    width: 100%;
+    height: 13vh;
+    bottom: 0;
+    left: 0;
+}
+
+/*bigger than iPhone 5*/
+@media screen and (min-device-width: 321px){
+/**{border: 1px solid red;}*/
     .custbtn{
-        font-size: 2.5em; /*for tiny iPhone 5c*/
-    }
-
-    .custbtn-container--next{
-        position: fixed;
-        bottom: 15vh;
-        width: 100vw;
-        /*border: 1px solid red;*/
-    }
-
-    .custbtn--next{
-        margin: 0 auto;
-        width: 100vw;
-        text-align: center;
-        text-align: -webkit-center;
-        /*border: 1px solid blue;*/
-    }
-
-    .custbtn-container--prev{
-        z-index: 99999 !important;
-        position: fixed;
-        top: 3vh;
-        width: 100vw;
-        /*border: 1px solid red;*/
-    }
-
-    .custbtn--prev{
-        margin: 0 auto;
-        width: 100vw;
-        text-align: center;
-        text-align: -webkit-center;
-        /*border: 1px solid blue;*/
-    }
-
-    .custbtn:active{
-        color: #0f0f0f;
-    }
-
-    .custbtn--off{
-        color:lightgrey;
-    }
-
-    .container{
-        width: 100vw;
-        /*height: 78vh;*/
-        height:100vh;
-        border-color: green;
-    }
-
-    /*space for cards, buttons go on top of cards and stay put regardless of scroll*/
-    .card-container{
-        bottom: 5vh;
-        border-color: green;
-    }
-
-    /*scrollable section*/
-    ul.card-list{
-        flex: inherit;
-        -webkit-flex: inherit;
-        padding: 0;
-        margin: 0;
-        border-color: blue;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
-    .card{
-        height: 77vh;
-        list-style: none;
-        display: flex;
-        display: -webkit-flex;
-        flex-flow: column;
-        -webkit-flex-flow: column;
-        align-items: center;
-        -webkit-align-items: center;
-        justify-content: center;
-    }
-
-    .card__content{
-        display: flex;
-        display: -webkit-flex;
-        flex-flow: column;
-        -webkit-flex-flow: column;
-        align-items: center;
-        -webkit-align-items: center;
-        justify-content: center;
-    }
-
-    /*DESKTOP ONLY*/
-    /*.comment--container{*/
-    /*width: 100%;*/
-    /*display: flex;*/
-    /*align-content: baseline;*/
-    /*justify-content: center;*/
-    /*position: absolute;*/
-    /*top: 15vh;*/
-    /*}*/
-
-    /*.form-group{*/
-    /*min-width: 45%;*/
-    /*}*/
-
-    /*#comment{*/
-    /*height: 80%; //beautiful*/
-    /*}*/
-
-    .comment--container{
-        bottom: 5vh;
-    }
-
-    .content__text-area{
-        font-size: 2em;
-        text-align: center;
-        text-align: -webkit-center;
-    }
-
-    .content__star-caption{
-        height: 2em;
-        font-size: 2em;
-        color: #c5c5c5;
-    }
-
-    .text-area--question{
-        /*border: 1px solid green;*/
-        position: relative;
-        /*padding-right: 15%;*/
-        /*padding-left: 15%;*/
-        /*display: flex;*/
-        /*display: -webkit-flex;*/
-        /*justify-content: center;*/
-    }
-
-    .question__container{
-        /*border: 1px solid red;*/
-        position: absolute;
-        width: 80%;
-        margin-left: 10%;
-        margin-right: 10%;
-        margin-bottom: 25%;
-        top: 0;
-    }
-
-    .question__text{
-        /*border: 1px solid blue;*/
-        font-size: 1.5em;
-        color: white;
-        text-align: center;
-        text-align: -webkit-center;
-        margin-top: 3vh;
-    }
-
-    /*.question__container{*/
-    /*border:1px solid red;*/
-    /*height: 77%;*/
-    /*width: 85%;*/
-    /*padding: 2vh;*/
-    /*position: absolute;*/
-    /*top: 2vh;*/
-    /*display: flex;*/
-    /*display: -webkit-flex;*/
-    /*align-items: center;*/
-    /*-webkit-align-items: center;*/
-    /*}*/
-    /*!*yaaay*!*/
-
-    /*.question__text{*/
-    /*border: 1px solid blue;*/
-    /*!*position: absolute;*!*/
-    /*width: 100%;*/
-    /*color: white;*/
-    /*font-size: 1.5em;*/
-    /*text-align: center;*/
-    /*text-align: -webkit-center;*/
-    /*!*top: 5vh;*!*/
-    /*}*/
-
-    .fa-hand-pointer-o{
-        margin-top: 5vh;
-    }
-
-    .form-group{
-        margin: 3vh;
-    }
-
-    img{
-        width: 100%;
-    }
-
-    img.thank{
-        padding: 5vw;
-    }
-
-    .fa-repeat{
-        margin-top: 10vh;
-    }
-
-
-    footer{
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 15vh;
-    }
-
-    .footer__progress-bar{
-        position: absolute;
-        height: 2vh;
-        width: 100%;
-    }
-
-    .progress-bar__bar{
-        position: absolute;
-        height: inherit;
-        width: 0vw;
-        left: 0;
-        background-color: #464646;
-        /*background-color: #ed1c24;*/
-        /*^^This looks like a smurf!!*/
-        -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
-        transition: width 2s;
+        font-size: 3em; /*for tiny iPhone 5c*/
     }
 
     .footer__copyright{
-        position: absolute;
-        background-color: #127094;
-        color: white;
-        text-align: center;
-        text-align: -webkit-center;
-        padding: 1vh;
-        width: 100%;
-        height: 13vh;
-        bottom: 0;
-        left: 0;
+        padding: 3vh 1vh;
     }
-
 }
-
 
 
 
