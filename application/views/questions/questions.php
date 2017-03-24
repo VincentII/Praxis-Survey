@@ -231,7 +231,7 @@
             }
         })
             .done(function(result) {
-                console.log("done");
+//                console.log("done");
                 if (result['status']=="success") {
 //                    toastr.success(result['message']);
                     submitComment();
@@ -247,7 +247,7 @@
                 }
             })
             .fail(function() {
-                console.log("fail");
+//                console.log("fail");
                 if($error == false){
                     $error = true;
                     $.fn.fullpage.moveSectionDown();
@@ -258,7 +258,7 @@
                 }
             })
             .always(function() {
-                console.log("complete");
+//                console.log("complete");
             });
 
     }
@@ -274,7 +274,7 @@
                 }
             })
                 .done(function(result) {
-                    console.log("done");
+//                    console.log("done");
                     if (result['status']=="success") {
 //                        toastr.success(result['message']);
                     }
@@ -284,10 +284,10 @@
 
                 })
                 .fail(function() {
-                    console.log("fail");
+//                    console.log("fail");
                 })
                 .always(function() {
-                    console.log("complete");
+//                    console.log("complete");
                 });
         }
         if(/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#email').val())||/[a-z|0-9][a-z|0-9][a-z|0-9]/mi.test($('#cellphone').val())){
@@ -296,13 +296,13 @@
                 type: 'GET',
                 dataType: 'json',
                 data: {
-                    name : $('#name').val(), 
+                    name : $('#name').val(),
                     email : $('#email').val(),
                     cell : $('#cellphone').val(),
                 }
             })
                 .done(function(result) {
-                    console.log("done");
+//                    console.log("done");
                     if (result['status']=="success") {
 //                        toastr.success(result['message']);
                     }
@@ -312,10 +312,10 @@
 
                 })
                 .fail(function() {
-                    console.log("fail");
+//                    console.log("fail");
                 })
                 .always(function() {
-                    console.log("complete");
+//                    console.log("complete");
                 });
         }
     }
