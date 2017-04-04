@@ -407,6 +407,6 @@
         <div class="progress-bar__bar"></div>
     </div>
     <div class="footer__copyright">
-        Copyright © Sense For Money Philippines, Inc., 2016-2017. <br>All rights reserved.
+        <div class="copyright__container">Copyright © Sense For Money Philippines, Inc., 2016-2017. <br>All rights reserved.</div>
     </div>
 </footer>
