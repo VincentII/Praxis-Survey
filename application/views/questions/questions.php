@@ -23,7 +23,7 @@
 
         $device = getDevice();
 
-        if($device == "iphone"){
+        if($device == "iphone" || $device == "ipad"){ // TODO: test if stylesheet for iphone 6 and bigger works for ipad
             var cssLink = document.createElement("link");
             cssLink.title = "iphone";
             cssLink.href = "<?=base_url()?>/assets/css/questions_iphone.css?<?php echo time(); ?>";
