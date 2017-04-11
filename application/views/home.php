@@ -25,6 +25,7 @@
 <div class="center_container">
     <div class="col-md-8 center">
 
+        <center><img src="<?=base_url()?>/assets/img/Praxis%20Logo.svg" style="width: 50%; height: auto; padding-bottom: 2%"></center>
         <div class="input-group">
             <span class="input-group-addon" id="sizing-addon1">
                 Praxis-Survey.com/survey/
