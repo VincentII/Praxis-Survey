@@ -207,8 +207,9 @@
 
                 if(events[j].Event_Name==curEvent) {
                     drop+="<option value='"+events[j].Event_ID+"' selected >"+events[j].Event_Name+"</option>"
-                }else
-                    drop+="<option value='"+events[j].Event_ID+"'  >"+events[j].Event_Name+"</option>"
+                }else { console.log("A"+curEvent+"A");
+                    drop += "<option value='" + events[j].Event_ID + "'  >" + events[j].Event_Name + "</option>"
+                }
 
             }
             drop+="</select>";
@@ -408,7 +409,7 @@
                                             <?php if($link->eventClosed=='1'||$link->eventArchived=='1'):?>
                                             <td class="is_closed" title="<?=$link->event_id?>"><?=$link->event_name?></td>
                                             <?php else:?>
-                                            <td title="<?=$link->event_id?>"><?=$link->event_name?>
+                                            <td title="<?=$link->event_id?>"><?=$link->event_name?></td>
                                             <?php endif;?>
 
                                             <?php if($link->setClosed=='1'||$link->setArchived=='1'):?>
