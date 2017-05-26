@@ -256,6 +256,10 @@ footer{
         height: 60%; //beautiful
     }
 
+    footer{
+        height: 14vh;
+    }
+
     /*.footer__copyright{*/
         /*padding: 3vh;*/
     /*}*/

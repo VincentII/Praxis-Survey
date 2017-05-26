@@ -62,13 +62,26 @@
                else
                    $('.custbtn--prev').show();
 
+               if($('.active').hasClass("card--comment")){
+                   $('.glyphicon-chevron-down').addClass("hidden");
+                   $('.custbtn--next--skip').removeClass("hidden");
+               }
+               else{
+                   $('.custbtn--next--skip').addClass("hidden");
+                   $('.glyphicon-chevron-down').removeClass("hidden");
+               }
+
                updateNextButton();
            }
         });
 
 //        HIDE AND SHOW FOOTER
         $('.form-control').focus(function(){
-           if($device != "desktop"){
+            //FIXME: else span with down button
+            $('.custbtn--next--skip').addClass("hidden");
+            $('.glyphicon-chevron-down').removeClass("hidden");
+
+            if($device != "desktop"){
                $('footer').hide();
                $('.custbtn--next').hide();
                if($device != "iphone"){
@@ -81,6 +94,10 @@
         });
 
         $('.form-control').blur(function(){
+            //FIXME: if not focused and haven't typed, display "skip" instead of span with down button
+            $('.glyphicon-chevron-down').addClass("hidden");
+            $('.custbtn--next--skip').removeClass("hidden");
+
            $('footer').show();
             $('.custbtn--next').show();
             if($device != "iphone"){
@@ -400,7 +417,11 @@
     </div>
 </div>
 <div class="custbtn-container--next">
-    <div class="custbtn custbtn--next"><span class="glyphicon glyphicon-chevron-down"></span></div>
+    <div class="custbtn custbtn--next">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+        <span class="custbtn--next--skip hidden">SKIP</span>
+    </div>
+<!--    <div class="custbtn custbtn--next"><span>SKIP</span></div>-->
 </div>
 <footer>
     <div class="footer__progress-bar">
